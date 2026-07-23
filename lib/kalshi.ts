@@ -1,13 +1,12 @@
 import type { HistoryPoint, PlatformQuote } from "./types";
 
 const KALSHI_BASE = "https://api.elections.kalshi.com/trade-api/v2";
-const MARKET_TICKER = "KXPRESPERSON-28-JVAN";
-const SERIES_TICKER = "KXPRESPERSON";
 
-export const KALSHI_MARKET_URL = `https://kalshi.com/markets/kxpresperson/kxpresperson-28?selectedMarketTicker=${MARKET_TICKER}`;
-
-export async function getKalshiVanceMarket(): Promise<PlatformQuote> {
-  const res = await fetch(`${KALSHI_BASE}/markets/${MARKET_TICKER}`, {
+export async function getKalshiMarket(
+  ticker: string,
+  marketUrl: string
+): Promise<PlatformQuote> {
+  const res = await fetch(`${KALSHI_BASE}/markets/${ticker}`, {
     next: { revalidate: 30 },
   });
   if (!res.ok) {
@@ -24,15 +23,18 @@ export async function getKalshiVanceMarket(): Promise<PlatformQuote> {
     bid: parseFloat(m.yes_bid_dollars),
     ask: parseFloat(m.yes_ask_dollars),
     updatedAt: m.updated_time,
-    url: KALSHI_MARKET_URL,
+    url: marketUrl,
   };
 }
 
-export async function getKalshiVanceHistory(): Promise<HistoryPoint[]> {
+export async function getKalshiMarketHistory(
+  seriesTicker: string,
+  ticker: string
+): Promise<HistoryPoint[]> {
   const end = Math.floor(Date.now() / 1000);
   const start = end - 60 * 60 * 24 * 400; // ~400 days, covers full market life
   const url =
-    `${KALSHI_BASE}/series/${SERIES_TICKER}/markets/${MARKET_TICKER}/candlesticks` +
+    `${KALSHI_BASE}/series/${seriesTicker}/markets/${ticker}/candlesticks` +
     `?start_ts=${start}&end_ts=${end}&period_interval=1440`;
   const res = await fetch(url, { next: { revalidate: 3600 } });
   if (!res.ok) {

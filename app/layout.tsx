@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PredictCentr — JD Vance 2028 Odds: Kalshi vs Polymarket",
+  title: {
+    default: "PredictCentr — Live Prediction Market Odds",
+    template: "%s | PredictCentr",
+  },
   description:
-    "Live JD Vance 2028 presidential election odds compared across Kalshi and Polymarket, with news context and price history.",
+    "Live prediction market odds compared across platforms, with the news that's actually moving them.",
 };
 
 export default function RootLayout({

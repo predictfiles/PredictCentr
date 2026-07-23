@@ -2,15 +2,12 @@ import type { HistoryPoint, PlatformQuote } from "./types";
 
 const GAMMA_BASE = "https://gamma-api.polymarket.com";
 const CLOB_BASE = "https://clob.polymarket.com";
-const MARKET_ID = "561229";
-const YES_TOKEN_ID =
-  "16040015440196279900485035793550429453516625694844857319147506590755961451627";
 
-export const POLYMARKET_MARKET_URL =
-  "https://polymarket.com/event/presidential-election-winner-2028/will-jd-vance-win-the-2028-us-presidential-election";
-
-export async function getPolymarketVanceMarket(): Promise<PlatformQuote> {
-  const res = await fetch(`${GAMMA_BASE}/markets/${MARKET_ID}`, {
+export async function getPolymarketMarket(
+  marketId: string,
+  marketUrl: string
+): Promise<PlatformQuote> {
+  const res = await fetch(`${GAMMA_BASE}/markets/${marketId}`, {
     next: { revalidate: 30 },
   });
   if (!res.ok) {
@@ -28,12 +25,14 @@ export async function getPolymarketVanceMarket(): Promise<PlatformQuote> {
     bid: parseFloat(m.bestBid ?? outcomePrices[0]),
     ask: parseFloat(m.bestAsk ?? outcomePrices[0]),
     updatedAt: m.updatedAt,
-    url: POLYMARKET_MARKET_URL,
+    url: marketUrl,
   };
 }
 
-export async function getPolymarketVanceHistory(): Promise<HistoryPoint[]> {
-  const url = `${CLOB_BASE}/prices-history?market=${YES_TOKEN_ID}&interval=max&fidelity=1440`;
+export async function getPolymarketMarketHistory(
+  yesTokenId: string
+): Promise<HistoryPoint[]> {
+  const url = `${CLOB_BASE}/prices-history?market=${yesTokenId}&interval=max&fidelity=1440`;
   const res = await fetch(url, { next: { revalidate: 3600 } });
   if (!res.ok) {
     throw new Error(`Polymarket price history fetch failed: ${res.status}`);

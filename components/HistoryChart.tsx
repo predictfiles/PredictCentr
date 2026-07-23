@@ -36,7 +36,13 @@ function formatTooltipDate(t: number): string {
   });
 }
 
-export function HistoryChart({ data }: { data: HistoryResponse }) {
+export function HistoryChart({
+  data,
+  candidateName,
+}: {
+  data: HistoryResponse;
+  candidateName: string;
+}) {
   const kalshi = data.kalshi ?? [];
   const polymarket = data.polymarket ?? [];
   const [hoverX, setHoverX] = useState<number | null>(null);
@@ -128,7 +134,7 @@ export function HistoryChart({ data }: { data: HistoryResponse }) {
           width="100%"
           height="auto"
           role="img"
-          aria-label="Historical probability chart for JD Vance winning the 2028 presidential election on Kalshi and Polymarket"
+          aria-label={`Historical probability chart for ${candidateName} winning, on Kalshi and Polymarket`}
           onMouseMove={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width) * WIDTH;

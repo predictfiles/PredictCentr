@@ -1,14 +1,23 @@
 import { NextResponse } from "next/server";
-import { getKalshiVanceHistory } from "@/lib/kalshi";
-import { getPolymarketVanceHistory } from "@/lib/polymarket";
+import { findMarket } from "@/lib/markets";
+import { getKalshiMarketHistory } from "@/lib/kalshi";
+import { getPolymarketMarketHistory } from "@/lib/polymarket";
 import type { HistoryResponse } from "@/lib/types";
 
 export const revalidate = 3600;
 
-export async function GET() {
+export async function GET(
+  _req: Request,
+  { params }: { params: { electionSlug: string; candidateSlug: string } }
+) {
+  const market = findMarket(params.electionSlug, params.candidateSlug);
+  if (!market) {
+    return NextResponse.json({ error: "Market not found" }, { status: 404 });
+  }
+
   const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiVanceHistory(),
-    getPolymarketVanceHistory(),
+    getKalshiMarketHistory(market.kalshi.seriesTicker, market.kalshi.ticker),
+    getPolymarketMarketHistory(market.polymarket.yesTokenId),
   ]);
 
   const body: HistoryResponse = {

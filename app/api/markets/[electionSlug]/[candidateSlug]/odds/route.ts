@@ -1,14 +1,26 @@
 import { NextResponse } from "next/server";
-import { getKalshiVanceMarket } from "@/lib/kalshi";
-import { getPolymarketVanceMarket } from "@/lib/polymarket";
+import { findMarket } from "@/lib/markets";
+import { getKalshiMarket } from "@/lib/kalshi";
+import { getPolymarketMarket } from "@/lib/polymarket";
 import type { OddsResponse } from "@/lib/types";
 
 export const revalidate = 30;
 
-export async function GET() {
+export async function GET(
+  _req: Request,
+  { params }: { params: { electionSlug: string; candidateSlug: string } }
+) {
+  const market = findMarket(params.electionSlug, params.candidateSlug);
+  if (!market) {
+    return NextResponse.json({ error: "Market not found" }, { status: 404 });
+  }
+
   const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiVanceMarket(),
-    getPolymarketVanceMarket(),
+    getKalshiMarket(market.kalshi.ticker, market.content.affiliateLinks.kalshi.url),
+    getPolymarketMarket(
+      market.polymarket.marketId,
+      market.content.affiliateLinks.polymarket.url
+    ),
   ]);
 
   const body: OddsResponse = {

@@ -86,10 +86,14 @@ function BestPrice({
 
 export function OddsComparison({
   initialData,
+  apiPath,
+  candidateName,
   kalshiAffiliateUrl,
   polymarketAffiliateUrl,
 }: {
   initialData: OddsResponse;
+  apiPath: string;
+  candidateName: string;
   kalshiAffiliateUrl: string;
   polymarketAffiliateUrl: string;
 }) {
@@ -101,7 +105,7 @@ export function OddsComparison({
 
     async function poll() {
       try {
-        const res = await fetch("/api/odds", { cache: "no-store" });
+        const res = await fetch(`${apiPath}/odds/`, { cache: "no-store" });
         if (!res.ok) return;
         const json: OddsResponse = await res.json();
         if (!cancelled) setData(json);
@@ -120,11 +124,11 @@ export function OddsComparison({
       clearInterval(interval);
       clearInterval(tick);
     };
-  }, []);
+  }, [apiPath]);
 
   return (
     <section className="section">
-      <div className="section-label">Live Odds — Will JD Vance Win?</div>
+      <div className="section-label">Live Odds — Will {candidateName} Win?</div>
       <div className="odds-grid">
         <PlatformCard
           name="Kalshi"

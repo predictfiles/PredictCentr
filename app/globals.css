@@ -11,6 +11,7 @@
   --warn-bg: #fef3c7;
   --danger: #b91c1c;
   --danger-bg: #fee2e2;
+  --brand-blue: #3358e0;
   --radius: 10px;
 }
 
@@ -28,6 +29,7 @@
     --warn-bg: #3a2e05;
     --danger: #f87171;
     --danger-bg: #3a1212;
+    --brand-blue: #5c85ff;
   }
 }
 
@@ -66,12 +68,18 @@ a {
 }
 
 .brand {
+  display: inline-block;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: var(--fg);
 }
 
 .title {
@@ -332,4 +340,53 @@ a {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.home-wordmark {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+
+.home-wordmark-accent {
+  color: var(--brand-blue);
+}
+
+.market-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.market-card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+.market-card:hover {
+  border-color: var(--brand-blue);
+}
+
+.market-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.market-card-desc {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.market-card-cta {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-blue);
 }
