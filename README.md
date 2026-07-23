@@ -45,3 +45,4 @@ Open http://localhost:3000.
 Push to GitHub, then import the repo in the Vercel dashboard
 (vercel.com/new). No environment variables are required — both APIs are
 public and unauthenticated. Vercel will detect Next.js automatically.
+
