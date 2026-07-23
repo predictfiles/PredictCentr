@@ -3,9 +3,11 @@ import { formatDate } from "@/lib/format";
 export function MarketBrief({
   text,
   updatedAt,
+  author,
 }: {
   text: string;
   updatedAt: string;
+  author?: string;
 }) {
   return (
     <section className="section">
@@ -13,7 +15,8 @@ export function MarketBrief({
       <div className="card">
         <p className="brief-text">{text}</p>
         <div className="brief-meta">
-          Last updated by hand — {formatDate(updatedAt)}
+          {author ? `By ${author} · ` : ""}Updated by hand{" "}
+          {formatDate(updatedAt)}
         </div>
       </div>
     </section>

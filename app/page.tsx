@@ -76,6 +76,7 @@ export default async function Home() {
       <MarketBrief
         text={content.marketBrief.text}
         updatedAt={content.marketBrief.updatedAt}
+        author={content.marketBrief.author}
       />
 
       <NewsSection items={content.news} />
