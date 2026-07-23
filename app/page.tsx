@@ -71,14 +71,14 @@ export default async function Home() {
         polymarketAffiliateUrl={content.affiliateLinks.polymarket.url}
       />
 
+      <HistoryChart data={history} />
+
       <MarketBrief
         text={content.marketBrief.text}
         updatedAt={content.marketBrief.updatedAt}
       />
 
       <NewsSection items={content.news} />
-
-      <HistoryChart data={history} />
 
       <WhatToWatch items={content.whatToWatch} />
 
