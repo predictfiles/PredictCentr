@@ -1,0 +1,319 @@
+:root {
+  --bg: #f7f7f8;
+  --fg: #14161a;
+  --muted: #5b6270;
+  --card: #ffffff;
+  --border: #e3e5e8;
+  --accent: #14161a;
+  --kalshi: #0f9d68;
+  --polymarket: #6366f1;
+  --warn: #b45309;
+  --warn-bg: #fef3c7;
+  --danger: #b91c1c;
+  --danger-bg: #fee2e2;
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0d10;
+    --fg: #e8e9eb;
+    --muted: #9aa2b1;
+    --card: #14171c;
+    --border: #262b33;
+    --accent: #e8e9eb;
+    --kalshi: #34d399;
+    --polymarket: #818cf8;
+    --warn: #fbbf24;
+    --warn-bg: #3a2e05;
+    --danger: #f87171;
+    --danger-bg: #3a1212;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+.header {
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 15px;
+  margin: 0;
+}
+
+.section {
+  margin-bottom: 36px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.brief-text {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+.brief-meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.news-item {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-headline {
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.news-headline:hover {
+  text-decoration: underline;
+}
+
+.news-meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.odds-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 520px) {
+  .odds-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.odds-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--platform-color, var(--border));
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.odds-platform {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--platform-color, var(--fg));
+}
+
+.odds-price {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.odds-price .unit {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-left: 2px;
+}
+
+.odds-spread {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.odds-updated {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.odds-updated.stale {
+  color: var(--warn);
+}
+
+.odds-unavailable {
+  font-size: 14px;
+  color: var(--danger);
+  background: var(--danger-bg);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.cta-btn {
+  margin-top: auto;
+  display: inline-block;
+  text-align: center;
+  padding: 9px 14px;
+  border-radius: 7px;
+  background: var(--platform-color, var(--fg));
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cta-btn:hover {
+  opacity: 0.9;
+}
+
+.odds-fetched {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.chart-empty {
+  font-size: 14px;
+  color: var(--muted);
+  padding: 30px 0;
+  text-align: center;
+}
+
+.watch-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.watch-item {
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.watch-item:last-child {
+  border-bottom: none;
+}
+
+.watch-date {
+  flex: 0 0 auto;
+  min-width: 108px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.watch-label {
+  font-size: 14px;
+}
+
+.disclaimer {
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 24px;
+}
+
+.footer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

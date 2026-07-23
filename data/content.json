@@ -1,0 +1,97 @@
+{
+  "market": {
+    "title": "2028 U.S. Presidential Election Winner",
+    "candidate": "JD Vance",
+    "resolutionDate": "2028-11-07",
+    "resolutionNote": "Resolves to whoever is inaugurated President in January 2029, based on AP/Fox/NBC race calls."
+  },
+  "marketBrief": {
+    "text": "DRAFT — REPLACE WITH YOUR OWN WORDS BEFORE LAUNCH. Vance's odds have drifted down through 2026 after peaking near 33% last October, and he's now running roughly even with Marco Rubio in the high-teens on both platforms. The move tracks a run of soft approval numbers and reporting on private doubts within Trump's circle about Vance leading the MAGA coalition. Gavin Newsom has been the main beneficiary on the Democratic side, closing the gap with the highest trading volume of any non-Vance candidate.",
+    "updatedAt": "2026-07-23",
+    "author": "REPLACE_WITH_YOUR_NAME"
+  },
+  "news": [
+    {
+      "headline": "Checking in on Presidential Election Odds for 2028",
+      "source": "Federal News Network",
+      "date": "2026-07-16",
+      "url": "https://federalnewsnetwork.com/prediction-markets/2026/07/checking-presidential-election-odds-2028/"
+    },
+    {
+      "headline": "JD Vance's Chances of Beating AOC and Newsom in New 2028 Poll",
+      "source": "Newsweek",
+      "date": "2026-07-14",
+      "url": "https://www.newsweek.com/jd-vance-aoc-gavin-newsom-2028-poll-12194158"
+    },
+    {
+      "headline": "JD Vance's 2028 Presidential Election Chances Plunge in New Poll",
+      "source": "Newsweek",
+      "date": "2026-04-14",
+      "url": "https://www.newsweek.com/jd-vance-2028-presidential-election-chances-poll-11825871"
+    },
+    {
+      "headline": "2028 Election Prediction Markets: JD Vance Leads Despite VP's Historic Approval Low",
+      "source": "Bitcoin.com News",
+      "date": "2026-04-13",
+      "url": "https://news.bitcoin.com/2028-election-prediction-markets-jd-vance-leads-despite-vps-historic-approval-low/"
+    },
+    {
+      "headline": "JD Vance's Chances of Winning 2028 Presidential Election Hit 'All-Time Low'",
+      "source": "Newsweek",
+      "date": "2026-03-26",
+      "url": "https://www.newsweek.com/jd-vance-chances-winning-2028-presidential-election-11739504"
+    },
+    {
+      "headline": "Gavin Newsom & JD Vance See Chances of Leading Parties in 2028 Sharply Decline",
+      "source": "CasinoBeats",
+      "date": "2026-03-18",
+      "url": "https://casinobeats.com/2026/03/18/gavin-newsom-jd-vance-see-chances-leading-parties-2028-sharply-decline/"
+    },
+    {
+      "headline": "2028 Presidential Winning Odds: Vance Drops to 26% as Newsom Reaches 20%",
+      "source": "IBTimes UK",
+      "date": "2026-02-01",
+      "url": "https://www.ibtimes.co.uk/2028-presidential-winning-odds-vance-drops-26-newsom-reaches-20-1775382"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "2026-11-03",
+      "label": "US midterm elections — a strong or weak GOP showing will reshape 2028 field narratives"
+    },
+    {
+      "date": "2027 (TBD)",
+      "label": "Expected window for major contenders to formally launch or rule out 2028 campaigns"
+    },
+    {
+      "date": "2028-01 (TBD)",
+      "label": "Iowa caucuses — traditionally the first nominating contest; exact date not yet set"
+    },
+    {
+      "date": "2028-02 (TBD)",
+      "label": "New Hampshire primary — exact date not yet set"
+    },
+    {
+      "date": "2028 Summer (TBD)",
+      "label": "Republican National Convention — nominee formally confirmed"
+    },
+    {
+      "date": "2028 Fall (TBD)",
+      "label": "General election debates"
+    },
+    {
+      "date": "2028-11-07",
+      "label": "Election Day — market resolution"
+    }
+  ],
+  "affiliateLinks": {
+    "kalshi": {
+      "url": "https://kalshi.com/markets/kxpresperson/kxpresperson-28?selectedMarketTicker=KXPRESPERSON-28-JVAN",
+      "note": "REPLACE with your Kalshi partner/referral link once approved."
+    },
+    "polymarket": {
+      "url": "https://polymarket.com/event/presidential-election-winner-2028/will-jd-vance-win-the-2028-us-presidential-election",
+      "note": "REPLACE with your Polymarket referral link once approved."
+    }
+  }
+}
