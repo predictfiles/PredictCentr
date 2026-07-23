@@ -65,18 +65,18 @@ export default async function Home() {
         return.
       </div>
 
+      <OddsComparison
+        initialData={odds}
+        kalshiAffiliateUrl={content.affiliateLinks.kalshi.url}
+        polymarketAffiliateUrl={content.affiliateLinks.polymarket.url}
+      />
+
       <MarketBrief
         text={content.marketBrief.text}
         updatedAt={content.marketBrief.updatedAt}
       />
 
       <NewsSection items={content.news} />
-
-      <OddsComparison
-        initialData={odds}
-        kalshiAffiliateUrl={content.affiliateLinks.kalshi.url}
-        polymarketAffiliateUrl={content.affiliateLinks.polymarket.url}
-      />
 
       <HistoryChart data={history} />
 
