@@ -5,11 +5,6 @@ import type { OddsResponse } from "@/lib/types";
 import { formatPercent, formatRelativeTime } from "@/lib/format";
 
 const POLL_MS = 30_000;
-const STALE_MS = 2 * 60_000;
-
-interface AffiliateLink {
-  url: string;
-}
 
 function PlatformCard({
   name,
@@ -17,17 +12,13 @@ function PlatformCard({
   quote,
   error,
   affiliateUrl,
-  now,
 }: {
   name: string;
   color: string;
   quote: OddsResponse["kalshi"];
   error: string | null;
   affiliateUrl: string;
-  now: number;
 }) {
-  const stale = quote ? now - new Date(quote.updatedAt).getTime() > STALE_MS : false;
-
   return (
     <div className="odds-card" style={{ ["--platform-color" as any]: color }}>
       <div className="odds-platform">{name}</div>
@@ -39,9 +30,6 @@ function PlatformCard({
           </div>
           <div className="odds-spread">
             Bid {formatPercent(quote.bid)}% / Ask {formatPercent(quote.ask)}%
-          </div>
-          <div className={`odds-updated${stale ? " stale" : ""}`}>
-            {stale ? "⚠ " : ""}Platform updated {formatRelativeTime(quote.updatedAt, now)}
           </div>
         </>
       ) : (
@@ -58,6 +46,40 @@ function PlatformCard({
       >
         View on {name} →
       </a>
+    </div>
+  );
+}
+
+function BestPrice({
+  kalshi,
+  polymarket,
+}: {
+  kalshi: OddsResponse["kalshi"];
+  polymarket: OddsResponse["polymarket"];
+}) {
+  if (!kalshi || !polymarket) return null;
+
+  const diff = Math.round((kalshi.ask - polymarket.ask) * 1000) / 10; // signed pts, kalshi - polymarket
+  if (diff === 0) {
+    return (
+      <div className="best-price">
+        Best available price: <strong>tied</strong> — Kalshi and Polymarket
+        are both asking {formatPercent(kalshi.ask)}%
+      </div>
+    );
+  }
+
+  const winner = diff < 0 ? "Kalshi" : "Polymarket";
+  const color = diff < 0 ? "var(--kalshi)" : "var(--polymarket)";
+  const pts = Math.abs(diff);
+  const ptsLabel = Number.isInteger(pts) ? pts.toFixed(0) : pts.toFixed(1);
+
+  return (
+    <div className="best-price">
+      Best available price:{" "}
+      <strong style={{ color }}>
+        {winner} (+{ptsLabel} pts)
+      </strong>
     </div>
   );
 }
@@ -110,7 +132,6 @@ export function OddsComparison({
           quote={data.kalshi}
           error={data.kalshiError}
           affiliateUrl={kalshiAffiliateUrl}
-          now={now}
         />
         <PlatformCard
           name="Polymarket"
@@ -118,9 +139,9 @@ export function OddsComparison({
           quote={data.polymarket}
           error={data.polymarketError}
           affiliateUrl={polymarketAffiliateUrl}
-          now={now}
         />
       </div>
+      <BestPrice kalshi={data.kalshi} polymarket={data.polymarket} />
       <div className="odds-fetched">
         Last checked {formatRelativeTime(data.fetchedAt, now)} · refreshes
         automatically every 30s
