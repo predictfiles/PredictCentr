@@ -1,4 +1,5 @@
 import { formatDate } from "@/lib/format";
+import { NewsThumb } from "@/components/NewsThumb";
 
 interface NewsItem {
   headline: string;
@@ -21,18 +22,7 @@ export function NewsSection({ items }: { items: NewsItem[] }) {
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
-              {item.image && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  className="news-thumb"
-                  src={item.image}
-                  alt=""
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
-                />
-              )}
+              {item.image && <NewsThumb src={item.image} />}
               <div>
                 <div className="news-headline">{item.headline}</div>
                 <div className="news-meta">
