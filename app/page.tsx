@@ -8,10 +8,7 @@ export default function Home() {
         <h1 className="home-wordmark">
           Predict<span className="home-wordmark-accent">Centr</span>
         </h1>
-        <p className="subtitle">
-          Live prediction market odds, compared across platforms, with the
-          news that's actually moving them.
-        </p>
+        <p className="subtitle">Breaking news. Live odds. Better decisions.</p>
       </header>
 
       <section className="section">
