@@ -5,6 +5,7 @@ interface NewsItem {
   source: string;
   date: string;
   url: string;
+  image?: string;
 }
 
 export function NewsSection({ items }: { items: NewsItem[] }) {
@@ -15,16 +16,30 @@ export function NewsSection({ items }: { items: NewsItem[] }) {
         {items.map((item) => (
           <li className="news-item" key={item.url}>
             <a
-              className="news-headline"
+              className="news-link"
               href={item.url}
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
-              {item.headline}
+              {item.image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className="news-thumb"
+                  src={item.image}
+                  alt=""
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+              )}
+              <div>
+                <div className="news-headline">{item.headline}</div>
+                <div className="news-meta">
+                  {item.source} · {formatDate(item.date)}
+                </div>
+              </div>
             </a>
-            <div className="news-meta">
-              {item.source} · {formatDate(item.date)}
-            </div>
           </li>
         ))}
       </ul>
