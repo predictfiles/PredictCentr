@@ -9,6 +9,12 @@ Built with Next.js (App Router) and deployed on Vercel.
   (e.g. `/lebron-james-next-team/`), 2 for a market nested under a race
   (e.g. `/2028-us-presidential-election-winner/jd-vance/`)
 
+Favicons (`app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`) use
+Next.js's file-based icon convention -- no manual `<link>` tags needed,
+Next.js injects them automatically. Source logo is at `public/logo.jpg`
+(pulled from the @PredictCentr X profile picture) if you need to
+regenerate any of them at a different size.
+
 ## Local setup
 
 ```bash
