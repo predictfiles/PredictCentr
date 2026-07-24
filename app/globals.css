@@ -214,6 +214,29 @@ a {
   color: var(--muted);
 }
 
+.top-story-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.top-story-headline {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.top-story-market-link {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+
+.top-story-market-link:hover {
+  text-decoration: underline;
+}
+
 .odds-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
