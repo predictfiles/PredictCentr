@@ -1,6 +1,7 @@
 import { markets, getHotMarket } from "@/lib/markets";
 import { loadOutcomeOdds } from "@/lib/oddsLoader";
 import { MarketCard } from "@/components/MarketCard";
+import { TopNewsStories } from "@/components/TopNewsStories";
 import type { OddsResponse } from "@/lib/types";
 
 const CATEGORIES = [
@@ -30,7 +31,7 @@ export default async function Home() {
   );
 
   return (
-    <main className="wrap">
+    <main className="home-wrap">
       <header className="header">
         <h1 className="home-wordmark">
           Predict<span className="home-wordmark-accent">Centr</span>
@@ -44,36 +45,44 @@ export default async function Home() {
         </p>
       </header>
 
-      {hotMarket && (
-        <section className="section">
-          <div className="market-card-list">
-            <MarketCard
-              market={hotMarket}
-              initialOdds={oddsByMarket.get(hotMarket.slug.join("/")) ?? {}}
-              featured
-            />
-          </div>
-        </section>
-      )}
-
-      {CATEGORIES.map((category) => {
-        const categoryMarkets = markets.filter((m) => m.category === category.id);
-        if (categoryMarkets.length === 0) return null;
-        return (
-          <section className="section" key={category.id}>
-            <div className="section-label">{category.label}</div>
-            <div className="market-card-list">
-              {categoryMarkets.map((market) => (
+      <div className="home-grid">
+        <div className="home-main">
+          {hotMarket && (
+            <section className="section">
+              <div className="market-card-list">
                 <MarketCard
-                  key={market.slug.join("/")}
-                  market={market}
-                  initialOdds={oddsByMarket.get(market.slug.join("/")) ?? {}}
+                  market={hotMarket}
+                  initialOdds={oddsByMarket.get(hotMarket.slug.join("/")) ?? {}}
+                  featured
                 />
-              ))}
-            </div>
-          </section>
-        );
-      })}
+              </div>
+            </section>
+          )}
+
+          {CATEGORIES.map((category) => {
+            const categoryMarkets = markets.filter((m) => m.category === category.id);
+            if (categoryMarkets.length === 0) return null;
+            return (
+              <section className="section" key={category.id}>
+                <div className="section-label">{category.label}</div>
+                <div className="market-card-list">
+                  {categoryMarkets.map((market) => (
+                    <MarketCard
+                      key={market.slug.join("/")}
+                      market={market}
+                      initialOdds={oddsByMarket.get(market.slug.join("/")) ?? {}}
+                    />
+                  ))}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+
+        <div className="home-sidebar">
+          <TopNewsStories />
+        </div>
+      </div>
     </main>
   );
 }

@@ -11,25 +11,11 @@
   },
   "news": [
     {
-      "headline": "Giannis Changes Everything in Miami—but Solves Very Little",
-      "source": "The Ringer",
-      "date": "2026-06-23",
-      "url": "https://www.theringer.com/2026/06/23/nba/giannis-antetokounmpo-trade-miami-heat-milwaukee-bucks",
-      "image": "https://wp.theringer.com/wp-content/uploads/2026/06/cropped-GiannisHeat_Getty-Ringer-scaled-1.jpg"
-    },
-    {
-      "headline": "LeBron James Reportedly Shifts 'Focus' to Three Teams in NBA Free Agency",
-      "source": "NBC Sports Bay Area",
-      "date": "2026-07-14",
-      "url": "https://www.nbcsportsbayarea.com/nba/golden-state-warriors/lebron-james-free-agency-teams/1950146/",
-      "image": "https://media.nbcsportsbayarea.com/2026/07/GettyImages-2271024553.jpg?quality=85&strip=all&resize=1200%2C675"
-    },
-    {
-      "headline": "Donovan Mitchell Openly Recruits LeBron James Back to the Cavs",
-      "source": "Cavaliers Nation",
-      "date": "2026-07-16",
-      "url": "https://cavaliersnation.com/2026/07/16/donovan-mitchell-openly-recruits-lebron-james-back-to-the-cavs/",
-      "image": "https://cavaliersnation.com/wp-content/uploads/2026/07/USATSI_28108158_168403908_lowres-e1784237021237.jpg"
+      "headline": "Miami Heat Explain Viral LeBron James Press Conference Mix-Up",
+      "source": "Basketball Forever",
+      "date": "2026-07-23",
+      "url": "https://basketballforever.com/2026/07/22/miami-heat-explain-viral-lebron-james-press-conference-mix-up",
+      "image": "https://basketballforever.com/wp-content/uploads/2026/07/James-172.jpg"
     },
     {
       "headline": "Miami Heat Posts and Deletes LeBron James Introductory Press Conference Link to YouTube Page",
@@ -39,11 +25,25 @@
       "image": "https://assets2.cbsnewsstatic.com/hub/i/r/2026/07/16/c2c9addc-750e-4e8f-a71b-f3c1f7af094e/thumbnail/1200x630/3eff41459624e2dc0673f581476ef199/gettyimages-2286411267.jpg"
     },
     {
-      "headline": "Miami Heat Explain Viral LeBron James Press Conference Mix-Up",
-      "source": "Basketball Forever",
-      "date": "2026-07-23",
-      "url": "https://basketballforever.com/2026/07/22/miami-heat-explain-viral-lebron-james-press-conference-mix-up",
-      "image": "https://basketballforever.com/wp-content/uploads/2026/07/James-172.jpg"
+      "headline": "Donovan Mitchell Openly Recruits LeBron James Back to the Cavs",
+      "source": "Cavaliers Nation",
+      "date": "2026-07-16",
+      "url": "https://cavaliersnation.com/2026/07/16/donovan-mitchell-openly-recruits-lebron-james-back-to-the-cavs/",
+      "image": "https://cavaliersnation.com/wp-content/uploads/2026/07/USATSI_28108158_168403908_lowres-e1784237021237.jpg"
+    },
+    {
+      "headline": "LeBron James Reportedly Shifts 'Focus' to Three Teams in NBA Free Agency",
+      "source": "NBC Sports Bay Area",
+      "date": "2026-07-14",
+      "url": "https://www.nbcsportsbayarea.com/nba/golden-state-warriors/lebron-james-free-agency-teams/1950146/",
+      "image": "https://media.nbcsportsbayarea.com/2026/07/GettyImages-2271024553.jpg?quality=85&strip=all&resize=1200%2C675"
+    },
+    {
+      "headline": "Giannis Changes Everything in Miami—but Solves Very Little",
+      "source": "The Ringer",
+      "date": "2026-06-23",
+      "url": "https://www.theringer.com/2026/06/23/nba/giannis-antetokounmpo-trade-miami-heat-milwaukee-bucks",
+      "image": "https://wp.theringer.com/wp-content/uploads/2026/06/cropped-GiannisHeat_Getty-Ringer-scaled-1.jpg"
     }
   ],
   "whatToWatch": [

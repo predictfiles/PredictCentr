@@ -1,4 +1,4 @@
-import type { MarketConfig } from "./types";
+import type { MarketConfig, NewsItem } from "./types";
 import jdVance2028 from "@/data/markets/2028-us-presidential-election-winner/jd-vance.json";
 import senateDemocrats2026 from "@/data/markets/2026-us-senate-control/democrats.json";
 import lebronNextTeam from "@/data/markets/lebron-james-next-team.json";
@@ -115,4 +115,16 @@ export const HOT_MARKET_SLUG = ["lebron-james-next-team"];
 
 export function getHotMarket(): MarketConfig | undefined {
   return findMarket(HOT_MARKET_SLUG);
+}
+
+/**
+ * The single most recent news item for a market, by actual date comparison
+ * -- not just "whichever is first in the array" -- so this stays correct
+ * even if a news list is ever appended to out of order.
+ */
+export function getMostRecentNews(market: MarketConfig): NewsItem | null {
+  return market.content.news.reduce<NewsItem | null>(
+    (newest, item) => (!newest || item.date > newest.date ? item : newest),
+    null
+  );
 }
