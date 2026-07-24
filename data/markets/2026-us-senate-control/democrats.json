@@ -1,0 +1,83 @@
+{
+  "market": {
+    "title": "2026 U.S. Senate Control",
+    "candidate": "Democrats",
+    "resolutionDate": "2026-11-03",
+    "resolutionNote": "Resolves to whichever party holds the Senate majority after the 2026 midterms (a 50-50 split is broken by the Vice Presidency). If that's ambiguous, Kalshi defers to the party holding the President pro tempore and Polymarket to the party of the elected Majority Leader -- in practice, always the same party."
+  },
+  "marketBrief": {
+    "text": "DRAFT -- REPLACE WITH YOUR OWN WORDS BEFORE LAUNCH. Democrats' odds of winning Senate control bottomed near 17% shortly after this market opened in late 2024, then climbed through 2025 before surging past 50% for the first time ever in March 2026 -- a shift Kalshi's own team tied to the political fallout from the escalating US-Iran conflict. That rally peaked near 55% in mid-April before reversing hard: Republicans have since reclaimed the lead and now sit around 56-57% on both platforms, with Democrats back down near 44%. The through-line isn't either party's platform -- it's how much the Iran conflict, and the administration's handling of it, is weighing on Republican-held seats.",
+    "updatedAt": "2026-07-24",
+    "author": "REPLACE_WITH_YOUR_NAME"
+  },
+  "news": [
+    {
+      "headline": "House Flip? Senate Hold? Prediction Markets Unleash Wild 2026 Midterm Election Bets",
+      "source": "Bitcoin.com News",
+      "date": "2026-07-22",
+      "url": "https://news.bitcoin.com/house-flip-senate-hold-prediction-markets-unleash-wild-2026-midterm-election-bets/",
+      "image": "https://static.news.bitcoin.com/wp-content/uploads/2026/07/house-flip-senate-hold-prediction-markets-unleash-wild-2026-midterm-election-bets.png"
+    },
+    {
+      "headline": "Senate Odds Even Out as Iran War Costs Republicans Their Midterm Safety Net",
+      "source": "Congress.net",
+      "date": "2026-05-05",
+      "url": "https://congress.net/senate-odds-even-out-as-iran-war-costs-republicans-their-midterm-safety-net/",
+      "image": "https://congress.net/wp-content/uploads/2023/10/senate-house.jpeg"
+    },
+    {
+      "headline": "Six Months Out, Control of the Senate Is a Dead Heat, Traders on Kalshi Say",
+      "source": "CNBC",
+      "date": "2026-05-01",
+      "url": "https://www.cnbc.com/2026/05/01/6-months-out-control-of-the-senate-is-50-50-traders-on-kalshi-say.html",
+      "image": "https://image.cnbcfm.com/api/v1/image/108292120-1776286788785-gettyimages-2270964475-20090101260415-99-137770.jpeg?v=1776286841&w=1920&h=1080"
+    },
+    {
+      "headline": "Traders Flip Senate Control Bet as Democrats Overtake Republicans on Kalshi, Polymarket",
+      "source": "Decrypt",
+      "date": "2026-03-16",
+      "url": "https://decrypt.co/361190/democrats-overtake-republicans-kalshi-polymarket",
+      "image": "https://cdn.decrypt.co/resize/1024/height/512/wp-content/uploads/2026/01/decrypt_style_kalshi-02-gID_7.png"
+    },
+    {
+      "headline": "War Clouds Over Tehran: Polymarket Odds Surge as Traders Bet on 2026 U.S.-Israeli Military Action",
+      "source": "PredictStreet",
+      "date": "2026-01-13",
+      "url": "https://markets.financialcontent.com/stocks/article/predictstreet-2026-1-13-war-clouds-over-tehran-polymarket-odds-surge-as-traders-bet-on-2026-us-israeli-military-action"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "2026-08-04",
+      "label": "Michigan primary -- open Democratic seat after Gary Peters' retirement, a key control-math race"
+    },
+    {
+      "date": "2026-08-11",
+      "label": "Wisconsin primary -- one of the most competitive remaining Senate contests"
+    },
+    {
+      "date": "2026-08-18",
+      "label": "Alaska primary -- nonpartisan primary in a race both parties are contesting"
+    },
+    {
+      "date": "Ongoing",
+      "label": "US-Iran conflict developments -- the main driver of this market's swing since early 2026"
+    },
+    {
+      "date": "2026-11-03",
+      "label": "Election Day -- market resolution"
+    }
+  ],
+  "affiliateLinks": {
+    "kalshi": {
+      "url": "https://kalshi.com/markets/controls/controls-2026?selectedMarketTicker=CONTROLS-2026-D",
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    },
+    "polymarket": {
+      "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026/will-the-democratic-party-control-the-senate-after-the-2026-midterm-elections",
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

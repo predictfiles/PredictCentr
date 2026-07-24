@@ -1,5 +1,6 @@
 import type { MarketConfig } from "./types";
 import jdVance2028 from "@/data/markets/2028-us-presidential-election-winner/jd-vance.json";
+import senateDemocrats2026 from "@/data/markets/2026-us-senate-control/democrats.json";
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/<electionSlug>/<candidateSlug>.json) -- nothing else
@@ -20,6 +21,22 @@ export const markets: MarketConfig[] = [
         "16040015440196279900485035793550429453516625694844857319147506590755961451627",
     },
     content: jdVance2028,
+  },
+  {
+    electionSlug: "2026-us-senate-control",
+    candidateSlug: "democrats",
+    shortDescription:
+      "Live odds on Democrats winning control of the US Senate in 2026, compared across Kalshi and Polymarket.",
+    kalshi: {
+      ticker: "CONTROLS-2026-D",
+      seriesTicker: "CONTROLS",
+    },
+    polymarket: {
+      marketId: "562793",
+      yesTokenId:
+        "113287701564209339913693347405685749986285999146352375265161592243948562084773",
+    },
+    content: senateDemocrats2026,
   },
 ];
 

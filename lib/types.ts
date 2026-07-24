@@ -62,8 +62,8 @@ export interface MarketContent {
   news: NewsItem[];
   whatToWatch: WatchItem[];
   affiliateLinks: {
-    kalshi: { url: string; note?: string };
-    polymarket: { url: string; note?: string };
+    kalshi: { url: string; isAffiliate: boolean; note?: string };
+    polymarket: { url: string; isAffiliate: boolean; note?: string };
   };
 }
 

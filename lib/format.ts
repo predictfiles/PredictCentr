@@ -21,3 +21,26 @@ export function formatDate(d: string, opts?: Intl.DateTimeFormatOptions): string
   if (Number.isNaN(date.getTime())) return d;
   return date.toLocaleDateString("en-US", opts ?? { month: "short", day: "numeric", year: "numeric" });
 }
+
+/**
+ * Only claim an affiliate relationship for platforms that actually have one --
+ * a blanket "contains affiliate links to X and Y" was true for neither
+ * platform at one point, which is a real accuracy problem, not just wording.
+ */
+export function affiliateDisclosure(affiliateLinks: {
+  kalshi: { isAffiliate: boolean };
+  polymarket: { isAffiliate: boolean };
+}): string {
+  const live: string[] = [];
+  if (affiliateLinks.kalshi.isAffiliate) live.push("Kalshi");
+  if (affiliateLinks.polymarket.isAffiliate) live.push("Polymarket");
+
+  if (live.length === 0) {
+    return "The Kalshi and Polymarket links on this page are not currently affiliate/referral links -- they go straight to each platform's market page.";
+  }
+  return `Contains ${live.length > 1 ? "affiliate links" : "an affiliate link"} to ${live.join(
+    " and "
+  )} -- PredictCentr may earn a commission if you sign up through ${
+    live.length > 1 ? "them" : "it"
+  }, at no extra cost to you.`;
+}

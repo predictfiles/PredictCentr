@@ -94,6 +94,12 @@ a {
   margin: 0;
 }
 
+.resolution-note {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 8px 0 0;
+}
+
 .section {
   margin-bottom: 36px;
 }

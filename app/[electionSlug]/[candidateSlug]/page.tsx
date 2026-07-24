@@ -5,6 +5,7 @@ import { findMarket, markets } from "@/lib/markets";
 import { getKalshiMarket, getKalshiMarketHistory } from "@/lib/kalshi";
 import { getPolymarketMarket, getPolymarketMarketHistory } from "@/lib/polymarket";
 import type { HistoryResponse, MarketConfig, OddsResponse } from "@/lib/types";
+import { affiliateDisclosure } from "@/lib/format";
 import { MarketBrief } from "@/components/MarketBrief";
 import { NewsSection } from "@/components/NewsSection";
 import { OddsComparison } from "@/components/OddsComparison";
@@ -95,6 +96,7 @@ export default async function MarketPage({
           Kalshi vs Polymarket, compared live. Resolves{" "}
           {content.market.resolutionDate}.
         </p>
+        <p className="resolution-note">{content.market.resolutionNote}</p>
       </header>
 
       <div className="disclaimer">
@@ -128,11 +130,7 @@ export default async function MarketPage({
           Data sources: Kalshi public API ({market.kalshi.ticker}) and
           Polymarket Gamma/CLOB API. Prices are cached up to 30 seconds.
         </div>
-        <div>
-          Contains affiliate links to Kalshi and Polymarket — PredictCentr may
-          earn a commission if you sign up through them, at no extra cost to
-          you.
-        </div>
+        <div>{affiliateDisclosure(content.affiliateLinks)}</div>
       </footer>
     </main>
   );

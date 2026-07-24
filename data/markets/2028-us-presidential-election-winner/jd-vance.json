@@ -101,11 +101,13 @@
   "affiliateLinks": {
     "kalshi": {
       "url": "https://kalshi.com/markets/kxpresperson/kxpresperson-28?selectedMarketTicker=KXPRESPERSON-28-JVAN",
-      "note": "REPLACE with your Kalshi partner/referral link once approved."
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
     },
     "polymarket": {
       "url": "https://polymarket.com/event/presidential-election-winner-2028/will-jd-vance-win-the-2028-us-presidential-election",
-      "note": "REPLACE with your Polymarket referral link once approved."
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
     }
   }
 }
