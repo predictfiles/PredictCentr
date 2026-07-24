@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { OddsResponse } from "@/lib/types";
-import { formatPercent, formatRelativeTime } from "@/lib/format";
+import { bestPrice, formatPercent, formatRelativeTime } from "@/lib/format";
 
 const POLL_MS = 30_000;
 
@@ -57,28 +57,29 @@ function BestPrice({
   kalshi: OddsResponse["kalshi"];
   polymarket: OddsResponse["polymarket"];
 }) {
-  if (!kalshi || !polymarket) return null;
+  const best = bestPrice(kalshi, polymarket);
+  if (!best) return null;
 
-  const diff = Math.round((kalshi.ask - polymarket.ask) * 1000) / 10; // signed pts, kalshi - polymarket
-  if (diff === 0) {
+  if (best.diffPts === 0) {
     return (
       <div className="best-price">
         Best available price: <strong>tied</strong> — Kalshi and Polymarket
-        are both asking {formatPercent(kalshi.ask)}%
+        are both asking {formatPercent(best.price)}%
       </div>
     );
   }
 
-  const winner = diff < 0 ? "Kalshi" : "Polymarket";
-  const color = diff < 0 ? "var(--kalshi)" : "var(--polymarket)";
-  const pts = Math.abs(diff);
-  const ptsLabel = Number.isInteger(pts) ? pts.toFixed(0) : pts.toFixed(1);
+  const winnerName = best.platform === "kalshi" ? "Kalshi" : "Polymarket";
+  const color = best.platform === "kalshi" ? "var(--kalshi)" : "var(--polymarket)";
+  const ptsLabel = Number.isInteger(best.diffPts)
+    ? best.diffPts.toFixed(0)
+    : best.diffPts.toFixed(1);
 
   return (
     <div className="best-price">
       Best available price:{" "}
       <strong style={{ color }}>
-        {winner} (+{ptsLabel} pts)
+        {winnerName} (+{ptsLabel} pts)
       </strong>
     </div>
   );

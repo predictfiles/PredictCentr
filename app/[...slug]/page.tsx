@@ -2,9 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { findMarket, markets } from "@/lib/markets";
-import { getKalshiMarket, getKalshiMarketHistory } from "@/lib/kalshi";
-import { getPolymarketMarket, getPolymarketMarketHistory } from "@/lib/polymarket";
-import type { HistoryResponse, MarketOutcome, OddsResponse } from "@/lib/types";
+import { loadOutcomeOdds, loadOutcomeHistory } from "@/lib/oddsLoader";
 import { affiliateDisclosure } from "@/lib/format";
 import { MarketBrief } from "@/components/MarketBrief";
 import { NewsSection } from "@/components/NewsSection";
@@ -28,36 +26,6 @@ export function generateMetadata({
   return {
     title: market.content.market.title,
     description: market.shortDescription,
-  };
-}
-
-async function loadOutcomeOdds(outcome: MarketOutcome): Promise<OddsResponse> {
-  const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiMarket(outcome.kalshi.ticker, outcome.kalshi.url),
-    getPolymarketMarket(outcome.polymarket.marketId, outcome.polymarket.url),
-  ]);
-  return {
-    kalshi: kalshi.status === "fulfilled" ? kalshi.value : null,
-    kalshiError: kalshi.status === "rejected" ? String(kalshi.reason) : null,
-    polymarket: polymarket.status === "fulfilled" ? polymarket.value : null,
-    polymarketError:
-      polymarket.status === "rejected" ? String(polymarket.reason) : null,
-    fetchedAt: new Date().toISOString(),
-  };
-}
-
-async function loadOutcomeHistory(outcome: MarketOutcome): Promise<HistoryResponse> {
-  const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiMarketHistory(outcome.kalshi.seriesTicker, outcome.kalshi.ticker),
-    getPolymarketMarketHistory(outcome.polymarket.yesTokenId),
-  ]);
-  return {
-    kalshi: kalshi.status === "fulfilled" ? kalshi.value : null,
-    kalshiError: kalshi.status === "rejected" ? String(kalshi.reason) : null,
-    polymarket: polymarket.status === "fulfilled" ? polymarket.value : null,
-    polymarketError:
-      polymarket.status === "rejected" ? String(polymarket.reason) : null,
-    fetchedAt: new Date().toISOString(),
   };
 }
 

@@ -39,9 +39,16 @@ Open http://localhost:3000.
   outcome's `/api/markets/odds` endpoint client-side every 30s. A market
   with multiple outcomes (LeBron) renders one odds+chart block per outcome,
   stacked; a binary market (Vance, Senate) just renders one.
+- `lib/oddsLoader.ts` — the live-fetch functions shared by every page that
+  needs a fresh read for an outcome (market pages, the homepage). One code
+  path, so numbers can't drift between where they're shown.
 - `app/page.tsx` — the homepage; groups `markets` by `category` and lists
   each as a card via `components/MarketCard.tsx`. Also renders
-  `getHotMarket()`'s market as a featured card above everything else.
+  `getHotMarket()`'s market as a featured card above everything else. Each
+  card shows a live best-price (binary markets) or current-leader
+  (multi-outcome markets) line via `components/CardLiveLine.tsx`, which
+  polls the same `/api/markets/odds` endpoint the page itself uses and
+  shares `lib/format.ts#bestPrice()` with the page's own callout.
 - `HOT_MARKET_SLUG` in `lib/markets.ts` — the one manually-set value
   controlling the homepage's "Hot Market" feature. No auto-ranking (price
   swings, traffic, volume) yet -- just change this array to feature a

@@ -22,6 +22,27 @@ export function formatDate(d: string, opts?: Intl.DateTimeFormatOptions): string
   return date.toLocaleDateString("en-US", opts ?? { month: "short", day: "numeric", year: "numeric" });
 }
 
+interface AskQuote {
+  ask: number;
+}
+
+/**
+ * The cheaper platform to buy "Yes" on right now, plus the points gap.
+ * Used by both the market page's "Best available price" callout and the
+ * homepage card's short live line -- one computation, so the two numbers
+ * can never say different things about the same market.
+ */
+export function bestPrice(
+  kalshi: AskQuote | null,
+  polymarket: AskQuote | null
+): { platform: "kalshi" | "polymarket"; price: number; diffPts: number } | null {
+  if (!kalshi || !polymarket) return null;
+  const diff = Math.round((kalshi.ask - polymarket.ask) * 1000) / 10; // signed pts, kalshi - polymarket
+  const platform = diff <= 0 ? "kalshi" : "polymarket";
+  const price = platform === "kalshi" ? kalshi.ask : polymarket.ask;
+  return { platform, price, diffPts: Math.abs(diff) };
+}
+
 /**
  * Only claim an affiliate relationship for platforms that actually have one --
  * a blanket "contains affiliate links to X and Y" was true for neither

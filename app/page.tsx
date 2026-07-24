@@ -1,13 +1,33 @@
 import { markets, getHotMarket } from "@/lib/markets";
+import { loadOutcomeOdds } from "@/lib/oddsLoader";
 import { MarketCard } from "@/components/MarketCard";
+import type { OddsResponse } from "@/lib/types";
 
 const CATEGORIES = [
   { id: "politics", label: "Politics" },
   { id: "sports", label: "Sports" },
 ] as const;
 
-export default function Home() {
+export const revalidate = 30;
+
+export default async function Home() {
   const hotMarket = getHotMarket();
+
+  // One live odds fetch per outcome per market, keyed by market slug path
+  // so both the featured card and its regular category card can reuse the
+  // same fetch instead of hitting the APIs twice for the hot market.
+  const oddsByMarket = new Map<string, Record<string, OddsResponse>>();
+  await Promise.all(
+    markets.map(async (market) => {
+      const slugPath = market.slug.join("/");
+      const entries = await Promise.all(
+        market.outcomes.map(
+          async (outcome) => [outcome.id, await loadOutcomeOdds(outcome)] as const
+        )
+      );
+      oddsByMarket.set(slugPath, Object.fromEntries(entries));
+    })
+  );
 
   return (
     <main className="wrap">
@@ -27,7 +47,11 @@ export default function Home() {
       {hotMarket && (
         <section className="section">
           <div className="market-card-list">
-            <MarketCard market={hotMarket} featured />
+            <MarketCard
+              market={hotMarket}
+              initialOdds={oddsByMarket.get(hotMarket.slug.join("/")) ?? {}}
+              featured
+            />
           </div>
         </section>
       )}
@@ -40,7 +64,11 @@ export default function Home() {
             <div className="section-label">{category.label}</div>
             <div className="market-card-list">
               {categoryMarkets.map((market) => (
-                <MarketCard key={market.slug.join("/")} market={market} />
+                <MarketCard
+                  key={market.slug.join("/")}
+                  market={market}
+                  initialOdds={oddsByMarket.get(market.slug.join("/")) ?? {}}
+                />
               ))}
             </div>
           </section>
