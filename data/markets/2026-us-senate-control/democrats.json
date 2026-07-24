@@ -6,44 +6,52 @@
     "resolutionNote": "Resolves to whichever party holds the Senate majority after the 2026 midterms (a 50-50 split is broken by the Vice Presidency). If that's ambiguous, Kalshi defers to the party holding the President pro tempore and Polymarket to the party of the elected Majority Leader -- in practice, always the same party."
   },
   "marketBrief": {
-    "text": "DRAFT -- REPLACE WITH YOUR OWN WORDS BEFORE LAUNCH. Democrats' odds of winning Senate control bottomed near 17% shortly after this market opened in late 2024, then climbed through 2025 before surging past 50% for the first time ever in March 2026 -- a shift Kalshi's own team tied to the political fallout from the escalating US-Iran conflict. That rally peaked near 55% in mid-April before reversing hard: Republicans have since reclaimed the lead and now sit around 56-57% on both platforms, with Democrats back down near 44%. The through-line isn't either party's platform -- it's how much the Iran conflict, and the administration's handling of it, is weighing on Republican-held seats.",
+    "text": "The Democrats' odds of winning Senate control bottomed near 17% shortly after this market opened in late 2024, then climbed through 2025 before surging past 50% for the first time ever in March 2026 -- a shift Kalshi's own team tied to the political fallout from the escalating US-Iran conflict. That rally peaked near 55% in mid-April before reversing hard: Republicans have since reclaimed the lead and now sit around 56-57% on both platforms, with Democrats back down near 44%. The through-line isn't either party's platform -- it's how much the Iran conflict, and the administration's handling of it, is weighing on Republican-held seats.",
     "updatedAt": "2026-07-24",
-    "author": "REPLACE_WITH_YOUR_NAME"
+    "author": "Owain Flanders"
   },
   "news": [
     {
-      "headline": "House Flip? Senate Hold? Prediction Markets Unleash Wild 2026 Midterm Election Bets",
-      "source": "Bitcoin.com News",
+      "headline": "Jon Ossoff's Chances of Beating Republican Mike Collins in Georgia — New Poll",
+      "source": "Newsweek",
+      "date": "2026-07-23",
+      "url": "https://www.newsweek.com/jon-ossoff-chances-beating-republican-mike-collins-georgia-poll-12235863",
+      "image": "https://assets.newsweek.com/wp-content/uploads/2026/07/Copy-of-32-image-47.png?w=1200&crop=1"
+    },
+    {
+      "headline": "These Four Republicans Joined Democrats to Block Trump's Military Action in Iran",
+      "source": "Townhall",
+      "date": "2026-07-23",
+      "url": "https://townhall.com/tipsheet/jeff-charles/2026/07/23/four-republicans-join-democrats-to-block-trumps-military-action-in-iran-n2680010",
+      "image": "https://media.townhall.com/cdn/hodl/2025/59/dd7ffdf3-8d6b-4523-9aab-b03e920d047d-1200x630.jpg"
+    },
+    {
+      "headline": "Republicans in Congress Continue to Back Iran War Despite the Political Risk",
+      "source": "AP via Washington Times",
       "date": "2026-07-22",
-      "url": "https://news.bitcoin.com/house-flip-senate-hold-prediction-markets-unleash-wild-2026-midterm-election-bets/",
-      "image": "https://static.news.bitcoin.com/wp-content/uploads/2026/07/house-flip-senate-hold-prediction-markets-unleash-wild-2026-midterm-election-bets.png"
+      "url": "https://www.washingtontimes.com/news/2026/jul/22/republicans-congress-continue-back-iran-war-despite-political-risk/",
+      "image": "https://twt-thumbs.washtimes.com/media/image/2026/07/22/Trump_Dignified_Transfer_13317_c0-0-1986-1157_s1770x1032.jpg"
     },
     {
-      "headline": "Senate Odds Even Out as Iran War Costs Republicans Their Midterm Safety Net",
-      "source": "Congress.net",
-      "date": "2026-05-05",
-      "url": "https://congress.net/senate-odds-even-out-as-iran-war-costs-republicans-their-midterm-safety-net/",
-      "image": "https://congress.net/wp-content/uploads/2023/10/senate-house.jpeg"
+      "headline": "Susan Collins Calls Oversight Hearing Over Trump's $33B Ask for Iran War",
+      "source": "Sun Journal",
+      "date": "2026-07-21",
+      "url": "https://www.sunjournal.com/2026/07/21/susan-collins-signals-support-for-trumps-33-billion-ask-for-iran-war/",
+      "image": "https://www.sunjournal.com/wp-content/uploads/sites/11/2026/07/Collins-July26.jpg?w=780"
     },
     {
-      "headline": "Six Months Out, Control of the Senate Is a Dead Heat, Traders on Kalshi Say",
-      "source": "CNBC",
-      "date": "2026-05-01",
-      "url": "https://www.cnbc.com/2026/05/01/6-months-out-control-of-the-senate-is-50-50-traders-on-kalshi-say.html",
-      "image": "https://image.cnbcfm.com/api/v1/image/108292120-1776286788785-gettyimages-2270964475-20090101260415-99-137770.jpeg?v=1776286841&w=1920&h=1080"
+      "headline": "Why All Eyes Are on Michigan's Democratic U.S. Senate Primary",
+      "source": "Spectrum News",
+      "date": "2026-07-21",
+      "url": "https://spectrumlocalnews.com/mi/michigan/news/2026/07/21/senate-seat-election-michigan",
+      "image": "https://s7d2.scene7.com/is/image/TWCNews/Haley_and_Abdul_Michigan"
     },
     {
-      "headline": "Traders Flip Senate Control Bet as Democrats Overtake Republicans on Kalshi, Polymarket",
-      "source": "Decrypt",
-      "date": "2026-03-16",
-      "url": "https://decrypt.co/361190/democrats-overtake-republicans-kalshi-polymarket",
-      "image": "https://cdn.decrypt.co/resize/1024/height/512/wp-content/uploads/2026/01/decrypt_style_kalshi-02-gID_7.png"
-    },
-    {
-      "headline": "War Clouds Over Tehran: Polymarket Odds Surge as Traders Bet on 2026 U.S.-Israeli Military Action",
-      "source": "PredictStreet",
-      "date": "2026-01-13",
-      "url": "https://markets.financialcontent.com/stocks/article/predictstreet-2026-1-13-war-clouds-over-tehran-polymarket-odds-surge-as-traders-bet-on-2026-us-israeli-military-action"
+      "headline": "Senate Republicans Are Now Pushing for More of a Say in Iran War",
+      "source": "NOTUS",
+      "date": "2026-07-20",
+      "url": "https://www.notus.org/foreign-policy/iran-war-senate-republicans",
+      "image": "https://static.notus.org/dims4/default/a03cd1a/2147483647/strip/true/crop/5000x2813+0+260/resize/1440x810!/quality/90/?url=https%3A%2F%2Fk2-prod-aji.s3.us-east-1.amazonaws.com%2Fbrightspot%2Fc3%2F3b%2Fb88964df41928022887b23ecc0bc%2Fap26138857716885.jpg"
     }
   ],
   "whatToWatch": [
