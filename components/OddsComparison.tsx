@@ -96,8 +96,9 @@ export function OddsComparison({
   pollUrl: string;
   question: string;
   kalshiAffiliateUrl: string;
-  polymarketAffiliateUrl: string;
+  polymarketAffiliateUrl?: string;
 }) {
+  const hasPolymarket = Boolean(polymarketAffiliateUrl);
   const [data, setData] = useState<OddsResponse>(initialData);
   const [now, setNow] = useState<number>(Date.now());
 
@@ -130,7 +131,7 @@ export function OddsComparison({
   return (
     <section className="section">
       <div className="section-label">Live Odds — {question}</div>
-      <div className="odds-grid">
+      <div className={hasPolymarket ? "odds-grid" : "odds-grid odds-grid-single"}>
         <PlatformCard
           name="Kalshi"
           color="var(--kalshi)"
@@ -138,15 +139,17 @@ export function OddsComparison({
           error={data.kalshiError}
           affiliateUrl={kalshiAffiliateUrl}
         />
-        <PlatformCard
-          name="Polymarket"
-          color="var(--polymarket)"
-          quote={data.polymarket}
-          error={data.polymarketError}
-          affiliateUrl={polymarketAffiliateUrl}
-        />
+        {hasPolymarket && (
+          <PlatformCard
+            name="Polymarket"
+            color="var(--polymarket)"
+            quote={data.polymarket}
+            error={data.polymarketError}
+            affiliateUrl={polymarketAffiliateUrl!}
+          />
+        )}
       </div>
-      <BestPrice kalshi={data.kalshi} polymarket={data.polymarket} />
+      {hasPolymarket && <BestPrice kalshi={data.kalshi} polymarket={data.polymarket} />}
       <div className="odds-fetched">
         Last checked {formatRelativeTime(data.fetchedAt, now)} · refreshes
         automatically every 30s

@@ -7,6 +7,7 @@ import type { OddsResponse } from "@/lib/types";
 const CATEGORIES = [
   { id: "politics", label: "Politics" },
   { id: "sports", label: "Sports" },
+  { id: "culture", label: "Culture" },
 ] as const;
 
 export const revalidate = 30;

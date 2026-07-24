@@ -39,6 +39,7 @@ export default async function MarketPage({
 
   const slugPath = market.slug.join("/");
   const { content } = market;
+  const hasAnyPolymarket = market.outcomes.some((o) => o.polymarket);
 
   const outcomesData = await Promise.all(
     market.outcomes.map(async (outcome) => {
@@ -58,8 +59,8 @@ export default async function MarketPage({
         </Link>
         <h1 className="title">{content.market.title}</h1>
         <p className="subtitle">
-          Kalshi vs Polymarket, compared live. Resolves{" "}
-          {content.market.resolutionDate}.
+          {hasAnyPolymarket ? "Kalshi vs Polymarket, compared live" : "Live odds from Kalshi"}
+          . Resolves {content.market.resolutionDate}.
         </p>
         <p className="resolution-note">{content.market.resolutionNote}</p>
       </header>
@@ -82,9 +83,13 @@ export default async function MarketPage({
             )}&outcome=${encodeURIComponent(outcome.id)}`}
             question={outcome.question}
             kalshiAffiliateUrl={outcome.kalshi.url}
-            polymarketAffiliateUrl={outcome.polymarket.url}
+            polymarketAffiliateUrl={outcome.polymarket?.url}
           />
-          <HistoryChart data={history} candidateName={outcome.label} />
+          <HistoryChart
+            data={history}
+            candidateName={outcome.label}
+            hasPolymarket={Boolean(outcome.polymarket)}
+          />
         </div>
       ))}
 
@@ -100,8 +105,9 @@ export default async function MarketPage({
 
       <footer className="footer">
         <div>
-          Data sources: Kalshi public API and Polymarket Gamma/CLOB API.
-          Prices are cached up to 30 seconds.
+          Data sources: Kalshi public API
+          {hasAnyPolymarket ? " and Polymarket Gamma/CLOB API" : ""}. Prices
+          are cached up to 30 seconds.
         </div>
         <div>{affiliateDisclosure(content.affiliateStatus)}</div>
       </footer>

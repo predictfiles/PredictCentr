@@ -3,8 +3,9 @@
 Prediction market odds compared across platforms, with news context.
 Built with Next.js (App Router) and deployed on Vercel.
 
-- `/` — homepage: a manually-pinned "Hot Market" feature, then every live
-  market grouped by category (Politics, Sports, ...)
+- `/` — homepage: a manually-pinned "Hot Market" feature, a "Top News
+  Stories" sidebar (each market's latest headline), then every live market
+  grouped by category (Politics, Sports, Culture, ...)
 - `/<slug...>/` — one market page. 1 URL segment for a single-event market
   (e.g. `/lebron-james-next-team/`), 2 for a market nested under a race
   (e.g. `/2028-us-presidential-election-winner/jd-vance/`)
@@ -66,11 +67,16 @@ Open http://localhost:3000.
 
 ## Adding a new market
 
-1. Find the market's Kalshi ticker + series ticker, and Polymarket market
-   ID + Yes token ID for each outcome you want to track (same way every
-   market so far was found — hit `gamma-api.polymarket.com` and
-   `api.elections.kalshi.com` directly to confirm real, current values;
-   never trust a news article's snapshot).
+1. Find the market's Kalshi ticker + series ticker, and (if it exists on
+   Polymarket too) market ID + Yes token ID for each outcome you want to
+   track (same way every market so far was found — hit
+   `gamma-api.polymarket.com` and `api.elections.kalshi.com` directly to
+   confirm real, current values; never trust a news article's snapshot).
+   An outcome's `polymarket` field is entirely optional — omit it for a
+   single-platform/novelty market that only exists on Kalshi (e.g. the
+   Grok Imagine Odyssey market); the odds card, chart, and homepage line
+   all adapt automatically to show just Kalshi with no "best price"
+   comparison.
 2. Check resolution criteria actually match between platforms (exact
    dates, fallback/tie-break rules) before building anything — this has
    caught real problems twice already (a stale "which way is this market

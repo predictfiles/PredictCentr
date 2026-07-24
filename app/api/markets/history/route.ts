@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { findMarket } from "@/lib/markets";
-import { getKalshiMarketHistory } from "@/lib/kalshi";
-import { getPolymarketMarketHistory } from "@/lib/polymarket";
-import type { HistoryResponse } from "@/lib/types";
+import { loadOutcomeHistory } from "@/lib/oddsLoader";
 
 export const revalidate = 3600;
 
@@ -17,19 +15,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Market or outcome not found" }, { status: 404 });
   }
 
-  const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiMarketHistory(outcome.kalshi.seriesTicker, outcome.kalshi.ticker),
-    getPolymarketMarketHistory(outcome.polymarket.yesTokenId),
-  ]);
-
-  const body: HistoryResponse = {
-    kalshi: kalshi.status === "fulfilled" ? kalshi.value : null,
-    kalshiError: kalshi.status === "rejected" ? String(kalshi.reason) : null,
-    polymarket: polymarket.status === "fulfilled" ? polymarket.value : null,
-    polymarketError:
-      polymarket.status === "rejected" ? String(polymarket.reason) : null,
-    fetchedAt: new Date().toISOString(),
-  };
+  const body = await loadOutcomeHistory(outcome);
 
   return NextResponse.json(body, {
     headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=600" },

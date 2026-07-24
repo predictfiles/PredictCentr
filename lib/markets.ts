@@ -2,6 +2,7 @@ import type { MarketConfig, NewsItem } from "./types";
 import jdVance2028 from "@/data/markets/2028-us-presidential-election-winner/jd-vance.json";
 import senateDemocrats2026 from "@/data/markets/2026-us-senate-control/democrats.json";
 import lebronNextTeam from "@/data/markets/lebron-james-next-team.json";
+import grokOdysseyFilm from "@/data/markets/grok-imagine-odyssey-film.json";
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -99,6 +100,26 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: lebronNextTeam,
+  },
+  {
+    slug: ["grok-imagine-odyssey-film"],
+    category: "culture",
+    shortDescription:
+      "Live odds on whether xAI's Grok Imagine releases a full-length Odyssey film by the end of 2026, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "released-2026",
+        label: "Grok Imagine's Odyssey Film",
+        question: "Will the film release in 2026?",
+        kalshi: {
+          ticker: "KXMOVIERELEASEDATE-GRO-27JAN01",
+          seriesTicker: "KXMOVIERELEASEDATE",
+          url: "https://kalshi.com/markets/kxmoviereleasedate/when-will-movie-release/kxmoviereleasedate-gro?selectedMarketTicker=KXMOVIERELEASEDATE-GRO-27JAN01",
+        },
+        // Kalshi only -- no Polymarket market exists for this one.
+      },
+    ],
+    content: grokOdysseyFilm,
   },
 ];
 

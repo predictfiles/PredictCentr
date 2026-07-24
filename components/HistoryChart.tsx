@@ -39,9 +39,11 @@ function formatTooltipDate(t: number): string {
 export function HistoryChart({
   data,
   candidateName,
+  hasPolymarket = true,
 }: {
   data: HistoryResponse;
   candidateName: string;
+  hasPolymarket?: boolean;
 }) {
   const kalshi = data.kalshi ?? [];
   const polymarket = data.polymarket ?? [];
@@ -124,17 +126,21 @@ export function HistoryChart({
             <span className="chart-swatch" style={{ background: "var(--kalshi)" }} />
             Kalshi
           </span>
-          <span className="chart-legend-item">
-            <span className="chart-swatch" style={{ background: "var(--polymarket)" }} />
-            Polymarket
-          </span>
+          {hasPolymarket && (
+            <span className="chart-legend-item">
+              <span className="chart-swatch" style={{ background: "var(--polymarket)" }} />
+              Polymarket
+            </span>
+          )}
         </div>
         <svg
           viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
           width="100%"
           height="auto"
           role="img"
-          aria-label={`Historical probability chart for ${candidateName} winning, on Kalshi and Polymarket`}
+          aria-label={`Historical probability chart for ${candidateName} winning, on Kalshi${
+            hasPolymarket ? " and Polymarket" : ""
+          }`}
           onMouseMove={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width) * WIDTH;

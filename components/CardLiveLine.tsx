@@ -63,8 +63,25 @@ export function CardLiveLine({
     };
   }, [outcomes, slugPath]);
 
-  // Binary market: reuse the exact same "cheapest ask" logic as the page's
-  // "Best available price" callout, just condensed to platform + price.
+  // Binary market on a single platform (no Polymarket counterpart): just
+  // the current live probability, no "best price" framing since there's
+  // nothing to compare against.
+  if (outcomes.length === 1 && !outcomes[0].polymarket) {
+    const odds = oddsByOutcome[outcomes[0].id];
+    if (!odds?.kalshi) return null;
+    return (
+      <div className="market-card-live">
+        Kalshi:{" "}
+        <strong style={{ color: platformColor("kalshi") }}>
+          {formatPercent(odds.kalshi.yesPrice)}%
+        </strong>
+      </div>
+    );
+  }
+
+  // Binary market, both platforms: reuse the exact same "cheapest ask"
+  // logic as the page's "Best available price" callout, just condensed to
+  // platform + price.
   if (outcomes.length === 1) {
     const odds = oddsByOutcome[outcomes[0].id];
     const best = odds ? bestPrice(odds.kalshi, odds.polymarket) : null;

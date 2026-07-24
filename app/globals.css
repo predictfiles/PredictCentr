@@ -249,6 +249,11 @@ a {
   }
 }
 
+.odds-grid-single {
+  grid-template-columns: 1fr;
+  max-width: 320px;
+}
+
 .odds-card {
   background: var(--card);
   border: 1px solid var(--border);

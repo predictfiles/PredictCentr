@@ -50,14 +50,17 @@ export function bestPrice(
  */
 export function affiliateDisclosure(affiliateStatus: {
   kalshi: { isAffiliate: boolean };
-  polymarket: { isAffiliate: boolean };
+  polymarket?: { isAffiliate: boolean };
 }): string {
+  const hasPolymarket = Boolean(affiliateStatus.polymarket);
   const live: string[] = [];
   if (affiliateStatus.kalshi.isAffiliate) live.push("Kalshi");
-  if (affiliateStatus.polymarket.isAffiliate) live.push("Polymarket");
+  if (affiliateStatus.polymarket?.isAffiliate) live.push("Polymarket");
 
   if (live.length === 0) {
-    return "The Kalshi and Polymarket links on this page are not currently affiliate/referral links -- they go straight to each platform's market page.";
+    return hasPolymarket
+      ? "The Kalshi and Polymarket links on this page are not currently affiliate/referral links -- they go straight to each platform's market page."
+      : "The Kalshi link on this page is not currently an affiliate/referral link -- it goes straight to the platform's market page.";
   }
   return `Contains ${live.length > 1 ? "affiliate links" : "an affiliate link"} to ${live.join(
     " and "
