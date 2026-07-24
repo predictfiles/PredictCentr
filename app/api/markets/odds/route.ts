@@ -6,21 +6,20 @@ import type { OddsResponse } from "@/lib/types";
 
 export const revalidate = 30;
 
-export async function GET(
-  _req: Request,
-  { params }: { params: { electionSlug: string; candidateSlug: string } }
-) {
-  const market = findMarket(params.electionSlug, params.candidateSlug);
-  if (!market) {
-    return NextResponse.json({ error: "Market not found" }, { status: 404 });
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const slug = searchParams.get("slug")?.split("/") ?? [];
+  const outcomeId = searchParams.get("outcome");
+
+  const market = findMarket(slug);
+  const outcome = market?.outcomes.find((o) => o.id === outcomeId);
+  if (!market || !outcome) {
+    return NextResponse.json({ error: "Market or outcome not found" }, { status: 404 });
   }
 
   const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiMarket(market.kalshi.ticker, market.content.affiliateLinks.kalshi.url),
-    getPolymarketMarket(
-      market.polymarket.marketId,
-      market.content.affiliateLinks.polymarket.url
-    ),
+    getKalshiMarket(outcome.kalshi.ticker, outcome.kalshi.url),
+    getPolymarketMarket(outcome.polymarket.marketId, outcome.polymarket.url),
   ]);
 
   const body: OddsResponse = {

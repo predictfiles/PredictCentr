@@ -6,18 +6,20 @@ import type { HistoryResponse } from "@/lib/types";
 
 export const revalidate = 3600;
 
-export async function GET(
-  _req: Request,
-  { params }: { params: { electionSlug: string; candidateSlug: string } }
-) {
-  const market = findMarket(params.electionSlug, params.candidateSlug);
-  if (!market) {
-    return NextResponse.json({ error: "Market not found" }, { status: 404 });
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const slug = searchParams.get("slug")?.split("/") ?? [];
+  const outcomeId = searchParams.get("outcome");
+
+  const market = findMarket(slug);
+  const outcome = market?.outcomes.find((o) => o.id === outcomeId);
+  if (!market || !outcome) {
+    return NextResponse.json({ error: "Market or outcome not found" }, { status: 404 });
   }
 
   const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiMarketHistory(market.kalshi.seriesTicker, market.kalshi.ticker),
-    getPolymarketMarketHistory(market.polymarket.yesTokenId),
+    getKalshiMarketHistory(outcome.kalshi.seriesTicker, outcome.kalshi.ticker),
+    getPolymarketMarketHistory(outcome.polymarket.yesTokenId),
   ]);
 
   const body: HistoryResponse = {

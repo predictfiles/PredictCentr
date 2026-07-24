@@ -1,7 +1,6 @@
 {
   "market": {
-    "title": "2026 U.S. Senate Control",
-    "candidate": "Democrats",
+    "title": "Democrats — 2026 U.S. Senate Control",
     "resolutionDate": "2026-11-03",
     "resolutionNote": "Resolves to whichever party holds the Senate majority after the 2026 midterms (a 50-50 split is broken by the Vice Presidency). If that's ambiguous, Kalshi defers to the party holding the President pro tempore and Polymarket to the party of the elected Majority Leader -- in practice, always the same party."
   },
@@ -76,14 +75,12 @@
       "label": "Election Day -- market resolution"
     }
   ],
-  "affiliateLinks": {
+  "affiliateStatus": {
     "kalshi": {
-      "url": "https://kalshi.com/markets/controls/controls-2026?selectedMarketTicker=CONTROLS-2026-D",
       "isAffiliate": false,
       "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
     },
     "polymarket": {
-      "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026/will-the-democratic-party-control-the-senate-after-the-2026-midterm-elections",
       "isAffiliate": false,
       "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
     }

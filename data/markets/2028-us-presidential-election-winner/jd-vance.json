@@ -1,7 +1,6 @@
 {
   "market": {
-    "title": "2028 U.S. Presidential Election Winner",
-    "candidate": "JD Vance",
+    "title": "JD Vance — 2028 U.S. Presidential Election Winner",
     "resolutionDate": "2028-11-07",
     "resolutionNote": "Resolves to whoever is inaugurated President in January 2029, based on AP/Fox/NBC race calls."
   },
@@ -98,14 +97,12 @@
       "label": "Election Day — market resolution"
     }
   ],
-  "affiliateLinks": {
+  "affiliateStatus": {
     "kalshi": {
-      "url": "https://kalshi.com/markets/kxpresperson/kxpresperson-28?selectedMarketTicker=KXPRESPERSON-28-JVAN",
       "isAffiliate": false,
       "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
     },
     "polymarket": {
-      "url": "https://polymarket.com/event/presidential-election-winner-2028/will-jd-vance-win-the-2028-us-presidential-election",
       "isAffiliate": false,
       "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
     }

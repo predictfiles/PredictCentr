@@ -113,6 +113,14 @@ a {
   margin-bottom: 12px;
 }
 
+.outcome-heading {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
 .card {
   background: var(--card);
   border: 1px solid var(--border);

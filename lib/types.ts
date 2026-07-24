@@ -49,8 +49,8 @@ export interface WatchItem {
 
 export interface MarketContent {
   market: {
+    /** Full display title, e.g. "JD Vance — 2028 U.S. Presidential Election Winner" */
     title: string;
-    candidate: string;
     resolutionDate: string;
     resolutionNote: string;
   };
@@ -61,25 +61,38 @@ export interface MarketContent {
   };
   news: NewsItem[];
   whatToWatch: WatchItem[];
-  affiliateLinks: {
-    kalshi: { url: string; isAffiliate: boolean; note?: string };
-    polymarket: { url: string; isAffiliate: boolean; note?: string };
+  /** Whether PredictCentr actually has a live affiliate/referral deal with each platform yet. */
+  affiliateStatus: {
+    kalshi: { isAffiliate: boolean; note?: string };
+    polymarket: { isAffiliate: boolean; note?: string };
   };
 }
 
-/** A single market page: one candidate's odds within one election. */
+/**
+ * One trackable outcome within a market -- almost always the whole market
+ * (binary Yes/No, e.g. "JD Vance wins"), but for a multi-outcome market like
+ * "LeBron James' next team" a page tracks a handful of the real contenders,
+ * each as its own outcome with its own Kalshi/Polymarket identifiers.
+ */
+export interface MarketOutcome {
+  /** URL/query-safe id, e.g. "miami-heat" */
+  id: string;
+  /** Display name, e.g. "Miami Heat" */
+  label: string;
+  /** The Yes/No question this outcome's odds answer, e.g. "Will LeBron sign with the Heat?" */
+  question: string;
+  kalshi: { ticker: string; seriesTicker: string; url: string };
+  polymarket: { marketId: string; yesTokenId: string; url: string };
+}
+
+/** A single market page, addressed by a 1+ segment URL slug. */
 export interface MarketConfig {
-  electionSlug: string;
-  candidateSlug: string;
+  /** URL path segments, e.g. ["2028-us-presidential-election-winner", "jd-vance"] or ["lebron-james-next-team"] */
+  slug: string[];
+  category: "politics" | "culture";
   /** One-liner for homepage market cards. */
   shortDescription: string;
-  kalshi: {
-    ticker: string;
-    seriesTicker: string;
-  };
-  polymarket: {
-    marketId: string;
-    yesTokenId: string;
-  };
+  /** Ordered; first is the lead/primary outcome. 1 entry for a binary market, 2+ for multi-outcome. */
+  outcomes: MarketOutcome[];
   content: MarketContent;
 }

@@ -27,13 +27,13 @@ export function formatDate(d: string, opts?: Intl.DateTimeFormatOptions): string
  * a blanket "contains affiliate links to X and Y" was true for neither
  * platform at one point, which is a real accuracy problem, not just wording.
  */
-export function affiliateDisclosure(affiliateLinks: {
+export function affiliateDisclosure(affiliateStatus: {
   kalshi: { isAffiliate: boolean };
   polymarket: { isAffiliate: boolean };
 }): string {
   const live: string[] = [];
-  if (affiliateLinks.kalshi.isAffiliate) live.push("Kalshi");
-  if (affiliateLinks.polymarket.isAffiliate) live.push("Polymarket");
+  if (affiliateStatus.kalshi.isAffiliate) live.push("Kalshi");
+  if (affiliateStatus.polymarket.isAffiliate) live.push("Polymarket");
 
   if (live.length === 0) {
     return "The Kalshi and Polymarket links on this page are not currently affiliate/referral links -- they go straight to each platform's market page.";

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { findMarket, markets } from "@/lib/markets";
 import { getKalshiMarket, getKalshiMarketHistory } from "@/lib/kalshi";
 import { getPolymarketMarket, getPolymarketMarketHistory } from "@/lib/polymarket";
-import type { HistoryResponse, MarketConfig, OddsResponse } from "@/lib/types";
+import type { HistoryResponse, MarketOutcome, OddsResponse } from "@/lib/types";
 import { affiliateDisclosure } from "@/lib/format";
 import { MarketBrief } from "@/components/MarketBrief";
 import { NewsSection } from "@/components/NewsSection";
@@ -15,32 +15,26 @@ import { WhatToWatch } from "@/components/WhatToWatch";
 export const revalidate = 30;
 
 export function generateStaticParams() {
-  return markets.map((m) => ({
-    electionSlug: m.electionSlug,
-    candidateSlug: m.candidateSlug,
-  }));
+  return markets.map((m) => ({ slug: m.slug }));
 }
 
 export function generateMetadata({
   params,
 }: {
-  params: { electionSlug: string; candidateSlug: string };
+  params: { slug: string[] };
 }): Metadata {
-  const market = findMarket(params.electionSlug, params.candidateSlug);
+  const market = findMarket(params.slug);
   if (!market) return {};
   return {
-    title: `${market.content.market.candidate} — ${market.content.market.title}`,
+    title: market.content.market.title,
     description: market.shortDescription,
   };
 }
 
-async function loadInitialOdds(market: MarketConfig): Promise<OddsResponse> {
+async function loadOutcomeOdds(outcome: MarketOutcome): Promise<OddsResponse> {
   const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiMarket(market.kalshi.ticker, market.content.affiliateLinks.kalshi.url),
-    getPolymarketMarket(
-      market.polymarket.marketId,
-      market.content.affiliateLinks.polymarket.url
-    ),
+    getKalshiMarket(outcome.kalshi.ticker, outcome.kalshi.url),
+    getPolymarketMarket(outcome.polymarket.marketId, outcome.polymarket.url),
   ]);
   return {
     kalshi: kalshi.status === "fulfilled" ? kalshi.value : null,
@@ -52,10 +46,10 @@ async function loadInitialOdds(market: MarketConfig): Promise<OddsResponse> {
   };
 }
 
-async function loadInitialHistory(market: MarketConfig): Promise<HistoryResponse> {
+async function loadOutcomeHistory(outcome: MarketOutcome): Promise<HistoryResponse> {
   const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiMarketHistory(market.kalshi.seriesTicker, market.kalshi.ticker),
-    getPolymarketMarketHistory(market.polymarket.yesTokenId),
+    getKalshiMarketHistory(outcome.kalshi.seriesTicker, outcome.kalshi.ticker),
+    getPolymarketMarketHistory(outcome.polymarket.yesTokenId),
   ]);
   return {
     kalshi: kalshi.status === "fulfilled" ? kalshi.value : null,
@@ -70,18 +64,23 @@ async function loadInitialHistory(market: MarketConfig): Promise<HistoryResponse
 export default async function MarketPage({
   params,
 }: {
-  params: { electionSlug: string; candidateSlug: string };
+  params: { slug: string[] };
 }) {
-  const market = findMarket(params.electionSlug, params.candidateSlug);
+  const market = findMarket(params.slug);
   if (!market) notFound();
 
-  const [odds, history] = await Promise.all([
-    loadInitialOdds(market),
-    loadInitialHistory(market),
-  ]);
-
+  const slugPath = market.slug.join("/");
   const { content } = market;
-  const apiPath = `/api/markets/${market.electionSlug}/${market.candidateSlug}`;
+
+  const outcomesData = await Promise.all(
+    market.outcomes.map(async (outcome) => {
+      const [odds, history] = await Promise.all([
+        loadOutcomeOdds(outcome),
+        loadOutcomeHistory(outcome),
+      ]);
+      return { outcome, odds, history };
+    })
+  );
 
   return (
     <main className="wrap">
@@ -89,9 +88,7 @@ export default async function MarketPage({
         <Link className="brand" href="/">
           PredictCentr
         </Link>
-        <h1 className="title">
-          {content.market.candidate} — {content.market.title}
-        </h1>
+        <h1 className="title">{content.market.title}</h1>
         <p className="subtitle">
           Kalshi vs Polymarket, compared live. Resolves{" "}
           {content.market.resolutionDate}.
@@ -105,15 +102,23 @@ export default async function MarketPage({
         return.
       </div>
 
-      <OddsComparison
-        initialData={odds}
-        apiPath={apiPath}
-        candidateName={content.market.candidate}
-        kalshiAffiliateUrl={content.affiliateLinks.kalshi.url}
-        polymarketAffiliateUrl={content.affiliateLinks.polymarket.url}
-      />
-
-      <HistoryChart data={history} candidateName={content.market.candidate} />
+      {outcomesData.map(({ outcome, odds, history }) => (
+        <div className="outcome-block" key={outcome.id}>
+          {market.outcomes.length > 1 && (
+            <h2 className="outcome-heading">{outcome.label}</h2>
+          )}
+          <OddsComparison
+            initialData={odds}
+            pollUrl={`/api/markets/odds?slug=${encodeURIComponent(
+              slugPath
+            )}&outcome=${encodeURIComponent(outcome.id)}`}
+            question={outcome.question}
+            kalshiAffiliateUrl={outcome.kalshi.url}
+            polymarketAffiliateUrl={outcome.polymarket.url}
+          />
+          <HistoryChart data={history} candidateName={outcome.label} />
+        </div>
+      ))}
 
       <MarketBrief
         text={content.marketBrief.text}
@@ -127,10 +132,10 @@ export default async function MarketPage({
 
       <footer className="footer">
         <div>
-          Data sources: Kalshi public API ({market.kalshi.ticker}) and
-          Polymarket Gamma/CLOB API. Prices are cached up to 30 seconds.
+          Data sources: Kalshi public API and Polymarket Gamma/CLOB API.
+          Prices are cached up to 30 seconds.
         </div>
-        <div>{affiliateDisclosure(content.affiliateLinks)}</div>
+        <div>{affiliateDisclosure(content.affiliateStatus)}</div>
       </footer>
     </main>
   );

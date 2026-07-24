@@ -1,0 +1,73 @@
+{
+  "market": {
+    "title": "LeBron James' Next Team",
+    "resolutionDate": "2026-10-31",
+    "resolutionNote": "Resolves to whichever team LeBron officially signs with (or, if he stays put or retires, resolves to the Lakers). One real gap between the platforms: Kalshi's per-team markets stop trading and resolve based on a signing 'before Oct 23, 2026,' while Polymarket's cutoff is Oct 31, 2026, 11:59 PM ET. If LeBron signs in that Oct 24-31 window, the two platforms could show different outcomes for a few days -- worth knowing if you're comparing them closely in that stretch."
+  },
+  "marketBrief": {
+    "text": "Cleveland was the clear favorite through early July, with Kalshi pricing the Cavaliers as high as 55-61% around July 5-10 while Miami sat in the teens. That flipped fast: Miami surged from 28% to 44% in a single day on July 18-19 and hasn't looked back, coinciding with the Heat's own accidentally-leaked 'LeBron James Introductory Press Conference' YouTube livestream (scheduled for July 27, posted and deleted, first reported July 22). Miami's case is built on this summer's blockbuster trade for Giannis Antetokounmpo; Cleveland's is the homecoming pitch, fronted publicly by Donovan Mitchell. Golden State and Philadelphia were both live contenders as recently as mid-July but have since faded -- reporting from July 14 already had James' focus narrowing to three teams before Miami's spike made it effectively a two-way race.",
+    "updatedAt": "2026-07-24",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Giannis Changes Everything in Miami—but Solves Very Little",
+      "source": "The Ringer",
+      "date": "2026-06-23",
+      "url": "https://www.theringer.com/2026/06/23/nba/giannis-antetokounmpo-trade-miami-heat-milwaukee-bucks",
+      "image": "https://wp.theringer.com/wp-content/uploads/2026/06/cropped-GiannisHeat_Getty-Ringer-scaled-1.jpg"
+    },
+    {
+      "headline": "LeBron James Reportedly Shifts 'Focus' to Three Teams in NBA Free Agency",
+      "source": "NBC Sports Bay Area",
+      "date": "2026-07-14",
+      "url": "https://www.nbcsportsbayarea.com/nba/golden-state-warriors/lebron-james-free-agency-teams/1950146/",
+      "image": "https://media.nbcsportsbayarea.com/2026/07/GettyImages-2271024553.jpg?quality=85&strip=all&resize=1200%2C675"
+    },
+    {
+      "headline": "Donovan Mitchell Openly Recruits LeBron James Back to the Cavs",
+      "source": "Cavaliers Nation",
+      "date": "2026-07-16",
+      "url": "https://cavaliersnation.com/2026/07/16/donovan-mitchell-openly-recruits-lebron-james-back-to-the-cavs/",
+      "image": "https://cavaliersnation.com/wp-content/uploads/2026/07/USATSI_28108158_168403908_lowres-e1784237021237.jpg"
+    },
+    {
+      "headline": "Miami Heat Posts and Deletes LeBron James Introductory Press Conference Link to YouTube Page",
+      "source": "CBS Miami",
+      "date": "2026-07-22",
+      "url": "https://www.cbsnews.com/miami/news/lebron-james-miami-heat-link-july-2026/",
+      "image": "https://assets2.cbsnewsstatic.com/hub/i/r/2026/07/16/c2c9addc-750e-4e8f-a71b-f3c1f7af094e/thumbnail/1200x630/3eff41459624e2dc0673f581476ef199/gettyimages-2286411267.jpg"
+    },
+    {
+      "headline": "Miami Heat Explain Viral LeBron James Press Conference Mix-Up",
+      "source": "Basketball Forever",
+      "date": "2026-07-23",
+      "url": "https://basketballforever.com/2026/07/22/miami-heat-explain-viral-lebron-james-press-conference-mix-up",
+      "image": "https://basketballforever.com/wp-content/uploads/2026/07/James-172.jpg"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Free agency meetings, podcast leaks, and reports -- this market has swung double digits in a day on rumors alone"
+    },
+    {
+      "date": "2026-10-23",
+      "label": "Kalshi's team markets stop trading / resolve by this date"
+    },
+    {
+      "date": "2026-10-31",
+      "label": "Polymarket's resolution deadline -- if undecided, both platforms default to the Lakers"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    },
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}
