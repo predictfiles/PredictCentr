@@ -398,6 +398,25 @@ a {
   border-color: var(--brand-blue);
 }
 
+.market-card-featured {
+  border: 2px solid var(--brand-blue);
+  padding: 22px;
+}
+
+.market-card-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin-bottom: 8px;
+}
+
+.market-card-featured .market-card-title {
+  font-size: 19px;
+}
+
 .market-card-title {
   font-size: 17px;
   font-weight: 700;

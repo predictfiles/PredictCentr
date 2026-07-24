@@ -89,7 +89,7 @@ export interface MarketOutcome {
 export interface MarketConfig {
   /** URL path segments, e.g. ["2028-us-presidential-election-winner", "jd-vance"] or ["lebron-james-next-team"] */
   slug: string[];
-  category: "politics" | "culture";
+  category: "politics" | "sports";
   /** One-liner for homepage market cards. */
   shortDescription: string;
   /** Ordered; first is the lead/primary outcome. 1 entry for a binary market, 2+ for multi-outcome. */

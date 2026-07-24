@@ -61,7 +61,7 @@ export const markets: MarketConfig[] = [
   },
   {
     slug: ["lebron-james-next-team"],
-    category: "culture",
+    category: "sports",
     shortDescription:
       "Live odds on where LeBron James plays next season -- Heat vs. Cavaliers -- compared across Kalshi and Polymarket.",
     outcomes: [
@@ -106,4 +106,13 @@ export function findMarket(slug: string[]): MarketConfig | undefined {
   return markets.find(
     (m) => m.slug.length === slug.length && m.slug.every((s, i) => s === slug[i])
   );
+}
+
+// The homepage's featured "Hot Market" slot -- manually set, no auto-ranking
+// yet. Change this one value to feature a different market; update by hand
+// whenever the hot market changes.
+export const HOT_MARKET_SLUG = ["lebron-james-next-team"];
+
+export function getHotMarket(): MarketConfig | undefined {
+  return findMarket(HOT_MARKET_SLUG);
 }

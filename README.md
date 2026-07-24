@@ -3,8 +3,8 @@
 Prediction market odds compared across platforms, with news context.
 Built with Next.js (App Router) and deployed on Vercel.
 
-- `/` — homepage listing every live market, grouped by category (Politics,
-  Culture, ...)
+- `/` — homepage: a manually-pinned "Hot Market" feature, then every live
+  market grouped by category (Politics, Sports, ...)
 - `/<slug...>/` — one market page. 1 URL segment for a single-event market
   (e.g. `/lebron-james-next-team/`), 2 for a market nested under a race
   (e.g. `/2028-us-presidential-election-winner/jd-vance/`)
@@ -40,7 +40,13 @@ Open http://localhost:3000.
   with multiple outcomes (LeBron) renders one odds+chart block per outcome,
   stacked; a binary market (Vance, Senate) just renders one.
 - `app/page.tsx` — the homepage; groups `markets` by `category` and lists
-  each as a card via `components/MarketCard.tsx`.
+  each as a card via `components/MarketCard.tsx`. Also renders
+  `getHotMarket()`'s market as a featured card above everything else.
+- `HOT_MARKET_SLUG` in `lib/markets.ts` — the one manually-set value
+  controlling the homepage's "Hot Market" feature. No auto-ranking (price
+  swings, traffic, volume) yet -- just change this array to feature a
+  different market. Revisit as real ranking logic once there are enough
+  markets that the hottest one isn't obvious at a glance (8-10+ pages).
 - `data/markets/<slug...>.json` — everything manually curated for that one
   market: the brief, news headlines, "what to watch" dates, and affiliate
   status. No CMS — just edit and redeploy.

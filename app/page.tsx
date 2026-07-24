@@ -1,12 +1,14 @@
-import { markets } from "@/lib/markets";
+import { markets, getHotMarket } from "@/lib/markets";
 import { MarketCard } from "@/components/MarketCard";
 
 const CATEGORIES = [
   { id: "politics", label: "Politics" },
-  { id: "culture", label: "Culture" },
+  { id: "sports", label: "Sports" },
 ] as const;
 
 export default function Home() {
+  const hotMarket = getHotMarket();
+
   return (
     <main className="wrap">
       <header className="header">
@@ -21,6 +23,14 @@ export default function Home() {
           them, and make better-informed decisions.
         </p>
       </header>
+
+      {hotMarket && (
+        <section className="section">
+          <div className="market-card-list">
+            <MarketCard market={hotMarket} featured />
+          </div>
+        </section>
+      )}
 
       {CATEGORIES.map((category) => {
         const categoryMarkets = markets.filter((m) => m.category === category.id);
