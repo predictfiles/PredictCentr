@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { findMarket, markets } from "@/lib/markets";
+import {
+  findMarket,
+  markets,
+  ELECTIONS,
+  getElectionInfo,
+  getElectionCandidates,
+} from "@/lib/markets";
 import { loadOutcomeOdds, loadOutcomeHistory } from "@/lib/oddsLoader";
 import { affiliateDisclosure, formatDate } from "@/lib/format";
 import { MarketBrief } from "@/components/MarketBrief";
@@ -9,12 +15,15 @@ import { NewsSection } from "@/components/NewsSection";
 import { OddsComparison } from "@/components/OddsComparison";
 import { HistoryChart } from "@/components/HistoryChart";
 import { WhatToWatch } from "@/components/WhatToWatch";
-import type { HistoryResponse, OddsResponse } from "@/lib/types";
+import { MarketCard } from "@/components/MarketCard";
+import type { HistoryResponse, MarketConfig, OddsResponse } from "@/lib/types";
 
 export const revalidate = 30;
 
 export function generateStaticParams() {
-  return markets.map((m) => ({ slug: m.slug }));
+  const marketParams = markets.map((m) => ({ slug: m.slug }));
+  const hubParams = ELECTIONS.map((e) => ({ slug: [e.slug] }));
+  return [...marketParams, ...hubParams];
 }
 
 export function generateMetadata({
@@ -23,11 +32,16 @@ export function generateMetadata({
   params: { slug: string[] };
 }): Metadata {
   const market = findMarket(params.slug);
-  if (!market) return {};
-  return {
-    title: market.content.market.title,
-    description: market.shortDescription,
-  };
+  if (market) {
+    return { title: market.content.market.title, description: market.shortDescription };
+  }
+  if (params.slug.length === 1) {
+    const election = getElectionInfo(params.slug[0]);
+    if (election) {
+      return { title: election.title, description: election.description };
+    }
+  }
+  return {};
 }
 
 const EMPTY_ODDS: OddsResponse = {
@@ -46,18 +60,63 @@ const EMPTY_HISTORY: HistoryResponse = {
   fetchedAt: new Date(0).toISOString(),
 };
 
-export default async function MarketPage({
-  params,
-}: {
-  params: { slug: string[] };
-}) {
-  const market = findMarket(params.slug);
-  if (!market) notFound();
+async function ElectionHubPage({ electionSlug }: { electionSlug: string }) {
+  const election = getElectionInfo(electionSlug);
+  const candidates = getElectionCandidates(electionSlug);
+  if (!election || candidates.length === 0) notFound();
 
+  const oddsByMarket = new Map<string, Record<string, OddsResponse>>();
+  await Promise.all(
+    candidates.map(async (market) => {
+      const entries = await Promise.all(
+        market.outcomes.map(
+          async (outcome) => [outcome.id, await loadOutcomeOdds(outcome)] as const
+        )
+      );
+      oddsByMarket.set(market.slug.join("/"), Object.fromEntries(entries));
+    })
+  );
+
+  return (
+    <main className="wrap">
+      <header className="header">
+        <Link className="brand" href="/">
+          PredictCentr
+        </Link>
+        <h1 className="title">{election.title}</h1>
+        <p className="subtitle">
+          {election.description} Resolves {election.resolutionDate}.
+        </p>
+      </header>
+
+      <div className="disclaimer">
+        Prediction market prices reflect trader sentiment, not a guaranteed
+        outcome. Nothing on this page is financial advice or a promise of any
+        return.
+      </div>
+
+      <section className="section">
+        <div className="section-label">Candidates</div>
+        <div className="market-card-list">
+          {candidates.map((market) => (
+            <MarketCard
+              key={market.slug.join("/")}
+              market={market}
+              initialOdds={oddsByMarket.get(market.slug.join("/")) ?? {}}
+            />
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+async function CandidateMarketPage({ market }: { market: MarketConfig }) {
   const slugPath = market.slug.join("/");
   const { content } = market;
   const hasAnyPolymarket = market.outcomes.some((o) => o.polymarket);
   const settled = content.settled;
+  const parentElection = market.slug.length > 1 ? getElectionInfo(market.slug[0]) : undefined;
 
   // A settled market never hits Kalshi/Polymarket again -- it reads the
   // frozen snapshot captured at settlement instead of polling live.
@@ -83,6 +142,11 @@ export default async function MarketPage({
         <Link className="brand" href="/">
           PredictCentr
         </Link>
+        {parentElection && (
+          <Link className="breadcrumb" href={`/${market.slug[0]}/`}>
+            ← {parentElection.title}
+          </Link>
+        )}
         {settled && <div className="status-badge status-settled">Settled</div>}
         <h1 className="title">{content.market.title}</h1>
         {settled ? (
@@ -152,4 +216,18 @@ export default async function MarketPage({
       </footer>
     </main>
   );
+}
+
+export default async function Page({ params }: { params: { slug: string[] } }) {
+  const market = findMarket(params.slug);
+  if (market) {
+    return <CandidateMarketPage market={market} />;
+  }
+  if (params.slug.length === 1) {
+    const election = getElectionInfo(params.slug[0]);
+    if (election) {
+      return <ElectionHubPage electionSlug={params.slug[0]} />;
+    }
+  }
+  notFound();
 }

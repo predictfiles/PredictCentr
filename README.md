@@ -9,6 +9,9 @@ Built with Next.js (App Router) and deployed on Vercel.
 - `/<slug...>/` — one market page. 1 URL segment for a single-event market
   (e.g. `/lebron-james-next-team/`), 2 for a market nested under a race
   (e.g. `/2028-us-presidential-election-winner/jd-vance/`)
+- `/<election-slug>/` — a hub page listing every candidate market nested
+  under that race side by side (e.g. `/2028-us-presidential-election-winner/`
+  lists Vance and Trump). Only exists for slugs registered in `ELECTIONS`.
 
 Favicons (`app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`) use
 Next.js's file-based icon convention -- no manual `<link>` tags needed,
@@ -40,12 +43,17 @@ Open http://localhost:3000.
   route handlers the browser polls instead of hitting Kalshi/Polymarket
   directly (avoids CORS, keeps polling server-cached). Takes `?slug=` and
   `?outcome=` query params to identify which market/outcome to fetch.
-- `app/[...slug]/page.tsx` — the market page template (catch-all route, so
-  it handles both 1- and 2-segment URLs). Server-renders with an initial
-  data fetch per outcome, then `components/OddsComparison.tsx` polls that
-  outcome's `/api/markets/odds` endpoint client-side every 30s. A market
-  with multiple outcomes (LeBron) renders one odds+chart block per outcome,
-  stacked; a binary market (Vance, Senate) just renders one.
+- `app/[...slug]/page.tsx` — a catch-all route handling three cases: a
+  2-segment slug that matches a market renders the candidate/market page
+  (server-renders an initial data fetch per outcome, then
+  `components/OddsComparison.tsx` polls that outcome's `/api/markets/odds`
+  endpoint client-side every 30s -- a market with multiple outcomes like
+  LeBron renders one odds+chart block per outcome, stacked; a binary market
+  just renders one); a 1-segment slug that matches `ELECTIONS` renders the
+  hub page (lists that race's candidates via `components/MarketCard.tsx`,
+  same live-odds-fetch pattern as the homepage); anything else 404s. A
+  candidate page whose first slug segment is a registered election shows a
+  breadcrumb back to its hub.
 - `lib/oddsLoader.ts` — the live-fetch functions shared by every page that
   needs a fresh read for an outcome (market pages, the homepage). One code
   path, so numbers can't drift between where they're shown.
@@ -88,7 +96,11 @@ Open http://localhost:3000.
    — a `slug` array, `category`, and one `outcomes` entry per contender
    you're tracking.
 5. Nothing else changes — the page, API routes, and homepage card are all
-   driven by that one array.
+   driven by that one array. To add a second candidate under an *existing*
+   election (same slug's first segment as one already in `lib/markets.ts`),
+   this is all you need -- the hub page at `/<election-slug>/` picks it up
+   automatically since it just lists every market sharing that first
+   segment. To start a *new* election, also add an entry to `ELECTIONS`.
 
 ## Before you launch a new market
 

@@ -109,6 +109,19 @@ a {
   color: var(--fg);
 }
 
+.breadcrumb {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.breadcrumb:hover {
+  color: var(--brand-blue);
+}
+
 .title {
   font-size: 28px;
   font-weight: 700;

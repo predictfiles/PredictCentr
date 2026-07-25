@@ -1,0 +1,66 @@
+{
+  "market": {
+    "title": "Donald Trump — 2028 U.S. Presidential Election Winner",
+    "resolutionDate": "2028-11-07",
+    "resolutionNote": "Resolves to whoever is inaugurated President in January 2029, based on AP/Fox/NBC race calls."
+  },
+  "marketBrief": {
+    "text": "Trump's odds ticked up this week after he joked about a 'fourth term' while wearing a 'Trump 2028' hat at the White House Correspondents' Dinner on July 24 -- Kalshi moved from about 2.4% to 2.9%, Polymarket from roughly 1.4% to 2.0%, within a day. The number stays low for a structural reason, not a political one: the 22nd Amendment limits a president to two elected terms, and Trump has already served two, so a third (or fourth) term would require either amending the Constitution or courts accepting a legal theory that constitutional scholars across the political spectrum have called implausible. That's the backdrop for this market's whole history -- Kalshi's Trump contract peaked near 11% last October on an earlier round of similar comments, then drifted down to about 1.4% by April as nothing concrete followed. The pattern so far: comments move the price for a few days, then it fades back toward its structural floor.",
+    "updatedAt": "2026-07-25",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Trump Dons 'Trump 2028' Hat, Jokes About Fourth-Term Run and Says He 'Won Three Times' at WHCD",
+      "source": "MEAWW",
+      "date": "2026-07-25",
+      "url": "https://news.meaww.com/trump-dons-trump-2028-hat-jokes-about-fourth-term-run-and-says-he-won-three-times-at-whcd",
+      "image": "https://dxltb3n5j8l6j.cloudfront.net/811621/uploads/80e96e60-87dd-11f1-a481-8360ac02866d_1200_630.jpeg"
+    },
+    {
+      "headline": "Trump Swipes at Journalists and Jokes About Running for a 4th Term at White House Correspondents' Dinner",
+      "source": "NBC News",
+      "date": "2026-07-24",
+      "url": "https://www.nbcnews.com/politics/trump-administration/live-blog/white-house-correspondents-dinner-trump-live-updates-rcna588931",
+      "image": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2026-07/260724-whca-ww-1647-23378d.jpg"
+    },
+    {
+      "headline": "Trump Again Floats Possibly Seeking 3rd Term. The Constitution Bars It, Scholars Say",
+      "source": "AP via ABC7",
+      "date": "2025-04-01",
+      "url": "https://abc7ny.com/post/donald-trump-floats-possibly-seeking-3rd-term-constitution-bars-scholars-say/16111537/",
+      "image": "https://cdn.abcotvs.com/dip/images/16115314_040125-cc-ap-donald-trump-img.jpg?w=1600"
+    },
+    {
+      "headline": "Trump Keeps Teasing a Third Term — What to Know",
+      "source": "TIME",
+      "date": "2025-02-14",
+      "url": "https://time.com/7222820/trump-third-term-president-explainer-pathways-constitution-courts-legal-experts/",
+      "image": "https://static.time.com/v3/assets/bltea6093859af6183b/blta58a14b73a3ca326/6998b68a9fbc7c78e3d98479/donald-trump_838f3a.jpg?branch=production&width=2400&quality=75&auto=webp&crop=16:9"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Any further statements from Trump himself on running again -- these are what's actually moved the price so far, not policy or legal developments"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Legal/constitutional analysis if any court case or formal challenge to the 22nd Amendment's two-term limit actually emerges (none has as of this writing)"
+    },
+    {
+      "date": "2028-11-07",
+      "label": "Election Day — market resolution"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    },
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

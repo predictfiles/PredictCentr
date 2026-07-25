@@ -115,3 +115,16 @@ export interface MarketConfig {
   outcomes: MarketOutcome[];
   content: MarketContent;
 }
+
+/**
+ * A "race" that multiple single-candidate MarketConfigs nest under, e.g.
+ * every market whose slug starts with "2028-us-presidential-election-winner".
+ * Powers the hub page at /<electionSlug>/ listing those candidates side by
+ * side -- purely a display grouping, not a market/outcome itself.
+ */
+export interface ElectionInfo {
+  slug: string;
+  title: string;
+  resolutionDate: string;
+  description: string;
+}

@@ -1,5 +1,6 @@
-import type { MarketConfig, NewsItem } from "./types";
+import type { ElectionInfo, MarketConfig, NewsItem } from "./types";
 import jdVance2028 from "@/data/markets/2028-us-presidential-election-winner/jd-vance.json";
+import donaldTrump2028 from "@/data/markets/2028-us-presidential-election-winner/donald-trump.json";
 import senateDemocrats2026 from "@/data/markets/2026-us-senate-control/democrats.json";
 import lebronNextTeam from "@/data/markets/lebron-james-next-team.json";
 import grokOdysseyFilm from "@/data/markets/grok-imagine-odyssey-film.json";
@@ -34,6 +35,31 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: jdVance2028,
+  },
+  {
+    slug: ["2028-us-presidential-election-winner", "donald-trump"],
+    category: "politics",
+    shortDescription:
+      "Live odds on Donald Trump winning the 2028 presidential election, compared across Kalshi and Polymarket.",
+    outcomes: [
+      {
+        id: "donald-trump",
+        label: "Donald Trump",
+        question: "Will Donald Trump win?",
+        kalshi: {
+          ticker: "KXPRESPERSON-28-DTRU",
+          seriesTicker: "KXPRESPERSON",
+          url: "https://kalshi.com/markets/kxpresperson/kxpresperson-28?selectedMarketTicker=KXPRESPERSON-28-DTRU",
+        },
+        polymarket: {
+          marketId: "561243",
+          yesTokenId:
+            "11807691644868166983390207408868795383945915035851758101409310535538572683733",
+          url: "https://polymarket.com/event/presidential-election-winner-2028/will-donald-trump-win-the-2028-us-presidential-election",
+        },
+      },
+    ],
+    content: donaldTrump2028,
   },
   {
     slug: ["2026-us-senate-control", "democrats"],
@@ -129,10 +155,33 @@ export function findMarket(slug: string[]): MarketConfig | undefined {
   );
 }
 
+// Metadata for each "race" that 2-segment candidate markets nest under.
+// Add an entry here (matching the shared first slug segment) to get a hub
+// page at /<electionSlug>/ listing every candidate market registered under
+// it -- no page/route work needed, same "add an entry" pattern as markets.
+export const ELECTIONS: ElectionInfo[] = [
+  {
+    slug: "2028-us-presidential-election-winner",
+    title: "2028 U.S. Presidential Election Winner",
+    resolutionDate: "2028-11-07",
+    description:
+      "Compare odds across candidates in the 2028 U.S. Presidential Election, tracked on Kalshi and Polymarket.",
+  },
+];
+
+export function getElectionInfo(electionSlug: string): ElectionInfo | undefined {
+  return ELECTIONS.find((e) => e.slug === electionSlug);
+}
+
+/** Every candidate market registered under a given election's slug. */
+export function getElectionCandidates(electionSlug: string): MarketConfig[] {
+  return markets.filter((m) => m.slug.length === 2 && m.slug[0] === electionSlug);
+}
+
 // The homepage's featured "Hot Market" slot -- manually set, no auto-ranking
 // yet. Change this one value to feature a different market; update by hand
 // whenever the hot market changes.
-export const HOT_MARKET_SLUG = ["grok-imagine-odyssey-film"];
+export const HOT_MARKET_SLUG = ["2028-us-presidential-election-winner", "donald-trump"];
 
 export function getHotMarket(): MarketConfig | undefined {
   return findMarket(HOT_MARKET_SLUG);
