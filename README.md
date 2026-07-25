@@ -109,6 +109,30 @@ Same checklist as before, per market's content file:
   another article covering the same event if the original has none.
 - `whatToWatch` — update `(TBD)` dates as they're announced.
 
+## Settling a market
+
+When the real-world event happens:
+
+1. Pull the final live odds and full price history for every outcome
+   directly from the Kalshi/Polymarket APIs one last time (same way you'd
+   check them for a new market) -- this becomes the permanent historical
+   record, so get it while the data's still fresh.
+2. Add a `settled` object to the market's content file: `resolvedAt`,
+   `result` (human-readable, e.g. "Philadelphia 76ers -- 2-year, $8M
+   contract"), `finalOdds` and `finalHistory` (both keyed by outcome id,
+   same shape the live API routes return).
+3. That's it. `app/[...slug]/page.tsx` reads `content.settled` and switches
+   the whole page over automatically: "Settled" badge, frozen odds/chart
+   (no more live fetches for this market at all, on the page or the
+   homepage card), and the footer/subtitle copy adjusts its wording.
+   `app/page.tsx` moves the market from its live category section into a
+   bottom-of-page "Archive" section with a muted card style.
+4. Update `marketBrief.text` to close out the story, and check whether the
+   outcome-level `kalshi.url` / `polymarket.url` in `lib/markets.ts` still
+   resolve -- if a platform's specific contract page goes dead after
+   settlement, point it at that platform's general markets page instead.
+5. If the settled market was `HOT_MARKET_SLUG`, pick a new one.
+
 ## Deploy
 
 Push to GitHub; Vercel auto-deploys from `main`. No environment variables

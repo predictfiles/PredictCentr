@@ -93,21 +93,24 @@ export function OddsComparison({
   polymarketAffiliateUrl,
 }: {
   initialData: OddsResponse;
-  pollUrl: string;
+  /** Omit to freeze the display -- no polling, no ticking "last checked" clock. Used for settled markets. */
+  pollUrl?: string;
   question: string;
   kalshiAffiliateUrl: string;
   polymarketAffiliateUrl?: string;
 }) {
   const hasPolymarket = Boolean(polymarketAffiliateUrl);
+  const frozen = !pollUrl;
   const [data, setData] = useState<OddsResponse>(initialData);
   const [now, setNow] = useState<number>(Date.now());
 
   useEffect(() => {
+    if (!pollUrl) return;
     let cancelled = false;
 
     async function poll() {
       try {
-        const res = await fetch(pollUrl, { cache: "no-store" });
+        const res = await fetch(pollUrl!, { cache: "no-store" });
         if (!res.ok) return;
         const json: OddsResponse = await res.json();
         if (!cancelled) setData(json);
@@ -130,7 +133,9 @@ export function OddsComparison({
 
   return (
     <section className="section">
-      <div className="section-label">Live Odds — {question}</div>
+      <div className="section-label">
+        {frozen ? "Final Odds" : "Live Odds"} — {question}
+      </div>
       <div className={hasPolymarket ? "odds-grid" : "odds-grid odds-grid-single"}>
         <PlatformCard
           name="Kalshi"
@@ -151,8 +156,9 @@ export function OddsComparison({
       </div>
       {hasPolymarket && <BestPrice kalshi={data.kalshi} polymarket={data.polymarket} />}
       <div className="odds-fetched">
-        Last checked {formatRelativeTime(data.fetchedAt, now)} · refreshes
-        automatically every 30s
+        {frozen
+          ? "Final odds as of settlement — no longer updating"
+          : `Last checked ${formatRelativeTime(data.fetchedAt, now)} · refreshes automatically every 30s`}
       </div>
     </section>
   );

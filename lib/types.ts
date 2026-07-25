@@ -70,6 +70,19 @@ export interface MarketContent {
     kalshi: { isAffiliate: boolean; note?: string };
     polymarket?: { isAffiliate: boolean; note?: string };
   };
+  /**
+   * Present once the real-world event has happened. Freezes the page: no
+   * more live polling, odds/chart come from these snapshots (the last
+   * genuine read before/at settlement) instead of hitting Kalshi/Polymarket
+   * on every request. Keyed by outcome id, same as `outcomes`.
+   */
+  settled?: {
+    resolvedAt: string;
+    /** Human-readable description of what actually happened, e.g. "Philadelphia 76ers — 2-year, $8M deal" */
+    result: string;
+    finalOdds: Record<string, OddsResponse>;
+    finalHistory: Record<string, HistoryResponse>;
+  };
 }
 
 /**

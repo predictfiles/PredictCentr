@@ -14,13 +14,17 @@ export const revalidate = 30;
 
 export default async function Home() {
   const hotMarket = getHotMarket();
+  const liveMarkets = markets.filter((m) => !m.content.settled);
+  const archivedMarkets = markets.filter((m) => m.content.settled);
 
   // One live odds fetch per outcome per market, keyed by market slug path
   // so both the featured card and its regular category card can reuse the
-  // same fetch instead of hitting the APIs twice for the hot market.
+  // same fetch instead of hitting the APIs twice for the hot market. A
+  // settled market never fetches live -- its card reads its own frozen
+  // snapshot, same as its page.
   const oddsByMarket = new Map<string, Record<string, OddsResponse>>();
   await Promise.all(
-    markets.map(async (market) => {
+    liveMarkets.map(async (market) => {
       const slugPath = market.slug.join("/");
       const entries = await Promise.all(
         market.outcomes.map(
@@ -61,7 +65,7 @@ export default async function Home() {
           )}
 
           {CATEGORIES.map((category) => {
-            const categoryMarkets = markets.filter((m) => m.category === category.id);
+            const categoryMarkets = liveMarkets.filter((m) => m.category === category.id);
             if (categoryMarkets.length === 0) return null;
             return (
               <section className="section" key={category.id}>
@@ -78,6 +82,17 @@ export default async function Home() {
               </section>
             );
           })}
+
+          {archivedMarkets.length > 0 && (
+            <section className="section">
+              <div className="section-label">Archive</div>
+              <div className="market-card-list">
+                {archivedMarkets.map((market) => (
+                  <MarketCard key={market.slug.join("/")} market={market} initialOdds={{}} />
+                ))}
+              </div>
+            </section>
+          )}
         </div>
 
         <div className="home-sidebar">
