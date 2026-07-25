@@ -1,9 +1,20 @@
-import type { ElectionInfo, MarketConfig, NewsItem } from "./types";
-import jdVance2028 from "@/data/markets/2028-us-presidential-election-winner/jd-vance.json";
-import donaldTrump2028 from "@/data/markets/2028-us-presidential-election-winner/donald-trump.json";
-import senateDemocrats2026 from "@/data/markets/2026-us-senate-control/democrats.json";
-import lebronNextTeam from "@/data/markets/lebron-james-next-team.json";
-import grokOdysseyFilm from "@/data/markets/grok-imagine-odyssey-film.json";
+import type { ElectionInfo, MarketConfig, MarketContent, NewsItem } from "./types";
+import jdVance2028Raw from "@/data/markets/2028-us-presidential-election-winner/jd-vance.json";
+import donaldTrump2028Raw from "@/data/markets/2028-us-presidential-election-winner/donald-trump.json";
+import senateDemocrats2026Raw from "@/data/markets/2026-us-senate-control/democrats.json";
+import lebronNextTeamRaw from "@/data/markets/lebron-james-next-team.json";
+import grokOdysseyFilmRaw from "@/data/markets/grok-imagine-odyssey-film.json";
+
+// JSON imports infer string literal fields (e.g. "platform": "kalshi") as
+// plain `string`, not the PlatformId union MarketContent actually needs --
+// JSON has no way to express literal types. Cast once here rather than at
+// every usage site; the underlying values are always valid, this just
+// tells TypeScript what we already know to be true.
+const jdVance2028 = jdVance2028Raw as MarketContent;
+const donaldTrump2028 = donaldTrump2028Raw as MarketContent;
+const senateDemocrats2026 = senateDemocrats2026Raw as MarketContent;
+const lebronNextTeam = lebronNextTeamRaw as MarketContent;
+const grokOdysseyFilm = grokOdysseyFilmRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
