@@ -16,24 +16,26 @@ export function TopNewsStories() {
   return (
     <section className="section">
       <div className="section-label">Top News Stories</div>
-      <ul className="news-list">
-        {items.map(({ market, news }) => {
-          const href = `/${market.slug.join("/")}/`;
-          return (
-            <li className="news-item" key={market.slug.join("/")}>
-              <div className="top-story-row">
-                {news.image && <NewsThumb src={news.image} />}
-                <div>
-                  <div className="top-story-headline">{news.headline}</div>
-                  <Link className="top-story-market-link" href={href}>
-                    Market Affected: {market.content.market.title}
-                  </Link>
+      <div className="card">
+        <ul className="news-list">
+          {items.map(({ market, news }) => {
+            const href = `/${market.slug.join("/")}/`;
+            return (
+              <li className="news-item" key={market.slug.join("/")}>
+                <div className="top-story-row">
+                  {news.image && <NewsThumb src={news.image} />}
+                  <div>
+                    <div className="top-story-headline">{news.headline}</div>
+                    <Link className="top-story-market-link" href={href}>
+                      Market Affected: {market.content.market.title}
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </section>
   );
 }

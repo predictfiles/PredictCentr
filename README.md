@@ -21,6 +21,31 @@ Next.js injects them automatically. Source logo is at `public/logo.jpg`
 (pulled from the @PredictCentr X profile picture) if you need to
 regenerate any of them at a different size.
 
+## Design system (`app/globals.css`)
+
+Fixed dark theme, not OS-preference-driven -- the whole site always uses
+a dark charcoal `--bg` with content presented on white "cards" (`--card`),
+same idea as Bloomberg Terminal/TradingView/Linear rather than a light/dark
+toggle. That split means there are **two parallel text-color scales** and
+mixing them up silently kills contrast:
+
+- `--fg` / `--muted` -- for text sitting directly on `--bg` (headers, section
+  labels, footers, breadcrumbs). Light colors.
+- `--card-fg` / `--card-muted` -- for text sitting inside a white `.card`,
+  `.market-card`, `.odds-card`, `.trending-card`, `.best-price`, etc. Dark
+  colors.
+- `--border` is tuned for use *inside/around* white cards (divider lines,
+  card borders); `--divider` is the equivalent for chrome sitting directly
+  on the dark page background (header rule, outcome heading rule).
+
+When adding a new element: if its background is `var(--card)` (or it lives
+inside something that is), use `--card-fg`/`--card-muted`; if it sits
+straight on the page background, use `--fg`/`--muted`. `--brand-blue` is
+reserved for links, primary actions, active states and chart lines --
+avoid using it decoratively. `--kalshi`/`--polymarket`/`--danger`/`--warn`
+are tuned for contrast against white cards, since that's the only
+background they ever render on.
+
 ## Local setup
 
 ```bash

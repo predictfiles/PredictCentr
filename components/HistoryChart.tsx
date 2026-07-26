@@ -162,7 +162,7 @@ export function HistoryChart({
                 x={PAD.left - 8}
                 y={yScale(tick) + 4}
                 fontSize={11}
-                fill="var(--muted)"
+                fill="var(--card-muted)"
                 textAnchor="end"
               >
                 {Math.round(tick * 100)}%
@@ -170,10 +170,10 @@ export function HistoryChart({
             </g>
           ))}
 
-          <text x={PAD.left} y={HEIGHT - 6} fontSize={11} fill="var(--muted)">
+          <text x={PAD.left} y={HEIGHT - 6} fontSize={11} fill="var(--card-muted)">
             {formatAxisDate(minT)}
           </text>
-          <text x={WIDTH - PAD.right} y={HEIGHT - 6} fontSize={11} fill="var(--muted)" textAnchor="end">
+          <text x={WIDTH - PAD.right} y={HEIGHT - 6} fontSize={11} fill="var(--card-muted)" textAnchor="end">
             {formatAxisDate(maxT)}
           </text>
 
@@ -190,7 +190,7 @@ export function HistoryChart({
               x2={crosshairX}
               y1={PAD.top}
               y2={HEIGHT - PAD.bottom}
-              stroke="var(--muted)"
+              stroke="var(--card-muted)"
               strokeWidth={1}
               strokeDasharray="3 3"
             />

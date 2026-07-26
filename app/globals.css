@@ -1,10 +1,18 @@
 :root {
-  --bg: #f7f7f8;
-  --fg: #14161a;
-  --muted: #5b6270;
+  color-scheme: dark;
+
+  /* Page chrome -- header, section labels, footer: sits directly on --bg. */
+  --bg: #0f1115;
+  --fg: #f5f6f8;
+  --muted: #9aa3b2;
+  --divider: rgba(255, 255, 255, 0.08);
+
+  /* Content cards -- always white, regardless of page background. */
   --card: #ffffff;
-  --border: #e3e5e8;
-  --accent: #14161a;
+  --card-fg: #111111;
+  --card-muted: #6b7280;
+  --border: #e5e7eb;
+
   --kalshi: #0f9d68;
   --polymarket: #6366f1;
   --warn: #b45309;
@@ -12,25 +20,10 @@
   --danger: #b91c1c;
   --danger-bg: #fee2e2;
   --brand-blue: #3358e0;
-  --radius: 10px;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b0d10;
-    --fg: #e8e9eb;
-    --muted: #9aa2b1;
-    --card: #14171c;
-    --border: #262b33;
-    --accent: #e8e9eb;
-    --kalshi: #34d399;
-    --polymarket: #818cf8;
-    --warn: #fbbf24;
-    --warn-bg: #3a2e05;
-    --danger: #f87171;
-    --danger-bg: #3a1212;
-    --brand-blue: #5c85ff;
-  }
+  --radius: 18px;
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.24), 0 10px 28px rgba(0, 0, 0, 0.28);
+  --card-shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.28), 0 18px 36px rgba(0, 0, 0, 0.34);
 }
 
 * {
@@ -58,19 +51,19 @@ a {
 .wrap {
   max-width: 760px;
   margin: 0 auto;
-  padding: 24px 20px 80px;
+  padding: 40px 20px 88px;
 }
 
 .home-wrap {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 24px 20px 80px;
+  padding: 40px 20px 88px;
 }
 
 .home-grid {
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: 40px;
+  gap: 48px;
   align-items: start;
 }
 
@@ -89,9 +82,9 @@ a {
 }
 
 .header {
-  padding-bottom: 20px;
-  margin-bottom: 24px;
-  border-bottom: 1px solid var(--border);
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--divider);
 }
 
 .brand {
@@ -100,13 +93,13 @@ a {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--fg);
   margin-bottom: 10px;
   text-decoration: none;
 }
 
 .brand:hover {
-  color: var(--fg);
+  color: var(--brand-blue);
 }
 
 .breadcrumb {
@@ -125,6 +118,7 @@ a {
 .title {
   font-size: 28px;
   font-weight: 700;
+  letter-spacing: -0.01em;
   margin: 0 0 6px;
 }
 
@@ -140,7 +134,7 @@ a {
 }
 
 .status-settled {
-  color: var(--muted);
+  color: var(--card-muted);
   background: var(--card);
   border: 1px solid var(--border);
 }
@@ -158,7 +152,7 @@ a {
 }
 
 .section {
-  margin-bottom: 36px;
+  margin-bottom: 48px;
 }
 
 .section-label {
@@ -167,7 +161,7 @@ a {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .outcome-heading {
@@ -175,14 +169,16 @@ a {
   font-weight: 700;
   margin: 0 0 12px;
   padding-top: 8px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--divider);
 }
 
 .card {
   background: var(--card);
+  color: var(--card-fg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 18px;
+  box-shadow: var(--card-shadow);
+  padding: 22px;
 }
 
 .brief-text {
@@ -192,7 +188,7 @@ a {
 
 .brief-meta {
   font-size: 13px;
-  color: var(--muted);
+  color: var(--card-muted);
 }
 
 .news-list {
@@ -241,7 +237,7 @@ a {
 
 .news-meta {
   font-size: 13px;
-  color: var(--muted);
+  color: var(--card-muted);
 }
 
 .top-story-row {
@@ -286,10 +282,12 @@ a {
 
 .odds-card {
   background: var(--card);
+  color: var(--card-fg);
   border: 1px solid var(--border);
   border-top: 3px solid var(--platform-color, var(--border));
   border-radius: var(--radius);
-  padding: 16px;
+  box-shadow: var(--card-shadow);
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -300,7 +298,7 @@ a {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--platform-color, var(--fg));
+  color: var(--platform-color, var(--card-fg));
 }
 
 .odds-price {
@@ -312,24 +310,26 @@ a {
 .odds-price .unit {
   font-size: 18px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--card-muted);
   margin-left: 2px;
 }
 
 .odds-spread {
   font-size: 13px;
-  color: var(--muted);
+  color: var(--card-muted);
 }
 
 .best-price {
   text-align: center;
   font-size: 19px;
   font-weight: 600;
+  color: var(--card-fg);
   padding: 14px 12px;
   margin-top: 14px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
 }
 
 .odds-unavailable {
@@ -346,7 +346,7 @@ a {
   text-align: center;
   padding: 9px 14px;
   border-radius: 7px;
-  background: var(--platform-color, var(--fg));
+  background: var(--platform-color, var(--card-fg));
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -367,7 +367,7 @@ a {
   display: flex;
   gap: 16px;
   font-size: 13px;
-  color: var(--muted);
+  color: var(--card-muted);
   margin-bottom: 8px;
 }
 
@@ -386,7 +386,7 @@ a {
 
 .chart-empty {
   font-size: 14px;
-  color: var(--muted);
+  color: var(--card-muted);
   padding: 30px 0;
   text-align: center;
 }
@@ -413,7 +413,7 @@ a {
   min-width: 108px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--card-muted);
 }
 
 .watch-label {
@@ -422,18 +422,19 @@ a {
 
 .disclaimer {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--card-muted);
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 12px 14px;
-  margin-bottom: 24px;
+  box-shadow: var(--card-shadow);
+  padding: 14px 16px;
+  margin-bottom: 32px;
 }
 
 .footer {
-  margin-top: 48px;
+  margin-top: 56px;
   padding-top: 20px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--divider);
   font-size: 12px;
   color: var(--muted);
   display: flex;
@@ -457,6 +458,7 @@ a {
   font-weight: 700;
   letter-spacing: -0.005em;
   margin: 2px 0 14px;
+  color: var(--muted);
 }
 
 .home-subtitle {
@@ -466,7 +468,7 @@ a {
 .market-card-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .market-card {
@@ -474,18 +476,21 @@ a {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 18px;
+  box-shadow: var(--card-shadow);
+  padding: 22px;
   text-decoration: none;
-  color: var(--fg);
+  color: var(--card-fg);
+  transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
 .market-card:hover {
-  border-color: var(--brand-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .market-card-featured {
   border: 2px solid var(--brand-blue);
-  padding: 22px;
+  padding: 26px;
 }
 
 .market-card-eyebrow {
@@ -510,7 +515,7 @@ a {
 
 .market-card-desc {
   font-size: 14px;
-  color: var(--muted);
+  color: var(--card-muted);
   margin-bottom: 10px;
 }
 
@@ -531,21 +536,22 @@ a {
 }
 
 .market-card-settled:hover {
-  border-color: var(--border);
+  transform: none;
+  box-shadow: var(--card-shadow);
   opacity: 1;
 }
 
 .market-card-eyebrow-settled {
-  color: var(--muted);
+  color: var(--card-muted);
 }
 
 .market-card-resolved {
-  color: var(--muted);
+  color: var(--card-muted);
   font-weight: 500;
 }
 
 .market-card-settled .market-card-cta {
-  color: var(--muted);
+  color: var(--card-muted);
 }
 
 .trending-card {
@@ -553,9 +559,11 @@ a {
   align-items: center;
   gap: 10px;
   background: var(--card);
+  color: var(--card-fg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px 14px;
+  box-shadow: var(--card-shadow);
+  padding: 18px 16px;
 }
 
 .trending-arrow {
@@ -565,7 +573,7 @@ a {
   cursor: pointer;
   font-size: 22px;
   line-height: 1;
-  color: var(--muted);
+  color: var(--card-muted);
   padding: 4px 6px;
 }
 
@@ -619,7 +627,7 @@ a {
 
 .trending-volume {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--card-muted);
   margin-bottom: 4px;
 }
 
@@ -638,7 +646,7 @@ a {
 .trending-progress {
   display: flex;
   gap: 4px;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .trending-progress-segment {
@@ -647,7 +655,7 @@ a {
   padding: 0;
   border: none;
   border-radius: 2px;
-  background: var(--border);
+  background: var(--divider);
   cursor: pointer;
   overflow: hidden;
 }
