@@ -78,36 +78,40 @@ async function ElectionHubPage({ electionSlug }: { electionSlug: string }) {
   );
 
   return (
-    <main className="wrap">
+    <>
       <header className="header">
-        <Link className="brand" href="/">
-          PredictCentr
-        </Link>
-        <h1 className="title">{election.title}</h1>
-        <p className="subtitle">
-          {election.description} Resolves {election.resolutionDate}.
-        </p>
+        <div className="header-inner">
+          <Link className="brand" href="/">
+            PredictCentr
+          </Link>
+          <h1 className="title">{election.title}</h1>
+          <p className="subtitle">
+            {election.description} Resolves {election.resolutionDate}.
+          </p>
+        </div>
       </header>
 
-      <div className="disclaimer">
-        Prediction market prices reflect trader sentiment, not a guaranteed
-        outcome. Nothing on this page is financial advice or a promise of any
-        return.
-      </div>
-
-      <section className="section">
-        <div className="section-label">Candidates</div>
-        <div className="market-card-list">
-          {candidates.map((market) => (
-            <MarketCard
-              key={market.slug.join("/")}
-              market={market}
-              initialOdds={oddsByMarket.get(market.slug.join("/")) ?? {}}
-            />
-          ))}
+      <main className="wrap">
+        <div className="disclaimer">
+          Prediction market prices reflect trader sentiment, not a guaranteed
+          outcome. Nothing on this page is financial advice or a promise of any
+          return.
         </div>
-      </section>
-    </main>
+
+        <section className="section">
+          <div className="section-label">Candidates</div>
+          <div className="market-card-list">
+            {candidates.map((market) => (
+              <MarketCard
+                key={market.slug.join("/")}
+                market={market}
+                initialOdds={oddsByMarket.get(market.slug.join("/")) ?? {}}
+              />
+            ))}
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 
@@ -137,84 +141,90 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
       );
 
   return (
-    <main className="wrap">
+    <>
       <header className="header">
-        <Link className="brand" href="/">
-          PredictCentr
-        </Link>
-        {parentElection && (
-          <Link className="breadcrumb" href={`/${market.slug[0]}/`}>
-            ← {parentElection.title}
+        <div className="header-inner">
+          <Link className="brand" href="/">
+            PredictCentr
           </Link>
-        )}
-        {settled && <div className="status-badge status-settled">Settled</div>}
-        <h1 className="title">{content.market.title}</h1>
-        {settled ? (
-          <p className="subtitle">
-            Resolved {formatDate(settled.resolvedAt)}: {settled.result}
-          </p>
-        ) : (
-          <p className="subtitle">
-            {hasAnyPolymarket ? "Kalshi vs Polymarket, compared live" : "Live odds from Kalshi"}
-            . Resolves {content.market.resolutionDate}.
-          </p>
-        )}
-        <p className="resolution-note">{content.market.resolutionNote}</p>
+          {parentElection && (
+            <Link className="breadcrumb" href={`/${market.slug[0]}/`}>
+              ← {parentElection.title}
+            </Link>
+          )}
+          {settled && <div className="status-badge status-settled">Settled</div>}
+          <h1 className="title">{content.market.title}</h1>
+          {settled ? (
+            <p className="subtitle">
+              Resolved {formatDate(settled.resolvedAt)}: {settled.result}
+            </p>
+          ) : (
+            <p className="subtitle">
+              {hasAnyPolymarket ? "Kalshi vs Polymarket, compared live" : "Live odds from Kalshi"}
+              . Resolves {content.market.resolutionDate}.
+            </p>
+          )}
+          <p className="resolution-note">{content.market.resolutionNote}</p>
+        </div>
       </header>
 
-      <div className="disclaimer">
-        Prediction market prices reflect trader sentiment, not a guaranteed
-        outcome. Nothing on this page is financial advice or a promise of any
-        return.
-      </div>
-
-      {outcomesData.map(({ outcome, odds, history }) => (
-        <div className="outcome-block" key={outcome.id}>
-          {market.outcomes.length > 1 && (
-            <h2 className="outcome-heading">{outcome.label}</h2>
-          )}
-          <OddsComparison
-            initialData={odds}
-            pollUrl={
-              settled
-                ? undefined
-                : `/api/markets/odds?slug=${encodeURIComponent(
-                    slugPath
-                  )}&outcome=${encodeURIComponent(outcome.id)}`
-            }
-            question={outcome.question}
-            kalshiAffiliateUrl={outcome.kalshi.url}
-            polymarketAffiliateUrl={outcome.polymarket?.url}
-          />
-          <HistoryChart
-            data={history}
-            candidateName={outcome.label}
-            hasPolymarket={Boolean(outcome.polymarket)}
-          />
+      <main className="wrap">
+        <div className="disclaimer">
+          Prediction market prices reflect trader sentiment, not a guaranteed
+          outcome. Nothing on this page is financial advice or a promise of any
+          return.
         </div>
-      ))}
 
-      <MarketBrief
-        text={content.marketBrief.text}
-        updatedAt={content.marketBrief.updatedAt}
-        author={content.marketBrief.author}
-      />
+        {outcomesData.map(({ outcome, odds, history }) => (
+          <div className="outcome-block" key={outcome.id}>
+            {market.outcomes.length > 1 && (
+              <h2 className="outcome-heading">{outcome.label}</h2>
+            )}
+            <OddsComparison
+              initialData={odds}
+              pollUrl={
+                settled
+                  ? undefined
+                  : `/api/markets/odds?slug=${encodeURIComponent(
+                      slugPath
+                    )}&outcome=${encodeURIComponent(outcome.id)}`
+              }
+              question={outcome.question}
+              kalshiAffiliateUrl={outcome.kalshi.url}
+              polymarketAffiliateUrl={outcome.polymarket?.url}
+            />
+            <HistoryChart
+              data={history}
+              candidateName={outcome.label}
+              hasPolymarket={Boolean(outcome.polymarket)}
+            />
+          </div>
+        ))}
 
-      <NewsSection items={content.news} />
+        <MarketBrief
+          text={content.marketBrief.text}
+          updatedAt={content.marketBrief.updatedAt}
+          author={content.marketBrief.author}
+        />
 
-      <WhatToWatch items={content.whatToWatch} />
+        <NewsSection items={content.news} />
+
+        <WhatToWatch items={content.whatToWatch} />
+      </main>
 
       <footer className="footer">
-        <div>
-          Data sources: Kalshi public API
-          {hasAnyPolymarket ? " and Polymarket Gamma/CLOB API" : ""}.
-          {settled
-            ? " Odds shown are the final snapshot as of settlement."
-            : " Prices are cached up to 30 seconds."}
+        <div className="footer-inner">
+          <div>
+            Data sources: Kalshi public API
+            {hasAnyPolymarket ? " and Polymarket Gamma/CLOB API" : ""}.
+            {settled
+              ? " Odds shown are the final snapshot as of settlement."
+              : " Prices are cached up to 30 seconds."}
+          </div>
+          <div>{affiliateDisclosure(content.affiliateStatus)}</div>
         </div>
-        <div>{affiliateDisclosure(content.affiliateStatus)}</div>
       </footer>
-    </main>
+    </>
   );
 }
 

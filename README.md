@@ -23,25 +23,39 @@ regenerate any of them at a different size.
 
 ## Design system (`app/globals.css`)
 
-Fixed dark theme, not OS-preference-driven -- the whole site always uses
-a dark charcoal `--bg` with content presented on white "cards" (`--card`),
-same idea as Bloomberg Terminal/TradingView/Linear rather than a light/dark
-toggle. That split means there are **two parallel text-color scales** and
-mixing them up silently kills contrast:
+Fixed theme, not OS-preference-driven. Editorial/premium rather than a
+trading-terminal look: a light neutral gray page background (`--bg`,
+`#f5f7fa`) with every content section presented on a white "card"
+(`--card`) that has a subtle border and soft shadow. Dark charcoal
+(`--nav-bg`) is reserved for exactly two things -- the site header and
+footer bands -- both rendered as full-bleed `<header>`/`<footer>`
+elements outside `.wrap`/`.home-wrap` with their own `.header-inner` /
+`.home-header-inner` / `.footer-inner` wrapper holding the actual
+content at the page's normal max-width, so the dark band spans edge to
+edge while everything else stays constrained.
 
-- `--fg` / `--muted` -- for text sitting directly on `--bg` (headers, section
-  labels, footers, breadcrumbs). Light colors.
-- `--card-fg` / `--card-muted` -- for text sitting inside a white `.card`,
-  `.market-card`, `.odds-card`, `.trending-card`, `.best-price`, etc. Dark
-  colors.
-- `--border` is tuned for use *inside/around* white cards (divider lines,
-  card borders); `--divider` is the equivalent for chrome sitting directly
-  on the dark page background (header rule, outcome heading rule).
+There are two parallel text-color scales -- mixing them up silently kills
+contrast:
 
-When adding a new element: if its background is `var(--card)` (or it lives
-inside something that is), use `--card-fg`/`--card-muted`; if it sits
-straight on the page background, use `--fg`/`--muted`. `--brand-blue` is
-reserved for links, primary actions, active states and chart lines --
+- `--fg` / `--muted` -- text sitting directly on the light `--bg` (section
+  labels, the odds "last checked" line). Dark colors.
+- `--card-fg` / `--card-muted` -- text inside a white `.card`,
+  `.market-card`, `.odds-card`, `.trending-card`, `.best-price`, etc. Also
+  dark, but kept as separate tokens so a component never has to guess
+  whether its ambient text color is safe -- explicit is cheaper than a
+  contrast bug.
+- `--nav-fg` / `--nav-muted` -- text inside the dark `.header`/`.footer`
+  bands only (brand, title, subtitle, tagline, breadcrumb, footer copy).
+  Light colors, since they sit on `--nav-bg`.
+- `--border` works for dividers both directly on the page and inside white
+  cards (page bg and card bg are both light); `--nav-divider` is the
+  translucent-white equivalent for the one dark-on-dark hairline inside
+  the header/footer bands.
+
+When adding a new element: if it renders inside the header/footer band,
+use `--nav-fg`/`--nav-muted`; otherwise use `--fg`/`--muted` on the page
+background or `--card-fg`/`--card-muted` inside a white card. `--brand-blue`
+is reserved for links, primary actions, active states and chart lines --
 avoid using it decoratively. `--kalshi`/`--polymarket`/`--danger`/`--warn`
 are tuned for contrast against white cards, since that's the only
 background they ever render on.

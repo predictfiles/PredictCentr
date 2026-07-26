@@ -49,71 +49,75 @@ export default async function Home() {
   );
 
   return (
-    <main className="home-wrap">
+    <>
       <header className="header">
-        <h1 className="home-wordmark">
-          Predict<span className="home-wordmark-accent">Centr</span>
-        </h1>
-        <p className="home-tagline">
-          Breaking news. Live odds. Better decisions.
-        </p>
-        <p className="subtitle home-subtitle">
-          Compare live prediction market prices, discover what's moving
-          them, and make better-informed decisions.
-        </p>
+        <div className="home-header-inner">
+          <h1 className="home-wordmark">
+            Predict<span className="home-wordmark-accent">Centr</span>
+          </h1>
+          <p className="home-tagline">
+            Breaking news. Live odds. Better decisions.
+          </p>
+          <p className="subtitle home-subtitle">
+            Compare live prediction market prices, discover what's moving
+            them, and make better-informed decisions.
+          </p>
+        </div>
       </header>
 
-      <div className="home-grid">
-        <div className="home-main">
-          <TrendingOnX items={resolvedTrending} />
+      <main className="home-wrap">
+        <div className="home-grid">
+          <div className="home-main">
+            <TrendingOnX items={resolvedTrending} />
 
-          {hotMarket && (
-            <section className="section">
-              <div className="market-card-list">
-                <MarketCard
-                  market={hotMarket}
-                  initialOdds={oddsByMarket.get(hotMarket.slug.join("/")) ?? {}}
-                  featured
-                />
-              </div>
-            </section>
-          )}
-
-          {CATEGORIES.map((category) => {
-            const categoryMarkets = liveMarkets.filter((m) => m.category === category.id);
-            if (categoryMarkets.length === 0) return null;
-            return (
-              <section className="section" key={category.id}>
-                <div className="section-label">{category.label}</div>
+            {hotMarket && (
+              <section className="section">
                 <div className="market-card-list">
-                  {categoryMarkets.map((market) => (
-                    <MarketCard
-                      key={market.slug.join("/")}
-                      market={market}
-                      initialOdds={oddsByMarket.get(market.slug.join("/")) ?? {}}
-                    />
+                  <MarketCard
+                    market={hotMarket}
+                    initialOdds={oddsByMarket.get(hotMarket.slug.join("/")) ?? {}}
+                    featured
+                  />
+                </div>
+              </section>
+            )}
+
+            {CATEGORIES.map((category) => {
+              const categoryMarkets = liveMarkets.filter((m) => m.category === category.id);
+              if (categoryMarkets.length === 0) return null;
+              return (
+                <section className="section" key={category.id}>
+                  <div className="section-label">{category.label}</div>
+                  <div className="market-card-list">
+                    {categoryMarkets.map((market) => (
+                      <MarketCard
+                        key={market.slug.join("/")}
+                        market={market}
+                        initialOdds={oddsByMarket.get(market.slug.join("/")) ?? {}}
+                      />
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
+
+            {archivedMarkets.length > 0 && (
+              <section className="section">
+                <div className="section-label">Archive</div>
+                <div className="market-card-list">
+                  {archivedMarkets.map((market) => (
+                    <MarketCard key={market.slug.join("/")} market={market} initialOdds={{}} />
                   ))}
                 </div>
               </section>
-            );
-          })}
+            )}
+          </div>
 
-          {archivedMarkets.length > 0 && (
-            <section className="section">
-              <div className="section-label">Archive</div>
-              <div className="market-card-list">
-                {archivedMarkets.map((market) => (
-                  <MarketCard key={market.slug.join("/")} market={market} initialOdds={{}} />
-                ))}
-              </div>
-            </section>
-          )}
+          <div className="home-sidebar">
+            <TopNewsStories />
+          </div>
         </div>
-
-        <div className="home-sidebar">
-          <TopNewsStories />
-        </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }

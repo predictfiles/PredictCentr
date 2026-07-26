@@ -1,17 +1,20 @@
 :root {
-  color-scheme: dark;
+  /* Page background -- light neutral gray, not white, so white cards still read as distinct surfaces. */
+  --bg: #f5f7fa;
+  --fg: #12141a;
+  --muted: #6b7280;
+  --border: #e2e5ea;
 
-  /* Page chrome -- header, section labels, footer: sits directly on --bg. */
-  --bg: #0f1115;
-  --fg: #f5f6f8;
-  --muted: #9aa3b2;
-  --divider: rgba(255, 255, 255, 0.08);
-
-  /* Content cards -- always white, regardless of page background. */
+  /* Content cards -- always white. */
   --card: #ffffff;
-  --card-fg: #111111;
+  --card-fg: #12141a;
   --card-muted: #6b7280;
-  --border: #e5e7eb;
+
+  /* Dark charcoal is reserved for the site header/footer bands only. */
+  --nav-bg: #12141a;
+  --nav-fg: #f5f6f8;
+  --nav-muted: #9aa3b2;
+  --nav-divider: rgba(255, 255, 255, 0.08);
 
   --kalshi: #0f9d68;
   --polymarket: #6366f1;
@@ -22,8 +25,8 @@
   --brand-blue: #3358e0;
 
   --radius: 18px;
-  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.24), 0 10px 28px rgba(0, 0, 0, 0.28);
-  --card-shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.28), 0 18px 36px rgba(0, 0, 0, 0.34);
+  --card-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 6px 16px rgba(16, 24, 40, 0.06);
+  --card-shadow-hover: 0 4px 8px rgba(16, 24, 40, 0.06), 0 14px 28px rgba(16, 24, 40, 0.1);
 }
 
 * {
@@ -82,9 +85,21 @@ a {
 }
 
 .header {
-  padding-bottom: 24px;
-  margin-bottom: 32px;
-  border-bottom: 1px solid var(--divider);
+  background: var(--nav-bg);
+  color: var(--nav-fg);
+  border-bottom: 1px solid var(--nav-divider);
+}
+
+.header-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 20px 28px;
+}
+
+.home-header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 20px 32px;
 }
 
 .brand {
@@ -93,7 +108,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--fg);
+  color: var(--nav-fg);
   margin-bottom: 10px;
   text-decoration: none;
 }
@@ -106,7 +121,7 @@ a {
   display: block;
   font-size: 13px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--nav-muted);
   text-decoration: none;
   margin-bottom: 10px;
 }
@@ -140,13 +155,13 @@ a {
 }
 
 .subtitle {
-  color: var(--muted);
+  color: var(--nav-muted);
   font-size: 15px;
   margin: 0;
 }
 
 .resolution-note {
-  color: var(--muted);
+  color: var(--nav-muted);
   font-size: 13px;
   margin: 8px 0 0;
 }
@@ -169,7 +184,7 @@ a {
   font-weight: 700;
   margin: 0 0 12px;
   padding-top: 8px;
-  border-top: 1px solid var(--divider);
+  border-top: 1px solid var(--border);
 }
 
 .card {
@@ -433,10 +448,16 @@ a {
 
 .footer {
   margin-top: 56px;
-  padding-top: 20px;
-  border-top: 1px solid var(--divider);
+  background: var(--nav-bg);
+  border-top: 1px solid var(--nav-divider);
+}
+
+.footer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 32px;
   font-size: 12px;
-  color: var(--muted);
+  color: var(--nav-muted);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -458,7 +479,7 @@ a {
   font-weight: 700;
   letter-spacing: -0.005em;
   margin: 2px 0 14px;
-  color: var(--muted);
+  color: var(--nav-muted);
 }
 
 .home-subtitle {
@@ -655,7 +676,7 @@ a {
   padding: 0;
   border: none;
   border-radius: 2px;
-  background: var(--divider);
+  background: var(--border);
   cursor: pointer;
   overflow: hidden;
 }
