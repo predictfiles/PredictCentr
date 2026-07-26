@@ -103,21 +103,16 @@ a {
 }
 
 .brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  color: var(--nav-fg);
+  display: inline-block;
   margin-bottom: 14px;
   text-decoration: none;
+  line-height: 0;
 }
 
-.wordmark-lines {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.05;
+.brand-logo {
+  display: block;
+  height: 28px;
+  width: auto;
 }
 
 .brand:hover {
@@ -471,13 +466,14 @@ a {
 }
 
 .home-wordmark {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
   margin: 0;
+  line-height: 0;
+}
+
+.wordmark-logo {
+  display: block;
+  height: 48px;
+  width: auto;
 }
 
 .home-tagline {

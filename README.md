@@ -18,17 +18,28 @@ Built with Next.js (App Router) and deployed on Vercel.
   `/oscar-winner-2027/` lists Best Picture contenders (starting with The
   Odyssey). Only exists for slugs registered in `ELECTIONS`.
 
+The logo is the real exported file, not a recreation -- `public/logo-
+full.png` (the icon + wordmark lockup, background made transparent)
+is used directly via `<img>` in the header/hero (`.wordmark-logo` /
+`.brand-logo` in `app/globals.css` just control its display size).
 Favicons (`app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`) use
-Next.js's file-based icon convention -- no manual `<link>` tags needed,
-Next.js injects them automatically. `public/logo-mark.svg` is the
-source-of-truth vector for the mark (three ascending bars, purple ->
-pink -> orange gradient, plus an amber dot) -- `components/LogoMark.tsx`
-renders the same shape inline for the header/hero, and
-`scripts/generate-icons.ps1` rasterizes it (on a near-black rounded-
-square tile) into the three favicon/app-icon files. Re-run that script
-with `powershell -File scripts/generate-icons.ps1` any time the mark's
-geometry or colors change -- all three places share one set of
-coordinates, so keep them in sync rather than editing the PNGs by hand.
+Next.js's file-based icon convention -- no manual `<link>` tags needed
+-- and are generated from `public/logo-icon-source.png` (just the bars
++ dot, cropped out of the same file, still transparent).
+
+If Owain supplies an updated logo export (same layout: icon then
+wordmark, flattened onto a solid black background), regenerate both:
+
+```bash
+powershell -File scripts/process-logo-file.ps1 -SourcePath <path-to-new-export>
+powershell -File scripts/generate-icons.ps1
+```
+
+The first script recovers transparency (un-multiplies each pixel
+against black -- correct for a design flattened onto black, not just a
+naive "delete near-black pixels" chroma-key) and auto-detects the gap
+between the icon and the wordmark to produce the crop; the second
+resizes that crop into the three favicon/app-icon sizes.
 
 ## Design system (`app/globals.css`)
 
