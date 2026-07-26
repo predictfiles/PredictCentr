@@ -61,10 +61,9 @@ export function TrendingOnX({ items }: { items: ResolvedTrendingItem[] }) {
         )}
 
         <div className="trending-body" aria-live="polite">
-          <div className="trending-badge-row">
-            <XLogo />
-            <span className="trending-badge">Trending on X</span>
-          </div>
+          <span className="trending-badge">
+            Trending on <XLogo />
+          </span>
 
           <div className="trending-story-row">
             {item.image && <NewsThumb src={item.image} />}
