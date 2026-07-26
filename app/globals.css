@@ -104,17 +104,16 @@ a {
 
 .brand {
   display: inline-block;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: var(--nav-fg);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   text-decoration: none;
 }
 
 .brand:hover {
-  color: var(--brand-blue);
+  opacity: 0.85;
 }
 
 .breadcrumb {
@@ -470,7 +469,7 @@ a {
   margin: 0;
 }
 
-.home-wordmark-accent {
+.brand-accent {
   color: var(--brand-blue);
 }
 

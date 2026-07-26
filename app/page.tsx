@@ -53,7 +53,7 @@ export default async function Home() {
       <header className="header">
         <div className="home-header-inner">
           <h1 className="home-wordmark">
-            Predict<span className="home-wordmark-accent">Centr</span>
+            Predict<span className="brand-accent">Centr</span>
           </h1>
           <p className="home-tagline">
             Breaking news. Live odds. Better decisions.

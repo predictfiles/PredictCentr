@@ -82,7 +82,7 @@ async function ElectionHubPage({ electionSlug }: { electionSlug: string }) {
       <header className="header">
         <div className="header-inner">
           <Link className="brand" href="/">
-            PredictCentr
+            Predict<span className="brand-accent">Centr</span>
           </Link>
           <h1 className="title">{election.title}</h1>
           <p className="subtitle">
@@ -145,7 +145,7 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
       <header className="header">
         <div className="header-inner">
           <Link className="brand" href="/">
-            PredictCentr
+            Predict<span className="brand-accent">Centr</span>
           </Link>
           {parentElection && (
             <Link className="breadcrumb" href={`/${market.slug[0]}/`}>
