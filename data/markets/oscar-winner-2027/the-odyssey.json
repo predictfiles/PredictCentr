@@ -1,0 +1,66 @@
+{
+  "market": {
+    "title": "The Odyssey — Best Picture Winner, 99th Academy Awards",
+    "resolutionDate": "2027-03-14",
+    "resolutionNote": "Resolves on the official Best Picture winner announced at the 99th Academy Awards ceremony. Kalshi's own wording: \"If The Odyssey has won Best Picture at the 99th Academy Awards, then the market resolves to Yes.\" No Polymarket winner market exists yet -- Polymarket currently only lists a separate Best Picture NOMINATIONS market for The Odyssey (a different question: whether it's nominated at all, not whether it wins), so this page tracks Kalshi only until/unless Polymarket opens an equivalent winner market."
+  },
+  "marketBrief": {
+    "text": "The Odyssey opened to $123.5M domestically and $263.7M worldwide in July -- Christopher Nolan's biggest global debut ever, ahead of even The Dark Knight Rises -- and has held unusually well since, with a second-weekend haul above $84M that's itself a Nolan record. Reviews have matched the box office: 95% on Rotten Tomatoes from over 300 critics, tied for the highest of Nolan's career, with particular praise for Matt Damon's lead performance and the film's IMAX-native 70mm photography. That combination -- a genuine box-office event with awards-caliber reviews -- is why Kalshi already has it as a clear favorite at 54%, well ahead of whatever sits in second place. What's genuinely unusual is the market itself: Kalshi opened this Best Picture WINNER contract back in March 2026, months before the Academy has even announced nominations (that happens January 21, 2027, with the ceremony on March 14, 2027). Polymarket, by contrast, currently only lists a Best Picture NOMINATIONS market for The Odyssey -- pricing a nomination at 98%, a much easier bar -- with no winner market there yet, which is why this page is Kalshi-only for now. A frontrunner locked in this early carries real risk: Nolan's own Oppenheimer swept in 2023, but plenty of pre-nomination favorites have faded once the actual field solidifies.",
+    "updatedAt": "2026-07-26",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "The Odyssey: Why Christopher Nolan's Movie Had Huge Box Office Opening",
+      "source": "The Hollywood Reporter",
+      "date": "2026-07-21",
+      "url": "https://www.hollywoodreporter.com/movies/movie-news/the-odyssey-christopher-nolan-box-office-success-explained-1236652731/",
+      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2026/07/The-Odyssey-everett-H-2026.png?w=1296&h=730&crop=1"
+    },
+    {
+      "headline": "'The Odyssey' Makes History at Global Box Office for Christopher Nolan",
+      "source": "Euronews",
+      "date": "2026-07-20",
+      "url": "https://www.euronews.com/culture/2026/07/20/the-odyssey-makes-history-at-global-box-office-for-christopher-nolan",
+      "image": "https://images.euronews.com/articles/stories/09/84/39/58/1536x864_cmsv2_9bcda747-9242-55fb-b7f9-006ed6599eeb-9843958.jpg"
+    },
+    {
+      "headline": "'The Odyssey' Is the Oscar Frontrunner, but What's the Path to Another Best Picture Win for Christopher Nolan?",
+      "source": "Next Best Picture",
+      "date": "2026-07-22",
+      "url": "https://nextbestpicture.com/the-odyssey-is-the-oscar-frontrunner-but-whats-the-path-to-another-best-picture-win-for-christopher-nolan/",
+      "image": "https://nextbestpicture-com.b-cdn.net/wp-content/uploads/2026/07/The-Odyssey-3-696x348.jpg"
+    },
+    {
+      "headline": "'The Odyssey' Rotten Tomatoes Score Is an Epic Record-Breaker for Christopher Nolan",
+      "source": "MovieWeb",
+      "date": "2026-07-15",
+      "url": "https://movieweb.com/the-odyssey-rotten-tomatoes-score/",
+      "image": "https://static0.moviewebimages.com/wordpress/wp-content/uploads/2026/07/odyssey.jpg"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "2027-01-21",
+      "label": "Oscar nominations announced -- confirms The Odyssey, and the rest of the Best Picture field, officially"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Guild awards (PGA, DGA, SAG Ensemble, WGA) through Dec 2026-Feb 2027 -- historically the strongest predictors of the actual Best Picture winner"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Critics' groups (National Board of Review, NYFCC, LAFCA) announcements starting December 2026"
+    },
+    {
+      "date": "2027-03-14",
+      "label": "99th Academy Awards ceremony -- market resolution"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

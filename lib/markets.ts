@@ -4,6 +4,7 @@ import donaldTrump2028Raw from "@/data/markets/2028-us-presidential-election-win
 import senateDemocrats2026Raw from "@/data/markets/2026-us-senate-control/democrats.json";
 import lebronNextTeamRaw from "@/data/markets/lebron-james-next-team.json";
 import grokOdysseyFilmRaw from "@/data/markets/grok-imagine-odyssey-film.json";
+import oscarOdysseyBestPictureRaw from "@/data/markets/oscar-winner-2027/the-odyssey.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -15,6 +16,7 @@ const donaldTrump2028 = donaldTrump2028Raw as MarketContent;
 const senateDemocrats2026 = senateDemocrats2026Raw as MarketContent;
 const lebronNextTeam = lebronNextTeamRaw as MarketContent;
 const grokOdysseyFilm = grokOdysseyFilmRaw as MarketContent;
+const oscarOdysseyBestPicture = oscarOdysseyBestPictureRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -158,6 +160,27 @@ export const markets: MarketConfig[] = [
     ],
     content: grokOdysseyFilm,
   },
+  {
+    slug: ["oscar-winner-2027", "the-odyssey"],
+    category: "culture",
+    shortDescription:
+      "Live odds on The Odyssey winning Best Picture at the 99th Academy Awards, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "the-odyssey",
+        label: "The Odyssey",
+        question: "Will The Odyssey win Best Picture?",
+        kalshi: {
+          ticker: "KXOSCARPIC-27-ODY",
+          seriesTicker: "KXOSCARPIC",
+          url: "https://kalshi.com/markets/kxoscarpic/oscar-for-best-picture/kxoscarpic-27?selectedMarketTicker=KXOSCARPIC-27-ODY",
+        },
+        // Kalshi only -- Polymarket currently has just a Best Picture
+        // NOMINATIONS market for The Odyssey, not a winner market.
+      },
+    ],
+    content: oscarOdysseyBestPicture,
+  },
 ];
 
 export function findMarket(slug: string[]): MarketConfig | undefined {
@@ -177,6 +200,13 @@ export const ELECTIONS: ElectionInfo[] = [
     resolutionDate: "2028-11-07",
     description:
       "Compare odds across candidates in the 2028 U.S. Presidential Election, tracked on Kalshi and Polymarket.",
+  },
+  {
+    slug: "oscar-winner-2027",
+    title: "Best Picture Winner — 99th Academy Awards",
+    resolutionDate: "2027-03-14",
+    description:
+      "Compare odds on which film wins Best Picture at the 99th Academy Awards (nominations announced January 21, 2027; ceremony March 14, 2027), tracked on Kalshi.",
   },
 ];
 

@@ -11,9 +11,12 @@ Built with Next.js (App Router) and deployed on Vercel.
 - `/<slug...>/` — one market page. 1 URL segment for a single-event market
   (e.g. `/lebron-james-next-team/`), 2 for a market nested under a race
   (e.g. `/2028-us-presidential-election-winner/jd-vance/`)
-- `/<election-slug>/` — a hub page listing every candidate market nested
-  under that race side by side (e.g. `/2028-us-presidential-election-winner/`
-  lists Vance and Trump). Only exists for slugs registered in `ELECTIONS`.
+- `/<hub-slug>/` — a hub page listing every market nested under it side by
+  side. Not election-specific despite the `ELECTIONS` name -- the same
+  mechanism powers any "one top-level slug, several nested pages" grouping,
+  e.g. `/2028-us-presidential-election-winner/` lists Vance and Trump, and
+  `/oscar-winner-2027/` lists Best Picture contenders (starting with The
+  Odyssey). Only exists for slugs registered in `ELECTIONS`.
 
 Favicons (`app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`) use
 Next.js's file-based icon convention -- no manual `<link>` tags needed,
@@ -91,10 +94,12 @@ Open http://localhost:3000.
   endpoint client-side every 30s -- a market with multiple outcomes like
   LeBron renders one odds+chart block per outcome, stacked; a binary market
   just renders one); a 1-segment slug that matches `ELECTIONS` renders the
-  hub page (lists that race's candidates via `components/MarketCard.tsx`,
-  same live-odds-fetch pattern as the homepage); anything else 404s. A
-  candidate page whose first slug segment is a registered election shows a
-  breadcrumb back to its hub.
+  hub page (lists every market sharing that first slug segment via
+  `components/MarketCard.tsx`, same live-odds-fetch pattern as the
+  homepage -- this is a generic "hub" mechanism reused for award-show
+  ceremonies as well as elections, despite the name); anything else 404s.
+  A candidate page whose first slug segment is a registered hub shows a
+  breadcrumb back to it.
 - `lib/oddsLoader.ts` — the live-fetch functions shared by every page that
   needs a fresh read for an outcome (market pages, the homepage). One code
   path, so numbers can't drift between where they're shown.
@@ -154,11 +159,15 @@ Open http://localhost:3000.
    — a `slug` array, `category`, and one `outcomes` entry per contender
    you're tracking.
 5. Nothing else changes — the page, API routes, and homepage card are all
-   driven by that one array. To add a second candidate under an *existing*
-   election (same slug's first segment as one already in `lib/markets.ts`),
-   this is all you need -- the hub page at `/<election-slug>/` picks it up
-   automatically since it just lists every market sharing that first
-   segment. To start a *new* election, also add an entry to `ELECTIONS`.
+   driven by that one array. To add a second nested page under an
+   *existing* hub (same slug's first segment as one already in
+   `lib/markets.ts`, e.g. a second Best Picture contender under
+   `oscar-winner-2027`), this is all you need -- the hub page at
+   `/<hub-slug>/` picks it up automatically since it just lists every
+   market sharing that first segment. To start a *new* hub (a new election,
+   or a new awards ceremony/year), also add an entry to `ELECTIONS` --
+   despite the name it's a generic hub registry (`slug`, `title`,
+   `resolutionDate`, `description`), not specific to elections.
 
 ## Before you launch a new market
 
