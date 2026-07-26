@@ -32,6 +32,24 @@ $w = $src.Width
 $h = $src.Height
 Write-Host "Source: $w x $h"
 
+# The "solid black" canvas isn't always literally (0,0,0) -- sample the
+# four corners (guaranteed background) and set the zero-out cutoff a bit
+# above whatever that background's brightness actually is, rather than
+# assuming a fixed constant that only happens to fit one export.
+$corners = @(
+    $src.GetPixel(1, 1),
+    $src.GetPixel($w - 2, 1),
+    $src.GetPixel(1, $h - 2),
+    $src.GetPixel($w - 2, $h - 2)
+)
+$bgMax = 0
+foreach ($c in $corners) {
+    $m = [Math]::Max($c.R, [Math]::Max($c.G, $c.B))
+    if ($m -gt $bgMax) { $bgMax = $m }
+}
+$zeroCutoff = $bgMax + 12
+Write-Host "Background sample max(r,g,b)=$bgMax -> zero-out cutoff=$zeroCutoff"
+
 $out = New-Object System.Drawing.Bitmap($w, $h, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
 
 $srcData = $src.LockBits((New-Object System.Drawing.Rectangle(0, 0, $w, $h)), [System.Drawing.Imaging.ImageLockMode]::ReadOnly, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
@@ -56,7 +74,7 @@ for ($y = 0; $y -lt $h; $y++) {
         # ignore original alpha byte -- source is fully opaque
 
         $a = [Math]::Max($r, [Math]::Max($g, $b))
-        if ($a -lt 8) {
+        if ($a -lt $zeroCutoff) {
             $a = 0
             $nr = 0; $ng = 0; $nb = 0
         } else {
