@@ -547,3 +547,84 @@ a {
 .market-card-settled .market-card-cta {
   color: var(--muted);
 }
+
+.trending-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 14px;
+}
+
+.trending-arrow {
+  flex: 0 0 auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--muted);
+  padding: 4px 6px;
+}
+
+.trending-arrow:hover {
+  color: var(--brand-blue);
+}
+
+.trending-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.trending-link {
+  display: block;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+.trending-link-static {
+  cursor: default;
+}
+
+.trending-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin-bottom: 6px;
+}
+
+.trending-headline {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+a.trending-link:hover .trending-headline {
+  text-decoration: underline;
+}
+
+.trending-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.trending-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+}
+
+.trending-dot-active {
+  background: var(--brand-blue);
+}

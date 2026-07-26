@@ -128,3 +128,16 @@ export interface ElectionInfo {
   resolutionDate: string;
   description: string;
 }
+
+/**
+ * A manually-picked entry for the homepage's "Trending on X" carousel.
+ * Owain's own daily pick from X's "Today's News" panel -- no API, no
+ * automation. `marketSlug` is the joined slug path (e.g.
+ * "2028-us-presidential-election-winner/donald-trump") of the market it
+ * relates to; omit it when a trending story doesn't map to any current
+ * market and the item should render unlinked.
+ */
+export interface TrendingItem {
+  headline: string;
+  marketSlug?: string;
+}

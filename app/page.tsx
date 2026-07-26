@@ -2,6 +2,8 @@ import { markets, getHotMarket } from "@/lib/markets";
 import { loadOutcomeOdds } from "@/lib/oddsLoader";
 import { MarketCard } from "@/components/MarketCard";
 import { TopNewsStories } from "@/components/TopNewsStories";
+import { TrendingOnX } from "@/components/TrendingOnX";
+import trending from "@/data/trending.json";
 import type { OddsResponse } from "@/lib/types";
 
 const CATEGORIES = [
@@ -52,6 +54,8 @@ export default async function Home() {
 
       <div className="home-grid">
         <div className="home-main">
+          <TrendingOnX items={trending} />
+
           {hotMarket && (
             <section className="section">
               <div className="market-card-list">

@@ -3,9 +3,11 @@
 Prediction market odds compared across platforms, with news context.
 Built with Next.js (App Router) and deployed on Vercel.
 
-- `/` — homepage: a manually-pinned "Hot Market" feature, a "Top News
-  Stories" sidebar (each market's latest headline), then every live market
-  grouped by category (Politics, Sports, Culture, ...)
+- `/` — homepage, top to bottom: a "Trending on X" carousel (Owain's own
+  manually-picked stories, `data/trending.json`), a manually-pinned "Hot
+  Market" feature, then every live market grouped by category (Politics,
+  Sports, Culture, ...). A "Top News Stories" sidebar (each market's latest
+  headline) runs alongside.
 - `/<slug...>/` — one market page. 1 URL segment for a single-event market
   (e.g. `/lebron-james-next-team/`), 2 for a market nested under a race
   (e.g. `/2028-us-presidential-election-winner/jd-vance/`)
@@ -69,6 +71,12 @@ Open http://localhost:3000.
   swings, traffic, volume) yet -- just change this array to feature a
   different market. Revisit as real ranking logic once there are enough
   markets that the hottest one isn't obvious at a glance (8-10+ pages).
+- `data/trending.json` + `components/TrendingOnX.tsx` — the "Trending on
+  X" carousel. Purely manual, no API: each entry is `{ headline,
+  marketSlug? }`, where `marketSlug` is the joined slug path of the market
+  it relates to (omit it to render an unlinked story). Auto-rotates every
+  6s, pauses on hover, has dot + arrow controls. Add/remove/reorder entries
+  by hand as stories trend and fade -- same pattern as `HOT_MARKET_SLUG`.
 - `data/markets/<slug...>.json` — everything manually curated for that one
   market: the brief, news headlines, "what to watch" dates, and affiliate
   status. No CMS — just edit and redeploy.
