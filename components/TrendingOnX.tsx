@@ -2,11 +2,16 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import type { TrendingItem } from "@/lib/types";
+
+export interface ResolvedTrendingItem {
+  headline: string;
+  marketTitle?: string;
+  marketHref?: string;
+}
 
 const ROTATE_MS = 6000;
 
-export function TrendingOnX({ items }: { items: TrendingItem[] }) {
+export function TrendingOnX({ items }: { items: ResolvedTrendingItem[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -25,13 +30,6 @@ export function TrendingOnX({ items }: { items: TrendingItem[] }) {
   function goTo(index: number) {
     setActiveIndex(((index % items.length) + items.length) % items.length);
   }
-
-  const content = (
-    <>
-      <span className="trending-badge">Trending on X</span>
-      <span className="trending-headline">{item.headline}</span>
-    </>
-  );
 
   return (
     <section className="section">
@@ -52,12 +50,12 @@ export function TrendingOnX({ items }: { items: TrendingItem[] }) {
         )}
 
         <div className="trending-body" aria-live="polite">
-          {item.marketSlug ? (
-            <Link className="trending-link" href={`/${item.marketSlug}/`}>
-              {content}
+          <span className="trending-badge">Trending on X</span>
+          <div className="trending-headline">{item.headline}</div>
+          {item.marketHref && item.marketTitle && (
+            <Link className="trending-market-link" href={item.marketHref}>
+              Market Affected: {item.marketTitle}
             </Link>
-          ) : (
-            <div className="trending-link trending-link-static">{content}</div>
           )}
         </div>
 

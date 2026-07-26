@@ -74,9 +74,15 @@ Open http://localhost:3000.
 - `data/trending.json` + `components/TrendingOnX.tsx` — the "Trending on
   X" carousel. Purely manual, no API: each entry is `{ headline,
   marketSlug? }`, where `marketSlug` is the joined slug path of the market
-  it relates to (omit it to render an unlinked story). Auto-rotates every
-  6s, pauses on hover, has dot + arrow controls. Add/remove/reorder entries
-  by hand as stories trend and fade -- same pattern as `HOT_MARKET_SLUG`.
+  it relates to (omit it to render an unlinked story). `app/page.tsx`
+  resolves that slug via `findMarket()` before rendering, same "Market
+  Affected: {title}" pattern as the Top News Stories sidebar -- the
+  headline itself is plain text, with a separate link below it naming and
+  pointing at the affected market page, so it's never implied that
+  clicking the headline leads to the original news source. Auto-rotates
+  every 6s, pauses on hover, has dot + arrow controls. Add/remove/reorder
+  entries by hand as stories trend and fade -- same pattern as
+  `HOT_MARKET_SLUG`.
 - `data/markets/<slug...>.json` — everything manually curated for that one
   market: the brief, news headlines, "what to watch" dates, and affiliate
   status. No CMS — just edit and redeploy.

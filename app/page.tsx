@@ -1,10 +1,10 @@
-import { markets, getHotMarket } from "@/lib/markets";
+import { markets, getHotMarket, findMarket } from "@/lib/markets";
 import { loadOutcomeOdds } from "@/lib/oddsLoader";
 import { MarketCard } from "@/components/MarketCard";
 import { TopNewsStories } from "@/components/TopNewsStories";
 import { TrendingOnX } from "@/components/TrendingOnX";
 import trending from "@/data/trending.json";
-import type { OddsResponse } from "@/lib/types";
+import type { OddsResponse, TrendingItem } from "@/lib/types";
 
 const CATEGORIES = [
   { id: "politics", label: "Politics" },
@@ -18,6 +18,15 @@ export default async function Home() {
   const hotMarket = getHotMarket();
   const liveMarkets = markets.filter((m) => !m.content.settled);
   const archivedMarkets = markets.filter((m) => m.content.settled);
+
+  const resolvedTrending = (trending as TrendingItem[]).map((item) => {
+    const market = item.marketSlug ? findMarket(item.marketSlug.split("/")) : undefined;
+    return {
+      headline: item.headline,
+      marketTitle: market?.content.market.title,
+      marketHref: market ? `/${market.slug.join("/")}/` : undefined,
+    };
+  });
 
   // One live odds fetch per outcome per market, keyed by market slug path
   // so both the featured card and its regular category card can reuse the
@@ -54,7 +63,7 @@ export default async function Home() {
 
       <div className="home-grid">
         <div className="home-main">
-          <TrendingOnX items={trending} />
+          <TrendingOnX items={resolvedTrending} />
 
           {hotMarket && (
             <section className="section">

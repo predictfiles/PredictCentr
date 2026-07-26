@@ -578,16 +578,6 @@ a {
   min-width: 0;
 }
 
-.trending-link {
-  display: block;
-  text-decoration: none;
-  color: var(--fg);
-}
-
-.trending-link-static {
-  cursor: default;
-}
-
 .trending-badge {
   display: inline-block;
   font-size: 11px;
@@ -602,9 +592,18 @@ a {
   display: block;
   font-size: 16px;
   font-weight: 600;
+  margin-bottom: 4px;
 }
 
-a.trending-link:hover .trending-headline {
+.trending-market-link {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+
+.trending-market-link:hover {
   text-decoration: underline;
 }
 
