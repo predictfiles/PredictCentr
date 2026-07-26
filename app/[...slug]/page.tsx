@@ -10,6 +10,7 @@ import {
 } from "@/lib/markets";
 import { loadOutcomeOdds, loadOutcomeHistory } from "@/lib/oddsLoader";
 import { affiliateDisclosure, formatDate } from "@/lib/format";
+import { LogoMark } from "@/components/LogoMark";
 import { MarketBrief } from "@/components/MarketBrief";
 import { NewsSection } from "@/components/NewsSection";
 import { OddsComparison } from "@/components/OddsComparison";
@@ -82,7 +83,8 @@ async function ElectionHubPage({ electionSlug }: { electionSlug: string }) {
       <header className="header">
         <div className="header-inner">
           <Link className="brand" href="/">
-            Predict<span className="brand-accent">Centr</span>
+            <LogoMark size={24} />
+            <span>PredictCentr</span>
           </Link>
           <h1 className="title">{election.title}</h1>
           <p className="subtitle">
@@ -145,7 +147,8 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
       <header className="header">
         <div className="header-inner">
           <Link className="brand" href="/">
-            Predict<span className="brand-accent">Centr</span>
+            <LogoMark size={24} />
+            <span>PredictCentr</span>
           </Link>
           {parentElection && (
             <Link className="breadcrumb" href={`/${market.slug[0]}/`}>

@@ -1,5 +1,6 @@
 import { markets, getHotMarket, findMarket } from "@/lib/markets";
 import { loadOutcomeOdds } from "@/lib/oddsLoader";
+import { LogoMark } from "@/components/LogoMark";
 import { MarketCard } from "@/components/MarketCard";
 import { TopNewsStories } from "@/components/TopNewsStories";
 import { TrendingOnX } from "@/components/TrendingOnX";
@@ -53,7 +54,8 @@ export default async function Home() {
       <header className="header">
         <div className="home-header-inner">
           <h1 className="home-wordmark">
-            Predict<span className="brand-accent">Centr</span>
+            <LogoMark size={44} />
+            <span>PredictCentr</span>
           </h1>
           <p className="home-tagline">
             Breaking news. Live odds. Better decisions.

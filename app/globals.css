@@ -103,7 +103,9 @@ a {
 }
 
 .brand {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 21px;
   font-weight: 800;
   letter-spacing: -0.01em;
@@ -463,14 +465,13 @@ a {
 }
 
 .home-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   font-size: 40px;
   font-weight: 800;
   letter-spacing: -0.01em;
   margin: 0;
-}
-
-.brand-accent {
-  color: var(--brand-blue);
 }
 
 .home-tagline {

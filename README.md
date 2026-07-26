@@ -20,9 +20,15 @@ Built with Next.js (App Router) and deployed on Vercel.
 
 Favicons (`app/favicon.ico`, `app/icon.png`, `app/apple-icon.png`) use
 Next.js's file-based icon convention -- no manual `<link>` tags needed,
-Next.js injects them automatically. Source logo is at `public/logo.jpg`
-(pulled from the @PredictCentr X profile picture) if you need to
-regenerate any of them at a different size.
+Next.js injects them automatically. `public/logo-mark.svg` is the
+source-of-truth vector for the mark (three ascending bars, purple ->
+pink -> orange gradient, plus an amber dot) -- `components/LogoMark.tsx`
+renders the same shape inline for the header/hero, and
+`scripts/generate-icons.ps1` rasterizes it (on a near-black rounded-
+square tile) into the three favicon/app-icon files. Re-run that script
+with `powershell -File scripts/generate-icons.ps1` any time the mark's
+geometry or colors change -- all three places share one set of
+coordinates, so keep them in sync rather than editing the PNGs by hand.
 
 ## Design system (`app/globals.css`)
 
