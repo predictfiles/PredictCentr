@@ -139,5 +139,9 @@ export interface ElectionInfo {
  */
 export interface TrendingItem {
   headline: string;
+  /** Thumbnail, same treatment as a NewsItem's image -- reuse an existing market image where one fits. */
+  image?: string;
+  /** X's own displayed post-volume figure for the story, e.g. "947K posts" -- entered by hand alongside the headline. */
+  postVolume?: string;
   marketSlug?: string;
 }

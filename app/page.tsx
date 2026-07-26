@@ -23,6 +23,8 @@ export default async function Home() {
     const market = item.marketSlug ? findMarket(item.marketSlug.split("/")) : undefined;
     return {
       headline: item.headline,
+      image: item.image,
+      postVolume: item.postVolume,
       marketTitle: market?.content.market.title,
       marketHref: market ? `/${market.slug.join("/")}/` : undefined,
     };

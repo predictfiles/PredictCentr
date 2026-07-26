@@ -578,6 +578,20 @@ a {
   min-width: 0;
 }
 
+.trending-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.trending-x-logo {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  fill: var(--brand-blue);
+}
+
 .trending-badge {
   display: inline-block;
   font-size: 11px;
@@ -585,13 +599,29 @@ a {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--brand-blue);
-  margin-bottom: 6px;
+}
+
+.trending-story-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trending-story-text {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .trending-headline {
   display: block;
   font-size: 16px;
   font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.trending-volume {
+  font-size: 12px;
+  color: var(--muted);
   margin-bottom: 4px;
 }
 
@@ -607,23 +637,46 @@ a {
   text-decoration: underline;
 }
 
-.trending-dots {
+.trending-progress {
   display: flex;
-  justify-content: center;
-  gap: 6px;
+  gap: 4px;
   margin-top: 10px;
 }
 
-.trending-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
+.trending-progress-segment {
+  flex: 1 1 0;
+  height: 3px;
+  padding: 0;
   border: none;
+  border-radius: 2px;
   background: var(--border);
   cursor: pointer;
-  padding: 0;
+  overflow: hidden;
 }
 
-.trending-dot-active {
+.trending-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
   background: var(--brand-blue);
+  border-radius: 2px;
+}
+
+.trending-progress-fill-complete {
+  width: 100%;
+}
+
+.trending-progress-fill-active {
+  animation-name: trending-progress-grow;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes trending-progress-grow {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
