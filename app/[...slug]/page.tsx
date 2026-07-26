@@ -83,8 +83,11 @@ async function ElectionHubPage({ electionSlug }: { electionSlug: string }) {
       <header className="header">
         <div className="header-inner">
           <Link className="brand" href="/">
-            <LogoMark size={24} />
-            <span>PredictCentr</span>
+            <LogoMark size={30} />
+            <span className="wordmark-lines">
+              <span>Predict</span>
+              <span>Centr</span>
+            </span>
           </Link>
           <h1 className="title">{election.title}</h1>
           <p className="subtitle">
@@ -147,8 +150,11 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
       <header className="header">
         <div className="header-inner">
           <Link className="brand" href="/">
-            <LogoMark size={24} />
-            <span>PredictCentr</span>
+            <LogoMark size={30} />
+            <span className="wordmark-lines">
+              <span>Predict</span>
+              <span>Centr</span>
+            </span>
           </Link>
           {parentElection && (
             <Link className="breadcrumb" href={`/${market.slug[0]}/`}>

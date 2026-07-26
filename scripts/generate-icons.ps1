@@ -86,10 +86,10 @@ function New-LogoBitmap {
     }
     $barBrush.Dispose()
 
-    $dotBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.ColorTranslator]::FromHtml("#FFC857"))
-    $dotR = 8.0 * $scale
+    $dotBrush = New-Object System.Drawing.SolidBrush ([System.Drawing.ColorTranslator]::FromHtml("#FF8A3D"))
+    $dotR = 7.0 * $scale
     $dotCx = 80.0 * $scale
-    $dotCy = 78.0 * $scale
+    $dotCy = 84.0 * $scale
     $g.FillEllipse($dotBrush, $dotCx - $dotR, $dotCy - $dotR, $dotR * 2, $dotR * 2)
     $dotBrush.Dispose()
 

@@ -54,8 +54,11 @@ export default async function Home() {
       <header className="header">
         <div className="home-header-inner">
           <h1 className="home-wordmark">
-            <LogoMark size={44} />
-            <span>PredictCentr</span>
+            <LogoMark size={56} />
+            <span className="wordmark-lines">
+              <span>Predict</span>
+              <span>Centr</span>
+            </span>
           </h1>
           <p className="home-tagline">
             Breaking news. Live odds. Better decisions.
