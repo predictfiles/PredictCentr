@@ -2,7 +2,10 @@
   "market": {
     "title": "Democrats — 2026 U.S. Senate Control",
     "resolutionDate": "2026-11-03",
-    "resolutionNote": "Resolves to whichever party holds the Senate majority after the 2026 midterms (a 50-50 split is broken by the Vice Presidency). If that's ambiguous, Kalshi defers to the party holding the President pro tempore and Polymarket to the party of the elected Majority Leader -- in practice, always the same party."
+    "resolutionNote": [
+      "Resolves to whichever party holds the Senate majority after the 2026 midterms (a 50-50 split is broken by the Vice Presidency).",
+      "If that's ambiguous, Kalshi defers to the party holding the President pro tempore and Polymarket to the party of the elected Majority Leader -- in practice, always the same party."
+    ]
   },
   "marketBrief": {
     "text": "The Democrats' odds of winning Senate control bottomed near 17% shortly after this market opened in late 2024, then climbed through 2025 before surging past 50% for the first time ever in March 2026 -- a shift Kalshi's own team tied to the political fallout from the escalating US-Iran conflict. That rally peaked near 55% in mid-April before reversing hard: Republicans have since reclaimed the lead and now sit around 56-57% on both platforms, with Democrats back down near 44%. The through-line isn't either party's platform -- it's how much the Iran conflict, and the administration's handling of it, is weighing on Republican-held seats.",

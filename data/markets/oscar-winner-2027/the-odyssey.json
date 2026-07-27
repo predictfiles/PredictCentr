@@ -2,7 +2,11 @@
   "market": {
     "title": "The Odyssey — Best Picture Winner, 99th Academy Awards",
     "resolutionDate": "2027-03-14",
-    "resolutionNote": "Resolves on the official Best Picture winner announced at the 99th Academy Awards ceremony. Kalshi's own wording: \"If The Odyssey has won Best Picture at the 99th Academy Awards, then the market resolves to Yes.\" No Polymarket winner market exists yet -- Polymarket currently only lists a separate Best Picture NOMINATIONS market for The Odyssey (a different question: whether it's nominated at all, not whether it wins), so this page tracks Kalshi only until/unless Polymarket opens an equivalent winner market."
+    "resolutionNote": [
+      "Resolves on the official Best Picture winner announced at the 99th Academy Awards ceremony.",
+      "Kalshi's own wording: \"If The Odyssey has won Best Picture at the 99th Academy Awards, then the market resolves to Yes.\"",
+      "No Polymarket winner market exists yet -- Polymarket currently only lists a separate Best Picture NOMINATIONS market for The Odyssey (a different question: whether it's nominated at all, not whether it wins), so this page tracks Kalshi only until/unless Polymarket opens an equivalent winner market."
+    ]
   },
   "marketBrief": {
     "text": "The Odyssey opened to $123.5M domestically and $263.7M worldwide in July -- Christopher Nolan's biggest global debut ever, ahead of even The Dark Knight Rises -- and has held unusually well since, with a second-weekend haul above $84M that's itself a Nolan record. Reviews have matched the box office: 95% on Rotten Tomatoes from over 300 critics, tied for the highest of Nolan's career, with particular praise for Matt Damon's lead performance and the film's IMAX-native 70mm photography. That combination -- a genuine box-office event with awards-caliber reviews -- is why Kalshi already has it as a clear favorite at 54%, well ahead of whatever sits in second place.",

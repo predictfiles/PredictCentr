@@ -52,7 +52,8 @@ export interface MarketContent {
     /** Full display title, e.g. "JD Vance — 2028 U.S. Presidential Election Winner" */
     title: string;
     resolutionDate: string;
-    resolutionNote: string;
+    /** Bulleted on the page -- one distinct point per entry, not a single paragraph. */
+    resolutionNote: string[];
   };
   marketBrief: {
     text: string;

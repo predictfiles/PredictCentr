@@ -162,10 +162,19 @@ a {
   margin: 0;
 }
 
-.resolution-note {
+.resolution-note-list {
   color: var(--nav-muted);
   font-size: 13px;
   margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.resolution-note-list li {
+  margin-bottom: 6px;
+}
+
+.resolution-note-list li:last-child {
+  margin-bottom: 0;
 }
 
 .section {
