@@ -6,6 +6,7 @@ import senateDemocrats2026Raw from "@/data/markets/2026-us-senate-control/democr
 import lebronNextTeamRaw from "@/data/markets/lebron-james-next-team.json";
 import grokOdysseyFilmRaw from "@/data/markets/grok-imagine-odyssey-film.json";
 import oscarOdysseyBestPictureRaw from "@/data/markets/oscar-winner-2027/the-odyssey.json";
+import starshipMarsRaw from "@/data/markets/starship-humans-to-mars-2030.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -19,6 +20,7 @@ const senateDemocrats2026 = senateDemocrats2026Raw as MarketContent;
 const lebronNextTeam = lebronNextTeamRaw as MarketContent;
 const grokOdysseyFilm = grokOdysseyFilmRaw as MarketContent;
 const oscarOdysseyBestPicture = oscarOdysseyBestPictureRaw as MarketContent;
+const starshipMars = starshipMarsRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -207,6 +209,29 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: oscarOdysseyBestPicture,
+  },
+  {
+    slug: ["starship-humans-to-mars-2030"],
+    category: "culture",
+    shortDescription:
+      "Live odds on SpaceX launching a manned Starship mission to Mars before 2030, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "humans-to-mars",
+        label: "Starship: Humans to Mars",
+        question: "Will SpaceX launch a manned Starship mission to Mars before 2030?",
+        kalshi: {
+          ticker: "STARSHIPMARS-29DEC31",
+          seriesTicker: "STARSHIPMARS",
+          url: "https://kalshi.com/markets/kxstarshipmars/starship-launch-to-mars/starshipmars?selectedMarketTicker=STARSHIPMARS-29DEC31",
+        },
+        // Kalshi only -- no confirmed Polymarket market with matching
+        // crewed-by-2030 resolution criteria. Don't confuse with Kalshi's
+        // separate "will SpaceX land anything on Mars" market (uncrewed
+        // included, prices notably higher) -- see resolutionNote.
+      },
+    ],
+    content: starshipMars,
   },
 ];
 
