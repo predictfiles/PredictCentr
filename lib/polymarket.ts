@@ -9,6 +9,7 @@ export async function getPolymarketMarket(
 ): Promise<PlatformQuote> {
   const res = await fetch(`${GAMMA_BASE}/markets/${marketId}`, {
     next: { revalidate: 30 },
+    signal: AbortSignal.timeout(10_000),
   });
   if (!res.ok) {
     throw new Error(`Polymarket market fetch failed: ${res.status}`);
@@ -33,7 +34,10 @@ export async function getPolymarketMarketHistory(
   yesTokenId: string
 ): Promise<HistoryPoint[]> {
   const url = `${CLOB_BASE}/prices-history?market=${yesTokenId}&interval=max&fidelity=1440`;
-  const res = await fetch(url, { next: { revalidate: 3600 } });
+  const res = await fetch(url, {
+    next: { revalidate: 3600 },
+    signal: AbortSignal.timeout(10_000),
+  });
   if (!res.ok) {
     throw new Error(`Polymarket price history fetch failed: ${res.status}`);
   }

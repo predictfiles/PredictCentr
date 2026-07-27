@@ -8,6 +8,7 @@ export async function getKalshiMarket(
 ): Promise<PlatformQuote> {
   const res = await fetch(`${KALSHI_BASE}/markets/${ticker}`, {
     next: { revalidate: 30 },
+    signal: AbortSignal.timeout(10_000),
   });
   if (!res.ok) {
     throw new Error(`Kalshi market fetch failed: ${res.status}`);
@@ -36,7 +37,10 @@ export async function getKalshiMarketHistory(
   const url =
     `${KALSHI_BASE}/series/${seriesTicker}/markets/${ticker}/candlesticks` +
     `?start_ts=${start}&end_ts=${end}&period_interval=1440`;
-  const res = await fetch(url, { next: { revalidate: 3600 } });
+  const res = await fetch(url, {
+    next: { revalidate: 3600 },
+    signal: AbortSignal.timeout(10_000),
+  });
   if (!res.ok) {
     throw new Error(`Kalshi candlesticks fetch failed: ${res.status}`);
   }
