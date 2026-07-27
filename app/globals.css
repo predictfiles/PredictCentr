@@ -548,6 +548,15 @@ a {
   margin-bottom: 10px;
 }
 
+.platform-badge {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  vertical-align: -3px;
+  object-fit: cover;
+}
+
 .market-card-cta {
   font-size: 14px;
   font-weight: 600;

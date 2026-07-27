@@ -14,6 +14,21 @@ function platformName(platform: PlatformId) {
   return platform === "kalshi" ? "Kalshi" : "Polymarket";
 }
 
+function platformBadgeSrc(platform: PlatformId) {
+  return platform === "kalshi" ? "/platform-kalshi.png" : "/platform-polymarket.png";
+}
+
+function PlatformBadge({ platform }: { platform: PlatformId }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={platformBadgeSrc(platform)}
+      alt=""
+      className="platform-badge"
+    />
+  );
+}
+
 export function CardLiveLine({
   outcomes,
   slugPath,
@@ -71,7 +86,7 @@ export function CardLiveLine({
     if (!odds?.kalshi) return null;
     return (
       <div className="market-card-live">
-        Kalshi:{" "}
+        Kalshi: <PlatformBadge platform="kalshi" />{" "}
         <strong style={{ color: platformColor("kalshi") }}>
           {formatPercent(odds.kalshi.yesPrice)}%
         </strong>
@@ -88,7 +103,7 @@ export function CardLiveLine({
     if (!best) return null;
     return (
       <div className="market-card-live">
-        Best:{" "}
+        Best Price: <PlatformBadge platform={best.platform} />{" "}
         <strong style={{ color: platformColor(best.platform) }}>
           {platformName(best.platform)} {formatPercent(best.price)}%
         </strong>
@@ -116,7 +131,7 @@ export function CardLiveLine({
 
   return (
     <div className="market-card-live">
-      <strong>{leader.label}</strong> favored —{" "}
+      <strong>{leader.label}</strong> favored — <PlatformBadge platform={leader.platform} />{" "}
       <strong style={{ color: platformColor(leader.platform) }}>
         {formatPercent(leader.price)}% ({platformName(leader.platform)})
       </strong>
