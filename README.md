@@ -169,7 +169,9 @@ Open http://localhost:3000.
    dates, fallback/tie-break rules) before building anything — this has
    caught real problems twice already (a stale "which way is this market
    leaning" narrative, and a genuine multi-day gap between two platforms'
-   deadlines). Document anything non-identical in `market.resolutionNote`.
+   deadlines). Document anything non-identical in `market.resolutionNote`
+   (a string array -- rendered as a bulleted list on the page, so give it
+   one distinct point per entry rather than one long paragraph).
 3. Add `data/markets/<slug...>.json` with the same shape as an existing
    one (`market`, `marketBrief`, `news`, `whatToWatch`, `affiliateStatus`).
 4. Add one entry to the `markets` array in `lib/markets.ts` pointing at it
