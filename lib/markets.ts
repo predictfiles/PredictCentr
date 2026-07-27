@@ -235,6 +235,12 @@ export const markets: MarketConfig[] = [
   },
 ];
 
+export const CATEGORY_LABELS: Record<MarketConfig["category"], string> = {
+  politics: "Politics",
+  sports: "Sports",
+  culture: "Culture",
+};
+
 export function findMarket(slug: string[]): MarketConfig | undefined {
   return markets.find(
     (m) => m.slug.length === slug.length && m.slug.every((s, i) => s === slug[i])

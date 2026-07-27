@@ -7,6 +7,7 @@ import {
   ELECTIONS,
   getElectionInfo,
   getElectionCandidates,
+  CATEGORY_LABELS,
 } from "@/lib/markets";
 import { loadOutcomeOdds, loadOutcomeHistory } from "@/lib/oddsLoader";
 import { affiliateDisclosure, formatDate } from "@/lib/format";
@@ -16,6 +17,7 @@ import { OddsComparison } from "@/components/OddsComparison";
 import { HistoryChart } from "@/components/HistoryChart";
 import { WhatToWatch } from "@/components/WhatToWatch";
 import { MarketCard } from "@/components/MarketCard";
+import { CategoryIcon } from "@/components/CategoryIcon";
 import type { HistoryResponse, MarketConfig, OddsResponse } from "@/lib/types";
 
 export const revalidate = 30;
@@ -65,6 +67,8 @@ async function ElectionHubPage({ electionSlug }: { electionSlug: string }) {
   const candidates = getElectionCandidates(electionSlug);
   if (!election || candidates.length === 0) notFound();
 
+  const category = candidates[0].category;
+
   const oddsByMarket = new Map<string, Record<string, OddsResponse>>();
   await Promise.all(
     candidates.map(async (market) => {
@@ -79,12 +83,16 @@ async function ElectionHubPage({ electionSlug }: { electionSlug: string }) {
 
   return (
     <>
-      <header className="header">
+      <header className={`header header-accent-${category}`}>
         <div className="header-inner">
           <Link className="brand" href="/">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-full.png" alt="PredictCentr" className="brand-logo" />
           </Link>
+          <div className={`category-tag category-tag-${category}`}>
+            <CategoryIcon category={category} className="category-tag-icon" />
+            {CATEGORY_LABELS[category]}
+          </div>
           <h1 className="title">{election.title}</h1>
           <p className="subtitle">
             {election.description} Resolves {election.resolutionDate}.
@@ -143,12 +151,16 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
 
   return (
     <>
-      <header className="header">
+      <header className={`header header-accent-${market.category}`}>
         <div className="header-inner">
           <Link className="brand" href="/">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-full.png" alt="PredictCentr" className="brand-logo" />
           </Link>
+          <div className={`category-tag category-tag-${market.category}`}>
+            <CategoryIcon category={market.category} className="category-tag-icon" />
+            {CATEGORY_LABELS[market.category]}
+          </div>
           {parentElection && (
             <Link className="breadcrumb" href={`/${market.slug[0]}/`}>
               ← {parentElection.title}

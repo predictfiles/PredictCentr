@@ -151,6 +151,51 @@ a {
   background: var(--nav-bg);
   color: var(--nav-fg);
   border-bottom: 1px solid var(--nav-divider);
+  border-top: 4px solid transparent;
+}
+
+/* Category accent -- the one visual thread tying a market page back to its
+   homepage bento card. Just a thin top border + small tag, everything else
+   about the page stays the calm, content-first layout. */
+.header-accent-politics {
+  border-top-color: var(--politics);
+}
+
+.header-accent-sports {
+  border-top-color: var(--sports);
+}
+
+.header-accent-culture {
+  border-top-color: var(--culture);
+}
+
+.category-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.category-tag-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.category-tag-politics {
+  color: var(--politics);
+}
+
+.category-tag-sports {
+  color: var(--sports);
+}
+
+.category-tag-culture {
+  color: var(--culture);
 }
 
 .header-inner {
