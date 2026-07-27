@@ -8,6 +8,11 @@ import { CategoryIcon } from "@/components/CategoryIcon";
  * individual market), with an oversized CategoryIcon bleeding off the
  * corner as a background texture. Deliberately separate from MarketCard --
  * the hub pages keep the calmer white-card treatment, this is homepage-only.
+ *
+ * Featured (Hot Market) always gets the fixed fire-red/orange treatment
+ * instead of its own category's color -- it needs to read as "the featured
+ * slot" at a glance, not blend in as just another politics/sports/culture
+ * card. The category icon still reflects the underlying market though.
  */
 export function BentoMarketCard({
   market,
@@ -19,10 +24,11 @@ export function BentoMarketCard({
   featured?: boolean;
 }) {
   const href = `/${market.slug.join("/")}/`;
+  const colorClass = featured ? "bento-card-hot" : `bento-card-${market.category}`;
 
   return (
     <Link
-      className={`bento-card bento-card-${market.category}${featured ? " bento-card-featured" : ""}`}
+      className={`bento-card ${colorClass}${featured ? " bento-card-featured" : ""}`}
       href={href}
     >
       <CategoryIcon category={market.category} className="bento-card-icon" />

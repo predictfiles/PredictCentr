@@ -106,14 +106,31 @@ work to look right:
   into the dark page background. Add a new category by adding one
   color pair, one `.bento-card-{category}` gradient rule, and one
   `CategoryIcon` branch -- nothing else changes.
-- `.bento-card-featured` -- the Hot Market slot; same component with a
-  `featured` prop, just bigger (title, padding, icon).
+- `.bento-card-featured` + `.bento-card-hot` -- the Hot Market slot.
+  Same component with a `featured` prop for the bigger size, but its
+  color is the fixed `--hot-market`/`--hot-market-deep` fire gradient,
+  not the underlying market's own category color -- `BentoMarketCard`
+  swaps in `bento-card-hot` whenever `featured` is true so the featured
+  slot always reads as "the featured slot," never blends in as just
+  another politics/sports/culture card. It keeps that market's own
+  `CategoryIcon` though (only the background color is fixed).
 
 `.trending-card` keeps its own signature gradient (the logo's purple ->
 pink -> orange) rather than a category color, since a trending story
-isn't tied to one category. `TopNewsStories` deliberately keeps the
-plain white `.card` treatment -- a calm, neutral list is the intended
-contrast against the bright bento cards, per the brief.
+isn't tied to one category. Its raw gradient reads too light for white
+text at the orange end (~2.4:1, checked against WCAG) -- there's a flat
+`rgba(0,0,0,0.3)` scrim layered on top (first in the `background`
+list, painted above the gradient) to bring the whole thing to 4.7:1+
+everywhere rather than hand-tuning individual color stops.
+
+Top News Stories and the Archive section are the "calm, neutral"
+counterpoint to the bright bento cards -- dark, but not a category
+color, and not the light `.card`/`.market-card` those same components
+render as on other pages. `--dark-card-bg`/`-fg`/`-muted`/`-border`
+plus a block of `.home-page .card` / `.home-page .market-card`
+selectors (and their text sub-elements) override the shared classes
+*only* when nested under `.home-page`, so hub pages -- which render
+those exact same `.card`/`.market-card` elements -- are untouched.
 
 A git tag, `pre-redesign-homepage`, marks the commit right before this
 redesign landed, in case the bold look doesn't stick: `git checkout
