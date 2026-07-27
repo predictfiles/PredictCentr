@@ -1,6 +1,7 @@
 import type { ElectionInfo, MarketConfig, MarketContent, NewsItem } from "./types";
 import jdVance2028Raw from "@/data/markets/2028-us-presidential-election-winner/jd-vance.json";
 import donaldTrump2028Raw from "@/data/markets/2028-us-presidential-election-winner/donald-trump.json";
+import kamalaHarris2028Raw from "@/data/markets/2028-us-presidential-election-winner/kamala-harris.json";
 import senateDemocrats2026Raw from "@/data/markets/2026-us-senate-control/democrats.json";
 import lebronNextTeamRaw from "@/data/markets/lebron-james-next-team.json";
 import grokOdysseyFilmRaw from "@/data/markets/grok-imagine-odyssey-film.json";
@@ -13,6 +14,7 @@ import oscarOdysseyBestPictureRaw from "@/data/markets/oscar-winner-2027/the-ody
 // tells TypeScript what we already know to be true.
 const jdVance2028 = jdVance2028Raw as MarketContent;
 const donaldTrump2028 = donaldTrump2028Raw as MarketContent;
+const kamalaHarris2028 = kamalaHarris2028Raw as MarketContent;
 const senateDemocrats2026 = senateDemocrats2026Raw as MarketContent;
 const lebronNextTeam = lebronNextTeamRaw as MarketContent;
 const grokOdysseyFilm = grokOdysseyFilmRaw as MarketContent;
@@ -73,6 +75,31 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: donaldTrump2028,
+  },
+  {
+    slug: ["2028-us-presidential-election-winner", "kamala-harris"],
+    category: "politics",
+    shortDescription:
+      "Live odds on Kamala Harris winning the 2028 presidential election, compared across Kalshi and Polymarket.",
+    outcomes: [
+      {
+        id: "kamala-harris",
+        label: "Kamala Harris",
+        question: "Will Kamala Harris win?",
+        kalshi: {
+          ticker: "KXPRESPERSON-28-KHAR",
+          seriesTicker: "KXPRESPERSON",
+          url: "https://kalshi.com/markets/kxpresperson/kxpresperson-28?selectedMarketTicker=KXPRESPERSON-28-KHAR",
+        },
+        polymarket: {
+          marketId: "561239",
+          yesTokenId:
+            "70663352401606372246362604193214664065595751757222752105245221905399175050480",
+          url: "https://polymarket.com/event/presidential-election-winner-2028/will-kamala-harris-win-the-2028-us-presidential-election",
+        },
+      },
+    ],
+    content: kamalaHarris2028,
   },
   {
     slug: ["2026-us-senate-control", "democrats"],

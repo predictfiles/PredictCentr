@@ -1,0 +1,59 @@
+{
+  "market": {
+    "title": "Kamala Harris — 2028 U.S. Presidential Election Winner",
+    "resolutionDate": "2028-11-07",
+    "resolutionNote": "Resolves to whoever is inaugurated President in January 2029, based on AP/Fox/NBC race calls. This tracks the general-election winner contract specifically -- Harris is also priced separately on a 'wins the Democratic nomination' market (Polymarket has that at about 8.9%), a different and easier bar than winning the presidency outright, which is what this page's odds (around 5%) actually track."
+  },
+  "marketBrief": {
+    "text": "Two polls this week reset the 2028 Democratic primary narrative: Emerson's national survey (July 23) has Harris at just 8%, behind Buttigieg, Newsom, and a tied Ossoff/Ocasio-Cortez -- and a University of New Hampshire poll two days earlier showed Ocasio-Cortez surging to 22%, with Harris down to 5%, a 17-point gap. That's a sharp reversal from earlier in the year, when Democratic insiders called her the 'fairly obvious' frontrunner. This page tracks the general-election contract specifically, not the nomination -- Polymarket prices Harris winning the nomination at about 8.9%, a different and easier bar than winning the presidency outright, where she sits near 5% on both platforms.",
+    "updatedAt": "2026-07-27",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Kamala Harris Falls to Back of the Pack in New Presidential Poll",
+      "source": "Washington Times",
+      "date": "2026-07-23",
+      "url": "https://www.washingtontimes.com/news/2026/jul/23/kamala-harris-falls-back-pack-new-presidential-poll/",
+      "image": "https://twt-thumbs.washtimes.com/media/image/2025/09/17/Kamala_Harris_Buttigieg_04304_c0-0-5000-2915_s885x516.jpg?9d6dbc93213d039cb765139cd6fea0e2dead5f13"
+    },
+    {
+      "headline": "AOC Surges Past Buttigieg, Leaves Harris in the Dust in Key 2028 Battleground Poll",
+      "source": "Fox News",
+      "date": "2026-07-22",
+      "url": "https://www.foxnews.com/politics/aoc-surges-past-buttigieg-leaves-harris-dust-key-2028-battleground-poll",
+      "image": "https://a57.foxnews.com/cf-images.us-east-1.prod.boltdns.net/v1/static/694940094001/30a9d207-1079-4678-b9e2-6154dcc3a3a2/a3700aaf-1600-4ff7-a7e8-00be435a5406/1280x720/match/896/500/image.jpg"
+    },
+    {
+      "headline": "Is Kamala Harris the Inevitable Democrat Nominee?",
+      "source": "The Daily Signal",
+      "date": "2026-07-26",
+      "url": "https://www.dailysignal.com/2026/07/26/kamala-harris-in-2028/",
+      "image": "https://static.dailysignalmedia.org/GettyImages-2281243924.jpg"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Further primary polling, national and early-state -- this week's Emerson and New Hampshire numbers are what's actually moving the conversation right now"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Any formal steps toward a campaign (staff hires, PAC activity, early-state travel)"
+    },
+    {
+      "date": "2028-11-07",
+      "label": "Election Day — market resolution"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    },
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}
