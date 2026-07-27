@@ -60,10 +60,12 @@ contrast:
 - `--fg` / `--muted` -- text sitting directly on the light `--bg` (section
   labels, the odds "last checked" line). Dark colors.
 - `--card-fg` / `--card-muted` -- text inside a white `.card`,
-  `.market-card`, `.odds-card`, `.trending-card`, `.best-price`, etc. Also
-  dark, but kept as separate tokens so a component never has to guess
-  whether its ambient text color is safe -- explicit is cheaper than a
-  contrast bug.
+  `.market-card`, `.odds-card`, `.best-price`, etc. Also dark, but kept
+  as separate tokens so a component never has to guess whether its
+  ambient text color is safe -- explicit is cheaper than a contrast bug.
+  (`.trending-card` and the homepage's `.bento-card`s are exceptions --
+  see below, they're deliberately colorful with white text, not white
+  cards with dark text.)
 - `--nav-fg` / `--nav-muted` -- text inside the dark `.header`/`.footer`
   bands only (brand, title, subtitle, tagline, breadcrumb, footer copy).
   Light colors, since they sit on `--nav-bg`.
@@ -79,6 +81,44 @@ is reserved for links, primary actions, active states and chart lines --
 avoid using it decoratively. `--kalshi`/`--polymarket`/`--danger`/`--warn`
 are tuned for contrast against white cards, since that's the only
 background they ever render on.
+
+### Homepage: dark bento grid
+
+The homepage (only -- market/hub pages are untouched) breaks from the
+light theme above. `app/page.tsx` wraps the whole page in `.home-page`
+(`background: var(--nav-bg)`, the same charcoal as the header/footer
+bands, so the header blends seamlessly into it), and its market cards
+use a completely separate component, `components/BentoMarketCard.tsx`
++ `.bento-card` in `app/globals.css` -- not `MarketCard.tsx`/
+`.market-card`, which hub pages keep using unchanged.
+
+Bento cards get their color and icon from `market.category` alone,
+never the individual market, so a new market page needs zero design
+work to look right:
+
+- `components/CategoryIcon.tsx` -- one hand-drawn line icon per
+  category (politics: bank, sports: ball, culture: film strip),
+  `currentColor`-based so the same markup works as a small glyph or an
+  oversized low-opacity background bleed.
+- `.bento-card-politics` / `-sports` / `-culture` in `globals.css` --
+  each a 3-stop gradient (`--politics`/`--sports`/`--culture` through
+  their `-deep` variant down to `--nav-bg`) so the card visually fades
+  into the dark page background. Add a new category by adding one
+  color pair, one `.bento-card-{category}` gradient rule, and one
+  `CategoryIcon` branch -- nothing else changes.
+- `.bento-card-featured` -- the Hot Market slot; same component with a
+  `featured` prop, just bigger (title, padding, icon).
+
+`.trending-card` keeps its own signature gradient (the logo's purple ->
+pink -> orange) rather than a category color, since a trending story
+isn't tied to one category. `TopNewsStories` deliberately keeps the
+plain white `.card` treatment -- a calm, neutral list is the intended
+contrast against the bright bento cards, per the brief.
+
+A git tag, `pre-redesign-homepage`, marks the commit right before this
+redesign landed, in case the bold look doesn't stick: `git checkout
+pre-redesign-homepage` to see the old homepage, or `git revert` the
+redesign commit(s) to back it out while keeping everything since.
 
 ## Local setup
 

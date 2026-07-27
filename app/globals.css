@@ -27,6 +27,15 @@
   --radius: 18px;
   --card-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 6px 16px rgba(16, 24, 40, 0.06);
   --card-shadow-hover: 0 4px 8px rgba(16, 24, 40, 0.06), 0 14px 28px rgba(16, 24, 40, 0.1);
+
+  /* One color per category, not per market -- reused for the homepage's
+     bento card gradients (and anywhere else a category needs a tint). */
+  --politics: #4f7cff;
+  --politics-deep: #1d3e9c;
+  --sports: #ff6b5b;
+  --sports-deep: #b23a3a;
+  --culture: #a56cff;
+  --culture-deep: #5b2e99;
 }
 
 * {
@@ -55,6 +64,18 @@ a {
   max-width: 760px;
   margin: 0 auto;
   padding: 40px 20px 88px;
+}
+
+/* Homepage only -- market/hub pages stay on the light --bg. Wrapping the
+   whole page (header included) means the header's own --nav-bg band and
+   this dark body read as one continuous surface, no visible seam. */
+.home-page {
+  background: var(--nav-bg);
+  min-height: 100vh;
+}
+
+.home-page .section-label {
+  color: var(--nav-muted);
 }
 
 .home-wrap {
@@ -604,16 +625,126 @@ a {
   color: var(--card-muted);
 }
 
+/* Bento cards -- homepage only. Color + icon come from market.category,
+   never the individual market, so a new market page needs zero design
+   work: it just inherits its category's look. See CategoryIcon.tsx and
+   BentoMarketCard.tsx. */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.bento-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 28px;
+  min-height: 220px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: var(--card-shadow);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.bento-card-politics {
+  background: linear-gradient(135deg, var(--politics) 0%, var(--politics-deep) 55%, var(--nav-bg) 100%);
+}
+
+.bento-card-sports {
+  background: linear-gradient(135deg, var(--sports) 0%, var(--sports-deep) 55%, var(--nav-bg) 100%);
+}
+
+.bento-card-culture {
+  background: linear-gradient(135deg, var(--culture) 0%, var(--culture-deep) 55%, var(--nav-bg) 100%);
+}
+
+.bento-card-featured {
+  padding: 40px;
+  min-height: 320px;
+}
+
+.bento-card-icon {
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  width: 160px;
+  height: 160px;
+  color: #fff;
+  opacity: 0.16;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bento-card-featured .bento-card-icon {
+  width: 260px;
+  height: 260px;
+  right: -30px;
+  bottom: -30px;
+  opacity: 0.14;
+}
+
+.bento-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.bento-card-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.bento-card-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.bento-card-featured .bento-card-title {
+  font-size: 40px;
+  margin-bottom: 14px;
+}
+
+.bento-card-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+}
+
+.bento-card-featured .bento-card-desc {
+  font-size: 17px;
+}
+
+.bento-card-cta {
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .trending-card {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--card);
-  color: var(--card-fg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: linear-gradient(135deg, #7b5cff 0%, #ff4db8 55%, #ff8a3d 100%);
+  color: #fff;
+  border-radius: 20px;
   box-shadow: var(--card-shadow);
-  padding: 18px 16px;
+  padding: 22px 20px;
 }
 
 .trending-arrow {
@@ -623,12 +754,12 @@ a {
   cursor: pointer;
   font-size: 22px;
   line-height: 1;
-  color: var(--card-muted);
+  color: rgba(255, 255, 255, 0.75);
   padding: 4px 6px;
 }
 
 .trending-arrow:hover {
-  color: var(--brand-blue);
+  color: #fff;
 }
 
 .trending-body {
@@ -640,7 +771,7 @@ a {
   width: 11px;
   height: 11px;
   flex: 0 0 auto;
-  fill: var(--brand-blue);
+  fill: #fff;
   position: relative;
   top: 1px;
 }
@@ -653,7 +784,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--brand-blue);
+  color: #fff;
   margin-bottom: 8px;
 }
 
@@ -670,27 +801,28 @@ a {
 
 .trending-headline {
   display: block;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   margin-bottom: 4px;
 }
 
 .trending-volume {
   font-size: 12px;
-  color: var(--card-muted);
+  color: rgba(255, 255, 255, 0.75);
   margin-bottom: 4px;
 }
 
 .trending-market-link {
   display: block;
   font-size: 14px;
-  font-weight: 600;
-  color: var(--brand-blue);
-  text-decoration: none;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
 }
 
 .trending-market-link:hover {
-  text-decoration: underline;
+  text-decoration-color: #fff;
 }
 
 .trending-progress {
@@ -705,7 +837,7 @@ a {
   padding: 0;
   border: none;
   border-radius: 2px;
-  background: var(--border);
+  background: var(--nav-divider);
   cursor: pointer;
   overflow: hidden;
 }

@@ -1,5 +1,6 @@
 import { markets, getHotMarket, findMarket } from "@/lib/markets";
 import { loadOutcomeOdds } from "@/lib/oddsLoader";
+import { BentoMarketCard } from "@/components/BentoMarketCard";
 import { MarketCard } from "@/components/MarketCard";
 import { TopNewsStories } from "@/components/TopNewsStories";
 import { TrendingOnX } from "@/components/TrendingOnX";
@@ -49,7 +50,7 @@ export default async function Home() {
   );
 
   return (
-    <>
+    <div className="home-page">
       <header className="header">
         <div className="home-header-inner">
           <h1 className="home-wordmark">
@@ -73,13 +74,11 @@ export default async function Home() {
 
             {hotMarket && (
               <section className="section">
-                <div className="market-card-list">
-                  <MarketCard
-                    market={hotMarket}
-                    initialOdds={oddsByMarket.get(hotMarket.slug.join("/")) ?? {}}
-                    featured
-                  />
-                </div>
+                <BentoMarketCard
+                  market={hotMarket}
+                  initialOdds={oddsByMarket.get(hotMarket.slug.join("/")) ?? {}}
+                  featured
+                />
               </section>
             )}
 
@@ -89,9 +88,9 @@ export default async function Home() {
               return (
                 <section className="section" key={category.id}>
                   <div className="section-label">{category.label}</div>
-                  <div className="market-card-list">
+                  <div className="bento-grid">
                     {categoryMarkets.map((market) => (
-                      <MarketCard
+                      <BentoMarketCard
                         key={market.slug.join("/")}
                         market={market}
                         initialOdds={oddsByMarket.get(market.slug.join("/")) ?? {}}
@@ -119,6 +118,6 @@ export default async function Home() {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 }
