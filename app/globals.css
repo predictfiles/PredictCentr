@@ -170,7 +170,7 @@ a {
 }
 
 .category-tag {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 6px;
   font-size: 12px;
