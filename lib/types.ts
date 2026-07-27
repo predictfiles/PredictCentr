@@ -56,7 +56,8 @@ export interface MarketContent {
     resolutionNote: string[];
   };
   marketBrief: {
-    text: string;
+    /** Bulleted on the page -- one distinct point per entry, not a single paragraph. */
+    text: string[];
     updatedAt: string;
     author?: string;
   };

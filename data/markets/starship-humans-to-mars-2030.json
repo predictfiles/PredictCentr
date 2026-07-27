@@ -4,12 +4,17 @@
     "resolutionDate": "2029-12-31",
     "resolutionNote": [
       "Kalshi's own wording: \"If SpaceX launches a manned Starship mission to Mars by Dec 31, 2029, then the market resolves to Yes.\"",
-      "This is the crewed-mission-specific contract -- don't confuse it with Kalshi's separate \"Will SpaceX land anything successfully on Mars before 2030?\" market, which also counts uncrewed landings and has traded notably higher (around 27-31%, vs. roughly 17% here).",
+      "This is the crewed-mission-specific contract - don't confuse it with Kalshi's separate \"Will SpaceX land anything successfully on Mars before 2030?\" market, which also counts uncrewed landings and has traded notably higher (around 27-31%, vs. roughly 17% here).",
       "No confirmed Polymarket market with matching crewed-by-2030 resolution criteria was found, so this page is Kalshi-only."
     ]
   },
   "marketBrief": {
-    "text": "Musk's public framing hasn't changed -- SpaceX exists to make humanity multi-planetary -- but its paperwork is more cautious. Mars came up 63 times in SpaceX's Nasdaq IPO prospectus, yet the filing declined to commit to a timeline, warning unproven initiatives 'may be difficult or impossible to determine.' That gap shows up in the price: Kalshi has this crewed-mission contract at 17%, below the separate 'will SpaceX land anything on Mars' market (uncrewed included), near 27-31%. Starship's 13th test flight on July 24, its first since the IPO, showed real progress -- an intact heat shield, a soft splashdown -- but also how far reusability still has to go.",
+    "text": [
+      "Musk's public framing hasn't changed: SpaceX exists to make humanity multi-planetary. Its paperwork is more cautious.",
+      "Mars came up 63 times in SpaceX's Nasdaq IPO prospectus, yet the filing declined to commit to a timeline, warning unproven initiatives 'may be difficult or impossible to determine.'",
+      "That gap shows up in the price: Kalshi has this crewed-mission contract at 17%, below the separate 'will SpaceX land anything on Mars' market (uncrewed included), near 27-31%.",
+      "Starship's 13th test flight on July 24, its first since the IPO, showed real progress: an intact heat shield, a soft splashdown. It also showed how far reusability still has to go."
+    ],
     "updatedAt": "2026-07-27",
     "author": "Owain Flanders"
   },
@@ -39,7 +44,7 @@
   "whatToWatch": [
     {
       "date": "Ongoing",
-      "label": "Further Starship test flights -- reusability and heat-shield performance are what actually moves this toward a human-rated vehicle"
+      "label": "Further Starship test flights - reusability and heat-shield performance are what actually moves this toward a human-rated vehicle"
     },
     {
       "date": "Ongoing",
@@ -47,7 +52,7 @@
     },
     {
       "date": "2029-12-31",
-      "label": "Kalshi's resolution cutoff -- market resolves"
+      "label": "Kalshi's resolution cutoff - market resolves"
     }
   ],
   "affiliateStatus": {

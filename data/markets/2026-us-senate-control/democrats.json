@@ -4,11 +4,15 @@
     "resolutionDate": "2026-11-03",
     "resolutionNote": [
       "Resolves to whichever party holds the Senate majority after the 2026 midterms (a 50-50 split is broken by the Vice Presidency).",
-      "If that's ambiguous, Kalshi defers to the party holding the President pro tempore and Polymarket to the party of the elected Majority Leader -- in practice, always the same party."
+      "If that's ambiguous, Kalshi defers to the party holding the President pro tempore and Polymarket to the party of the elected Majority Leader - in practice, always the same party."
     ]
   },
   "marketBrief": {
-    "text": "The Democrats' odds of winning Senate control bottomed near 17% shortly after this market opened in late 2024, then climbed through 2025 before surging past 50% for the first time ever in March 2026 -- a shift Kalshi's own team tied to the political fallout from the escalating US-Iran conflict. That rally peaked near 55% in mid-April before reversing hard: Republicans have since reclaimed the lead and now sit around 56-57% on both platforms, with Democrats back down near 44%. The through-line isn't either party's platform -- it's how much the Iran conflict, and the administration's handling of it, is weighing on Republican-held seats.",
+    "text": [
+      "The Democrats' odds of winning Senate control bottomed near 17% shortly after this market opened in late 2024, then climbed through 2025 before surging past 50% for the first time ever in March 2026, a shift Kalshi's own team tied to the political fallout from the escalating US-Iran conflict.",
+      "That rally peaked near 55% in mid-April before reversing hard. Republicans have since reclaimed the lead and now sit around 56-57% on both platforms, with Democrats back down near 44%.",
+      "The through-line isn't either party's platform. It's how much the Iran conflict, and the administration's handling of it, is weighing on Republican-held seats."
+    ],
     "updatedAt": "2026-07-24",
     "author": "Owain Flanders"
   },
@@ -59,23 +63,23 @@
   "whatToWatch": [
     {
       "date": "2026-08-04",
-      "label": "Michigan primary -- open Democratic seat after Gary Peters' retirement, a key control-math race"
+      "label": "Michigan primary - open Democratic seat after Gary Peters' retirement, a key control-math race"
     },
     {
       "date": "2026-08-11",
-      "label": "Wisconsin primary -- one of the most competitive remaining Senate contests"
+      "label": "Wisconsin primary - one of the most competitive remaining Senate contests"
     },
     {
       "date": "2026-08-18",
-      "label": "Alaska primary -- nonpartisan primary in a race both parties are contesting"
+      "label": "Alaska primary - nonpartisan primary in a race both parties are contesting"
     },
     {
       "date": "Ongoing",
-      "label": "US-Iran conflict developments -- the main driver of this market's swing since early 2026"
+      "label": "US-Iran conflict developments - the main driver of this market's swing since early 2026"
     },
     {
       "date": "2026-11-03",
-      "label": "Election Day -- market resolution"
+      "label": "Election Day - market resolution"
     }
   ],
   "affiliateStatus": {

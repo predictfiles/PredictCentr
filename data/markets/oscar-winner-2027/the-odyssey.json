@@ -5,11 +5,15 @@
     "resolutionNote": [
       "Resolves on the official Best Picture winner announced at the 99th Academy Awards ceremony.",
       "Kalshi's own wording: \"If The Odyssey has won Best Picture at the 99th Academy Awards, then the market resolves to Yes.\"",
-      "No Polymarket winner market exists yet -- Polymarket currently only lists a separate Best Picture NOMINATIONS market for The Odyssey (a different question: whether it's nominated at all, not whether it wins), so this page tracks Kalshi only until/unless Polymarket opens an equivalent winner market."
+      "No Polymarket winner market exists yet - Polymarket currently only lists a separate Best Picture NOMINATIONS market for The Odyssey (a different question: whether it's nominated at all, not whether it wins), so this page tracks Kalshi only until/unless Polymarket opens an equivalent winner market."
     ]
   },
   "marketBrief": {
-    "text": "The Odyssey opened to $123.5M domestically and $263.7M worldwide in July -- Christopher Nolan's biggest global debut ever, ahead of even The Dark Knight Rises -- and has held unusually well since, with a second-weekend haul above $84M that's itself a Nolan record. Reviews have matched the box office: 95% on Rotten Tomatoes from over 300 critics, tied for the highest of Nolan's career, with particular praise for Matt Damon's lead performance and the film's IMAX-native 70mm photography. That combination -- a genuine box-office event with awards-caliber reviews -- is why Kalshi already has it as a clear favorite at 54%, well ahead of whatever sits in second place.",
+    "text": [
+      "The Odyssey opened to $123.5M domestically and $263.7M worldwide in July: Christopher Nolan's biggest global debut ever, ahead of even The Dark Knight Rises. It has held unusually well since, with a second-weekend haul above $84M that's itself a Nolan record.",
+      "Reviews have matched the box office: 95% on Rotten Tomatoes from over 300 critics, tied for the highest of Nolan's career, with particular praise for Matt Damon's lead performance and the film's IMAX-native 70mm photography.",
+      "That combination, a genuine box-office event with awards-caliber reviews, is why Kalshi already has it as a clear favorite at 54%, well ahead of whatever sits in second place."
+    ],
     "updatedAt": "2026-07-26",
     "author": "Owain Flanders"
   },
@@ -46,11 +50,11 @@
   "whatToWatch": [
     {
       "date": "2027-01-21",
-      "label": "Oscar nominations announced -- confirms The Odyssey, and the rest of the Best Picture field, officially"
+      "label": "Oscar nominations announced - confirms The Odyssey, and the rest of the Best Picture field, officially"
     },
     {
       "date": "Ongoing",
-      "label": "Guild awards (PGA, DGA, SAG Ensemble, WGA) through Dec 2026-Feb 2027 -- historically the strongest predictors of the actual Best Picture winner"
+      "label": "Guild awards (PGA, DGA, SAG Ensemble, WGA) through Dec 2026-Feb 2027 - historically the strongest predictors of the actual Best Picture winner"
     },
     {
       "date": "Ongoing",
@@ -58,7 +62,7 @@
     },
     {
       "date": "2027-03-14",
-      "label": "99th Academy Awards ceremony -- market resolution"
+      "label": "99th Academy Awards ceremony - market resolution"
     }
   ],
   "affiliateStatus": {

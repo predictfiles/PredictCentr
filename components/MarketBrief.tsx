@@ -5,7 +5,7 @@ export function MarketBrief({
   updatedAt,
   author,
 }: {
-  text: string;
+  text: string[];
   updatedAt: string;
   author?: string;
 }) {
@@ -13,7 +13,11 @@ export function MarketBrief({
     <section className="section">
       <div className="section-label">Market Brief</div>
       <div className="card">
-        <p className="brief-text">{text}</p>
+        <ul className="brief-text-list">
+          {text.map((point, i) => (
+            <li key={i}>{point}</li>
+          ))}
+        </ul>
         <div className="brief-meta">
           {author ? `By ${author} · ` : ""}Updated by hand{" "}
           {formatDate(updatedAt)}

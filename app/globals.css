@@ -207,9 +207,18 @@ a {
   padding: 22px;
 }
 
-.brief-text {
+.brief-text-list {
   font-size: 16px;
   margin: 0 0 10px;
+  padding-left: 20px;
+}
+
+.brief-text-list li {
+  margin-bottom: 8px;
+}
+
+.brief-text-list li:last-child {
+  margin-bottom: 0;
 }
 
 .brief-meta {

@@ -4,12 +4,17 @@
     "resolutionDate": "2027-01-01",
     "resolutionNote": [
       "Resolves Yes if a full-length film adaptation of The Odyssey, made using Grok Imagine and released by Grok or an official Musk-controlled account, is made publicly available through an official channel (theatrical release, streaming, physical media, or authorized digital purchase) before January 1, 2027.",
-      "Private screenings, festival showings, leaks, and torrent availability don't count, and a trailer or soundtrack alone doesn't satisfy the criterion -- the full film has to be released.",
+      "Private screenings, festival showings, leaks, and torrent availability don't count, and a trailer or soundtrack alone doesn't satisfy the criterion - the full film has to be released.",
       "This is Kalshi's own stated resolution wording, not Musk's original pledge, which was vaguer (no defined release process)."
     ]
   },
   "marketBrief": {
-    "text": "xAI has real momentum in AI video: Grok Imagine went from zero video generation a year ago to over 1.2 billion clips generated in a single month by January 2026, with 720p footage, motion, and synced audio. But everything shown publicly still tops out around three minutes -- the demo that prompted Musk's pledge has been described as visually striking with 'wooden' dialogue. Musk's own roadmap calls for a 'watchable' full-length film by the end of 2026, a lower bar than a 'historically accurate' feature in five months. No director, cast, or release plan exists yet, and Kalshi prices this as a longshot in the 20s.",
+    "text": [
+      "xAI has real momentum in AI video: Grok Imagine went from zero video generation a year ago to over 1.2 billion clips generated in a single month by January 2026, with 720p footage, motion, and synced audio.",
+      "Everything shown publicly still tops out around three minutes. The demo that prompted Musk's pledge has been described as visually striking with 'wooden' dialogue.",
+      "Musk's own roadmap calls for a 'watchable' full-length film by the end of 2026, a lower bar than a 'historically accurate' feature in five months.",
+      "No director, cast, or release plan exists yet, and Kalshi prices this as a longshot in the 20s."
+    ],
     "updatedAt": "2026-07-24",
     "author": "Owain Flanders"
   },
@@ -54,7 +59,7 @@
     },
     {
       "date": "2027-01-01",
-      "label": "Kalshi's resolution cutoff -- market resolves"
+      "label": "Kalshi's resolution cutoff - market resolves"
     }
   ],
   "affiliateStatus": {
