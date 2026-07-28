@@ -178,11 +178,6 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
               . Resolves {content.market.resolutionDate}.
             </p>
           )}
-          <ul className="resolution-note-list">
-            {content.market.resolutionNote.map((point, i) => (
-              <li key={i}>{point}</li>
-            ))}
-          </ul>
         </div>
       </header>
 
@@ -218,6 +213,17 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
             />
           </div>
         ))}
+
+        <section className="section">
+          <div className="section-label">How This Resolves</div>
+          <div className="card">
+            <ul className="resolution-note-list">
+              {content.market.resolutionNote.map((point, i) => (
+                <li key={i}>{point}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
         <MarketBrief
           text={content.marketBrief.text}
