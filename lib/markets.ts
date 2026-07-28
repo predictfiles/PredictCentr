@@ -357,7 +357,7 @@ export function getElectionCandidates(electionSlug: string): MarketConfig[] {
 // The homepage's featured "Hot Market" slot -- manually set, no auto-ranking
 // yet. Change this one value to feature a different market; update by hand
 // whenever the hot market changes.
-export const HOT_MARKET_SLUG = ["2028-us-presidential-election-winner", "donald-trump"];
+export const HOT_MARKET_SLUG = ["kawhi-leonard-next-team"];
 
 export function getHotMarket(): MarketConfig | undefined {
   return findMarket(HOT_MARKET_SLUG);
