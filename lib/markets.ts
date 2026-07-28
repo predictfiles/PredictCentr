@@ -8,6 +8,7 @@ import grokOdysseyFilmRaw from "@/data/markets/grok-imagine-odyssey-film.json";
 import oscarOdysseyBestPictureRaw from "@/data/markets/oscar-winner-2027/the-odyssey.json";
 import starshipMarsRaw from "@/data/markets/starship-humans-to-mars-2030.json";
 import kawhiNextTeamRaw from "@/data/markets/kawhi-leonard-next-team.json";
+import bronnyNextTeamRaw from "@/data/markets/bronny-james-next-team.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -23,6 +24,7 @@ const grokOdysseyFilm = grokOdysseyFilmRaw as MarketContent;
 const oscarOdysseyBestPicture = oscarOdysseyBestPictureRaw as MarketContent;
 const starshipMars = starshipMarsRaw as MarketContent;
 const kawhiNextTeam = kawhiNextTeamRaw as MarketContent;
+const bronnyNextTeam = bronnyNextTeamRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -275,6 +277,38 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: kawhiNextTeam,
+  },
+  {
+    slug: ["bronny-james-next-team"],
+    category: "sports",
+    shortDescription:
+      "Live odds on Bronny James' next team, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "los-angeles-lakers",
+        label: "Los Angeles Lakers",
+        question: "Will Bronny James stay with the Lakers?",
+        kalshi: {
+          ticker: "KXNEXTTEAMNBA-26BJAMES9-LAL",
+          seriesTicker: "KXNEXTTEAMNBA",
+          url: "https://kalshi.com/markets/kxnextteamnba/next-nba-team/kxnextteamnba-26bjames9?selectedMarketTicker=KXNEXTTEAMNBA-26BJAMES9-LAL",
+        },
+        // Kalshi only -- Polymarket has no matching "next team" market for
+        // Bronny, just a differently-scoped "will he and LeBron play
+        // together" question. See resolutionNote.
+      },
+      {
+        id: "philadelphia-76ers",
+        label: "Philadelphia 76ers",
+        question: "Will Bronny James join the 76ers?",
+        kalshi: {
+          ticker: "KXNEXTTEAMNBA-26BJAMES9-PHI",
+          seriesTicker: "KXNEXTTEAMNBA",
+          url: "https://kalshi.com/markets/kxnextteamnba/next-nba-team/kxnextteamnba-26bjames9?selectedMarketTicker=KXNEXTTEAMNBA-26BJAMES9-PHI",
+        },
+      },
+    ],
+    content: bronnyNextTeam,
   },
 ];
 

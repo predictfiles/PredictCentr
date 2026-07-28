@@ -1,0 +1,71 @@
+{
+  "market": {
+    "title": "Bronny James' Next Team",
+    "resolutionDate": "2026-10-23",
+    "resolutionNote": [
+      "Resolves to whichever team Bronny James is officially on before Oct 23, 2026 - if he retires without joining a new team, the 'Retires / No Team' outcome resolves Yes instead.",
+      "Kalshi's own wording: \"If Bronny James's next team is Los Angeles before Oct 23, 2026, then the market resolves to Yes.\"",
+      "No genuinely matching Polymarket market exists - Polymarket only lists a separate 'Will LeBron and Bronny play together in 2026-27?' market, a different question from which specific team Bronny ends up on, so this page is Kalshi-only."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "LeBron James ended his eight-year run with the Lakers on June 30, 2026, signing a two-year, $8M deal with the Philadelphia 76ers - the same free agency already tracked on this site's LeBron James market page. Bronny, his son, stayed behind on a fully guaranteed contract.",
+      "That's fueled persistent speculation about a father-son reunion, with multiple reported trade frameworks that would send Bronny to Philadelphia for a second-round pick or a young wing. But Rich Paul, who represents both James men, has said they 'are not a package deal' and that there's no current plan for Bronny to join his father there.",
+      "Kalshi's market leans the same way: the Lakers are the heavy favorite to keep Bronny, with Philadelphia a distant but real second option and every other team barely registering.",
+      "It's not the only Bronny bet on Kalshi either - traders can also wager on which conference he ends up in, whether his next contract clears $12.5M, and even who breaks the news of his eventual landing spot: Bronny himself, his agent, a reporter like Shams Charania, or a family member."
+    ],
+    "updatedAt": "2026-07-28",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Bronny James Prediction Market on Kalshi Surprises After LeBron Report",
+      "source": "Sports Illustrated",
+      "date": "2026-07-01",
+      "url": "https://www.si.com/prediction-markets/bronny-james-prediction-market-on-kalshi-surprises-after-lebron-report-01kwexh0xqbn",
+      "image": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_46,w_5160,h_2902/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ReutersImages/mmsport/si/01kwexk8fqye043a07p7.jpg"
+    },
+    {
+      "headline": "What's Next for Bronny James After LeBron's Decision to Sign With the 76ers?",
+      "source": "CBS Sports",
+      "date": "2026-07-24",
+      "url": "https://www.cbssports.com/nba/news/bronny-james-next-move-lebron-lakers-76ers/",
+      "image": "https://sportshub.cbsistatic.com/i/2026/07/13/758506d8-11b0-43e4-bd30-fbc602e0c8c8/untitled-design-382.png"
+    },
+    {
+      "headline": "Evaluating What Might Happen With Lakers' Bronny James After LeBron Signs With 76ers",
+      "source": "Sports Illustrated",
+      "date": "2026-07-24",
+      "url": "https://www.si.com/nba/lakers/onsi/evaluating-what-might-happen-with-lakers-bronny-james-after-lebron-signs-with-76ers",
+      "image": "https://images2.minutemediacdn.com/image/upload/c_crop,x_471,y_40,w_3183,h_1790/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ReutersImages/mmsport/all_lakers/01kyaqc9nsg2z9q7w4f6.jpg"
+    },
+    {
+      "headline": "Lakers Projected to Trade Bronny to 76ers for Young Wing After LeBron News",
+      "source": "Yahoo Sports",
+      "date": "2026-07-25",
+      "url": "https://sports.yahoo.com/articles/lakers-projected-trade-bronny-76ers-001326396.html",
+      "image": "https://s.yimg.com/ny/api/res/1.2/BS6XRbiuY_rpRn0aNMiItw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY4NztjZj13ZWJw/https://media.zenfs.com/en/heavy_214/bc0e7acf2185de5b7dea9bd78c8594dd"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Any official trade or roster move involving Bronny and the 76ers - this would resolve the market immediately, ahead of the close date"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Further comment from Rich Paul, the Lakers, or the 76ers on whether a reunion is actually being discussed"
+    },
+    {
+      "date": "2026-10-23",
+      "label": "Kalshi's resolution cutoff - market resolves"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}
