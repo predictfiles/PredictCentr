@@ -214,6 +214,12 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
           </div>
         ))}
 
+        <MarketBrief
+          text={content.marketBrief.text}
+          updatedAt={content.marketBrief.updatedAt}
+          author={content.marketBrief.author}
+        />
+
         <section className="section">
           <div className="section-label">How This Resolves</div>
           <div className="card">
@@ -224,12 +230,6 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
             </ul>
           </div>
         </section>
-
-        <MarketBrief
-          text={content.marketBrief.text}
-          updatedAt={content.marketBrief.updatedAt}
-          author={content.marketBrief.author}
-        />
 
         <NewsSection items={content.news} />
 
