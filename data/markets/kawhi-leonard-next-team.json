@@ -1,0 +1,79 @@
+{
+  "market": {
+    "title": "Kawhi Leonard's Next Team",
+    "resolutionDate": "2026-10-21",
+    "resolutionNote": [
+      "Resolves to whichever team Kawhi Leonard is officially under contract with, or takes the floor for, during the 2026-27 NBA season - if he's still with the Clippers or has retired by the close date, that resolves the 'Los Angeles Clippers' side to Yes instead.",
+      "Kalshi's own wording: \"If Kawhi Leonard's next team is Toronto before Oct 21, 2026, then the market resolves to Yes.\" An official trade completion or acquisition announcement before the close date resolves the market immediately, without waiting for the season to start.",
+      "One real gap between the platforms: Kalshi's cutoff is Oct 21, 2026, while Polymarket's is Oct 31, 2026, 11:59 PM ET - worth knowing given how long the NBA's investigation has already dragged on."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "The Clippers and Raptors agreed in principle to a blockbuster trade on June 30, 2026: Leonard to Toronto for Brandon Ingram, Gradey Dick, unprotected first-round picks in 2031 and 2033, a 2027 first-round pick swap, and two second-round picks.",
+      "That trade has been on hold ever since, after the NBA opened a second investigation into the Clippers over alleged salary-cap circumvention - centered on Leonard's $28M endorsement deal with the now-bankrupt Aspiration, and whether the team separately covered expenses for him it shouldn't have.",
+      "Despite the pause, Kalshi's market has stayed heavily pro-Toronto throughout: the Raptors jumped 37 points in a single day to 77% when the trade first broke, spiked as high as 97-99% at one point, and have since settled back into the high-70s/80s as the investigation has dragged on longer than the league initially hoped.",
+      "Commissioner Adam Silver has pushed back on the idea that the NBA itself paused the deal, saying that call came from the Clippers and Raptors, not the league - while maintaining the investigation still needs to wrap up before the 2026-27 season tips off."
+    ],
+    "updatedAt": "2026-07-28",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Major NBA Trade Won't Be Official Until League's Investigation Into Team's Salary Cap Accusations Complete",
+      "source": "Fox News",
+      "date": "2026-07-09",
+      "url": "https://www.foxnews.com/sports/major-nba-trade-wont-be-official-until-leagues-investigation-into-teams-salary-cap-accusations-complete",
+      "image": "https://a57.foxnews.com/cf-images.us-east-1.prod.boltdns.net/v1/static/694940094001/03ebdc65-daef-49f7-88a7-4d4ae6cbc4dd/cbd9fde9-0908-4acc-8726-264c4d2043d2/1280x720/match/896/500/image.jpg?ve=1&tl=1"
+    },
+    {
+      "headline": "Kawhi Leonard Trade on Hold: What's Next as Raptors, Clippers Await Results of NBA Investigation",
+      "source": "CBS Sports",
+      "date": "2026-07-09",
+      "url": "https://www.cbssports.com/nba/news/kawhi-leonard-trade-on-hold-raptors-clippers-explained/",
+      "image": "https://sportshub.cbsistatic.com/i/2026/07/09/6c6a6182-975c-4a55-be82-e192b6eac6d1/kawhi-getty-11.png?crop=16:9&width=560&quality=85"
+    },
+    {
+      "headline": "Adam Silver Updates Kawhi Leonard Investigation Timeline as Probe Reportedly Grows in Scope",
+      "source": "CBS Sports",
+      "date": "2026-07-15",
+      "url": "https://www.cbssports.com/nba/news/nba-investigation-kawhi-leonard-clippers-aspiration/",
+      "image": "https://sportshub.cbsistatic.com/i/2026/07/14/848d3904-68d4-4f6e-9cd8-abe638fe5e09/kawhi.jpg"
+    },
+    {
+      "headline": "Adam Silver Pushes Back on Notion NBA Paused Kawhi Leonard Trade Amid Ongoing Clippers Investigation",
+      "source": "Sports Illustrated",
+      "date": "2026-07-15",
+      "url": "https://www.si.com/nba/adam-silver-pushes-back-on-notion-nba-paused-kawhi-leonard-trade-amid-ongoing-clippers-investigation",
+      "image": "https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_95,w_6808,h_3829/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ReutersImages/mmsport/si/01kxk3gzfaxxs2b8f27q.jpg"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "The NBA's investigation into the Clippers - Silver says it needs to wrap up before the 2026-27 season starts"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Any official trade completion announcement from the Clippers or Raptors - this would resolve the market immediately, ahead of either close date"
+    },
+    {
+      "date": "2026-10-21",
+      "label": "Kalshi's resolution cutoff - market resolves"
+    },
+    {
+      "date": "2026-10-31",
+      "label": "Polymarket's resolution cutoff - slightly later than Kalshi's"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    },
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

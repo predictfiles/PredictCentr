@@ -7,6 +7,7 @@ import lebronNextTeamRaw from "@/data/markets/lebron-james-next-team.json";
 import grokOdysseyFilmRaw from "@/data/markets/grok-imagine-odyssey-film.json";
 import oscarOdysseyBestPictureRaw from "@/data/markets/oscar-winner-2027/the-odyssey.json";
 import starshipMarsRaw from "@/data/markets/starship-humans-to-mars-2030.json";
+import kawhiNextTeamRaw from "@/data/markets/kawhi-leonard-next-team.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -21,6 +22,7 @@ const lebronNextTeam = lebronNextTeamRaw as MarketContent;
 const grokOdysseyFilm = grokOdysseyFilmRaw as MarketContent;
 const oscarOdysseyBestPicture = oscarOdysseyBestPictureRaw as MarketContent;
 const starshipMars = starshipMarsRaw as MarketContent;
+const kawhiNextTeam = kawhiNextTeamRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -232,6 +234,47 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: starshipMars,
+  },
+  {
+    slug: ["kawhi-leonard-next-team"],
+    category: "sports",
+    shortDescription:
+      "Live odds on Kawhi Leonard's next team - the Raptors trade is agreed but paused amid an NBA salary-cap investigation into the Clippers, compared across Kalshi and Polymarket.",
+    outcomes: [
+      {
+        id: "toronto-raptors",
+        label: "Toronto Raptors",
+        question: "Will Kawhi Leonard's next team be the Raptors?",
+        kalshi: {
+          ticker: "KXNEXTTEAMNBA-26KLEONARD2-TOR",
+          seriesTicker: "KXNEXTTEAMNBA",
+          url: "https://kalshi.com/markets/kxnextteamnba/next-nba-team/kxnextteamnba-26kleonard2?selectedMarketTicker=KXNEXTTEAMNBA-26KLEONARD2-TOR",
+        },
+        polymarket: {
+          marketId: "2730704",
+          yesTokenId:
+            "71442248608680775392175387904764925142154791124955324705502495372378633558564",
+          url: "https://polymarket.com/event/nba-kawhi-leonard-next-team-20260629144203996/will-kawhi-play-for-the-toronto-raptors-in-2026-27-20260629144043516",
+        },
+      },
+      {
+        id: "los-angeles-clippers",
+        label: "Los Angeles Clippers",
+        question: "Will Kawhi Leonard stay with the Clippers?",
+        kalshi: {
+          ticker: "KXNEXTTEAMNBA-26KLEONARD2-LAC",
+          seriesTicker: "KXNEXTTEAMNBA",
+          url: "https://kalshi.com/markets/kxnextteamnba/next-nba-team/kxnextteamnba-26kleonard2?selectedMarketTicker=KXNEXTTEAMNBA-26KLEONARD2-LAC",
+        },
+        polymarket: {
+          marketId: "2730689",
+          yesTokenId:
+            "37336475921711580283973873539558313505893324704942938603043928250201423680809",
+          url: "https://polymarket.com/event/nba-kawhi-leonard-next-team-20260629144203996/will-kawhi-play-for-the-los-angeles-clippers-in-2026-27-20260629144043501",
+        },
+      },
+    ],
+    content: kawhiNextTeam,
   },
 ];
 
