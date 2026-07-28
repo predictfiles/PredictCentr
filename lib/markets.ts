@@ -9,6 +9,7 @@ import oscarOdysseyBestPictureRaw from "@/data/markets/oscar-winner-2027/the-ody
 import starshipMarsRaw from "@/data/markets/starship-humans-to-mars-2030.json";
 import kawhiNextTeamRaw from "@/data/markets/kawhi-leonard-next-team.json";
 import bronnyNextTeamRaw from "@/data/markets/bronny-james-next-team.json";
+import curryLeavesWarriorsRaw from "@/data/markets/steph-curry-leaves-warriors.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -25,6 +26,7 @@ const oscarOdysseyBestPicture = oscarOdysseyBestPictureRaw as MarketContent;
 const starshipMars = starshipMarsRaw as MarketContent;
 const kawhiNextTeam = kawhiNextTeamRaw as MarketContent;
 const bronnyNextTeam = bronnyNextTeamRaw as MarketContent;
+const curryLeavesWarriors = curryLeavesWarriorsRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -309,6 +311,43 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: bronnyNextTeam,
+  },
+  {
+    slug: ["steph-curry-leaves-warriors"],
+    category: "sports",
+    shortDescription:
+      "Live odds on whether Steph Curry stays with the Warriors, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "golden-state-warriors",
+        label: "Golden State Warriors",
+        question: "Will Steph Curry stay with the Warriors?",
+        kalshi: {
+          ticker: "KXNEXTTEAMNBA-26SCUR-GSW",
+          seriesTicker: "KXNEXTTEAMNBA",
+          url: "https://kalshi.com/markets/kxnextteamnba/next-nba-team/kxnextteamnba-26scur?selectedMarketTicker=KXNEXTTEAMNBA-26SCUR-GSW",
+        },
+        // Not paired with Polymarket here: Polymarket's contract for this
+        // question is a single binary priced on the inverse ("does Curry
+        // leave"), and getPolymarketMarket() always reads outcomePrices[0]
+        // ("Yes") -- there's no way to pull its complementary "stays" price
+        // through the existing odds pipeline without it silently showing
+        // the leave-side number under a "does he stay" question. Polymarket's
+        // live number is instead quoted directly in the Market Brief. See
+        // resolutionNote.
+      },
+      {
+        id: "san-antonio-spurs",
+        label: "San Antonio Spurs",
+        question: "Will Steph Curry's next team be the Spurs?",
+        kalshi: {
+          ticker: "KXNEXTTEAMNBA-26SCUR-SAS",
+          seriesTicker: "KXNEXTTEAMNBA",
+          url: "https://kalshi.com/markets/kxnextteamnba/next-nba-team/kxnextteamnba-26scur?selectedMarketTicker=KXNEXTTEAMNBA-26SCUR-SAS",
+        },
+      },
+    ],
+    content: curryLeavesWarriors,
   },
 ];
 

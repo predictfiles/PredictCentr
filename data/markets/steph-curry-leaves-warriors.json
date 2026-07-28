@@ -1,0 +1,72 @@
+{
+  "market": {
+    "title": "Stephen Curry Leaves the Warriors",
+    "resolutionDate": "2026-10-21",
+    "resolutionNote": [
+      "The live odds below are Kalshi-only, tracking the 'stays with Golden State' side directly. Polymarket has a genuinely matching market, but it's framed as the inverse binary - \"Does Stephen Curry leave the Warriors?\" - so its own site currently shows about 6% Yes (leaves), the mirror of Kalshi's roughly 83% (stays). Both numbers point the same direction; they're just quoted from opposite sides of the same question, so they aren't shown side-by-side in one widget here.",
+      "Kalshi's own wording: \"If Steph Curry's next team is Stays with Golden State or Retires before Oct 21, 2026, then the market resolves to Yes.\"",
+      "One real gap between the platforms: Kalshi's cutoff is Oct 21, 2026, while Polymarket's is Oct 22, 2026, 11:59 PM ET."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Speculation about Steph Curry's Warriors future picked up specifically because Golden State missed out on LeBron James this offseason - the same free agency already tracked on this site's LeBron and Bronny James pages, with LeBron choosing the Philadelphia 76ers instead.",
+      "Curry signed a one-year, $62.6M extension with Golden State back in 2024 and has repeatedly said on record he wants to retire with the team that drafted him; he becomes eligible to negotiate a further extension on August 29, 2026.",
+      "The chatter has grown louder after reporting that Warriors ownership is quietly weighing a 'post-Curry' direction, following missed pursuits of LeBron, Giannis Antetokounmpo, Jaylen Brown, and Anthony Davis this offseason. But NBA insider Brett Siegel has pushed back hard, calling the idea of Curry requesting a trade 'an impossible scenario' given his loyalty to the franchise.",
+      "Despite the noise, the market itself still overwhelmingly favors him staying: about 83% on Kalshi, and Polymarket's own binary contract (framed as the inverse - 'does he leave') prices that at roughly 6%. The real story here is the shift in sentiment, not an actual likely departure."
+    ],
+    "updatedAt": "2026-07-28",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "All Signs Point to Stephen Curry Opting Out of Contract to Push Warriors' Front Office to Make Changes",
+      "source": "Yardbarker",
+      "date": "2026-07-27",
+      "url": "https://www.yardbarker.com/nba/articles/all_signs_point_to_stephen_curry_opting_out_of_contract_to_push_warriors_front_office_to_make_changes/s1_17730_44105423",
+      "image": "http://res.cloudinary.com/ybmedia/image/upload/c_crop,e_improve,h_1123,w_2000,x_0,y_0/c_fill,f_auto,h_900,q_auto,w_1600/v1/m/0/c/0c874bb86363142e49fa6a66947ac2f8f047cea0/apr-17-2026-phoenix-arizona-usa-golden-state.jpg"
+    },
+    {
+      "headline": "Demands for Warriors to Trade Steph Curry Intensify After Latest News Surfaces",
+      "source": "Yahoo Sports",
+      "date": "2026-07-27",
+      "url": "https://sports.yahoo.com/articles/demands-warriors-trade-steph-curry-170450401.html",
+      "image": "https://s.yimg.com/ny/api/res/1.2/I5JRYpp32hDKAiY_pv8Jqg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY2MjtjZj13ZWJw/https://media.zenfs.com/en/ftw_outdoors_usa_today_article_609/983c0a1daf64368428c3e315d2128897"
+    },
+    {
+      "headline": "NBA Insider Brings End To Steph Curry Trade Rumors After Odds Increased",
+      "source": "Heavy",
+      "date": "2026-07-27",
+      "url": "https://heavy.com/sports/nba/golden-state-warriors/end-to-steph-curry-trade-rumors/",
+      "image": "https://heavy.com/wp-content/uploads/2026/07/golden-state-warriors-v-oklahoma-city-thunder-oklahoma-city-oklahoma-november-e1785181750611.jpg"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "2026-08-29",
+      "label": "Curry becomes eligible to sign a new extension with Golden State - a deal here would likely end the speculation outright"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Further comment from Warriors ownership or front office on a 'post-Curry' direction"
+    },
+    {
+      "date": "2026-10-21",
+      "label": "Kalshi's resolution cutoff - market resolves"
+    },
+    {
+      "date": "2026-10-22",
+      "label": "Polymarket's resolution cutoff - one day later than Kalshi's"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    },
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}
