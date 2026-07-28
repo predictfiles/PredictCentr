@@ -239,7 +239,7 @@ export const markets: MarketConfig[] = [
     slug: ["kawhi-leonard-next-team"],
     category: "sports",
     shortDescription:
-      "Live odds on Kawhi Leonard's next team - the Raptors trade is agreed but paused amid an NBA salary-cap investigation into the Clippers, compared across Kalshi and Polymarket.",
+      "Live odds on Kawhi Leonard's next team, compared across Kalshi and Polymarket.",
     outcomes: [
       {
         id: "toronto-raptors",
