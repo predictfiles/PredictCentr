@@ -110,7 +110,7 @@ export default async function Home() {
                   </div>
                   {hasMore && (
                     <Link className="show-more-link" href={`/${category.id}/`}>
-                      Show More {category.label} Markets →
+                      More {category.label} Markets →
                     </Link>
                   )}
                 </section>
