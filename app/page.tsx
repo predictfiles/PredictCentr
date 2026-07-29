@@ -57,10 +57,15 @@ export default async function Home() {
     <div className="home-page">
       <header className="header">
         <div className="home-header-inner">
-          <h1 className="home-wordmark">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-full.png" alt="PredictCentr" className="wordmark-logo" />
-          </h1>
+          <div className="home-header-top">
+            <h1 className="home-wordmark">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-full.png" alt="PredictCentr" className="wordmark-logo" />
+            </h1>
+            <Link className="must-read-nav-link" href="/must-read/">
+              Must Read
+            </Link>
+          </div>
           <p className="home-tagline">
             Breaking news. Live odds. Better decisions.
           </p>

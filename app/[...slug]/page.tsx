@@ -18,6 +18,7 @@ import { HistoryChart } from "@/components/HistoryChart";
 import { WhatToWatch } from "@/components/WhatToWatch";
 import { MarketCard } from "@/components/MarketCard";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { MustReadTeaser } from "@/components/MustReadTeaser";
 import type { HistoryResponse, MarketConfig, OddsResponse } from "@/lib/types";
 
 export const revalidate = 30;
@@ -234,6 +235,8 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
         <NewsSection items={content.news} />
 
         <WhatToWatch items={content.whatToWatch} />
+
+        <MustReadTeaser />
       </main>
 
       <footer className="footer">

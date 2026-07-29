@@ -132,6 +132,33 @@ export interface ElectionInfo {
 }
 
 /**
+ * A "PredictCentr Must Read" editorial article -- longer-form content, kept
+ * separate from the market pages' odds-first job. Two initial categories:
+ * state-by-state legality guides and market analysis/opinion pieces.
+ */
+export interface MustReadArticle {
+  /** URL slug, e.g. "is-the-odyssey-overpriced-for-best-picture" */
+  slug: string;
+  title: string;
+  category: "legality" | "analysis";
+  /** One-line summary shown on the hub page and the market-page teaser. */
+  teaser: string;
+  /** Paragraphs -- prose, not bulleted, one array entry per <p>. */
+  body: string[];
+  publishedAt: string;
+  updatedAt: string;
+  author: string;
+  /**
+   * Shown as a small notice on the article itself -- e.g. the "not legal
+   * advice, verify independently" note a legality piece needs. Optional
+   * since an analysis piece may not need one of its own.
+   */
+  disclaimer?: string;
+  /** Optional link back to the specific market this article discusses. */
+  relatedMarketSlug?: string;
+}
+
+/**
  * A manually-picked entry for the homepage's "Trending on X" carousel.
  * Owain's own daily pick from X's "Today's News" panel -- no API, no
  * automation. `marketSlug` is the joined slug path (e.g.
