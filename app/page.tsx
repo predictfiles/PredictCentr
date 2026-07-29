@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { markets, getHotMarket, findMarket } from "@/lib/markets";
 import { loadOutcomeOdds } from "@/lib/oddsLoader";
 import { BentoMarketCard } from "@/components/BentoMarketCard";
@@ -7,6 +8,8 @@ import { TrendingOnX } from "@/components/TrendingOnX";
 import { CategoryNav } from "@/components/CategoryNav";
 import trending from "@/data/trending.json";
 import type { OddsResponse, TrendingItem } from "@/lib/types";
+
+const HOME_CATEGORY_LIMIT = 4;
 
 const CATEGORIES = [
   { id: "politics", label: "Politics" },
@@ -87,11 +90,17 @@ export default async function Home() {
             {CATEGORIES.map((category) => {
               const categoryMarkets = liveMarkets.filter((m) => m.category === category.id);
               if (categoryMarkets.length === 0) return null;
+              // Most recently added first -- markets.ts appends new markets
+              // to the end of the array, so reversing puts the newest at
+              // the top of each category section.
+              const orderedMarkets = [...categoryMarkets].reverse();
+              const visibleMarkets = orderedMarkets.slice(0, HOME_CATEGORY_LIMIT);
+              const hasMore = orderedMarkets.length > HOME_CATEGORY_LIMIT;
               return (
                 <section className="section" key={category.id}>
                   <div className="section-label">{category.label}</div>
                   <div className="bento-grid">
-                    {categoryMarkets.map((market) => (
+                    {visibleMarkets.map((market) => (
                       <BentoMarketCard
                         key={market.slug.join("/")}
                         market={market}
@@ -99,6 +108,11 @@ export default async function Home() {
                       />
                     ))}
                   </div>
+                  {hasMore && (
+                    <Link className="show-more-link" href={`/${category.id}/`}>
+                      Show More {category.label} Markets →
+                    </Link>
+                  )}
                 </section>
               );
             })}

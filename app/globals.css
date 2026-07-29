@@ -969,6 +969,22 @@ a {
   text-decoration-color: #fff;
 }
 
+.show-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+}
+
+.show-more-link:hover {
+  text-decoration-color: #fff;
+}
+
 .trending-progress {
   display: flex;
   gap: 4px;
