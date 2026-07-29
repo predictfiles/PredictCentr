@@ -143,6 +143,8 @@ export interface MustReadArticle {
   category: "legality" | "analysis";
   /** One-line summary shown on the hub page and the market-page teaser. */
   teaser: string;
+  /** Hero image shown at the top of the article itself. */
+  image?: string;
   /** Paragraphs -- prose, not bulleted, one array entry per <p>. */
   body: string[];
   publishedAt: string;

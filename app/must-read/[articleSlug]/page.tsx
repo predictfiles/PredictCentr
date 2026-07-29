@@ -59,6 +59,13 @@ export default function MustReadArticlePage({
       </header>
 
       <main className="wrap">
+        {article.image && (
+          <div className="must-read-hero">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={article.image} alt={article.title} className="must-read-hero-image" />
+          </div>
+        )}
+
         <section className="section">
           <div className="card">
             {article.body.map((paragraph, i) => (
