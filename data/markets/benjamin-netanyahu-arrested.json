@@ -1,0 +1,72 @@
+{
+  "market": {
+    "title": "Will Benjamin Netanyahu Be Arrested?",
+    "resolutionDate": "2026-12-31",
+    "resolutionNote": [
+      "Both platforms require an actual arrest - Netanyahu taken into physical custody, booked, or surrendering to law enforcement. An arrest warrant being issued, an indictment, house arrest, electronic monitoring, or being briefly detained/questioned without a formal arrest do not count on either platform.",
+      "Kalshi's own wording: \"If Benjamin Netanyahu has been arrested before Jan 1, 2027, then the market resolves to Yes.\"",
+      "One real gap between the platforms: Kalshi's tracked contract here resolves before Jan 1, 2027, while Polymarket's resolves by Dec 31, 2026 - a day earlier. Both platforms also separately list shorter-dated sibling contracts (Kalshi has 'before Oct 1' and 'before Nov 1' versions; Polymarket has a 'by September 30' version) not tracked on this page since they expire too soon after publishing to stay useful."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "The International Criminal Court issued an arrest warrant for Israeli Prime Minister Benjamin Netanyahu in November 2024, alleging war crimes and crimes against humanity linked to the Gaza conflict.",
+      "Enforcement has been a patchwork: Ireland, the Netherlands, and several other ICC member states have said they would arrest him on their territory, while others, including Hungary, have said they won't. The US isn't an ICC member, so it has no legal obligation to act on the warrant.",
+      "The question resurfaced in July 2026 after Netanyahu said he'll defy the warrant and speak at the UN in New York in September. New York Mayor Zohran Mamdani, who'd pledged during his campaign to have Netanyahu arrested if he visited, has since said the city has no 'independent legal authority' to enforce the warrant and is calling on the federal government to act instead.",
+      "President Trump has ruled out any arrest on US soil, and his administration is separately pushing a broader campaign against the ICC itself. Markets price all of this as very unlikely: both Kalshi and Polymarket have Netanyahu's odds of arrest by year-end in the mid-single digits."
+    ],
+    "updatedAt": "2026-07-29",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Trump Rules Out Netanyahu Arrest as US Escalates Campaign Against ICC",
+      "source": "JURIST",
+      "date": "2026-07-20",
+      "url": "https://www.jurist.org/news/2026/07/trump-rules-out-netanyahu-arrest-as-us-escalates-campaign-against-icc/",
+      "image": "https://www.jurist.org/news/wp-content/uploads/sites/4/2026/07/President_Donald_Trump_and_Israeli_Prime_Minister_Benjamin_Netanyahu_hold_a_joint_press_conference_cropped2.jpg"
+    },
+    {
+      "headline": "Mamdani Says NYC Can't Arrest Netanyahu but the Federal Government Should",
+      "source": "PBS NewsHour",
+      "date": "2026-07-22",
+      "url": "https://www.pbs.org/newshour/world/mamdani-says-nyc-cant-arrest-netanyahu-but-the-federal-government-should",
+      "image": "https://d3i6fh83elv35t.cloudfront.net/static/2026/07/2026-07-22T021637Z_1451009317_RC2QIMAE71N6_RTRMADP_3_ISRAEL-PALESTINIANS-MAMDANI-1024x576.jpg"
+    },
+    {
+      "headline": "Netanyahu Vows to Go to New York City Despite ICC Arrest Warrant, Mamdani",
+      "source": "Al Jazeera",
+      "date": "2026-07-26",
+      "url": "https://www.aljazeera.com/news/2026/7/26/netanyahu-vows-to-go-to-new-york-city-despite-icc-arrest-warrant-mamdani",
+      "image": "https://www.aljazeera.com/wp-content/uploads/2026/07/afp_6a66471a7259-1785087770.jpg?resize=770%2C513&quality=80"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "September 2026",
+      "label": "Netanyahu's planned UN visit to New York - the trip that reignited this market"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Any shift in enforcement stance from individual ICC member states as Netanyahu travels internationally"
+    },
+    {
+      "date": "2026-12-31",
+      "label": "Polymarket's resolution cutoff - market resolves"
+    },
+    {
+      "date": "2027-01-01",
+      "label": "Kalshi's resolution cutoff - one day later than Polymarket's"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    },
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

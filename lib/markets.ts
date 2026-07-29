@@ -10,6 +10,7 @@ import starshipMarsRaw from "@/data/markets/starship-humans-to-mars-2030.json";
 import kawhiNextTeamRaw from "@/data/markets/kawhi-leonard-next-team.json";
 import bronnyNextTeamRaw from "@/data/markets/bronny-james-next-team.json";
 import curryLeavesWarriorsRaw from "@/data/markets/steph-curry-leaves-warriors.json";
+import netanyahuArrestedRaw from "@/data/markets/benjamin-netanyahu-arrested.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -27,6 +28,7 @@ const starshipMars = starshipMarsRaw as MarketContent;
 const kawhiNextTeam = kawhiNextTeamRaw as MarketContent;
 const bronnyNextTeam = bronnyNextTeamRaw as MarketContent;
 const curryLeavesWarriors = curryLeavesWarriorsRaw as MarketContent;
+const netanyahuArrested = netanyahuArrestedRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -348,6 +350,31 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: curryLeavesWarriors,
+  },
+  {
+    slug: ["benjamin-netanyahu-arrested"],
+    category: "politics",
+    shortDescription:
+      "Live odds on whether Benjamin Netanyahu is arrested, compared across Kalshi and Polymarket.",
+    outcomes: [
+      {
+        id: "arrested",
+        label: "Benjamin Netanyahu",
+        question: "Will Benjamin Netanyahu be arrested?",
+        kalshi: {
+          ticker: "KXARRESTNETANYAHU-28JAN01-27JAN01",
+          seriesTicker: "KXARRESTNETANYAHU",
+          url: "https://kalshi.com/markets/kxarrestnetanyahu/will-netanyahu-be-arrested/kxarrestnetanyahu-28jan01?selectedMarketTicker=KXARRESTNETANYAHU-28JAN01-27JAN01",
+        },
+        polymarket: {
+          marketId: "3005858",
+          yesTokenId:
+            "62161653759349855247273799232873441774010086528851126304754251694125509765134",
+          url: "https://polymarket.com/event/netanyahu-arrested-by-20260720194516248/will-benjamin-netanyahu-be-arrested-by-december-31-20260720194516249-193",
+        },
+      },
+    ],
+    content: netanyahuArrested,
   },
 ];
 
