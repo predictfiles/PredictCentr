@@ -4,6 +4,7 @@ import { BentoMarketCard } from "@/components/BentoMarketCard";
 import { MarketCard } from "@/components/MarketCard";
 import { TopNewsStories } from "@/components/TopNewsStories";
 import { TrendingOnX } from "@/components/TrendingOnX";
+import { CategoryNav } from "@/components/CategoryNav";
 import trending from "@/data/trending.json";
 import type { OddsResponse, TrendingItem } from "@/lib/types";
 
@@ -64,6 +65,7 @@ export default async function Home() {
             Compare live prediction market prices, discover what's moving
             them, and make better-informed decisions.
           </p>
+          <CategoryNav />
         </div>
       </header>
 
