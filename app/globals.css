@@ -388,26 +388,27 @@ a {
   margin-bottom: 0;
 }
 
-.must-read-nav-link {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--nav-fg);
-  text-decoration: none;
-  padding: 8px 16px;
-  border: 1px solid var(--nav-divider);
-  border-radius: 999px;
-  white-space: nowrap;
-  transition: background 150ms ease;
+/* Shared thumbnail + text row -- used in the homepage header card, the
+   market-page teaser, and the Must Read hub listing, so all three read as
+   the same visual language. */
+.must-read-thumb-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-.must-read-nav-link:hover {
-  background: rgba(255, 255, 255, 0.08);
+.must-read-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .must-read-teaser-link {
-  display: block;
   color: var(--card-fg);
   text-decoration: none;
+  margin-bottom: 16px;
 }
 
 .must-read-teaser-link:hover .must-read-teaser-title {
@@ -426,19 +427,6 @@ a {
 .must-read-teaser-title {
   font-size: 16px;
   font-weight: 700;
-  margin-bottom: 2px;
-}
-
-.must-read-teaser-desc {
-  font-size: 14px;
-  color: var(--card-muted);
-}
-
-.must-read-teaser-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 16px;
 }
 
 .must-read-teaser-cta {
@@ -450,6 +438,40 @@ a {
 
 .must-read-teaser-cta:hover {
   text-decoration: underline;
+}
+
+/* Homepage header card -- sits opposite the wordmark in .home-header-top,
+   previewing the latest Must Read article. */
+.must-read-header-card {
+  display: block;
+  background: var(--card);
+  color: var(--card-fg);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 16px;
+  max-width: 320px;
+  text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.must-read-header-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.must-read-header-card-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--card-muted);
+  margin-bottom: 10px;
+}
+
+.must-read-header-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .brief-text-list {

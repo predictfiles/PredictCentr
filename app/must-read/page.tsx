@@ -45,11 +45,19 @@ export default function MustReadHubPage() {
                   className="market-card"
                   href={`/must-read/${article.slug}/`}
                 >
-                  <div className="market-card-eyebrow">
-                    {MUST_READ_CATEGORY_LABELS[article.category]}
+                  <div className="must-read-thumb-row">
+                    {article.image && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={article.image} alt="" className="must-read-thumb" />
+                    )}
+                    <div>
+                      <div className="market-card-eyebrow">
+                        {MUST_READ_CATEGORY_LABELS[article.category]}
+                      </div>
+                      <div className="market-card-title">{article.title}</div>
+                      <div className="market-card-desc">{article.teaser}</div>
+                    </div>
                   </div>
-                  <div className="market-card-title">{article.title}</div>
-                  <div className="market-card-desc">{article.teaser}</div>
                   <div className="market-card-cta">
                     {formatDate(article.publishedAt)} · By {article.author}
                   </div>

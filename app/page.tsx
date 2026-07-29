@@ -6,6 +6,7 @@ import { MarketCard } from "@/components/MarketCard";
 import { TopNewsStories } from "@/components/TopNewsStories";
 import { TrendingOnX } from "@/components/TrendingOnX";
 import { CategoryNav } from "@/components/CategoryNav";
+import { MustReadHeaderCard } from "@/components/MustReadHeaderCard";
 import trending from "@/data/trending.json";
 import type { OddsResponse, TrendingItem } from "@/lib/types";
 
@@ -62,9 +63,7 @@ export default async function Home() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo-full.png" alt="PredictCentr" className="wordmark-logo" />
             </h1>
-            <Link className="must-read-nav-link" href="/must-read/">
-              Must Read
-            </Link>
+            <MustReadHeaderCard />
           </div>
           <p className="home-tagline">
             Breaking news. Live odds. Better decisions.
