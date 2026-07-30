@@ -7,19 +7,18 @@ const WIDTH = 700;
 const HEIGHT = 300;
 const PAD = { top: 16, right: 16, bottom: 28, left: 40 };
 
+// Limited to ranges that are genuinely directly comparable between
+// platforms -- not every fidelity/interval combination either API offers.
 const RANGE_OPTIONS: { value: HistoryRange; label: string }[] = [
   { value: "1h", label: "1H" },
-  { value: "6h", label: "6H" },
   { value: "1d", label: "1D" },
-  { value: "1w", label: "1W" },
-  { value: "1m", label: "1M" },
   { value: "all", label: "ALL" },
 ];
 
-// Sub-day ranges show a time of day; longer ones show a date -- a "Jul 26"
-// axis label is useless when the whole chart spans one hour.
+// Sub-day ranges show a time of day; "all" shows a date -- a "Jul 26" axis
+// label is useless when the whole chart spans one hour.
 function isIntraday(range: HistoryRange): boolean {
-  return range === "1h" || range === "6h" || range === "1d";
+  return range === "1h" || range === "1d";
 }
 
 function nearestPoint(points: HistoryPoint[], t: number): HistoryPoint | null {

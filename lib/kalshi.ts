@@ -14,14 +14,8 @@ function kalshiRangeParams(range: HistoryRange, end: number): { start: number; p
   switch (range) {
     case "1h":
       return { start: end - HOUR, periodInterval: 1 };
-    case "6h":
-      return { start: end - 6 * HOUR, periodInterval: 1 };
     case "1d":
       return { start: end - DAY, periodInterval: 1 };
-    case "1w":
-      return { start: end - 7 * DAY, periodInterval: 60 };
-    case "1m":
-      return { start: end - 30 * DAY, periodInterval: 60 };
     case "all":
       return { start: end - 400 * DAY, periodInterval: 1440 };
   }

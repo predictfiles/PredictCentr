@@ -6,21 +6,14 @@ const CLOB_BASE = "https://clob.polymarket.com";
 /**
  * Polymarket's prices-history endpoint takes these exact interval presets
  * (confirmed directly against the API), each paired with a fidelity
- * (minutes per candle) at or above that range's own minimum -- "1w" errors
- * under 5, "1m" errors under 10.
+ * (minutes per candle) at or above that range's own minimum.
  */
 function polymarketRangeParams(range: HistoryRange): { interval: string; fidelity: number } {
   switch (range) {
     case "1h":
       return { interval: "1h", fidelity: 1 };
-    case "6h":
-      return { interval: "6h", fidelity: 5 };
     case "1d":
       return { interval: "1d", fidelity: 10 };
-    case "1w":
-      return { interval: "1w", fidelity: 15 };
-    case "1m":
-      return { interval: "1m", fidelity: 60 };
     case "all":
       return { interval: "max", fidelity: 1440 };
   }

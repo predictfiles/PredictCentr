@@ -5,7 +5,7 @@ import type { HistoryRange } from "@/lib/types";
 
 export const revalidate = 60;
 
-const VALID_RANGES: HistoryRange[] = ["1h", "6h", "1d", "1w", "1m", "all"];
+const VALID_RANGES: HistoryRange[] = ["1h", "1d", "all"];
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
