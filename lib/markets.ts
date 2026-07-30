@@ -39,7 +39,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["2028-us-presidential-election-winner", "jd-vance"],
     category: "politics",
-    shortDescription: "Live odds on whether JD Vance wins the 2028 election.",
+    shortDescription: "Live odds on JD Vance winning the 2028 presidential election.",
     outcomes: [
       {
         id: "jd-vance",
@@ -63,7 +63,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["2028-us-presidential-election-winner", "donald-trump"],
     category: "politics",
-    shortDescription: "Live odds on whether Donald Trump wins the 2028 election.",
+    shortDescription: "Live odds on Donald Trump winning the 2028 presidential election.",
     outcomes: [
       {
         id: "donald-trump",
@@ -87,7 +87,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["2028-us-presidential-election-winner", "kamala-harris"],
     category: "politics",
-    shortDescription: "Live odds on whether Kamala Harris wins the 2028 election.",
+    shortDescription: "Live odds on Kamala Harris winning the 2028 presidential election.",
     outcomes: [
       {
         id: "kamala-harris",
@@ -111,7 +111,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["2026-us-senate-control", "democrats"],
     category: "politics",
-    shortDescription: "Live odds on whether Democrats win the Senate.",
+    shortDescription: "Live odds on Democrats winning control of the US Senate in 2026.",
     outcomes: [
       {
         id: "democrats",
@@ -136,7 +136,7 @@ export const markets: MarketConfig[] = [
     slug: ["lebron-james-next-team"],
     category: "sports",
     shortDescription:
-      "Settled: LeBron signed with Philadelphia. See how Heat vs. Cavaliers odds moved beforehand on Kalshi and Polymarket.",
+      "Settled: LeBron signed with Philadelphia. See how Heat vs. Cavaliers odds moved beforehand.",
     outcomes: [
       {
         id: "miami-heat",
@@ -176,7 +176,8 @@ export const markets: MarketConfig[] = [
   {
     slug: ["grok-imagine-odyssey-film"],
     category: "culture",
-    shortDescription: "Live odds on whether Grok Imagine releases its Odyssey film.",
+    shortDescription:
+      "Live odds on whether xAI's Grok Imagine releases a full-length Odyssey film by the end of 2026.",
     outcomes: [
       {
         id: "released-2026",
@@ -195,7 +196,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["oscar-winner-2027", "the-odyssey"],
     category: "culture",
-    shortDescription: "Live odds on whether The Odyssey wins Best Picture.",
+    shortDescription: "Live odds on The Odyssey winning Best Picture at the 99th Academy Awards.",
     outcomes: [
       {
         id: "the-odyssey",
@@ -215,7 +216,8 @@ export const markets: MarketConfig[] = [
   {
     slug: ["starship-humans-to-mars-2030"],
     category: "culture",
-    shortDescription: "Live odds on whether SpaceX reaches Mars by 2030.",
+    shortDescription:
+      "Live odds on SpaceX launching a manned Starship mission to Mars before 2030.",
     outcomes: [
       {
         id: "humans-to-mars",

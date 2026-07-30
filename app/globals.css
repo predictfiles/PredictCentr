@@ -920,11 +920,10 @@ a {
   color: var(--card-fg);
   border: 1px solid var(--border);
   border-top: 4px solid transparent;
-  /* Fixed, not min -- every regular card is exactly the same size
-     regardless of how much title/description text it has. Title and
-     description are line-clamped below so longer text truncates instead
-     of stretching the card. */
-  height: 297px;
+  /* Flexible, not fixed -- the full title and description always show in
+     full, so a card grows to fit whatever it needs to say. Grid rows still
+     stretch same-row cards to match each other's height by default, and
+     the CTA anchors to the bottom of that via margin-top: auto below. */
   display: flex;
   flex-direction: column;
 }
@@ -933,16 +932,9 @@ a {
   margin-bottom: 14px;
 }
 
-.bento-card-calm .bento-card-title,
-.bento-card-calm .bento-card-desc {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-}
-
 .bento-card-calm .bento-card-cta {
   margin-top: auto;
+  padding-top: 12px;
 }
 
 .bento-card-politics {
