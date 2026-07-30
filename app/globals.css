@@ -665,6 +665,40 @@ a {
   margin-top: 10px;
 }
 
+.chart-range-toggle {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.chart-range-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--card-muted);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.chart-range-btn:hover {
+  border-color: var(--card-muted);
+  color: var(--card-fg);
+}
+
+.chart-range-btn-active {
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #fff;
+}
+
+.chart-range-btn-active:hover {
+  border-color: var(--brand-blue);
+  color: #fff;
+}
+
 .chart-legend {
   display: flex;
   gap: 16px;

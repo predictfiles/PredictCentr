@@ -1,7 +1,30 @@
-import type { HistoryPoint, PlatformQuote } from "./types";
+import type { HistoryPoint, HistoryRange, PlatformQuote } from "./types";
 
 const GAMMA_BASE = "https://gamma-api.polymarket.com";
 const CLOB_BASE = "https://clob.polymarket.com";
+
+/**
+ * Polymarket's prices-history endpoint takes these exact interval presets
+ * (confirmed directly against the API), each paired with a fidelity
+ * (minutes per candle) at or above that range's own minimum -- "1w" errors
+ * under 5, "1m" errors under 10.
+ */
+function polymarketRangeParams(range: HistoryRange): { interval: string; fidelity: number } {
+  switch (range) {
+    case "1h":
+      return { interval: "1h", fidelity: 1 };
+    case "6h":
+      return { interval: "6h", fidelity: 5 };
+    case "1d":
+      return { interval: "1d", fidelity: 10 };
+    case "1w":
+      return { interval: "1w", fidelity: 15 };
+    case "1m":
+      return { interval: "1m", fidelity: 60 };
+    case "all":
+      return { interval: "max", fidelity: 1440 };
+  }
+}
 
 export async function getPolymarketMarket(
   marketId: string,
@@ -31,11 +54,13 @@ export async function getPolymarketMarket(
 }
 
 export async function getPolymarketMarketHistory(
-  yesTokenId: string
+  yesTokenId: string,
+  range: HistoryRange = "all"
 ): Promise<HistoryPoint[]> {
-  const url = `${CLOB_BASE}/prices-history?market=${yesTokenId}&interval=max&fidelity=1440`;
+  const { interval, fidelity } = polymarketRangeParams(range);
+  const url = `${CLOB_BASE}/prices-history?market=${yesTokenId}&interval=${interval}&fidelity=${fidelity}`;
   const res = await fetch(url, {
-    next: { revalidate: 3600 },
+    next: { revalidate: range === "all" ? 3600 : 60 },
     signal: AbortSignal.timeout(10_000),
   });
   if (!res.ok) {

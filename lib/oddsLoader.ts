@@ -1,6 +1,6 @@
 import { getKalshiMarket, getKalshiMarketHistory } from "./kalshi";
 import { getPolymarketMarket, getPolymarketMarketHistory } from "./polymarket";
-import type { HistoryResponse, MarketOutcome, OddsResponse } from "./types";
+import type { HistoryRange, HistoryResponse, MarketOutcome, OddsResponse } from "./types";
 
 /**
  * Shared by every place that needs a fresh live read for one outcome --
@@ -27,11 +27,14 @@ export async function loadOutcomeOdds(outcome: MarketOutcome): Promise<OddsRespo
   };
 }
 
-export async function loadOutcomeHistory(outcome: MarketOutcome): Promise<HistoryResponse> {
+export async function loadOutcomeHistory(
+  outcome: MarketOutcome,
+  range: HistoryRange = "all"
+): Promise<HistoryResponse> {
   const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiMarketHistory(outcome.kalshi.seriesTicker, outcome.kalshi.ticker),
+    getKalshiMarketHistory(outcome.kalshi.seriesTicker, outcome.kalshi.ticker, range),
     outcome.polymarket
-      ? getPolymarketMarketHistory(outcome.polymarket.yesTokenId)
+      ? getPolymarketMarketHistory(outcome.polymarket.yesTokenId, range)
       : Promise.resolve(null),
   ]);
   return {

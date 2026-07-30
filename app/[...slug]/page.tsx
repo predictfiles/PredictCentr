@@ -214,6 +214,13 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
               data={history}
               candidateName={outcome.label}
               hasPolymarket={Boolean(outcome.polymarket)}
+              historyUrlBase={
+                settled
+                  ? undefined
+                  : `/api/markets/history?slug=${encodeURIComponent(
+                      slugPath
+                    )}&outcome=${encodeURIComponent(outcome.id)}`
+              }
             />
           </div>
         ))}

@@ -1,11 +1,26 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import type { HistoryPoint, HistoryResponse } from "@/lib/types";
+import { useEffect, useMemo, useState } from "react";
+import type { HistoryPoint, HistoryRange, HistoryResponse } from "@/lib/types";
 
 const WIDTH = 700;
 const HEIGHT = 300;
 const PAD = { top: 16, right: 16, bottom: 28, left: 40 };
+
+const RANGE_OPTIONS: { value: HistoryRange; label: string }[] = [
+  { value: "1h", label: "1H" },
+  { value: "6h", label: "6H" },
+  { value: "1d", label: "1D" },
+  { value: "1w", label: "1W" },
+  { value: "1m", label: "1M" },
+  { value: "all", label: "ALL" },
+];
+
+// Sub-day ranges show a time of day; longer ones show a date -- a "Jul 26"
+// axis label is useless when the whole chart spans one hour.
+function isIntraday(range: HistoryRange): boolean {
+  return range === "1h" || range === "6h" || range === "1d";
+}
 
 function nearestPoint(points: HistoryPoint[], t: number): HistoryPoint | null {
   if (points.length === 0) return null;
@@ -21,32 +36,72 @@ function nearestPoint(points: HistoryPoint[], t: number): HistoryPoint | null {
   return closest;
 }
 
-function formatAxisDate(t: number): string {
-  return new Date(t * 1000).toLocaleDateString("en-US", {
-    month: "short",
-    year: "2-digit",
-  });
+function formatAxisDate(t: number, range: HistoryRange): string {
+  const d = new Date(t * 1000);
+  if (isIntraday(range)) {
+    return d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  }
+  return d.toLocaleDateString("en-US", { month: "short", year: "2-digit" });
 }
 
-function formatTooltipDate(t: number): string {
-  return new Date(t * 1000).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+function formatTooltipDate(t: number, range: HistoryRange): string {
+  const d = new Date(t * 1000);
+  if (isIntraday(range)) {
+    return d.toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  }
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
 export function HistoryChart({
   data,
   candidateName,
   hasPolymarket = true,
+  historyUrlBase,
 }: {
   data: HistoryResponse;
   candidateName: string;
   hasPolymarket?: boolean;
+  /**
+   * Base URL (slug + outcome, no &range=) for re-fetching at a different
+   * range client-side. Omitted for settled markets, which only ever have
+   * the one frozen snapshot baked at settlement -- no toggle renders then.
+   */
+  historyUrlBase?: string;
 }) {
-  const kalshi = data.kalshi ?? [];
-  const polymarket = data.polymarket ?? [];
+  const [range, setRange] = useState<HistoryRange>("all");
+  const [chartData, setChartData] = useState<HistoryResponse>(data);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (range === "all") {
+      setChartData(data);
+      return;
+    }
+    if (!historyUrlBase) return;
+
+    let cancelled = false;
+    setLoading(true);
+    fetch(`${historyUrlBase}&range=${range}`, { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json: HistoryResponse | null) => {
+        if (!cancelled && json) setChartData(json);
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [range, historyUrlBase, data]);
+
+  const kalshi = chartData.kalshi ?? [];
+  const polymarket = chartData.polymarket ?? [];
   const [hoverX, setHoverX] = useState<number | null>(null);
 
   const { minT, maxT, yMax, kalshiPath, polymarketPath } = useMemo(() => {
@@ -81,17 +136,41 @@ export function HistoryChart({
     };
   }, [kalshi, polymarket]);
 
+  const rangeToggle = historyUrlBase && (
+    <div className="chart-range-toggle" role="tablist" aria-label="Chart time range">
+      {RANGE_OPTIONS.map((opt) => (
+        <button
+          key={opt.value}
+          type="button"
+          role="tab"
+          aria-selected={range === opt.value}
+          className={`chart-range-btn${range === opt.value ? " chart-range-btn-active" : ""}`}
+          onClick={() => setRange(opt.value)}
+        >
+          {opt.label}
+        </button>
+      ))}
+    </div>
+  );
+
   if (kalshi.length === 0 && polymarket.length === 0) {
     return (
       <section className="section">
         <div className="section-label">Price History</div>
         <div className="card">
+          {rangeToggle}
           <div className="chart-empty">
-            History unavailable right now
-            {data.kalshiError || data.polymarketError
-              ? ` (${data.kalshiError ?? data.polymarketError})`
-              : ""}
-            .
+            {loading
+              ? "Loading…"
+              : (
+                <>
+                  History unavailable right now
+                  {chartData.kalshiError || chartData.polymarketError
+                    ? ` (${chartData.kalshiError ?? chartData.polymarketError})`
+                    : ""}
+                  .
+                </>
+              )}
           </div>
         </div>
       </section>
@@ -121,6 +200,7 @@ export function HistoryChart({
     <section className="section">
       <div className="section-label">Price History</div>
       <div className="card">
+        {rangeToggle}
         <div className="chart-legend">
           <span className="chart-legend-item">
             <span className="chart-swatch" style={{ background: "var(--kalshi)" }} />
@@ -141,6 +221,7 @@ export function HistoryChart({
           aria-label={`Historical probability chart for ${candidateName} winning, on Kalshi${
             hasPolymarket ? " and Polymarket" : ""
           }`}
+          style={{ opacity: loading ? 0.5 : 1, transition: "opacity 150ms ease" }}
           onMouseMove={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width) * WIDTH;
@@ -171,10 +252,10 @@ export function HistoryChart({
           ))}
 
           <text x={PAD.left} y={HEIGHT - 6} fontSize={11} fill="var(--card-muted)">
-            {formatAxisDate(minT)}
+            {formatAxisDate(minT, range)}
           </text>
           <text x={WIDTH - PAD.right} y={HEIGHT - 6} fontSize={11} fill="var(--card-muted)" textAnchor="end">
-            {formatAxisDate(maxT)}
+            {formatAxisDate(maxT, range)}
           </text>
 
           {polymarketPath && (
@@ -209,7 +290,7 @@ export function HistoryChart({
         </svg>
         {(hoverKalshi || hoverPolymarket) && (
           <div className="brief-meta">
-            {formatTooltipDate((hoverKalshi ?? hoverPolymarket)!.t)}
+            {formatTooltipDate((hoverKalshi ?? hoverPolymarket)!.t, range)}
             {hoverKalshi ? ` · Kalshi ${(hoverKalshi.p * 100).toFixed(1)}%` : ""}
             {hoverPolymarket ? ` · Polymarket ${(hoverPolymarket.p * 100).toFixed(1)}%` : ""}
           </div>

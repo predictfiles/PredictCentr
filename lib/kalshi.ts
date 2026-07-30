@@ -1,6 +1,31 @@
-import type { HistoryPoint, PlatformQuote } from "./types";
+import type { HistoryPoint, HistoryRange, PlatformQuote } from "./types";
 
 const KALSHI_BASE = "https://api.elections.kalshi.com/trade-api/v2";
+
+/**
+ * Kalshi's candlesticks endpoint only accepts period_interval of exactly
+ * 1 (minute), 60 (hour), or 1440 (day) -- confirmed via the API's own
+ * validation error for anything else. So every sub-day range shares the
+ * 1-minute granularity and lets start_ts/end_ts do the zooming instead.
+ */
+function kalshiRangeParams(range: HistoryRange, end: number): { start: number; periodInterval: 1 | 60 | 1440 } {
+  const HOUR = 3600;
+  const DAY = HOUR * 24;
+  switch (range) {
+    case "1h":
+      return { start: end - HOUR, periodInterval: 1 };
+    case "6h":
+      return { start: end - 6 * HOUR, periodInterval: 1 };
+    case "1d":
+      return { start: end - DAY, periodInterval: 1 };
+    case "1w":
+      return { start: end - 7 * DAY, periodInterval: 60 };
+    case "1m":
+      return { start: end - 30 * DAY, periodInterval: 60 };
+    case "all":
+      return { start: end - 400 * DAY, periodInterval: 1440 };
+  }
+}
 
 export async function getKalshiMarket(
   ticker: string,
@@ -30,15 +55,16 @@ export async function getKalshiMarket(
 
 export async function getKalshiMarketHistory(
   seriesTicker: string,
-  ticker: string
+  ticker: string,
+  range: HistoryRange = "all"
 ): Promise<HistoryPoint[]> {
   const end = Math.floor(Date.now() / 1000);
-  const start = end - 60 * 60 * 24 * 400; // ~400 days, covers full market life
+  const { start, periodInterval } = kalshiRangeParams(range, end);
   const url =
     `${KALSHI_BASE}/series/${seriesTicker}/markets/${ticker}/candlesticks` +
-    `?start_ts=${start}&end_ts=${end}&period_interval=1440`;
+    `?start_ts=${start}&end_ts=${end}&period_interval=${periodInterval}`;
   const res = await fetch(url, {
-    next: { revalidate: 3600 },
+    next: { revalidate: range === "all" ? 3600 : 60 },
     signal: AbortSignal.timeout(10_000),
   });
   if (!res.ok) {
@@ -47,9 +73,13 @@ export async function getKalshiMarketHistory(
   const data = await res.json();
   const candles = Array.isArray(data.candlesticks) ? data.candlesticks : [];
   return candles
-    .filter((c: any) => c?.price?.close_dollars !== undefined)
-    .map((c: any) => ({
-      t: c.end_period_ts,
-      p: parseFloat(c.price.close_dollars),
-    }));
+    .map((c: any) => {
+      // A quiet minute/hour with no trades still has a real price -- Kalshi
+      // just omits close_dollars and leaves previous_dollars as the
+      // carried-forward last price, so fall back to that instead of
+      // dropping the point (which would leave gaps on low-volume markets).
+      const close = c?.price?.close_dollars ?? c?.price?.previous_dollars;
+      return close === undefined ? null : { t: c.end_period_ts, p: parseFloat(close) };
+    })
+    .filter((p: HistoryPoint | null): p is HistoryPoint => p !== null);
 }

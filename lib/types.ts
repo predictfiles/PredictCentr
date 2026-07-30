@@ -26,6 +26,14 @@ export interface HistoryPoint {
   p: number;
 }
 
+/**
+ * The time-range toggle on a market page's Price History chart. "all" is
+ * the default on page load; switching to any other range re-fetches at a
+ * finer granularity client-side rather than just re-slicing the "all" data,
+ * since a month of daily candles looks like a stub of nothing at 1H zoom.
+ */
+export type HistoryRange = "1h" | "6h" | "1d" | "1w" | "1m" | "all";
+
 export interface HistoryResponse {
   kalshi: HistoryPoint[] | null;
   kalshiError: string | null;
