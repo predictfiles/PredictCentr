@@ -100,10 +100,10 @@ a {
    neutral" counterpoint to the bright bento cards -- dark, not a category
    color, but still not the light .card/.market-card used on other pages.
    Scoped under .home-page so hub pages (which reuse these same classes)
-   are completely unaffected. */
+   are completely unaffected. The Must Read header card stays white with
+   its own pink trim instead -- see .must-read-header-card below. */
 .home-page .card,
-.home-page .market-card,
-.home-page .must-read-header-card {
+.home-page .market-card {
   background: var(--dark-card-bg);
   color: var(--dark-card-fg);
   border-color: var(--dark-card-border);
@@ -121,8 +121,7 @@ a {
 .home-page .market-card-desc,
 .home-page .market-card-resolved,
 .home-page .market-card-eyebrow-settled,
-.home-page .market-card-settled .market-card-cta,
-.home-page .must-read-header-card-eyebrow {
+.home-page .market-card-settled .market-card-cta {
   color: var(--dark-card-muted);
 }
 
@@ -461,6 +460,8 @@ a {
   display: block;
   background: var(--card);
   color: var(--card-fg);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--trending);
   border-radius: var(--radius);
   box-shadow: var(--card-shadow);
   padding: 16px;
