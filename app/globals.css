@@ -32,14 +32,14 @@
      bento card gradients (and anywhere else a category needs a tint). */
   --politics: #4f7cff;
   --politics-deep: #1d3e9c;
-  --sports: #ff6b5b;
-  --sports-deep: #b23a3a;
+  --sports: #22c55e;
+  --sports-deep: #15803d;
   --culture: #a56cff;
   --culture-deep: #5b2e99;
 
   /* Hot Market's own fixed identity -- fire red/orange, never reused for a
-     category, so the featured slot never accidentally matches Sports'
-     coral or Trending on X's pink-to-orange. */
+     category, so the featured slot never competes with any category color
+     or with Trending on X's pink-to-orange. */
   --hot-market: #ff4b1f;
   --hot-market-deep: #a11b0a;
 
@@ -897,7 +897,6 @@ a {
   border-radius: 20px;
   padding: 28px;
   min-height: 220px;
-  color: #fff;
   text-decoration: none;
   box-shadow: var(--card-shadow);
   transition: transform 200ms ease, box-shadow 200ms ease;
@@ -908,19 +907,35 @@ a {
   box-shadow: var(--card-shadow-hover);
 }
 
+/* Calm treatment -- white card, colored top border, small icon+label.
+   Used for every regular category card so the bold gradient fill stays
+   reserved for the one Hot Market slot below instead of every card
+   competing for attention. */
+.bento-card-calm {
+  background: var(--card);
+  color: var(--card-fg);
+  border: 1px solid var(--border);
+  border-top: 4px solid transparent;
+}
+
+.bento-card-calm .category-tag {
+  margin-bottom: 14px;
+}
+
 .bento-card-politics {
-  background: linear-gradient(135deg, var(--politics) 0%, var(--politics-deep) 55%, var(--nav-bg) 100%);
+  border-top-color: var(--politics);
 }
 
 .bento-card-sports {
-  background: linear-gradient(135deg, var(--sports) 0%, var(--sports-deep) 55%, var(--nav-bg) 100%);
+  border-top-color: var(--sports);
 }
 
 .bento-card-culture {
-  background: linear-gradient(135deg, var(--culture) 0%, var(--culture-deep) 55%, var(--nav-bg) 100%);
+  border-top-color: var(--culture);
 }
 
 .bento-card-hot {
+  color: #fff;
   background: linear-gradient(135deg, var(--hot-market) 0%, var(--hot-market-deep) 55%, var(--nav-bg) 100%);
 }
 
@@ -982,8 +997,12 @@ a {
 
 .bento-card-desc {
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--card-muted);
   margin-bottom: 16px;
+}
+
+.bento-card-hot .bento-card-desc {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .bento-card-featured .bento-card-desc {
@@ -993,6 +1012,11 @@ a {
 .bento-card-cta {
   font-size: 14px;
   font-weight: 700;
+  color: var(--brand-blue);
+}
+
+.bento-card-hot .bento-card-cta {
+  color: #fff;
 }
 
 .trending-card {
