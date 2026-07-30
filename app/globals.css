@@ -96,33 +96,17 @@ a {
   color: var(--nav-muted);
 }
 
-/* Top News Stories and the Archive section are the deliberate "calm,
-   neutral" counterpoint to the bright bento cards -- dark, not a category
-   color, but still not the light .card/.market-card used on other pages.
-   Scoped under .home-page so hub pages (which reuse these same classes)
-   are completely unaffected. The Must Read header card stays white with
-   its own pink trim instead -- see .must-read-header-card below. */
-.home-page .card,
+/* Top News Stories and the Archive section stay white like every other
+   card, same as Must Read and Trending on X -- just their own colored top
+   trim so each still reads as its own distinct thing. Scoped under
+   .home-page so hub pages (which reuse these same classes) are completely
+   unaffected. */
+.home-page .card {
+  border-top: 4px solid var(--trending);
+}
+
 .home-page .market-card {
-  background: var(--dark-card-bg);
-  color: var(--dark-card-fg);
-  border-color: var(--dark-card-border);
-}
-
-.home-page .news-item {
-  border-bottom-color: var(--dark-card-border);
-}
-
-.home-page .news-thumb {
-  background: var(--dark-card-border);
-}
-
-.home-page .news-meta,
-.home-page .market-card-desc,
-.home-page .market-card-resolved,
-.home-page .market-card-eyebrow-settled,
-.home-page .market-card-settled .market-card-cta {
-  color: var(--dark-card-muted);
+  border-top: 4px solid var(--card-muted);
 }
 
 .home-wrap {
