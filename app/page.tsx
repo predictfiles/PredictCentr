@@ -73,7 +73,7 @@ export default async function Home() {
             them, and make better-informed decisions.
           </p>
         </div>
-        <CategoryNav />
+        <CategoryNav wide />
       </header>
 
       <main className="home-wrap">

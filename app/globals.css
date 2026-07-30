@@ -217,12 +217,16 @@ a {
 }
 
 .category-bar-inner {
-  max-width: 1080px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 14px 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 28px;
+}
+
+.category-bar-inner-wide {
+  max-width: 1080px;
 }
 
 .category-bar-link {
