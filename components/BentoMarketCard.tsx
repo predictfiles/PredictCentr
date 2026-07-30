@@ -28,7 +28,7 @@ export function BentoMarketCard({
       <Link className="bento-card bento-card-hot bento-card-featured" href={href}>
         <CategoryIcon category={market.category} className="bento-card-icon" />
         <div className="bento-card-content">
-          <div className="bento-card-eyebrow">Hot Market</div>
+          <div className="bento-card-eyebrow">🔥 Hot Market</div>
           <div className="bento-card-title">{market.content.market.title}</div>
           <div className="bento-card-desc">{market.shortDescription}</div>
           <CardLiveLine

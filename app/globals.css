@@ -40,8 +40,8 @@
   /* Hot Market's own fixed identity -- fire red/orange, never reused for a
      category, so the featured slot never competes with any category color
      or with Trending on X's own identity color below. */
-  --hot-market: #ff4b1f;
-  --hot-market-deep: #a11b0a;
+  --hot-market: #ff3b1f;
+  --hot-market-deep: #ff9500;
 
   /* Trending on X's own fixed identity -- not tied to any one category
      since a trending story can relate to any of them. */
@@ -951,7 +951,7 @@ a {
 
 .bento-card-hot {
   color: #fff;
-  background: linear-gradient(135deg, var(--hot-market) 0%, var(--hot-market-deep) 55%, var(--nav-bg) 100%);
+  background: linear-gradient(135deg, var(--hot-market) 0%, var(--hot-market-deep) 100%);
 }
 
 .bento-card-featured {
