@@ -8,6 +8,7 @@ import {
 } from "@/lib/mustRead";
 import { findMarket } from "@/lib/markets";
 import { formatDate } from "@/lib/format";
+import { CategoryNav } from "@/components/CategoryNav";
 
 export const revalidate = 30;
 
@@ -56,6 +57,7 @@ export default function MustReadArticlePage({
               ` · Updated ${formatDate(article.updatedAt)}`}
           </p>
         </div>
+        <CategoryNav />
       </header>
 
       <main className="wrap">

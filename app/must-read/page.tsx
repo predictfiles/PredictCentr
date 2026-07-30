@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { mustReadArticles, MUST_READ_CATEGORY_LABELS } from "@/lib/mustRead";
 import { formatDate } from "@/lib/format";
+import { CategoryNav } from "@/components/CategoryNav";
 
 export const revalidate = 30;
 
@@ -28,6 +29,7 @@ export default function MustReadHubPage() {
             odds tracked on our market pages.
           </p>
         </div>
+        <CategoryNav />
       </header>
 
       <main className="wrap">

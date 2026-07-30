@@ -4,6 +4,7 @@ import { loadOutcomeOdds } from "@/lib/oddsLoader";
 import { BentoMarketCard } from "@/components/BentoMarketCard";
 import { MarketCard } from "@/components/MarketCard";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { CategoryNav } from "@/components/CategoryNav";
 import type { MarketConfig, OddsResponse } from "@/lib/types";
 
 /**
@@ -49,6 +50,7 @@ export async function CategoryPage({ category }: { category: MarketConfig["categ
             Every {CATEGORY_LABELS[category]} market tracked on PredictCentr, live odds included.
           </p>
         </div>
+        <CategoryNav />
       </header>
 
       <main className="wrap">

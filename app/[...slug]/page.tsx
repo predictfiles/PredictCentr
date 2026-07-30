@@ -19,6 +19,7 @@ import { WhatToWatch } from "@/components/WhatToWatch";
 import { MarketCard } from "@/components/MarketCard";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import { MustReadTeaser } from "@/components/MustReadTeaser";
+import { CategoryNav } from "@/components/CategoryNav";
 import type { HistoryResponse, MarketConfig, OddsResponse } from "@/lib/types";
 
 export const revalidate = 30;
@@ -99,6 +100,7 @@ async function ElectionHubPage({ electionSlug }: { electionSlug: string }) {
             {election.description} Resolves {election.resolutionDate}.
           </p>
         </div>
+        <CategoryNav />
       </header>
 
       <main className="wrap">
@@ -180,6 +182,7 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
             </p>
           )}
         </div>
+        <CategoryNav />
       </header>
 
       <main className="wrap">
