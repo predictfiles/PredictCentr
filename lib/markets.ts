@@ -39,8 +39,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["2028-us-presidential-election-winner", "jd-vance"],
     category: "politics",
-    shortDescription:
-      "Live odds on JD Vance winning the 2028 presidential election, compared across Kalshi and Polymarket.",
+    shortDescription: "Live odds on whether JD Vance wins the 2028 election.",
     outcomes: [
       {
         id: "jd-vance",
@@ -64,8 +63,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["2028-us-presidential-election-winner", "donald-trump"],
     category: "politics",
-    shortDescription:
-      "Live odds on Donald Trump winning the 2028 presidential election, compared across Kalshi and Polymarket.",
+    shortDescription: "Live odds on whether Donald Trump wins the 2028 election.",
     outcomes: [
       {
         id: "donald-trump",
@@ -89,8 +87,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["2028-us-presidential-election-winner", "kamala-harris"],
     category: "politics",
-    shortDescription:
-      "Live odds on Kamala Harris winning the 2028 presidential election, compared across Kalshi and Polymarket.",
+    shortDescription: "Live odds on whether Kamala Harris wins the 2028 election.",
     outcomes: [
       {
         id: "kamala-harris",
@@ -114,8 +111,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["2026-us-senate-control", "democrats"],
     category: "politics",
-    shortDescription:
-      "Live odds on Democrats winning control of the US Senate in 2026, compared across Kalshi and Polymarket.",
+    shortDescription: "Live odds on whether Democrats win the Senate.",
     outcomes: [
       {
         id: "democrats",
@@ -180,8 +176,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["grok-imagine-odyssey-film"],
     category: "culture",
-    shortDescription:
-      "Live odds on whether xAI's Grok Imagine releases a full-length Odyssey film by the end of 2026, tracked on Kalshi.",
+    shortDescription: "Live odds on whether Grok Imagine releases its Odyssey film.",
     outcomes: [
       {
         id: "released-2026",
@@ -200,8 +195,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["oscar-winner-2027", "the-odyssey"],
     category: "culture",
-    shortDescription:
-      "Live odds on The Odyssey winning Best Picture at the 99th Academy Awards, tracked on Kalshi.",
+    shortDescription: "Live odds on whether The Odyssey wins Best Picture.",
     outcomes: [
       {
         id: "the-odyssey",
@@ -221,8 +215,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["starship-humans-to-mars-2030"],
     category: "culture",
-    shortDescription:
-      "Live odds on SpaceX launching a manned Starship mission to Mars before 2030, tracked on Kalshi.",
+    shortDescription: "Live odds on whether SpaceX reaches Mars by 2030.",
     outcomes: [
       {
         id: "humans-to-mars",
@@ -244,8 +237,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["kawhi-leonard-next-team"],
     category: "sports",
-    shortDescription:
-      "Live odds on Kawhi Leonard's next team, compared across Kalshi and Polymarket.",
+    shortDescription: "Live odds on Kawhi Leonard's next team.",
     outcomes: [
       {
         id: "toronto-raptors",
@@ -285,8 +277,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["bronny-james-next-team"],
     category: "sports",
-    shortDescription:
-      "Live odds on Bronny James' next team, tracked on Kalshi.",
+    shortDescription: "Live odds on Bronny James' next team.",
     outcomes: [
       {
         id: "los-angeles-lakers",
@@ -317,8 +308,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["steph-curry-leaves-warriors"],
     category: "sports",
-    shortDescription:
-      "Live odds on whether Steph Curry stays with the Warriors, tracked on Kalshi.",
+    shortDescription: "Live odds on whether Steph Curry stays with the Warriors.",
     outcomes: [
       {
         id: "golden-state-warriors",
@@ -354,8 +344,7 @@ export const markets: MarketConfig[] = [
   {
     slug: ["benjamin-netanyahu-arrested"],
     category: "politics",
-    shortDescription:
-      "Live odds on whether Benjamin Netanyahu is arrested, compared across Kalshi and Polymarket.",
+    shortDescription: "Live odds on whether Benjamin Netanyahu is arrested.",
     outcomes: [
       {
         id: "arrested",

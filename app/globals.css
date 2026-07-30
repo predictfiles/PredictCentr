@@ -920,10 +920,29 @@ a {
   color: var(--card-fg);
   border: 1px solid var(--border);
   border-top: 4px solid transparent;
+  /* Fixed, not min -- every regular card is exactly the same size
+     regardless of how much title/description text it has. Title and
+     description are line-clamped below so longer text truncates instead
+     of stretching the card. */
+  height: 297px;
+  display: flex;
+  flex-direction: column;
 }
 
 .bento-card-calm .category-tag {
   margin-bottom: 14px;
+}
+
+.bento-card-calm .bento-card-title,
+.bento-card-calm .bento-card-desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.bento-card-calm .bento-card-cta {
+  margin-top: auto;
 }
 
 .bento-card-politics {
