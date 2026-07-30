@@ -39,9 +39,13 @@
 
   /* Hot Market's own fixed identity -- fire red/orange, never reused for a
      category, so the featured slot never competes with any category color
-     or with Trending on X's pink-to-orange. */
+     or with Trending on X's own identity color below. */
   --hot-market: #ff4b1f;
   --hot-market-deep: #a11b0a;
+
+  /* Trending on X's own fixed identity -- not tied to any one category
+     since a trending story can relate to any of them. */
+  --trending: #ff4db8;
 
   /* Homepage-only "calm, neutral" dark surface -- Top News Stories and the
      Archive section use this instead of a bright category color, and
@@ -1023,13 +1027,10 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  /* A flat dark scrim layered over the brand gradient -- the raw gradient's
-     orange end is too light for white text to clear 4.5:1 contrast (checked:
-     ~2.4:1 unscrimmed). The scrim darkens every stop by ~30%, which brings
-     the whole gradient to 4.7:1+ everywhere, not just at hand-picked points. */
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    linear-gradient(135deg, #7b5cff 0%, #ff4db8 55%, #ff8a3d 100%);
-  color: #fff;
+  background: var(--card);
+  color: var(--card-fg);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--trending);
   border-radius: 20px;
   box-shadow: var(--card-shadow);
   padding: 22px 20px;
@@ -1042,12 +1043,12 @@ a {
   cursor: pointer;
   font-size: 22px;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--card-muted);
   padding: 4px 6px;
 }
 
 .trending-arrow:hover {
-  color: #fff;
+  color: var(--card-fg);
 }
 
 .trending-body {
@@ -1059,7 +1060,7 @@ a {
   width: 11px;
   height: 11px;
   flex: 0 0 auto;
-  fill: #fff;
+  fill: var(--card-fg);
   position: relative;
   top: 1px;
 }
@@ -1072,7 +1073,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--card-fg);
   margin-bottom: 8px;
 }
 
@@ -1096,7 +1097,7 @@ a {
 
 .trending-volume {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--card-muted);
   margin-bottom: 4px;
 }
 
@@ -1104,13 +1105,12 @@ a {
   display: block;
   font-size: 14px;
   font-weight: 700;
-  color: #fff;
+  color: var(--brand-blue);
   text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.5);
 }
 
 .trending-market-link:hover {
-  text-decoration-color: #fff;
+  text-decoration-color: var(--brand-blue);
 }
 
 .show-more-link {
