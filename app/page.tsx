@@ -72,8 +72,8 @@ export default async function Home() {
             Compare live prediction market prices, discover what's moving
             them, and make better-informed decisions.
           </p>
-          <CategoryNav />
         </div>
+        <CategoryNav />
       </header>
 
       <main className="home-wrap">

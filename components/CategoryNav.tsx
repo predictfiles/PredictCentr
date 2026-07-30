@@ -6,23 +6,27 @@ import type { MarketConfig } from "@/lib/types";
 const CATEGORY_ORDER: MarketConfig["category"][] = ["politics", "sports", "culture"];
 
 /**
- * Homepage-only nav linking to each category's own listing page -- colored
- * and iconed the same way as that category's bento cards, so it reads as
- * the same visual language rather than a generic nav bar.
+ * Homepage-only, full-width bar linking to each category's own listing
+ * page. Sits as a direct child of the dark <header> (not inside
+ * .home-header-inner) so it can span the full page width instead of being
+ * boxed to the header's max-width content column. Just colored text+icon,
+ * no pill background -- the bar itself carries the color story.
  */
 export function CategoryNav() {
   return (
-    <nav className="category-nav">
-      {CATEGORY_ORDER.map((category) => (
-        <Link
-          key={category}
-          href={`/${category}/`}
-          className={`category-nav-link category-nav-link-${category}`}
-        >
-          <CategoryIcon category={category} className="category-nav-icon" />
-          {CATEGORY_LABELS[category]}
-        </Link>
-      ))}
+    <nav className="category-bar">
+      <div className="category-bar-inner">
+        {CATEGORY_ORDER.map((category) => (
+          <Link
+            key={category}
+            href={`/${category}/`}
+            className={`category-bar-link category-bar-link-${category}`}
+          >
+            <CategoryIcon category={category} className="category-bar-icon" />
+            {CATEGORY_LABELS[category]}
+          </Link>
+        ))}
+      </div>
     </nav>
   );
 }

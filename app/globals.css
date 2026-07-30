@@ -32,8 +32,8 @@
      bento card gradients (and anywhere else a category needs a tint). */
   --politics: #4f7cff;
   --politics-deep: #1d3e9c;
-  --sports: #22c55e;
-  --sports-deep: #15803d;
+  --sports: #ff6b5b;
+  --sports-deep: #b23a3a;
   --culture: #a56cff;
   --culture-deep: #5b2e99;
 
@@ -204,52 +204,57 @@ a {
   color: var(--culture);
 }
 
-/* Homepage category nav -- links to each category's own listing page
-   (/politics, /sports, /culture), colored the same as that category's
-   bento cards so it reads as the same visual language. */
-.category-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
-  margin-bottom: 28px;
+/* Homepage category nav -- a full-width bar (spans the whole page, not
+   just the header's max-width content column) linking to each category's
+   own listing page. Same lighter-dark surface as the Top News/Archive
+   cards; the categories themselves are just colored text+icon, no pill
+   background, so the bar itself carries the visual weight instead of
+   three competing chips. */
+.category-bar {
+  background: var(--dark-card-bg);
+  border-top: 1px solid var(--dark-card-border);
+  border-bottom: 1px solid var(--dark-card-border);
 }
 
-.category-nav-link {
+.category-bar-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.category-bar-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  color: #fff;
+  gap: 6px;
   font-weight: 700;
   font-size: 14px;
   text-decoration: none;
-  box-shadow: var(--card-shadow);
-  transition: transform 150ms ease, box-shadow 150ms ease;
+  transition: opacity 150ms ease;
 }
 
-.category-nav-link:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--card-shadow-hover);
+.category-bar-link:hover {
+  opacity: 0.8;
 }
 
-.category-nav-icon {
-  width: 16px;
-  height: 16px;
+.category-bar-icon {
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
 }
 
-.category-nav-link-politics {
-  background: linear-gradient(135deg, var(--politics) 0%, var(--politics-deep) 100%);
+.category-bar-link-politics {
+  color: var(--politics);
 }
 
-.category-nav-link-sports {
-  background: linear-gradient(135deg, var(--sports) 0%, var(--sports-deep) 100%);
+.category-bar-link-sports {
+  color: var(--sports);
 }
 
-.category-nav-link-culture {
-  background: linear-gradient(135deg, var(--culture) 0%, var(--culture-deep) 100%);
+.category-bar-link-culture {
+  color: var(--culture);
 }
 
 .header-inner {
