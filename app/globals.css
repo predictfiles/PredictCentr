@@ -98,7 +98,8 @@ a {
    Scoped under .home-page so hub pages (which reuse these same classes)
    are completely unaffected. */
 .home-page .card,
-.home-page .market-card {
+.home-page .market-card,
+.home-page .must-read-header-card {
   background: var(--dark-card-bg);
   color: var(--dark-card-fg);
   border-color: var(--dark-card-border);
@@ -116,7 +117,8 @@ a {
 .home-page .market-card-desc,
 .home-page .market-card-resolved,
 .home-page .market-card-eyebrow-settled,
-.home-page .market-card-settled .market-card-cta {
+.home-page .market-card-settled .market-card-cta,
+.home-page .must-read-header-card-eyebrow {
   color: var(--dark-card-muted);
 }
 
