@@ -1,0 +1,64 @@
+{
+  "market": {
+    "title": "Kevin Durant's Next Team",
+    "resolutionDate": "2026-10-21",
+    "resolutionNote": [
+      "Resolves to whichever team Kevin Durant is officially under contract with, or takes the floor for, during the 2026-27 NBA season - if he's still with Houston or has retired by the close date, that resolves the 'Houston Rockets' side to Yes instead.",
+      "Kalshi's own wording: \"If Kevin Durant's next team is Stays with Houston or Retires before Oct 21, 2026, then the market resolves to Yes.\"",
+      "No genuinely matching Polymarket market exists for this one, so this page is Kalshi-only."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Kevin Durant, 37, is still producing at an elite level for Houston - 26.0 points, 5.5 rebounds, and 4.8 assists a game last season - but the Rockets have reportedly told rival teams he isn't 'untouchable,' and Durant himself has fueled speculation with public admiration for Pistons star Cade Cunningham, including a since-noticed Detroit Tigers cap.",
+      "Detroit isn't the only suitor, though: Cleveland has emerged as a real if longer-shot contender. Insider Nick Pedone has called Durant 'probably the last big fish remaining this offseason' for a Cavaliers team already built around Donovan Mitchell, James Harden, and Evan Mobley - one that also missed out on LeBron James this summer.",
+      "Kalshi's market reflects that hierarchy: Houston is a heavy favorite to keep him at around 86%, with Cleveland the clear second-most-likely destination at 7%.",
+      "Whichever direction it goes, Houston holds the leverage - insiders note the Rockets aren't actively shopping Durant and would want major compensation in return if they do eventually move him."
+    ],
+    "updatedAt": "2026-07-31",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Report: Kevin Durant 'Not Untouchable' for Rockets and Wants to Play With Cade Cunningham",
+      "source": "Yahoo Sports",
+      "date": "2026-07-05",
+      "url": "https://sports.yahoo.com/articles/report-kevin-durant-not-untouchable-202142447.html",
+      "image": "https://s.yimg.com/ny/api/res/1.2/pOTjhaAWYFCH7HL0du4B.A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY0MDtjZj13ZWJw/https://media.zenfs.com/en/sb_nation_articles_115/1e9b9a431bc92626a8ada99c35fb9e52"
+    },
+    {
+      "headline": "Cavaliers Proposed to Land Kevin Durant in Blockbuster 3-Team Trade for 3 Stars",
+      "source": "Yahoo Sports",
+      "date": "2026-07-30",
+      "url": "https://sports.yahoo.com/articles/cavaliers-proposed-land-kevin-durant-003153815.html",
+      "image": "https://s.yimg.com/ny/api/res/1.2/TNj7jY4zEJsJJxPgwuPlfw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTgzMztjZj13ZWJw/https://media.zenfs.com/en/heavy_214/abc8b72865b85350796fba3ee08a3e0b"
+    },
+    {
+      "headline": "Cavaliers Could Attempt Kevin Durant Trade as Final Summer Move",
+      "source": "Yahoo Sports",
+      "date": "2026-07-31",
+      "url": "https://ca.sports.yahoo.com/news/cavaliers-could-attempt-kevin-durant-004145005.html",
+      "image": "https://s.yimg.com/ny/api/res/1.2/CEA0gGFVgy5rbHXV9hCiZg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU3ODtjZj13ZWJw/https://media.zenfs.com/en/fadeaway_world_951/8066e636062ad4c4b3bb036bd422f131"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Any official trade announcement from the Rockets or an acquiring team - this would resolve the market immediately"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Further reporting on Cleveland's interest, or renewed Detroit trade talk given Durant's own public comments"
+    },
+    {
+      "date": "2026-10-21",
+      "label": "Kalshi's resolution cutoff - market resolves"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

@@ -12,6 +12,7 @@ import bronnyNextTeamRaw from "@/data/markets/bronny-james-next-team.json";
 import curryLeavesWarriorsRaw from "@/data/markets/steph-curry-leaves-warriors.json";
 import netanyahuArrestedRaw from "@/data/markets/benjamin-netanyahu-arrested.json";
 import tarikSkubalNextTeamRaw from "@/data/markets/tarik-skubal-next-team.json";
+import kevinDurantNextTeamRaw from "@/data/markets/kevin-durant-next-team.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -31,6 +32,7 @@ const bronnyNextTeam = bronnyNextTeamRaw as MarketContent;
 const curryLeavesWarriors = curryLeavesWarriorsRaw as MarketContent;
 const netanyahuArrested = netanyahuArrestedRaw as MarketContent;
 const tarikSkubalNextTeam = tarikSkubalNextTeamRaw as MarketContent;
+const kevinDurantNextTeam = kevinDurantNextTeamRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -401,6 +403,36 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: tarikSkubalNextTeam,
+  },
+  {
+    slug: ["kevin-durant-next-team"],
+    category: "sports",
+    shortDescription: "Live odds on Kevin Durant's next team, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "houston-rockets",
+        label: "Houston Rockets",
+        question: "Will Kevin Durant stay with the Rockets?",
+        kalshi: {
+          ticker: "KXNEXTTEAMNBA-26KDURANT7-HOU",
+          seriesTicker: "KXNEXTTEAMNBA",
+          url: "https://kalshi.com/markets/kxnextteamnba/next-nba-team/kxnextteamnba-26kdurant7?selectedMarketTicker=KXNEXTTEAMNBA-26KDURANT7-HOU",
+        },
+        // No Polymarket pairing here -- no genuinely matching market was
+        // found for this one. See resolutionNote.
+      },
+      {
+        id: "cleveland-cavaliers",
+        label: "Cleveland Cavaliers",
+        question: "Will Kevin Durant's next team be the Cavaliers?",
+        kalshi: {
+          ticker: "KXNEXTTEAMNBA-26KDURANT7-CLE",
+          seriesTicker: "KXNEXTTEAMNBA",
+          url: "https://kalshi.com/markets/kxnextteamnba/next-nba-team/kxnextteamnba-26kdurant7?selectedMarketTicker=KXNEXTTEAMNBA-26KDURANT7-CLE",
+        },
+      },
+    ],
+    content: kevinDurantNextTeam,
   },
 ];
 
