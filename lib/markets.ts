@@ -11,6 +11,7 @@ import kawhiNextTeamRaw from "@/data/markets/kawhi-leonard-next-team.json";
 import bronnyNextTeamRaw from "@/data/markets/bronny-james-next-team.json";
 import curryLeavesWarriorsRaw from "@/data/markets/steph-curry-leaves-warriors.json";
 import netanyahuArrestedRaw from "@/data/markets/benjamin-netanyahu-arrested.json";
+import tarikSkubalNextTeamRaw from "@/data/markets/tarik-skubal-next-team.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -29,6 +30,7 @@ const kawhiNextTeam = kawhiNextTeamRaw as MarketContent;
 const bronnyNextTeam = bronnyNextTeamRaw as MarketContent;
 const curryLeavesWarriors = curryLeavesWarriorsRaw as MarketContent;
 const netanyahuArrested = netanyahuArrestedRaw as MarketContent;
+const tarikSkubalNextTeam = tarikSkubalNextTeamRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -366,6 +368,39 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: netanyahuArrested,
+  },
+  {
+    slug: ["tarik-skubal-next-team"],
+    category: "sports",
+    shortDescription: "Live odds on Tarik Skubal's next team, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "los-angeles-dodgers",
+        label: "Los Angeles Dodgers",
+        question: "Will Tarik Skubal's next team be the Dodgers?",
+        kalshi: {
+          ticker: "KXNEXTTEAMMLB-27TSKUBAL-LAD",
+          seriesTicker: "KXNEXTTEAMMLB",
+          url: "https://kalshi.com/markets/kxnextteammlb/mlb-player-next-team/kxnextteammlb-27tskubal?selectedMarketTicker=KXNEXTTEAMMLB-27TSKUBAL-LAD",
+        },
+        // Not paired with Polymarket here: Polymarket's version of this
+        // question resolves by the Aug 3, 2026 trade deadline specifically
+        // (defaulting to Detroit if no trade happens by then), while this
+        // Kalshi contract runs until Mar 25, 2027 -- a materially different,
+        // longer-horizon question. See resolutionNote.
+      },
+      {
+        id: "milwaukee-brewers",
+        label: "Milwaukee Brewers",
+        question: "Will Tarik Skubal's next team be the Brewers?",
+        kalshi: {
+          ticker: "KXNEXTTEAMMLB-27TSKUBAL-MIL",
+          seriesTicker: "KXNEXTTEAMMLB",
+          url: "https://kalshi.com/markets/kxnextteammlb/mlb-player-next-team/kxnextteammlb-27tskubal?selectedMarketTicker=KXNEXTTEAMMLB-27TSKUBAL-MIL",
+        },
+      },
+    ],
+    content: tarikSkubalNextTeam,
   },
 ];
 

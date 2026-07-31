@@ -1,0 +1,64 @@
+{
+  "market": {
+    "title": "Tarik Skubal's Next Team",
+    "resolutionDate": "2027-03-25",
+    "resolutionNote": [
+      "Resolves to whichever team Tarik Skubal is officially on before Mar 25, 2027 - if he's still with Detroit or has retired by then, the 'Detroit Tigers' outcome resolves Yes instead.",
+      "Kalshi's own wording: \"If Tarik Skubal's next team is Los Angeles D before Mar 25, 2027, then the market resolves to Yes.\"",
+      "Polymarket has a market on this too, but it asks a narrower question - whether a trade happens by the Aug 3, 2026 deadline specifically, defaulting to 'Detroit Tigers' if not. That's a different, nearer-term question from Kalshi's season-spanning contract, so it isn't paired here as a direct comparison - its live number is quoted in the Market Brief instead."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Detroit's season has come apart at the worst time: at 51-58 and games back of a wild-card spot, a blown 7-0 lead in a 12-inning loss to Baltimore this week reportedly \"cemented the truth,\" per ESPN's Jeff Passan, that the Tigers have decided to sell their two-time reigning AL Cy Young winner before Monday's deadline.",
+      "Skubal is a pending free agent after this season, so whoever trades for him gets a two-month rental, not a long-term answer - which hasn't stopped a long list of contenders, including the Dodgers, Brewers, Yankees, Red Sox, Braves, Phillies, Rays, and Cubs.",
+      "Kalshi's market has the Dodgers as the clear favorite at around 49%, with the Brewers a distant second at 23% and Detroit itself priced at just 6% to keep him past the deadline.",
+      "Polymarket's own version of this question, which specifically asks whether a trade happens by Monday's 6pm ET deadline, currently has Detroit staying at similarly long odds - reinforcing that a trade is more likely than not, even if exactly where he lands remains wide open."
+    ],
+    "updatedAt": "2026-07-31",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Tarik Skubal Trade Odds: Where Will Tigers Ace Wind Up?",
+      "source": "RotoWire",
+      "date": "2026-07-30",
+      "url": "https://www.rotowire.com/baseball/article/tarik-skubal-trade-next-team-125233",
+      "image": "https://res.cloudinary.com/rotowire/image/upload/ar_16:7,c_fill,dpr_auto,f_auto,g_auto:custom_no_override,q_auto,w_auto/mmyfejncgefbjzggxion.jpg"
+    },
+    {
+      "headline": "Tarik Skubal Trade Deadline Odds: Dodgers Favored to Land the Ace, but Other Contenders Are Worth Watching",
+      "source": "CBS Sports",
+      "date": "2026-07-30",
+      "url": "https://www.cbssports.com/betting/news/tarik-skubal-trade-deadline-odds-dodgers-favored-to-land-the-ace-but-other-contenders-are-worth-watching/",
+      "image": "https://sportshub.cbsistatic.com/i/2026/07/27/76fec88d-9d6e-4812-99f4-dcb80d154ed6/tarik-skubal-detroit-tigers-imagn-images.jpg"
+    },
+    {
+      "headline": "2026 MLB Trade Deadline: Tarik Skubal Trade Looms as Tigers Ace Notches 1,000th Career Strikeout",
+      "source": "Yahoo Sports",
+      "date": "2026-07-31",
+      "url": "https://sports.yahoo.com/mlb/live/2026-mlb-trade-deadline-rumors-news-live-updates-tarik-skubal-mason-miller-cj-abrams-joe-ryan-buyers-sellers-182640023.html",
+      "image": "https://d29szjachogqwa.cloudfront.net/images/user-uploaded/skubalchi-bbc-072926_3870.jpg"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "2026-08-03",
+      "label": "MLB trade deadline, 6pm ET - executives reportedly expect any deal to land by the morning of the deadline itself"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Any official trade announcement from the Tigers or an acquiring team - this would resolve the market immediately"
+    },
+    {
+      "date": "2027-03-25",
+      "label": "Kalshi's resolution cutoff - market resolves"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}
