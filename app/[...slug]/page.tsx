@@ -21,6 +21,7 @@ import { CategoryIcon } from "@/components/CategoryIcon";
 import { MustReadTeaser } from "@/components/MustReadTeaser";
 import { CategoryNav } from "@/components/CategoryNav";
 import type { HistoryResponse, MarketConfig, OddsResponse } from "@/lib/types";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 30;
 
@@ -35,14 +36,42 @@ export function generateMetadata({
 }: {
   params: { slug: string[] };
 }): Metadata {
+  const url = `${SITE_URL}/${params.slug.join("/")}/`;
   const market = findMarket(params.slug);
   if (market) {
-    return { title: market.content.market.title, description: market.shortDescription };
+    const title = market.content.market.title;
+    const description = market.shortDescription;
+    const image = market.content.news.find((item) => item.image)?.image;
+    return {
+      title,
+      description,
+      alternates: { canonical: url },
+      openGraph: {
+        title,
+        description,
+        url,
+        type: "website",
+        images: image ? [image] : undefined,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: image ? [image] : undefined,
+      },
+    };
   }
   if (params.slug.length === 1) {
     const election = getElectionInfo(params.slug[0]);
     if (election) {
-      return { title: election.title, description: election.description };
+      const { title, description } = election;
+      return {
+        title,
+        description,
+        alternates: { canonical: url },
+        openGraph: { title, description, url, type: "website" },
+        twitter: { card: "summary_large_image", title, description },
+      };
     }
   }
   return {};

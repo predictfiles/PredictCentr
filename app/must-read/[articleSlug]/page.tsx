@@ -9,6 +9,7 @@ import {
 import { findMarket } from "@/lib/markets";
 import { formatDate } from "@/lib/format";
 import { CategoryNav } from "@/components/CategoryNav";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 30;
 
@@ -23,7 +24,26 @@ export function generateMetadata({
 }): Metadata {
   const article = findMustReadArticle(params.articleSlug);
   if (!article) return {};
-  return { title: article.title, description: article.teaser };
+  const { title, teaser: description, image } = article;
+  const url = `${SITE_URL}/must-read/${article.slug}/`;
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      images: image ? [image] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: image ? [image] : undefined,
+    },
+  };
 }
 
 export default function MustReadArticlePage({
