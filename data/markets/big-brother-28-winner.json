@@ -1,0 +1,56 @@
+{
+  "market": {
+    "title": "Big Brother Season 28 Winner",
+    "resolutionDate": "2026-10-01",
+    "resolutionNote": [
+      "Resolves to whichever houseguest is named the winner on the live finale, currently set for a 90-minute special on Thursday, Oct 1, 2026 - the last one standing takes home the $750,000 grand prize.",
+      "Kalshi's own wording: \"If [houseguest] are officially declared the winner of Big Brother Season 28, then the market resolves to Yes.\" Kalshi and Polymarket both list every houseguest as a separate Yes/No contract rather than one multi-choice market, so each name's price is its own independent read on the field, not a slice of a fixed 100%.",
+      "Only the 5 real contenders by current price are tracked here out of 17 total houseguests - the rest are sitting at a nominal 1-2% on both platforms with no realistic path to the money."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Big Brother 28 (subtitled 'Time Trip') premiered on CBS on July 9, 2026, with a cast of 14 first-time players plus three surprise returning-format houseguests: Survivor winner Dee Valladares, Survivor alum Rick Devens, and past Big Brother player Angela Murray.",
+      "Dee Valladares has led the winner market on both Kalshi and Polymarket since the season's early weeks, currently priced around 26% - Rick Devens is the clear second choice in the mid-to-high teens.",
+      "The 'Time Trip' twist has scrambled alliances more than a normal season, which is part of why the market has stayed volatile week to week instead of settling on one runaway favorite.",
+      "Prediction markets have become a genuine spoiler problem for reality TV this season - Kalshi's contestant pricing has, in past seasons, tipped off eventual winners and eliminations well before they aired, to the visible frustration of shows like Survivor and The Bachelorette."
+    ],
+    "updatedAt": "2026-08-03",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Big Brother Season 28 Winner Odds: Dee Valladares Leads Pack",
+      "source": "Covers.com",
+      "date": "2026-07-28",
+      "url": "https://www.covers.com/entertainment/big-brother-season-28-winner-prediction-market-odds",
+      "image": "https://img.covers.com/cms/covers/c5d09a7e-2c1b-491c-a233-434ec4dcdc42.png"
+    },
+    {
+      "headline": "'Big Brother 28' Sets 90-Minute Finale Date",
+      "source": "Yahoo Entertainment",
+      "date": "2026-07-30",
+      "url": "https://www.yahoo.com/entertainment/tv/articles/big-brother-returning-season-28-211419513.html"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Thursdays",
+      "label": "Live eviction episodes air weekly on CBS - each one moves both the winner market and that week's standalone eviction market"
+    },
+    {
+      "date": "2026-10-01",
+      "label": "90-minute live finale on CBS - the winner market resolves"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    },
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "market": {
+    "title": "Big Brother 28 — Week 4 Eviction",
+    "resolutionDate": "2026-08-07",
+    "resolutionNote": [
+      "Resolves on the live Week 4 eviction episode - whichever of the two nominees gets voted out by the house.",
+      "Kalshi's own wording: \"If [houseguest] is officially eliminated from Big Brother Season 28 Before Aug 7, 2026, then the market resolves to Yes.\"",
+      "Kalshi-only - Polymarket doesn't list a matching single-week eviction contract for this show, only the season-long winner market."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Haley Thogmartin won Head of Household for Week 4 and nominated Drew Campbell, Melody Morris, and Taylor Brown for eviction.",
+      "The nomination of Drew was a strategic gamble by Haley's alliance - he'd been playing both sides of the house, and putting him up early gave him two chances to save himself (Veto, then the Block Buster competition) rather than blindsiding him outright.",
+      "Taylor Brown won the Power of Veto and used it to pull herself off the block, leaving Drew Campbell and Melody Morris as the final two nominees heading into Thursday's live vote.",
+      "Kalshi has Drew as the clear favorite to go at 63%, against 36% for Melody - if the Toolshed alliance holds together as expected, Melody's closest ally in the house would be the one to leave instead of him."
+    ],
+    "updatedAt": "2026-08-03",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "'Big Brother 28' Spoilers: Drew in Big Trouble After Week 4 Veto Winner Announced",
+      "source": "Gold Derby",
+      "date": "2026-08-02",
+      "url": "https://www.goldderby.com/reality-tv/2026/big-brother-28-spoilers-drew-target-week-4-veto-winner/",
+      "image": "https://www.goldderby.com/wp-content/uploads/2026/08/BR_2807_SG_0009b.jpg?w=650"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "2026-08-06",
+      "label": "Live Week 4 eviction episode airs on CBS - Drew Campbell or Melody Morris goes home"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

@@ -13,6 +13,8 @@ import curryLeavesWarriorsRaw from "@/data/markets/steph-curry-leaves-warriors.j
 import netanyahuArrestedRaw from "@/data/markets/benjamin-netanyahu-arrested.json";
 import tarikSkubalNextTeamRaw from "@/data/markets/tarik-skubal-next-team.json";
 import kevinDurantNextTeamRaw from "@/data/markets/kevin-durant-next-team.json";
+import bigBrother28WinnerRaw from "@/data/markets/big-brother-28-winner.json";
+import bigBrother28Week4EvictionRaw from "@/data/markets/big-brother-28-week-4-eviction.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -33,6 +35,8 @@ const curryLeavesWarriors = curryLeavesWarriorsRaw as MarketContent;
 const netanyahuArrested = netanyahuArrestedRaw as MarketContent;
 const tarikSkubalNextTeam = tarikSkubalNextTeamRaw as MarketContent;
 const kevinDurantNextTeam = kevinDurantNextTeamRaw as MarketContent;
+const bigBrother28Winner = bigBrother28WinnerRaw as MarketContent;
+const bigBrother28Week4Eviction = bigBrother28Week4EvictionRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -445,6 +449,118 @@ export const markets: MarketConfig[] = [
     ],
     content: kevinDurantNextTeam,
   },
+  {
+    slug: ["big-brother-28-winner"],
+    category: "culture",
+    shortDescription: "Live odds on who wins Big Brother Season 28, tracked on Kalshi and Polymarket.",
+    outcomes: [
+      {
+        id: "dee-valladares",
+        label: "Dee Valladares",
+        question: "Will Dee Valladares win Big Brother Season 28?",
+        kalshi: {
+          ticker: "KXBIGBROTHER-26DEC31-DEE",
+          seriesTicker: "KXBIGBROTHER",
+          url: "https://kalshi.com/markets/kxbigbrother/who-will-win-big-brother/kxbigbrother-26dec31?selectedMarketTicker=KXBIGBROTHER-26DEC31-DEE",
+        },
+        polymarket: {
+          marketId: "2853714",
+          yesTokenId: "60297022771468929928611714271172877412498438227247631047407809426306440990592",
+          url: "https://polymarket.com/event/big-brother-season-28-winner-20260708173711844/will-dee-valladares-win-big-brother-season-28-20260712230326323",
+        },
+      },
+      {
+        id: "rick-devens",
+        label: "Rick Devens",
+        question: "Will Rick Devens win Big Brother Season 28?",
+        kalshi: {
+          ticker: "KXBIGBROTHER-26DEC31-RIC",
+          seriesTicker: "KXBIGBROTHER",
+          url: "https://kalshi.com/markets/kxbigbrother/who-will-win-big-brother/kxbigbrother-26dec31?selectedMarketTicker=KXBIGBROTHER-26DEC31-RIC",
+        },
+        polymarket: {
+          marketId: "2853712",
+          yesTokenId: "25320167385794782138980224015847904344553212040671323481469433356098629134324",
+          url: "https://polymarket.com/event/big-brother-season-28-winner-20260708173711844/will-rick-devens-win-big-brother-season-28-20260712164630746",
+        },
+      },
+      {
+        id: "yash-patel",
+        label: "Yash Patel",
+        question: "Will Yash Patel win Big Brother Season 28?",
+        kalshi: {
+          ticker: "KXBIGBROTHER-26DEC31-YAS",
+          seriesTicker: "KXBIGBROTHER",
+          url: "https://kalshi.com/markets/kxbigbrother/who-will-win-big-brother/kxbigbrother-26dec31?selectedMarketTicker=KXBIGBROTHER-26DEC31-YAS",
+        },
+        polymarket: {
+          marketId: "2853711",
+          yesTokenId: "61365402036530721078642054122930811815876233850699691305244146155991701890770",
+          url: "https://polymarket.com/event/big-brother-season-28-winner-20260708173711844/will-yash-patel-win-big-brother-season-28-20260708173711858",
+        },
+      },
+      {
+        id: "kamu-kirk",
+        label: "Kamu Kirk",
+        question: "Will Kamu Kirk win Big Brother Season 28?",
+        kalshi: {
+          ticker: "KXBIGBROTHER-26DEC31-KAM",
+          seriesTicker: "KXBIGBROTHER",
+          url: "https://kalshi.com/markets/kxbigbrother/who-will-win-big-brother/kxbigbrother-26dec31?selectedMarketTicker=KXBIGBROTHER-26DEC31-KAM",
+        },
+        polymarket: {
+          marketId: "2853704",
+          yesTokenId: "87127025679709563677036865537520674320857053471787925372408473185335450058857",
+          url: "https://polymarket.com/event/big-brother-season-28-winner-20260708173711844/will-kamu-kirk-win-big-brother-season-28-20260708173711851",
+        },
+      },
+      {
+        id: "barrett-pfeiffer",
+        label: "Barrett Pfeiffer",
+        question: "Will Barrett Pfeiffer win Big Brother Season 28?",
+        kalshi: {
+          ticker: "KXBIGBROTHER-26DEC31-BAR",
+          seriesTicker: "KXBIGBROTHER",
+          url: "https://kalshi.com/markets/kxbigbrother/who-will-win-big-brother/kxbigbrother-26dec31?selectedMarketTicker=KXBIGBROTHER-26DEC31-BAR",
+        },
+        polymarket: {
+          marketId: "2853699",
+          yesTokenId: "83988718095388656526081743073924319969063555351913135581885749379752319955925",
+          url: "https://polymarket.com/event/big-brother-season-28-winner-20260708173711844/will-barrett-pfeiffer-win-big-brother-season-28-20260708173711846",
+        },
+      },
+    ],
+    content: bigBrother28Winner,
+  },
+  {
+    slug: ["big-brother-28-week-4-eviction"],
+    category: "culture",
+    shortDescription: "Live odds on who gets evicted from Big Brother this week, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "drew-campbell",
+        label: "Drew Campbell",
+        question: "Will Drew Campbell be evicted this week?",
+        kalshi: {
+          ticker: "KXBIGBROTHERELIMINATION-26AUG06-DRE",
+          seriesTicker: "KXBIGBROTHERELIMINATION",
+          url: "https://kalshi.com/markets/kxbigbrotherelimination/who-will-be-eliminated-from-big-brother/kxbigbrotherelimination-26aug06?selectedMarketTicker=KXBIGBROTHERELIMINATION-26AUG06-DRE",
+        },
+        // Kalshi-only -- no matching single-week Polymarket contract. See resolutionNote.
+      },
+      {
+        id: "melody-morris",
+        label: "Melody Morris",
+        question: "Will Melody Morris be evicted this week?",
+        kalshi: {
+          ticker: "KXBIGBROTHERELIMINATION-26AUG06-MEL",
+          seriesTicker: "KXBIGBROTHERELIMINATION",
+          url: "https://kalshi.com/markets/kxbigbrotherelimination/who-will-be-eliminated-from-big-brother/kxbigbrotherelimination-26aug06?selectedMarketTicker=KXBIGBROTHERELIMINATION-26AUG06-MEL",
+        },
+      },
+    ],
+    content: bigBrother28Week4Eviction,
+  },
 ];
 
 export const CATEGORY_LABELS: Record<MarketConfig["category"], string> = {
@@ -492,7 +608,7 @@ export function getElectionCandidates(electionSlug: string): MarketConfig[] {
 // The homepage's featured "Hot Market" slot -- manually set, no auto-ranking
 // yet. Change this one value to feature a different market; update by hand
 // whenever the hot market changes.
-export const HOT_MARKET_SLUG = ["kawhi-leonard-next-team"];
+export const HOT_MARKET_SLUG = ["big-brother-28-winner"];
 
 export function getHotMarket(): MarketConfig | undefined {
   return findMarket(HOT_MARKET_SLUG);
