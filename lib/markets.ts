@@ -499,3 +499,20 @@ export function getMostRecentNews(market: MarketConfig): NewsItem | null {
     null
   );
 }
+
+/**
+ * One story per market (its most recent news item), newest first, skipping
+ * settled markets entirely -- a resolved market is frozen in the Archive,
+ * not live news anymore. Backs both the homepage's "Top News Stories" card
+ * (sliced to its first few) and the full /news hub page.
+ */
+export function getTopNewsItems(): { market: MarketConfig; news: NewsItem }[] {
+  return markets
+    .filter((market) => !market.content.settled)
+    .map((market) => {
+      const news = getMostRecentNews(market);
+      return news ? { market, news } : null;
+    })
+    .filter((item): item is { market: MarketConfig; news: NewsItem } => item !== null)
+    .sort((a, b) => (a.news.date < b.news.date ? 1 : -1));
+}

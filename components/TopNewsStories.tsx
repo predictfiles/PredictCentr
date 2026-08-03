@@ -1,16 +1,11 @@
 import Link from "next/link";
-import { markets, getMostRecentNews } from "@/lib/markets";
+import { getTopNewsItems } from "@/lib/markets";
 import { NewsThumb } from "@/components/NewsThumb";
 
+const HOME_NEWS_LIMIT = 5;
+
 export function TopNewsStories() {
-  const items = markets
-    .filter((market) => !market.content.settled)
-    .map((market) => {
-      const news = getMostRecentNews(market);
-      return news ? { market, news } : null;
-    })
-    .filter((item): item is NonNullable<typeof item> => item !== null)
-    .sort((a, b) => (a.news.date < b.news.date ? 1 : -1));
+  const items = getTopNewsItems().slice(0, HOME_NEWS_LIMIT);
 
   if (items.length === 0) return null;
 
@@ -36,6 +31,9 @@ export function TopNewsStories() {
             );
           })}
         </ul>
+        <Link className="top-news-more-link" href="/news/">
+          More News Stories →
+        </Link>
       </div>
     </section>
   );

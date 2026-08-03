@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { NewsIcon } from "@/components/NewsIcon";
 import { CATEGORY_LABELS } from "@/lib/markets";
 import type { MarketConfig } from "@/lib/types";
 
@@ -32,6 +33,10 @@ export function CategoryNav({ wide = false }: { wide?: boolean }) {
             {CATEGORY_LABELS[category]}
           </Link>
         ))}
+        <Link href="/news/" className="category-bar-link category-bar-link-news">
+          <NewsIcon className="category-bar-icon" />
+          News
+        </Link>
       </div>
     </nav>
   );
