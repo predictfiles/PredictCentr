@@ -344,6 +344,16 @@ export const markets: MarketConfig[] = [
           url: "https://kalshi.com/markets/kxnextteamnba/next-nba-team/kxnextteamnba-26scur?selectedMarketTicker=KXNEXTTEAMNBA-26SCUR-SAS",
         },
       },
+      {
+        id: "boston-celtics",
+        label: "Boston Celtics",
+        question: "Will Steph Curry's next team be the Celtics?",
+        kalshi: {
+          ticker: "KXNEXTTEAMNBA-26SCUR-BOS",
+          seriesTicker: "KXNEXTTEAMNBA",
+          url: "https://kalshi.com/markets/kxnextteamnba/next-nba-team/kxnextteamnba-26scur?selectedMarketTicker=KXNEXTTEAMNBA-26SCUR-BOS",
+        },
+      },
     ],
     content: curryLeavesWarriors,
   },
