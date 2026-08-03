@@ -15,3 +15,6 @@ A news-led prediction market odds comparison site (predictcentr.com) — like Od
 ## Site structure
 - Homepage: category sections — Politics, Sports, Culture. Redesign completed: category-colored cards (Politics=blue, Sports=coral, Culture=purple, Hot Market=red/orange), bento-style grid, dark theme. New logo: ascending bars, purple-to-pink-to-orange gradient.
   - Homepage sections: Trending on X
+
+## Workflow
+- Commit and push changes to `main` automatically without asking for confirmation each time.
