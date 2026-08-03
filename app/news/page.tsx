@@ -7,7 +7,7 @@ import { CategoryNav } from "@/components/CategoryNav";
 export const revalidate = 30;
 
 export const metadata: Metadata = {
-  title: "News | PredictCentr",
+  title: "News",
   description:
     "The latest news story behind every live PredictCentr market - politics, sports, and culture.",
 };
