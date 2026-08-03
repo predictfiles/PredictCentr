@@ -374,7 +374,8 @@ export const markets: MarketConfig[] = [
   {
     slug: ["tarik-skubal-next-team"],
     category: "sports",
-    shortDescription: "Live odds on Tarik Skubal's next team, tracked on Kalshi.",
+    shortDescription:
+      "Settled: Skubal traded to the Dodgers. See how Dodgers vs. Brewers odds moved beforehand.",
     outcomes: [
       {
         id: "los-angeles-dodgers",
