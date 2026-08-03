@@ -7,6 +7,7 @@ import {
   ELECTIONS,
   getElectionInfo,
   getElectionCandidates,
+  getRelatedMarkets,
   CATEGORY_LABELS,
 } from "@/lib/markets";
 import { loadOutcomeOdds, loadOutcomeHistory } from "@/lib/oddsLoader";
@@ -19,6 +20,7 @@ import { WhatToWatch } from "@/components/WhatToWatch";
 import { MarketCard } from "@/components/MarketCard";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import { MustReadTeaser } from "@/components/MustReadTeaser";
+import { RelatedMarkets } from "@/components/RelatedMarkets";
 import { CategoryNav } from "@/components/CategoryNav";
 import type { HistoryResponse, MarketConfig, OddsResponse } from "@/lib/types";
 import { SITE_URL } from "@/lib/site";
@@ -181,6 +183,19 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
         })
       );
 
+  const relatedMarkets = getRelatedMarkets(market);
+  const relatedOddsByMarket = new Map<string, Record<string, OddsResponse>>();
+  await Promise.all(
+    relatedMarkets
+      .filter((m) => !m.content.settled)
+      .map(async (m) => {
+        const entries = await Promise.all(
+          m.outcomes.map(async (outcome) => [outcome.id, await loadOutcomeOdds(outcome)] as const)
+        );
+        relatedOddsByMarket.set(m.slug.join("/"), Object.fromEntries(entries));
+      })
+  );
+
   return (
     <>
       <header className={`header header-accent-${market.category}`}>
@@ -274,6 +289,12 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
         <NewsSection items={content.news} />
 
         <WhatToWatch items={content.whatToWatch} />
+
+        <RelatedMarkets
+          category={market.category}
+          markets={relatedMarkets}
+          oddsByMarket={relatedOddsByMarket}
+        />
 
         <MustReadTeaser />
       </main>

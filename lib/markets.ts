@@ -642,3 +642,16 @@ export function getTopNewsItems(): { market: MarketConfig; news: NewsItem }[] {
     .filter((item): item is { market: MarketConfig; news: NewsItem } => item !== null)
     .sort((a, b) => (a.news.date < b.news.date ? 1 : -1));
 }
+
+/**
+ * Other markets in the same category, for the "Related Markets" internal
+ * link block on a market page -- live markets first (settled ones are
+ * archived, less useful to route fresh traffic into), otherwise in the
+ * same order they're declared in `markets` above.
+ */
+export function getRelatedMarkets(market: MarketConfig, limit = 4): MarketConfig[] {
+  return markets
+    .filter((m) => m.category === market.category && m.slug.join("/") !== market.slug.join("/"))
+    .sort((a, b) => Number(Boolean(a.content.settled)) - Number(Boolean(b.content.settled)))
+    .slice(0, limit);
+}
