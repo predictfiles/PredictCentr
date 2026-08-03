@@ -4,6 +4,7 @@ import { NewsThumb } from "@/components/NewsThumb";
 
 export function TopNewsStories() {
   const items = markets
+    .filter((market) => !market.content.settled)
     .map((market) => {
       const news = getMostRecentNews(market);
       return news ? { market, news } : null;
