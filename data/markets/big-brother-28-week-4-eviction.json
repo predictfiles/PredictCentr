@@ -3,7 +3,9 @@
     "title": "Big Brother 28 — Week 4 Eviction",
     "resolutionDate": "2026-08-07",
     "resolutionNote": [
-      "Resolves on the live Week 4 eviction episode - whichever of the two nominees gets voted out by the house.",
+      "Resolves on the live Week 4 eviction episode - whichever of the three current nominees gets voted out by the house.",
+      "Taylor Brown won the Power of Veto and removed herself at Monday's ceremony, and HOH Haley Thogmartin named Lyric Medeiros as the replacement nominee - so the block is now Drew Campbell, Melody Morris, and Lyric Medeiros.",
+      "All three get one final shot at safety in the BB Block Buster competition during Thursday's live episode. Whoever wins it is safe; the eviction vote happens between the two who don't, so only one of the three tracked outcomes below will actually go home.",
       "Kalshi's own wording: \"If [houseguest] is officially eliminated from Big Brother Season 28 Before Aug 7, 2026, then the market resolves to Yes.\"",
       "Kalshi-only - Polymarket doesn't list a matching single-week eviction contract for this show, only the season-long winner market."
     ]
@@ -20,6 +22,13 @@
   },
   "news": [
     {
+      "headline": "Big Brother Spoilers: Veto Meeting Delivers a Brutal Blindside",
+      "source": "TV Fanatic",
+      "date": "2026-08-03",
+      "url": "https://www.tvfanatic.com/big-brother-spoilers-veto-meeting-week-4-season-28-lyric-backdoor/",
+      "image": "https://cdn.tvfanatic.com/uploads/2026/08/BR_2811_SG_0005b.jpg"
+    },
+    {
       "headline": "'Big Brother 28' Spoilers: Drew in Big Trouble After Week 4 Veto Winner Announced",
       "source": "Gold Derby",
       "date": "2026-08-02",
@@ -30,7 +39,11 @@
   "whatToWatch": [
     {
       "date": "2026-08-06",
-      "label": "Live Week 4 eviction episode airs on CBS - Drew Campbell or Melody Morris goes home"
+      "label": "BB Block Buster competition airs live - Drew, Melody, and Lyric each get one last shot at safety before the vote"
+    },
+    {
+      "date": "2026-08-06",
+      "label": "Live Week 4 eviction episode airs on CBS - one of the two who lose Block Buster goes home"
     }
   ],
   "affiliateStatus": {

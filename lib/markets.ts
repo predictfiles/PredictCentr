@@ -558,6 +558,16 @@ export const markets: MarketConfig[] = [
           url: "https://kalshi.com/markets/kxbigbrotherelimination/who-will-be-eliminated-from-big-brother/kxbigbrotherelimination-26aug06?selectedMarketTicker=KXBIGBROTHERELIMINATION-26AUG06-MEL",
         },
       },
+      {
+        id: "lyric-medeiros",
+        label: "Lyric Medeiros",
+        question: "Will Lyric Medeiros be evicted this week?",
+        kalshi: {
+          ticker: "KXBIGBROTHERELIMINATION-26AUG06-LYR",
+          seriesTicker: "KXBIGBROTHERELIMINATION",
+          url: "https://kalshi.com/markets/kxbigbrotherelimination/who-will-be-eliminated-from-big-brother/kxbigbrotherelimination-26aug06?selectedMarketTicker=KXBIGBROTHERELIMINATION-26AUG06-LYR",
+        },
+      },
     ],
     content: bigBrother28Week4Eviction,
   },
