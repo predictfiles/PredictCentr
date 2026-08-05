@@ -16,6 +16,7 @@ import { MarketBrief } from "@/components/MarketBrief";
 import { NewsSection } from "@/components/NewsSection";
 import { OddsComparison } from "@/components/OddsComparison";
 import { HistoryChart } from "@/components/HistoryChart";
+import { MultiOutcomeHistoryChart, type ChartSeries } from "@/components/MultiOutcomeHistoryChart";
 import { WhatToWatch } from "@/components/WhatToWatch";
 import { MarketCard } from "@/components/MarketCard";
 import { CategoryIcon } from "@/components/CategoryIcon";
@@ -183,6 +184,23 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
         })
       );
 
+  // A shared chart only makes sense when there's nothing to lose by
+  // dropping Polymarket -- if any outcome pairs with Polymarket, the
+  // platform-vs-platform comparison on each outcome's own chart is more
+  // valuable than an outcome-vs-outcome view would be, so that layout
+  // stays per-outcome instead.
+  const useCombinedChart = market.outcomes.length > 1 && !hasAnyPolymarket;
+  const combinedSeries: ChartSeries[] = outcomesData.map(({ outcome, history }) => ({
+    id: outcome.id,
+    label: outcome.label,
+    data: history.kalshi ?? [],
+    historyUrlBase: settled
+      ? undefined
+      : `/api/markets/history?slug=${encodeURIComponent(slugPath)}&outcome=${encodeURIComponent(
+          outcome.id
+        )}`,
+  }));
+
   const relatedMarkets = getRelatedMarkets(market);
   const relatedOddsByMarket = new Map<string, Record<string, OddsResponse>>();
   await Promise.all(
@@ -236,6 +254,8 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
           return.
         </div>
 
+        {useCombinedChart && <MultiOutcomeHistoryChart series={combinedSeries} />}
+
         {outcomesData.map(({ outcome, odds, history }) => (
           <div className="outcome-block" key={outcome.id}>
             {market.outcomes.length > 1 && (
@@ -254,18 +274,20 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
               kalshiAffiliateUrl={outcome.kalshi.url}
               polymarketAffiliateUrl={outcome.polymarket?.url}
             />
-            <HistoryChart
-              data={history}
-              candidateName={outcome.label}
-              hasPolymarket={Boolean(outcome.polymarket)}
-              historyUrlBase={
-                settled
-                  ? undefined
-                  : `/api/markets/history?slug=${encodeURIComponent(
-                      slugPath
-                    )}&outcome=${encodeURIComponent(outcome.id)}`
-              }
-            />
+            {!useCombinedChart && (
+              <HistoryChart
+                data={history}
+                candidateName={outcome.label}
+                hasPolymarket={Boolean(outcome.polymarket)}
+                historyUrlBase={
+                  settled
+                    ? undefined
+                    : `/api/markets/history?slug=${encodeURIComponent(
+                        slugPath
+                      )}&outcome=${encodeURIComponent(outcome.id)}`
+                }
+              />
+            )}
           </div>
         ))}
 
