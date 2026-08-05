@@ -331,6 +331,32 @@ a {
   margin: 0;
 }
 
+.subtitle-countdown {
+  font-weight: 700;
+  color: var(--nav-fg);
+}
+
+.market-heading-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.market-heading-thumb {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-top: 2px;
+  background: var(--nav-divider);
+}
+
+.market-heading-text {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
 .resolution-note-list {
   color: var(--card-muted);
   font-size: 13px;
@@ -1212,6 +1238,18 @@ a {
 
 .bento-card-featured .bento-card-desc {
   font-size: 17px;
+}
+
+.bento-card-countdown {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--card-muted);
+  margin-bottom: 10px;
+}
+
+.bento-card-hot .bento-card-countdown {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .bento-card-cta {

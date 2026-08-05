@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { MarketConfig, OddsResponse } from "@/lib/types";
 import { CardLiveLine } from "@/components/CardLiveLine";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { CountdownTimer } from "@/components/CountdownTimer";
 import { CATEGORY_LABELS } from "@/lib/markets";
 
 /**
@@ -36,6 +37,10 @@ export function BentoMarketCard({
             slugPath={market.slug.join("/")}
             initialOdds={initialOdds}
           />
+          <CountdownTimer
+            targetDate={market.content.market.resolutionDate}
+            className="bento-card-countdown"
+          />
           <div className="bento-card-cta">View live odds →</div>
         </div>
       </Link>
@@ -57,6 +62,10 @@ export function BentoMarketCard({
         outcomes={market.outcomes}
         slugPath={market.slug.join("/")}
         initialOdds={initialOdds}
+      />
+      <CountdownTimer
+        targetDate={market.content.market.resolutionDate}
+        className="bento-card-countdown"
       />
       <div className="bento-card-cta">View live odds →</div>
     </Link>

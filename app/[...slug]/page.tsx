@@ -8,6 +8,7 @@ import {
   getElectionInfo,
   getElectionCandidates,
   getRelatedMarkets,
+  getMarketThumbnail,
   CATEGORY_LABELS,
 } from "@/lib/markets";
 import { loadOutcomeOdds, loadOutcomeHistory } from "@/lib/oddsLoader";
@@ -23,6 +24,7 @@ import { MarketCard } from "@/components/MarketCard";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import { MustReadTeaser } from "@/components/MustReadTeaser";
 import { RelatedMarkets } from "@/components/RelatedMarkets";
+import { CountdownTimer } from "@/components/CountdownTimer";
 import { CategoryNav } from "@/components/CategoryNav";
 import type { HistoryResponse, MarketConfig, OddsResponse } from "@/lib/types";
 import { SITE_URL } from "@/lib/site";
@@ -166,6 +168,7 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
   const hasAnyPolymarket = market.outcomes.some((o) => o.polymarket);
   const settled = content.settled;
   const parentElection = market.slug.length > 1 ? getElectionInfo(market.slug[0]) : undefined;
+  const thumbnail = getMarketThumbnail(market);
 
   // A settled market never hits Kalshi/Polymarket again -- it reads the
   // frozen snapshot captured at settlement instead of polling live.
@@ -223,27 +226,40 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-full.png" alt="PredictCentr" className="brand-logo" />
           </Link>
-          <div className={`category-tag category-tag-${market.category}`}>
-            <CategoryIcon category={market.category} className="category-tag-icon" />
-            {CATEGORY_LABELS[market.category]}
+          <div className="market-heading-row">
+            {thumbnail && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={thumbnail} alt="" className="market-heading-thumb" />
+            )}
+            <div className="market-heading-text">
+              <div className={`category-tag category-tag-${market.category}`}>
+                <CategoryIcon category={market.category} className="category-tag-icon" />
+                {CATEGORY_LABELS[market.category]}
+              </div>
+              {parentElection && (
+                <Link className="breadcrumb" href={`/${market.slug[0]}/`}>
+                  ← {parentElection.title}
+                </Link>
+              )}
+              {settled && <div className="status-badge status-settled">Settled</div>}
+              <h1 className="title">{content.market.title}</h1>
+              {settled ? (
+                <p className="subtitle">
+                  Resolved {formatDate(settled.resolvedAt)}: {settled.result}
+                </p>
+              ) : (
+                <p className="subtitle">
+                  {hasAnyPolymarket ? "Kalshi vs Polymarket, compared live" : "Live odds from Kalshi"}
+                  . Resolves {formatDate(content.market.resolutionDate)}
+                  {" · "}
+                  <CountdownTimer
+                    targetDate={content.market.resolutionDate}
+                    className="subtitle-countdown"
+                  />
+                </p>
+              )}
+            </div>
           </div>
-          {parentElection && (
-            <Link className="breadcrumb" href={`/${market.slug[0]}/`}>
-              ← {parentElection.title}
-            </Link>
-          )}
-          {settled && <div className="status-badge status-settled">Settled</div>}
-          <h1 className="title">{content.market.title}</h1>
-          {settled ? (
-            <p className="subtitle">
-              Resolved {formatDate(settled.resolvedAt)}: {settled.result}
-            </p>
-          ) : (
-            <p className="subtitle">
-              {hasAnyPolymarket ? "Kalshi vs Polymarket, compared live" : "Live odds from Kalshi"}
-              . Resolves {content.market.resolutionDate}.
-            </p>
-          )}
         </div>
         <CategoryNav />
       </header>

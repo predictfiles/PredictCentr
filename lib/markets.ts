@@ -686,3 +686,15 @@ export function getRelatedMarkets(market: MarketConfig, limit = 4): MarketConfig
     .sort((a, b) => Number(Boolean(a.content.settled)) - Number(Boolean(b.content.settled)))
     .slice(0, limit);
 }
+
+/**
+ * A representative thumbnail for the market page header -- not a
+ * hand-curated hero image field, just the most recent news item that
+ * happens to have one. Reuses an existing image rather than adding a new
+ * one to source and maintain per market.
+ */
+export function getMarketThumbnail(market: MarketConfig): string | undefined {
+  return [...market.content.news]
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .find((item) => item.image)?.image;
+}
