@@ -226,22 +226,22 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-full.png" alt="PredictCentr" className="brand-logo" />
           </Link>
+          <div className={`category-tag category-tag-${market.category}`}>
+            <CategoryIcon category={market.category} className="category-tag-icon" />
+            {CATEGORY_LABELS[market.category]}
+          </div>
+          {parentElection && (
+            <Link className="breadcrumb" href={`/${market.slug[0]}/`}>
+              ← {parentElection.title}
+            </Link>
+          )}
+          {settled && <div className="status-badge status-settled">Settled</div>}
           <div className="market-heading-row">
             {thumbnail && (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={thumbnail} alt="" className="market-heading-thumb" />
             )}
             <div className="market-heading-text">
-              <div className={`category-tag category-tag-${market.category}`}>
-                <CategoryIcon category={market.category} className="category-tag-icon" />
-                {CATEGORY_LABELS[market.category]}
-              </div>
-              {parentElection && (
-                <Link className="breadcrumb" href={`/${market.slug[0]}/`}>
-                  ← {parentElection.title}
-                </Link>
-              )}
-              {settled && <div className="status-badge status-settled">Settled</div>}
               <h1 className="title">{content.market.title}</h1>
               {settled ? (
                 <p className="subtitle">
