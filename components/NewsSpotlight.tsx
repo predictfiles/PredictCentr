@@ -7,6 +7,22 @@ import type { NewsItem } from "@/lib/types";
 const ROTATE_MS = 5000;
 
 /**
+ * Favicon for the story's own domain, not a hand-maintained logo per
+ * outlet -- there are dozens of different sources across all the markets'
+ * news arrays already, with new ones added constantly, so anything
+ * manually curated would go stale immediately. This scales to any source
+ * automatically.
+ */
+function faviconUrl(articleUrl: string): string | null {
+  try {
+    const { hostname } = new URL(articleUrl);
+    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Compact single-headline rotator that sits near the odds/chart, separate
  * from the full News & Context list further down the page -- crossfades to
  * the next story on a timer (Polymarket's own market widgets do this in the
@@ -32,6 +48,7 @@ export function NewsSpotlight({ items }: { items: NewsItem[] }) {
   if (sorted.length === 0) return null;
 
   const item = sorted[index];
+  const favicon = faviconUrl(item.url);
 
   return (
     <section className="section">
@@ -44,6 +61,17 @@ export function NewsSpotlight({ items }: { items: NewsItem[] }) {
       >
         <div className="news-spotlight-content" key={item.url}>
           <div className="news-spotlight-meta">
+            {favicon && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                className="news-spotlight-favicon"
+                src={favicon}
+                alt=""
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            )}
             {item.source} · {now ? formatRelativeTime(item.date, now) : formatRelativeTime(item.date)}
           </div>
           <div className="news-spotlight-headline">{item.headline}</div>

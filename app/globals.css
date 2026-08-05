@@ -560,9 +560,19 @@ a {
 }
 
 .news-spotlight-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 13px;
   color: var(--card-muted);
   margin-bottom: 4px;
+}
+
+.news-spotlight-favicon {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  flex-shrink: 0;
 }
 
 .news-spotlight-headline {
