@@ -526,6 +526,36 @@ a {
   border-bottom: none;
 }
 
+.news-ticker-mask {
+  overflow: hidden;
+  position: relative;
+}
+
+.news-ticker-track {
+  animation-name: news-ticker-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.news-ticker-mask:hover .news-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes news-ticker-scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-ticker-track {
+    animation: none;
+  }
+}
+
 .news-link {
   display: flex;
   align-items: center;

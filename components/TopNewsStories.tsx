@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { NewsThumb } from "@/components/NewsThumb";
 import type { MarketConfig, NewsItem } from "@/lib/types";
 
-const PAGE_SIZE = 5;
-const ROTATE_MS = 9000;
+const VISIBLE_COUNT = 5;
+const SECONDS_PER_ITEM = 4.5;
 
 export interface TopNewsEntry {
   market: MarketConfig;
@@ -14,56 +14,63 @@ export interface TopNewsEntry {
 }
 
 /**
- * Sidebar news list -- shows PAGE_SIZE stories at a time, then quietly
- * advances to the next page of the full pool on a timer, looping back to
- * the start. Deliberately not styled like TrendingOnX's single-spotlight
- * carousel (no progress bar, no arrows) -- it's the same plain list, just
- * auto-paginating through everything instead of freezing on the newest 5.
+ * Sidebar news list -- a continuous bulletin-board ticker, not a paged
+ * carousel. The full pool of stories scrolls upward at a constant speed
+ * (CSS animation, not a JS interval) with the list duplicated end-to-end so
+ * it loops seamlessly; hovering pauses it so a story doesn't scroll away
+ * mid-read or mid-click.
  */
 export function TopNewsStories({ items }: { items: TopNewsEntry[] }) {
-  const [page, setPage] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  const pageCount = Math.ceil(items.length / PAGE_SIZE);
+  const firstItemRef = useRef<HTMLLIElement>(null);
+  const [maskHeight, setMaskHeight] = useState<number | null>(null);
 
   useEffect(() => {
-    if (paused || pageCount <= 1) return;
-    const interval = setInterval(() => {
-      setPage((p) => (p + 1) % pageCount);
-    }, ROTATE_MS);
-    return () => clearInterval(interval);
-  }, [paused, pageCount]);
+    if (firstItemRef.current) {
+      setMaskHeight(firstItemRef.current.offsetHeight * VISIBLE_COUNT);
+    }
+  }, [items]);
 
   if (items.length === 0) return null;
 
-  const visible = items.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
+  // Content is doubled so translateY(-50%) lands on an identical copy of
+  // the start -- the loop point is invisible instead of snapping/jumping.
+  const looped = [...items, ...items];
+  const durationSeconds = items.length * SECONDS_PER_ITEM;
 
   return (
-    <section
-      className="section"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <section className="section">
       <div className="section-label">Top News Stories</div>
       <div className="card">
-        <ul className="news-list" aria-live="polite">
-          {visible.map(({ market, news }) => {
-            const href = `/${market.slug.join("/")}/`;
-            return (
-              <li className="news-item" key={market.slug.join("/")}>
-                <div className="top-story-row">
-                  {news.image && <NewsThumb src={news.image} />}
-                  <div>
-                    <div className="top-story-headline">{news.headline}</div>
-                    <Link className="top-story-market-link" href={href}>
-                      Market Affected: {market.content.market.title}
-                    </Link>
+        <div
+          className="news-ticker-mask"
+          style={maskHeight ? { height: maskHeight } : undefined}
+        >
+          <ul
+            className="news-list news-ticker-track"
+            style={{ animationDuration: `${durationSeconds}s` }}
+          >
+            {looped.map(({ market, news }, i) => {
+              const href = `/${market.slug.join("/")}/`;
+              return (
+                <li
+                  className="news-item"
+                  key={`${market.slug.join("/")}-${i}`}
+                  ref={i === 0 ? firstItemRef : undefined}
+                >
+                  <div className="top-story-row">
+                    {news.image && <NewsThumb src={news.image} />}
+                    <div>
+                      <div className="top-story-headline">{news.headline}</div>
+                      <Link className="top-story-market-link" href={href}>
+                        Market Affected: {market.content.market.title}
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
         <Link className="top-news-more-link" href="/news/">
           More News Stories →
         </Link>
