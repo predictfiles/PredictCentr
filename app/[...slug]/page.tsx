@@ -14,6 +14,7 @@ import { loadOutcomeOdds, loadOutcomeHistory } from "@/lib/oddsLoader";
 import { affiliateDisclosure, formatDate } from "@/lib/format";
 import { MarketBrief } from "@/components/MarketBrief";
 import { NewsSection } from "@/components/NewsSection";
+import { NewsSpotlight } from "@/components/NewsSpotlight";
 import { OddsComparison } from "@/components/OddsComparison";
 import { HistoryChart } from "@/components/HistoryChart";
 import { MultiOutcomeHistoryChart, type ChartSeries } from "@/components/MultiOutcomeHistoryChart";
@@ -290,6 +291,8 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
             )}
           </div>
         ))}
+
+        <NewsSpotlight items={content.news} />
 
         <MarketBrief
           text={content.marketBrief.text}
