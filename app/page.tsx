@@ -7,6 +7,7 @@ import { TopNewsStories } from "@/components/TopNewsStories";
 import { TrendingOnX } from "@/components/TrendingOnX";
 import { CategoryNav } from "@/components/CategoryNav";
 import { MustReadHeaderCard } from "@/components/MustReadHeaderCard";
+import { CategoryIcon } from "@/components/CategoryIcon";
 import trending from "@/data/trending.json";
 import type { OddsResponse, TrendingItem } from "@/lib/types";
 
@@ -103,7 +104,10 @@ export default async function Home() {
               const hasMore = orderedMarkets.length > HOME_CATEGORY_LIMIT;
               return (
                 <section className="section" key={category.id}>
-                  <div className="section-label">{category.label}</div>
+                  <div className={`home-category-heading home-category-heading-${category.id}`}>
+                    {category.label}
+                    <CategoryIcon category={category.id} className="home-category-heading-icon" />
+                  </div>
                   <div className="bento-grid">
                     {visibleMarkets.map((market) => (
                       <BentoMarketCard

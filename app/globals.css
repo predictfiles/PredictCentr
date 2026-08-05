@@ -359,6 +359,42 @@ a {
   margin-bottom: 14px;
 }
 
+/* Homepage-only section headings (Breaking News, Politics, Sports,
+   Culture) -- matches the top category bar's own typography (normal
+   case, bold, 14px) and per-category color instead of the generic
+   .section-label treatment used everywhere else on the site. Icon
+   sits after the text, on the right, per design. */
+.home-category-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.home-category-heading-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.home-category-heading-news {
+  color: var(--dark-card-muted);
+}
+
+.home-category-heading-politics {
+  color: var(--politics);
+}
+
+.home-category-heading-sports {
+  color: var(--sports);
+}
+
+.home-category-heading-culture {
+  color: var(--culture);
+}
+
 .outcome-heading {
   font-size: 20px;
   font-weight: 700;
