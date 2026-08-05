@@ -15,6 +15,7 @@ import tarikSkubalNextTeamRaw from "@/data/markets/tarik-skubal-next-team.json";
 import kevinDurantNextTeamRaw from "@/data/markets/kevin-durant-next-team.json";
 import bigBrother28WinnerRaw from "@/data/markets/big-brother-28-winner.json";
 import bigBrother28Week4EvictionRaw from "@/data/markets/big-brother-28-week-4-eviction.json";
+import billBelichickOutRaw from "@/data/markets/bill-belichick-out-before-september-2026.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -37,6 +38,7 @@ const tarikSkubalNextTeam = tarikSkubalNextTeamRaw as MarketContent;
 const kevinDurantNextTeam = kevinDurantNextTeamRaw as MarketContent;
 const bigBrother28Winner = bigBrother28WinnerRaw as MarketContent;
 const bigBrother28Week4Eviction = bigBrother28Week4EvictionRaw as MarketContent;
+const billBelichickOut = billBelichickOutRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -570,6 +572,25 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: bigBrother28Week4Eviction,
+  },
+  {
+    slug: ["bill-belichick-out-before-september-2026"],
+    category: "sports",
+    shortDescription: "Live odds on whether Bill Belichick is out as UNC's head coach before September 2026, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "out-before-september-2026",
+        label: "Bill Belichick",
+        question: "Will Bill Belichick be out as UNC's head coach before September 2026?",
+        kalshi: {
+          ticker: "KXCOACHOUTNCAAFB-1-26-UNC",
+          seriesTicker: "KXCOACHOUTNCAAFB",
+          url: "https://kalshi.com/markets/kxcoachoutncaafb/ncaafb-coaches-out/kxcoachoutncaafb-1-26?selectedMarketTicker=KXCOACHOUTNCAAFB-1-26-UNC",
+        },
+        // Kalshi-only -- no current matching Polymarket market. See resolutionNote.
+      },
+    ],
+    content: billBelichickOut,
   },
 ];
 

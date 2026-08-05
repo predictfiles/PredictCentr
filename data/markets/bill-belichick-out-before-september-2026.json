@@ -1,0 +1,68 @@
+{
+  "market": {
+    "title": "Bill Belichick — Out Before September 2026?",
+    "resolutionDate": "2026-09-01",
+    "resolutionNote": [
+      "This market resolves Yes if Bill Belichick is fired or steps down as North Carolina's head coach on or before Sep 1, 2026. It resolves No if he remains in the role past that date, regardless of the team's performance to that point.",
+      "Kalshi's own wording: \"If the head coach of the North Carolina College Football team leaves, or announces they will leave, before Sep 1, 2026, then the market resolves to Yes.\"",
+      "No matching Polymarket market currently exists for this specific before-September-2026 window - their two most recent Belichick-related markets (a 2024 'next team' contract and a 'out by end of 2025 season' contract) have both already closed, so this page is Kalshi-only."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Bill Belichick's first season at North Carolina didn't go how anyone in Chapel Hill hoped - the six-time Super Bowl-winning coach, who'd never coached a college snap before taking the job, finished 2025 at 4-8 (2-6 in ACC play), worse than the Tar Heels' 6-6 record the year before he arrived.",
+      "Along the way: a blowout loss to Clemson, a suspended football GM (Mike Lombardi, who Belichick himself hired), and a lawsuit alleging irregularities in how he was hired.",
+      "Reports surfaced of 'preliminary conversations' about an exit strategy, which both Belichick and athletic director Bill Cunningham publicly denied, each insisting he's 'fully committed' to the program.",
+      "The market isn't asking if Belichick eventually leaves - it's asking whether it happens before September 1, 2026, ahead of the new season kicking off."
+    ],
+    "updatedAt": "2026-08-05",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Another Crisis for Bill Belichick: UNC Places GM Michael Lombardi on Administrative Leave Amid Investigation",
+      "source": "Fox News (OutKick)",
+      "date": "2026-07-27",
+      "url": "https://www.foxnews.com/outkick-sports/crisis-bill-belichick-unc-places-gm-michael-lombardi-administrative-leave-amid-investigation",
+      "image": "https://static.foxnews.com/foxnews.com/content/uploads/2026/07/bill-belichick-michael-lombardi-sideline-tcu.jpg"
+    },
+    {
+      "headline": "Bill Belichick Has a Trademark Terse Press Conference After UNC Ends Year With a Loss",
+      "source": "Boston.com",
+      "date": "2025-11-30",
+      "url": "https://www.boston.com/sports/new-england-patriots/2025/11/30/bill-belichick-unc-north-carolina-tar-heels-new-england-patriots-press-conference/",
+      "image": "https://bdc2020.o0bc.com/wp-content/uploads/2025/11/North_Carolina_NC_State_Football_64363-692ccc1d89c75-768x432.jpg"
+    },
+    {
+      "headline": "Bill Belichick Breaks Silence on UNC Exit Reports",
+      "source": "Heavy.com",
+      "date": "2025-10-09",
+      "url": "https://heavy.com/sports/college-football/unc-tar-heels/bill-belichick-breaks-silence/",
+      "image": "https://heavy.com/wp-content/uploads/2025/10/Bill-Belichick-breaks-silence-UNC-exit.jpg?quality=65&strip=all"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "2026-08-29",
+      "label": "Season opener vs. TCU in Dublin, Ireland (Aer Lingus College Football Classic) - the first real on-field test before this market closes"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Any further statements from Belichick or UNC athletics director Bill Cunningham"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Developments in the ongoing lawsuit over how he was hired"
+    },
+    {
+      "date": "2026-09-01",
+      "label": "Kalshi's resolution cutoff - market resolves"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}
