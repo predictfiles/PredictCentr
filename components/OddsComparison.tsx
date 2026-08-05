@@ -25,6 +25,7 @@ function PlatformCard({
       {quote ? (
         <>
           <div className="odds-price">
+            <span className="odds-price-label">Chance of Yes</span>
             {formatPercent(quote.yesPrice)}
             <span className="unit">%</span>
           </div>
