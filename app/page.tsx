@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { markets, getHotMarket, findMarket } from "@/lib/markets";
+import { markets, getHotMarket, findMarket, getTopNewsItems } from "@/lib/markets";
 import { loadOutcomeOdds } from "@/lib/oddsLoader";
 import { BentoMarketCard } from "@/components/BentoMarketCard";
 import { MarketCard } from "@/components/MarketCard";
@@ -24,6 +24,7 @@ export default async function Home() {
   const hotMarket = getHotMarket();
   const liveMarkets = markets.filter((m) => !m.content.settled);
   const archivedMarkets = markets.filter((m) => m.content.settled);
+  const topNewsItems = getTopNewsItems();
 
   const resolvedTrending = (trending as TrendingItem[]).map((item) => {
     const market = item.marketSlug ? findMarket(item.marketSlug.split("/")) : undefined;
@@ -134,7 +135,7 @@ export default async function Home() {
           </div>
 
           <div className="home-sidebar">
-            <TopNewsStories />
+            <TopNewsStories items={topNewsItems} />
           </div>
         </div>
       </main>

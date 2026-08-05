@@ -1,20 +1,53 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getTopNewsItems } from "@/lib/markets";
 import { NewsThumb } from "@/components/NewsThumb";
+import type { MarketConfig, NewsItem } from "@/lib/types";
 
-const HOME_NEWS_LIMIT = 5;
+const PAGE_SIZE = 5;
+const ROTATE_MS = 9000;
 
-export function TopNewsStories() {
-  const items = getTopNewsItems().slice(0, HOME_NEWS_LIMIT);
+export interface TopNewsEntry {
+  market: MarketConfig;
+  news: NewsItem;
+}
+
+/**
+ * Sidebar news list -- shows PAGE_SIZE stories at a time, then quietly
+ * advances to the next page of the full pool on a timer, looping back to
+ * the start. Deliberately not styled like TrendingOnX's single-spotlight
+ * carousel (no progress bar, no arrows) -- it's the same plain list, just
+ * auto-paginating through everything instead of freezing on the newest 5.
+ */
+export function TopNewsStories({ items }: { items: TopNewsEntry[] }) {
+  const [page, setPage] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const pageCount = Math.ceil(items.length / PAGE_SIZE);
+
+  useEffect(() => {
+    if (paused || pageCount <= 1) return;
+    const interval = setInterval(() => {
+      setPage((p) => (p + 1) % pageCount);
+    }, ROTATE_MS);
+    return () => clearInterval(interval);
+  }, [paused, pageCount]);
 
   if (items.length === 0) return null;
 
+  const visible = items.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
+
   return (
-    <section className="section">
+    <section
+      className="section"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="section-label">Top News Stories</div>
       <div className="card">
-        <ul className="news-list">
-          {items.map(({ market, news }) => {
+        <ul className="news-list" aria-live="polite">
+          {visible.map(({ market, news }) => {
             const href = `/${market.slug.join("/")}/`;
             return (
               <li className="news-item" key={market.slug.join("/")}>
