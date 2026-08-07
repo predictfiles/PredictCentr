@@ -15,9 +15,10 @@
       "Since she won Head of Household in Week 4, Haley Thogmartin had the power to nominate Drew Campbell, Melody Morris, and Taylor Brown for eviction.",
       "Drew had been playing both sides of the house, and nominating him was a strategic gamble by Haley's alliance since it offers him two chances to save himself.",
       "It was Taylor Brown, however, that won Power of Veto, and so she made it off the chopping block, leaving just Drew, Melody, and Lyric (as her replacement).",
-      "Kalshi has Drew as the clear favorite to go, at more than 60%."
+      "Kalshi had Drew as the clear favorite to go into Thursday, at more than 60%, with Melody overtaking him as the market's late favorite after the Block Buster results came in.",
+      "The house flipped again on eviction night: Lyric Medeiros was voted out, closing at 99% on Kalshi. Drew and Melody both survive the week."
     ],
-    "updatedAt": "2026-08-03",
+    "updatedAt": "2026-08-07",
     "author": "Owain Flanders"
   },
   "news": [
@@ -57,6 +58,164 @@
     "kalshi": {
       "isAffiliate": false,
       "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    }
+  },
+  "settled": {
+    "resolvedAt": "2026-08-07T08:04:30Z",
+    "result": "Lyric Medeiros evicted",
+    "finalOdds": {
+      "drew-campbell": {
+        "kalshi": {
+          "platform": "kalshi",
+          "yesPrice": 0.01,
+          "bid": 0.0,
+          "ask": 1.0,
+          "updatedAt": "2026-08-07T08:04:33.896859Z",
+          "url": "https://kalshi.com/markets/kxbigbrotherelimination/who-will-be-eliminated-from-big-brother/kxbigbrotherelimination-26aug06?selectedMarketTicker=KXBIGBROTHERELIMINATION-26AUG06-DRE"
+        },
+        "kalshiError": null,
+        "polymarket": null,
+        "polymarketError": null,
+        "fetchedAt": "2026-08-07T08:10:00.000Z"
+      },
+      "melody-morris": {
+        "kalshi": {
+          "platform": "kalshi",
+          "yesPrice": 0.01,
+          "bid": 0.0,
+          "ask": 1.0,
+          "updatedAt": "2026-08-07T08:04:34.096817Z",
+          "url": "https://kalshi.com/markets/kxbigbrotherelimination/who-will-be-eliminated-from-big-brother/kxbigbrotherelimination-26aug06?selectedMarketTicker=KXBIGBROTHERELIMINATION-26AUG06-MEL"
+        },
+        "kalshiError": null,
+        "polymarket": null,
+        "polymarketError": null,
+        "fetchedAt": "2026-08-07T08:10:00.000Z"
+      },
+      "lyric-medeiros": {
+        "kalshi": {
+          "platform": "kalshi",
+          "yesPrice": 0.99,
+          "bid": 0.0,
+          "ask": 1.0,
+          "updatedAt": "2026-08-07T08:04:30.29655Z",
+          "url": "https://kalshi.com/markets/kxbigbrotherelimination/who-will-be-eliminated-from-big-brother/kxbigbrotherelimination-26aug06?selectedMarketTicker=KXBIGBROTHERELIMINATION-26AUG06-LYR"
+        },
+        "kalshiError": null,
+        "polymarket": null,
+        "polymarketError": null,
+        "fetchedAt": "2026-08-07T08:10:00.000Z"
+      }
+    },
+    "finalHistory": {
+      "drew-campbell": {
+        "kalshi": [
+          {
+            "t": 1785556800,
+            "p": 0.43
+          },
+          {
+            "t": 1785643200,
+            "p": 0.38
+          },
+          {
+            "t": 1785729600,
+            "p": 0.64
+          },
+          {
+            "t": 1785816000,
+            "p": 0.6
+          },
+          {
+            "t": 1785902400,
+            "p": 0.59
+          },
+          {
+            "t": 1785988800,
+            "p": 0.26
+          },
+          {
+            "t": 1786075200,
+            "p": 0.01
+          }
+        ],
+        "kalshiError": null,
+        "polymarket": null,
+        "polymarketError": null,
+        "fetchedAt": "2026-08-07T08:10:00.000Z"
+      },
+      "melody-morris": {
+        "kalshi": [
+          {
+            "t": 1785556800,
+            "p": 0.41
+          },
+          {
+            "t": 1785643200,
+            "p": 0.37
+          },
+          {
+            "t": 1785729600,
+            "p": 0.37
+          },
+          {
+            "t": 1785816000,
+            "p": 0.3
+          },
+          {
+            "t": 1785902400,
+            "p": 0.32
+          },
+          {
+            "t": 1785988800,
+            "p": 0.69
+          },
+          {
+            "t": 1786075200,
+            "p": 0.01
+          }
+        ],
+        "kalshiError": null,
+        "polymarket": null,
+        "polymarketError": null,
+        "fetchedAt": "2026-08-07T08:10:00.000Z"
+      },
+      "lyric-medeiros": {
+        "kalshi": [
+          {
+            "t": 1785556800,
+            "p": 0.03
+          },
+          {
+            "t": 1785643200,
+            "p": 0.18
+          },
+          {
+            "t": 1785729600,
+            "p": 0.07
+          },
+          {
+            "t": 1785816000,
+            "p": 0.11
+          },
+          {
+            "t": 1785902400,
+            "p": 0.17
+          },
+          {
+            "t": 1785988800,
+            "p": 0.08
+          },
+          {
+            "t": 1786075200,
+            "p": 0.99
+          }
+        ],
+        "kalshiError": null,
+        "polymarket": null,
+        "polymarketError": null,
+        "fetchedAt": "2026-08-07T08:10:00.000Z"
+      }
     }
   }
 }
