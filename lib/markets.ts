@@ -16,6 +16,7 @@ import kevinDurantNextTeamRaw from "@/data/markets/kevin-durant-next-team.json";
 import bigBrother28WinnerRaw from "@/data/markets/big-brother-28-winner.json";
 import bigBrother28Week4EvictionRaw from "@/data/markets/big-brother-28-week-4-eviction.json";
 import billBelichickOutRaw from "@/data/markets/bill-belichick-out-before-september-2026.json";
+import texasSenateElection2026Raw from "@/data/markets/texas-senate-election-2026.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -39,6 +40,7 @@ const kevinDurantNextTeam = kevinDurantNextTeamRaw as MarketContent;
 const bigBrother28Winner = bigBrother28WinnerRaw as MarketContent;
 const bigBrother28Week4Eviction = bigBrother28Week4EvictionRaw as MarketContent;
 const billBelichickOut = billBelichickOutRaw as MarketContent;
+const texasSenateElection2026 = texasSenateElection2026Raw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -591,6 +593,46 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: billBelichickOut,
+  },
+  {
+    slug: ["texas-senate-election-2026"],
+    category: "politics",
+    shortDescription: "Live odds on who wins the 2026 Texas U.S. Senate race between Ken Paxton and James Talarico.",
+    outcomes: [
+      {
+        id: "ken-paxton",
+        label: "Ken Paxton",
+        question: "Will Ken Paxton win the Texas Senate race?",
+        kalshi: {
+          ticker: "SENATETX-26-R",
+          seriesTicker: "SENATETX",
+          url: "https://kalshi.com/markets/senatetx/texas-senate-winner/senatetx-26?selectedMarketTicker=SENATETX-26-R",
+        },
+        polymarket: {
+          marketId: "630964",
+          yesTokenId:
+            "21265207456609426291246075480390336499088453711419597084147957999650569091884",
+          url: "https://polymarket.com/event/texas-senate-election-winner/will-the-republicans-win-the-texas-senate-race-in-2026",
+        },
+      },
+      {
+        id: "james-talarico",
+        label: "James Talarico",
+        question: "Will James Talarico win the Texas Senate race?",
+        kalshi: {
+          ticker: "SENATETX-26-D",
+          seriesTicker: "SENATETX",
+          url: "https://kalshi.com/markets/senatetx/texas-senate-winner/senatetx-26?selectedMarketTicker=SENATETX-26-D",
+        },
+        polymarket: {
+          marketId: "630963",
+          yesTokenId:
+            "15290572385458522370285732869432740297199321382471116558439914335588167718663",
+          url: "https://polymarket.com/event/texas-senate-election-winner/will-the-democrats-win-the-texas-senate-race-in-2026",
+        },
+      },
+    ],
+    content: texasSenateElection2026,
   },
 ];
 
