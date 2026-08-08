@@ -186,3 +186,34 @@ export interface TrendingItem {
   postVolume?: string;
   marketSlug?: string;
 }
+
+/**
+ * One paragraph or pull quote in a NewsArticle's body, rendered in order.
+ * A paragraph's text may contain a single Markdown-style `[label](url)`
+ * link -- the only inline formatting article bodies need so far.
+ */
+export type NewsArticleBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "quote"; text: string };
+
+/**
+ * A full PredictCentr-written news article -- distinct from a market's
+ * `NewsItem[]` (which just links out to third-party coverage). These are
+ * the site's own reporting, featured in the homepage's top "News" section
+ * and at /news/<slug>.
+ */
+export interface NewsArticle {
+  /** URL slug, e.g. "kawhi-leonard-suspension-odds" */
+  slug: string;
+  headline: string;
+  /** Full-size hero image for the article page. Must be a properly licensed/stock image, never a wire-service (Getty etc.) photo used without clearance. */
+  image: string;
+  /** Smaller crop for homepage/listing cards -- falls back to `image` if omitted. */
+  thumbnail?: string;
+  body: NewsArticleBlock[];
+  /** Joined slug path (e.g. "kawhi-leonard-next-team") of the market this article is about. */
+  relatedMarketSlug: string;
+  author: string;
+  publishedAt: string;
+  updatedAt: string;
+}

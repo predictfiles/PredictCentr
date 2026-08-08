@@ -5,11 +5,15 @@ import { BentoMarketCard } from "@/components/BentoMarketCard";
 import { MarketCard } from "@/components/MarketCard";
 import { TopNewsStories } from "@/components/TopNewsStories";
 import { TrendingOnX } from "@/components/TrendingOnX";
+import { HomeNewsSection } from "@/components/HomeNewsSection";
 import { CategoryNav } from "@/components/CategoryNav";
 import { MustReadHeaderCard } from "@/components/MustReadHeaderCard";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import trending from "@/data/trending.json";
+import { getRecentNewsArticles } from "@/lib/newsArticles";
 import type { OddsResponse, TrendingItem } from "@/lib/types";
+
+const HOME_NEWS_LIMIT = 5;
 
 const HOME_CATEGORY_LIMIT = 4;
 
@@ -33,6 +37,19 @@ export default async function Home() {
       headline: item.headline,
       image: item.image,
       postVolume: item.postVolume,
+      marketTitle: market?.content.market.title,
+      marketHref: market ? `/${market.slug.join("/")}/` : undefined,
+    };
+  });
+
+  const resolvedNewsArticles = getRecentNewsArticles(HOME_NEWS_LIMIT).map((article) => {
+    const market = findMarket(article.relatedMarketSlug.split("/"));
+    return {
+      slug: article.slug,
+      headline: article.headline,
+      thumbnail: article.thumbnail ?? article.image,
+      author: article.author,
+      publishedAt: article.publishedAt,
       marketTitle: market?.content.market.title,
       marketHref: market ? `/${market.slug.join("/")}/` : undefined,
     };
@@ -81,7 +98,7 @@ export default async function Home() {
       <main className="home-wrap">
         <div className="home-grid">
           <div className="home-main">
-            <TrendingOnX items={resolvedTrending} />
+            <HomeNewsSection items={resolvedNewsArticles} />
 
             {hotMarket && (
               <section className="section">
@@ -140,6 +157,7 @@ export default async function Home() {
 
           <div className="home-sidebar">
             <TopNewsStories items={topNewsItems} />
+            <TrendingOnX items={resolvedTrending} />
           </div>
         </div>
       </main>

@@ -1411,3 +1411,93 @@ a {
     width: 100%;
   }
 }
+
+/* Compact modifier -- the Trending on X module now lives in the sidebar
+   (StoryCarousel's other consumer, the homepage's top News section, stays
+   full-size). Same shape, smaller type/padding to fit the narrower column. */
+.trending-card-compact {
+  padding: 16px 14px;
+  gap: 8px;
+}
+
+.trending-card-compact .trending-headline {
+  font-size: 15px;
+}
+
+.trending-card-compact .news-thumb {
+  width: 44px;
+  height: 44px;
+}
+
+/* Neutralizes default <a> styling so a linked headline (News section
+   cards) looks identical to the unlinked one (Trending on X). */
+.trending-story-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.trending-story-link:hover .trending-headline {
+  text-decoration: underline;
+}
+
+.trending-news-icon {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  color: var(--card-fg);
+  position: relative;
+  top: 2px;
+}
+
+/* News article page -- hero image, byline, and inline pull quote. Reuses
+   the must-read-* paragraph/hero treatment where the shape is identical. */
+.news-article-hero {
+  margin-bottom: 24px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.news-article-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.news-article-paragraph {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.news-article-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.news-article-paragraph a {
+  color: var(--brand-blue);
+  text-decoration: underline;
+}
+
+.news-pull-quote {
+  border-left: 4px solid var(--brand-blue);
+  margin: 24px 0;
+  padding: 4px 0 4px 20px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.news-pull-quote-politics {
+  border-left-color: var(--politics);
+}
+
+.news-pull-quote-sports {
+  border-left-color: var(--sports);
+}
+
+.news-pull-quote-culture {
+  border-left-color: var(--culture);
+}

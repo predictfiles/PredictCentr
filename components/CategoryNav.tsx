@@ -23,6 +23,10 @@ export function CategoryNav({ wide = false }: { wide?: boolean }) {
   return (
     <nav className="category-bar">
       <div className={`category-bar-inner${wide ? " category-bar-inner-wide" : ""}`}>
+        <Link href="/news/" className="category-bar-link category-bar-link-news">
+          <NewsIcon className="category-bar-icon" />
+          News
+        </Link>
         {CATEGORY_ORDER.map((category) => (
           <Link
             key={category}
@@ -33,10 +37,6 @@ export function CategoryNav({ wide = false }: { wide?: boolean }) {
             {CATEGORY_LABELS[category]}
           </Link>
         ))}
-        <Link href="/news/" className="category-bar-link category-bar-link-news">
-          <NewsIcon className="category-bar-icon" />
-          News
-        </Link>
       </div>
     </nav>
   );

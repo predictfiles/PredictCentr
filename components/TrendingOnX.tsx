@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { NewsThumb } from "@/components/NewsThumb";
+import { StoryCarousel, type StoryCarouselItem } from "@/components/StoryCarousel";
 
 export interface ResolvedTrendingItem {
   headline: string;
@@ -12,8 +10,6 @@ export interface ResolvedTrendingItem {
   marketHref?: string;
 }
 
-const ROTATE_MS = 6000;
-
 function XLogo() {
   return (
     <svg className="trending-x-logo" viewBox="0 0 24 24" aria-hidden="true">
@@ -22,104 +18,31 @@ function XLogo() {
   );
 }
 
+/**
+ * Sidebar module, directly beneath Breaking News -- Owain's own daily pick
+ * from X's "Today's News" panel. Lives in the sidebar (not the homepage's
+ * top slot, which is now the "News" section for PredictCentr's own
+ * articles) so it stays visible as a secondary, curated-from-X signal.
+ */
 export function TrendingOnX({ items }: { items: ResolvedTrendingItem[] }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused || items.length <= 1) return;
-    const interval = setInterval(() => {
-      setActiveIndex((i) => (i + 1) % items.length);
-    }, ROTATE_MS);
-    return () => clearInterval(interval);
-  }, [paused, items.length, activeIndex]);
-
-  if (items.length === 0) return null;
-
-  const item = items[activeIndex];
-
-  function goTo(index: number) {
-    setActiveIndex(((index % items.length) + items.length) % items.length);
-  }
+  const carouselItems: StoryCarouselItem[] = items.map((item, i) => ({
+    key: `${item.headline}-${i}`,
+    image: item.image,
+    headline: item.headline,
+    meta: item.postVolume,
+    marketHref: item.marketHref,
+    marketTitle: item.marketTitle,
+  }));
 
   return (
-    <section className="section">
-      <div
-        className="trending-card"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        {items.length > 1 && (
-          <button
-            type="button"
-            className="trending-arrow trending-arrow-prev"
-            aria-label="Previous trending story"
-            onClick={() => goTo(activeIndex - 1)}
-          >
-            ‹
-          </button>
-        )}
-
-        <div className="trending-body" aria-live="polite">
-          <span className="trending-badge">
-            Trending on <XLogo />
-          </span>
-
-          <div className="trending-story-row">
-            {item.image && <NewsThumb src={item.image} />}
-            <div className="trending-story-text">
-              <div className="trending-headline">{item.headline}</div>
-              {item.postVolume && <div className="trending-volume">{item.postVolume}</div>}
-              {item.marketHref && item.marketTitle && (
-                <Link className="trending-market-link" href={item.marketHref}>
-                  Market Affected: {item.marketTitle}
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {items.length > 1 && (
-          <button
-            type="button"
-            className="trending-arrow trending-arrow-next"
-            aria-label="Next trending story"
-            onClick={() => goTo(activeIndex + 1)}
-          >
-            ›
-          </button>
-        )}
-      </div>
-
-      {items.length > 1 && (
-        <div className="trending-progress" role="tablist" aria-label="Trending stories">
-          {items.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              role="tab"
-              aria-selected={i === activeIndex}
-              aria-label={`Go to trending story ${i + 1}`}
-              className="trending-progress-segment"
-              onClick={() => goTo(i)}
-            >
-              {i < activeIndex && (
-                <span className="trending-progress-fill trending-progress-fill-complete" />
-              )}
-              {i === activeIndex && (
-                <span
-                  key={activeIndex}
-                  className="trending-progress-fill trending-progress-fill-active"
-                  style={{
-                    animationDuration: `${ROTATE_MS}ms`,
-                    animationPlayState: paused ? "paused" : "running",
-                  }}
-                />
-              )}
-            </button>
-          ))}
-        </div>
-      )}
-    </section>
+    <StoryCarousel
+      badge={
+        <>
+          Trending on <XLogo />
+        </>
+      }
+      items={carouselItems}
+      compact
+    />
   );
 }
