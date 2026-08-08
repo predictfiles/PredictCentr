@@ -76,7 +76,7 @@ export function TopNewsStories({ items }: { items: TopNewsEntry[] }) {
           </ul>
         </div>
         <Link className="top-news-more-link" href="/news/">
-          More News Stories →
+          PredictCentr News →
         </Link>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getTopNewsItems, findMarket } from "@/lib/markets";
+import { findMarket } from "@/lib/markets";
 import { newsArticles } from "@/lib/newsArticles";
 import { formatDate } from "@/lib/format";
 import { CategoryNav } from "@/components/CategoryNav";
@@ -9,12 +9,10 @@ export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "News",
-  description:
-    "The latest news story behind every live PredictCentr market - politics, sports, and culture.",
+  description: "PredictCentr's own reporting on the stories moving our tracked markets.",
 };
 
 export default function NewsHubPage() {
-  const items = getTopNewsItems();
   const articles = [...newsArticles].reverse();
 
   return (
@@ -27,16 +25,17 @@ export default function NewsHubPage() {
           </Link>
           <h1 className="title">News</h1>
           <p className="subtitle">
-            The latest story behind every live market we track - the news, not just the odds.
+            PredictCentr's own reporting on the stories moving the markets we track.
           </p>
         </div>
         <CategoryNav />
       </header>
 
       <main className="wrap">
-        {articles.length > 0 && (
+        {articles.length === 0 ? (
+          <div className="disclaimer">Nothing here yet - check back soon.</div>
+        ) : (
           <section className="section">
-            <div className="section-label">PredictCentr News</div>
             <div className="market-card-list">
               {articles.map((article) => {
                 const market = findMarket(article.relatedMarketSlug.split("/"));
@@ -68,38 +67,6 @@ export default function NewsHubPage() {
                   </Link>
                 );
               })}
-            </div>
-          </section>
-        )}
-
-        {items.length === 0 ? (
-          <div className="disclaimer">Nothing here yet - check back soon.</div>
-        ) : (
-          <section className="section">
-            <div className="market-card-list">
-              {items.map(({ market, news }) => (
-                <Link
-                  key={market.slug.join("/")}
-                  className="market-card"
-                  href={`/${market.slug.join("/")}/`}
-                >
-                  <div className="must-read-thumb-row">
-                    {news.image && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={news.image} alt="" className="must-read-thumb" />
-                    )}
-                    <div>
-                      <div className="market-card-eyebrow">
-                        {news.source} · {formatDate(news.date)}
-                      </div>
-                      <div className="market-card-title">{news.headline}</div>
-                    </div>
-                  </div>
-                  <div className="market-card-cta">
-                    Market Affected: {market.content.market.title}
-                  </div>
-                </Link>
-              ))}
             </div>
           </section>
         )}
