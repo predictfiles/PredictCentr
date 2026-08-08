@@ -37,7 +37,7 @@ export function HomeNewsSection({ items }: { items: ResolvedNewsArticleItem[] })
     <StoryCarousel
       badge={
         <>
-          <NewsIcon className="trending-news-icon" /> News
+          Breaking News <NewsIcon className="trending-news-icon" />
         </>
       }
       items={carouselItems}

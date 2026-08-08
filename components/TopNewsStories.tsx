@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { NewsThumb } from "@/components/NewsThumb";
-import { NewsIcon } from "@/components/NewsIcon";
 import type { MarketConfig, NewsItem } from "@/lib/types";
 
 const VISIBLE_COUNT = 5;
@@ -41,8 +40,7 @@ export function TopNewsStories({ items }: { items: TopNewsEntry[] }) {
   return (
     <section className="section">
       <div className="home-category-heading home-category-heading-news">
-        Breaking News
-        <NewsIcon className="home-category-heading-icon" />
+        Other Headlines
       </div>
       <div className="card">
         <div
