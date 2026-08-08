@@ -83,7 +83,7 @@ export default function NewsArticlePage({
 
         <section className="section">
           <div className="card">
-            <NewsArticleBody blocks={article.body} category={relatedMarket?.category} />
+            <NewsArticleBody blocks={article.body} />
           </div>
         </section>
 

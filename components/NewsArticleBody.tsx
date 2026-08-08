@@ -1,5 +1,4 @@
 import type { NewsArticleBlock } from "@/lib/types";
-import type { MarketConfig } from "@/lib/types";
 
 const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
 
@@ -30,25 +29,16 @@ function renderInlineText(text: string): React.ReactNode[] {
 
 /**
  * Renders a NewsArticle's body blocks in order -- paragraphs (with inline
- * markdown-link support) and pull quotes, the latter accented with the
- * related market's category color so it reads as part of the same
- * politics/sports/culture system used everywhere else on the site.
+ * markdown-link support) and pull quotes, the latter in the site's
+ * signature pink brand accent (--trending) rather than a category color,
+ * since a pull quote is a News-pillar treatment, not a market-page one.
  */
-export function NewsArticleBody({
-  blocks,
-  category,
-}: {
-  blocks: NewsArticleBlock[];
-  category?: MarketConfig["category"];
-}) {
+export function NewsArticleBody({ blocks }: { blocks: NewsArticleBlock[] }) {
   return (
     <>
       {blocks.map((block, i) =>
         block.type === "quote" ? (
-          <blockquote
-            key={i}
-            className={`news-pull-quote${category ? ` news-pull-quote-${category}` : ""}`}
-          >
+          <blockquote key={i} className="news-pull-quote">
             &ldquo;{block.text}&rdquo;
           </blockquote>
         ) : (

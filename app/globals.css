@@ -1481,23 +1481,12 @@ a {
 }
 
 .news-pull-quote {
-  border-left: 4px solid var(--brand-blue);
+  border-left: 4px solid var(--trending);
+  color: var(--trending);
   margin: 24px 0;
   padding: 4px 0 4px 20px;
   font-size: 22px;
   font-weight: 700;
   line-height: 1.4;
   font-style: italic;
-}
-
-.news-pull-quote-politics {
-  border-left-color: var(--politics);
-}
-
-.news-pull-quote-sports {
-  border-left-color: var(--sports);
-}
-
-.news-pull-quote-culture {
-  border-left-color: var(--culture);
 }
