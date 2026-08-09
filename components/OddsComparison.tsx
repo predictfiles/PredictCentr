@@ -97,10 +97,14 @@ export function OddsComparison({
   /** Omit to freeze the display -- no polling, no ticking "last checked" clock. Used for settled markets. */
   pollUrl?: string;
   question: string;
-  kalshiAffiliateUrl: string;
+  /** Omitted for a Polymarket-only market -- no Kalshi card renders at all. */
+  kalshiAffiliateUrl?: string;
+  /** Omitted for a Kalshi-only market -- no Polymarket card renders at all. */
   polymarketAffiliateUrl?: string;
 }) {
+  const hasKalshi = Boolean(kalshiAffiliateUrl);
   const hasPolymarket = Boolean(polymarketAffiliateUrl);
+  const bothPlatforms = hasKalshi && hasPolymarket;
   const frozen = !pollUrl;
   const [data, setData] = useState<OddsResponse>(initialData);
   const [now, setNow] = useState<number>(Date.now());
@@ -137,14 +141,16 @@ export function OddsComparison({
       <div className="section-label">
         {frozen ? "Final Odds" : "Live Odds"} — {question}
       </div>
-      <div className={hasPolymarket ? "odds-grid" : "odds-grid odds-grid-single"}>
-        <PlatformCard
-          name="Kalshi"
-          color="var(--kalshi)"
-          quote={data.kalshi}
-          error={data.kalshiError}
-          affiliateUrl={kalshiAffiliateUrl}
-        />
+      <div className={bothPlatforms ? "odds-grid" : "odds-grid odds-grid-single"}>
+        {hasKalshi && (
+          <PlatformCard
+            name="Kalshi"
+            color="var(--kalshi)"
+            quote={data.kalshi}
+            error={data.kalshiError}
+            affiliateUrl={kalshiAffiliateUrl!}
+          />
+        )}
         {hasPolymarket && (
           <PlatformCard
             name="Polymarket"
@@ -155,7 +161,7 @@ export function OddsComparison({
           />
         )}
       </div>
-      {hasPolymarket && <BestPrice kalshi={data.kalshi} polymarket={data.polymarket} />}
+      {bothPlatforms && <BestPrice kalshi={data.kalshi} polymarket={data.polymarket} />}
       <div className="odds-fetched">
         {frozen
           ? "Final odds as of settlement — no longer updating"

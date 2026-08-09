@@ -78,17 +78,20 @@ export function CardLiveLine({
     };
   }, [outcomes, slugPath]);
 
-  // Binary market on a single platform (no Polymarket counterpart): still
-  // framed as "Best Price" for consistency with every other card -- with
-  // only one platform quoting it, that price is the best price by definition.
-  if (outcomes.length === 1 && !outcomes[0].polymarket) {
+  // Binary market on a single platform (only Kalshi or only Polymarket
+  // configured for it): still framed as "Best Price" for consistency with
+  // every other card -- with only one platform quoting it, that price is
+  // the best price by definition.
+  if (outcomes.length === 1 && (!outcomes[0].kalshi || !outcomes[0].polymarket)) {
+    const onlyPlatform: PlatformId = outcomes[0].kalshi ? "kalshi" : "polymarket";
     const odds = oddsByOutcome[outcomes[0].id];
-    if (!odds?.kalshi) return null;
+    const quote = odds?.[onlyPlatform];
+    if (!quote) return null;
     return (
       <div className="market-card-live">
-        Best Price: <PlatformBadge platform="kalshi" />{" "}
-        <strong style={{ color: platformColor("kalshi") }}>
-          Kalshi {formatPercent(odds.kalshi.yesPrice)}%
+        Best Price: <PlatformBadge platform={onlyPlatform} />{" "}
+        <strong style={{ color: platformColor(onlyPlatform) }}>
+          {platformName(onlyPlatform)} {formatPercent(quote.yesPrice)}%
         </strong>
       </div>
     );

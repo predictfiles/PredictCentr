@@ -1,0 +1,69 @@
+{
+  "market": {
+    "title": "Will Enes Kanter Freedom Be Drafted in the 2027 WNBA Draft?",
+    "resolutionDate": "2027-04-30",
+    "resolutionNote": [
+      "Polymarket's own wording: \"This market will resolve to 'Yes' if Enes Kanter Freedom is drafted in the 2027 WNBA Draft. Otherwise, this market will resolve to 'No.'\"",
+      "If the 2027 WNBA Draft is cancelled, postponed past May 1, 2027, or the result can't be confirmed by then, this resolves No.",
+      "Resolution source is official WNBA/team announcements, or a consensus of credible reporting if those aren't available.",
+      "No matching Kalshi market currently exists for this question, so this page is Polymarket-only."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Enes Kanter Freedom, a 34-year-old former NBA center who played 11 seasons in the league, declared his eligibility for the 2027 WNBA Draft in early August 2026.",
+      "He's framed it as a test of the WNBA's own eligibility rules rather than a competitive bid, saying: \"If simply declaring who you are is all that's required, then I meet every single requirement necessary to compete in the WNBA.\"",
+      "The WNBA hasn't confirmed his eligibility either way, and the WNBPA (the players' union) pushed back, saying it won't be \"used as political pawns.\"",
+      "Prediction markets have it as a heavy longshot - Polymarket prices Yes at around 7-8%, with no Kalshi market currently listed for this one."
+    ],
+    "updatedAt": "2026-08-09",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Enes Kanter Freedom declares for 2027 WNBA Draft",
+      "source": "Yahoo Sports",
+      "date": "2026-08-08",
+      "url": "https://sports.yahoo.com/articles/enes-kanter-freedom-declares-2027-124857069.html",
+      "image": "https://s.yimg.com/lo/mysterio/api/7cb18c21b32dcb020b52ecaedfbfd9dec2f09e6e6a9c081bd5e6cf110c8b52c5/lightyear_networkapi/resizefill_w900_h505%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthe_hill_articles_341%2Fcbe5ce200f68fa006cc215b412a3a2c4"
+    },
+    {
+      "headline": "Enes Kanter Freedom declares himself 2027 WNBA prospect, cites eligibility rules",
+      "source": "Washington Times",
+      "date": "2026-08-07",
+      "url": "https://www.washingtontimes.com/news/2026/aug/7/enes-kanter-freedom-declares-2027-wnba-prospect-cites-eligibility/",
+      "image": "https://twt-thumbs.washtimes.com/media/image/2021/12/06/76ers_Celtics_Basketball_19556.jpg-fa3c3_c74-0-4094-2345_s1200x700.jpg?21e2a100a00eadf2159fb1f0c5c2268e263543f8"
+    },
+    {
+      "headline": "WNBPA Fires Back at Former Top 3 NBA Pick After Stunning WNBA Draft Declaration",
+      "source": "Basketnews",
+      "date": "2026-08-08",
+      "url": "https://basketnews.com/news-253370-wnbpa-fires-back-at-former-top-3-nba-pick-after-stunning-wnba-draft-declaration.html",
+      "image": "https://basketnews.com/image-351120-any1200x1200.jpg"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Any official WNBA statement confirming or rejecting Freedom's draft eligibility"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Further reaction from the WNBPA or individual WNBA teams"
+    },
+    {
+      "date": "2027",
+      "label": "The 2027 WNBA Draft itself, expected in spring 2027 - market resolution"
+    },
+    {
+      "date": "2027-04-30",
+      "label": "Polymarket's resolution cutoff"
+    }
+  ],
+  "affiliateStatus": {
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

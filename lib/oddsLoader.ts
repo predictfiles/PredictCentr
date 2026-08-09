@@ -6,13 +6,15 @@ import type { HistoryRange, HistoryResponse, MarketOutcome, OddsResponse } from 
  * Shared by every place that needs a fresh live read for one outcome --
  * market pages and the homepage's live card lines both call this, so
  * there's exactly one code path computing "the current odds," and the
- * two can never drift apart. Polymarket is skipped entirely (not just
- * "unavailable") when an outcome has no Polymarket market configured --
- * single-platform/novelty markets that only exist on Kalshi.
+ * two can never drift apart. Either platform is skipped entirely (not just
+ * "unavailable") when an outcome has no market configured for it --
+ * single-platform/novelty markets that only exist on one exchange.
  */
 export async function loadOutcomeOdds(outcome: MarketOutcome): Promise<OddsResponse> {
   const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiMarket(outcome.kalshi.ticker, outcome.kalshi.url),
+    outcome.kalshi
+      ? getKalshiMarket(outcome.kalshi.ticker, outcome.kalshi.url)
+      : Promise.resolve(null),
     outcome.polymarket
       ? getPolymarketMarket(outcome.polymarket.marketId, outcome.polymarket.url)
       : Promise.resolve(null),
@@ -32,7 +34,9 @@ export async function loadOutcomeHistory(
   range: HistoryRange = "all"
 ): Promise<HistoryResponse> {
   const [kalshi, polymarket] = await Promise.allSettled([
-    getKalshiMarketHistory(outcome.kalshi.seriesTicker, outcome.kalshi.ticker, range),
+    outcome.kalshi
+      ? getKalshiMarketHistory(outcome.kalshi.seriesTicker, outcome.kalshi.ticker, range)
+      : Promise.resolve(null),
     outcome.polymarket
       ? getPolymarketMarketHistory(outcome.polymarket.yesTokenId, range)
       : Promise.resolve(null),

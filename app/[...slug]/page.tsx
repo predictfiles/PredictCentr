@@ -165,6 +165,7 @@ async function ElectionHubPage({ electionSlug }: { electionSlug: string }) {
 async function CandidateMarketPage({ market }: { market: MarketConfig }) {
   const slugPath = market.slug.join("/");
   const { content } = market;
+  const hasAnyKalshi = market.outcomes.some((o) => o.kalshi);
   const hasAnyPolymarket = market.outcomes.some((o) => o.polymarket);
   const settled = content.settled;
   const parentElection = market.slug.length > 1 ? getElectionInfo(market.slug[0]) : undefined;
@@ -249,7 +250,11 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
                 </p>
               ) : (
                 <p className="subtitle">
-                  {hasAnyPolymarket ? "Kalshi vs Polymarket, compared live" : "Live odds from Kalshi"}
+                  {hasAnyKalshi && hasAnyPolymarket
+                    ? "Kalshi vs Polymarket, compared live"
+                    : hasAnyPolymarket
+                      ? "Live odds from Polymarket"
+                      : "Live odds from Kalshi"}
                   . Resolves {formatDate(content.market.resolutionDate)}
                   {" · "}
                   <CountdownTimer
@@ -288,13 +293,14 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
                     )}&outcome=${encodeURIComponent(outcome.id)}`
               }
               question={outcome.question}
-              kalshiAffiliateUrl={outcome.kalshi.url}
+              kalshiAffiliateUrl={outcome.kalshi?.url}
               polymarketAffiliateUrl={outcome.polymarket?.url}
             />
             {!useCombinedChart && (
               <HistoryChart
                 data={history}
                 candidateName={outcome.label}
+                hasKalshi={Boolean(outcome.kalshi)}
                 hasPolymarket={Boolean(outcome.polymarket)}
                 historyUrlBase={
                   settled
@@ -343,8 +349,11 @@ async function CandidateMarketPage({ market }: { market: MarketConfig }) {
       <footer className="footer">
         <div className="footer-inner">
           <div>
-            Data sources: Kalshi public API
-            {hasAnyPolymarket ? " and Polymarket Gamma/CLOB API" : ""}.
+            Data sources:{" "}
+            {[hasAnyKalshi && "Kalshi public API", hasAnyPolymarket && "Polymarket Gamma/CLOB API"]
+              .filter(Boolean)
+              .join(" and ")}
+            .
             {settled
               ? " Odds shown are the final snapshot as of settlement."
               : " Prices are cached up to 30 seconds."}

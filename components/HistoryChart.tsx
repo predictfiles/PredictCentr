@@ -59,11 +59,13 @@ function formatTooltipDate(t: number, range: HistoryRange): string {
 export function HistoryChart({
   data,
   candidateName,
+  hasKalshi = true,
   hasPolymarket = true,
   historyUrlBase,
 }: {
   data: HistoryResponse;
   candidateName: string;
+  hasKalshi?: boolean;
   hasPolymarket?: boolean;
   /**
    * Base URL (slug + outcome, no &range=) for re-fetching at a different
@@ -201,10 +203,12 @@ export function HistoryChart({
       <div className="card">
         {rangeToggle}
         <div className="chart-legend">
-          <span className="chart-legend-item">
-            <span className="chart-swatch" style={{ background: "var(--kalshi)" }} />
-            Kalshi
-          </span>
+          {hasKalshi && (
+            <span className="chart-legend-item">
+              <span className="chart-swatch" style={{ background: "var(--kalshi)" }} />
+              Kalshi
+            </span>
+          )}
           {hasPolymarket && (
             <span className="chart-legend-item">
               <span className="chart-swatch" style={{ background: "var(--polymarket)" }} />
@@ -217,8 +221,8 @@ export function HistoryChart({
           width="100%"
           height="auto"
           role="img"
-          aria-label={`Historical probability chart for ${candidateName} winning, on Kalshi${
-            hasPolymarket ? " and Polymarket" : ""
+          aria-label={`Historical probability chart for ${candidateName} winning, on ${
+            [hasKalshi && "Kalshi", hasPolymarket && "Polymarket"].filter(Boolean).join(" and ")
           }`}
           style={{ opacity: loading ? 0.5 : 1, transition: "opacity 150ms ease" }}
           onMouseMove={(e) => {

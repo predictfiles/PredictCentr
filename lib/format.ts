@@ -49,18 +49,24 @@ export function bestPrice(
  * platform at one point, which is a real accuracy problem, not just wording.
  */
 export function affiliateDisclosure(affiliateStatus: {
-  kalshi: { isAffiliate: boolean };
+  kalshi?: { isAffiliate: boolean };
   polymarket?: { isAffiliate: boolean };
 }): string {
-  const hasPolymarket = Boolean(affiliateStatus.polymarket);
+  const tracked: string[] = [];
   const live: string[] = [];
-  if (affiliateStatus.kalshi.isAffiliate) live.push("Kalshi");
-  if (affiliateStatus.polymarket?.isAffiliate) live.push("Polymarket");
+  if (affiliateStatus.kalshi) {
+    tracked.push("Kalshi");
+    if (affiliateStatus.kalshi.isAffiliate) live.push("Kalshi");
+  }
+  if (affiliateStatus.polymarket) {
+    tracked.push("Polymarket");
+    if (affiliateStatus.polymarket.isAffiliate) live.push("Polymarket");
+  }
 
   if (live.length === 0) {
-    return hasPolymarket
+    return tracked.length > 1
       ? "The Kalshi and Polymarket links on this page are not currently affiliate/referral links -- they go straight to each platform's market page."
-      : "The Kalshi link on this page is not currently an affiliate/referral link -- it goes straight to the platform's market page.";
+      : `The ${tracked[0]} link on this page is not currently an affiliate/referral link -- it goes straight to the platform's market page.`;
   }
   return `Contains ${live.length > 1 ? "affiliate links" : "an affiliate link"} to ${live.join(
     " and "

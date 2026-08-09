@@ -17,6 +17,7 @@ import bigBrother28WinnerRaw from "@/data/markets/big-brother-28-winner.json";
 import bigBrother28Week4EvictionRaw from "@/data/markets/big-brother-28-week-4-eviction.json";
 import billBelichickOutRaw from "@/data/markets/bill-belichick-out-before-september-2026.json";
 import texasSenateElection2026Raw from "@/data/markets/texas-senate-election-2026.json";
+import enesKanterFreedomDrafted2027WnbaDraftRaw from "@/data/markets/enes-kanter-freedom-drafted-2027-wnba-draft.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -41,6 +42,7 @@ const bigBrother28Winner = bigBrother28WinnerRaw as MarketContent;
 const bigBrother28Week4Eviction = bigBrother28Week4EvictionRaw as MarketContent;
 const billBelichickOut = billBelichickOutRaw as MarketContent;
 const texasSenateElection2026 = texasSenateElection2026Raw as MarketContent;
+const enesKanterFreedomDrafted2027WnbaDraft = enesKanterFreedomDrafted2027WnbaDraftRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -633,6 +635,25 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: texasSenateElection2026,
+  },
+  {
+    slug: ["enes-kanter-freedom-drafted-2027-wnba-draft"],
+    category: "sports",
+    shortDescription: "Live odds on whether Enes Kanter Freedom is drafted in the 2027 WNBA Draft.",
+    outcomes: [
+      {
+        id: "enes-kanter-freedom",
+        label: "Enes Kanter Freedom",
+        question: "Will Enes Kanter Freedom be drafted in the 2027 WNBA Draft?",
+        polymarket: {
+          marketId: "3421269",
+          yesTokenId:
+            "72746669989776687125230780667140506476689424731665526763856368993239171667437",
+          url: "https://polymarket.com/event/will-enes-kanter-freedom-be-drafted-2027-wnba-draft",
+        },
+      },
+    ],
+    content: enesKanterFreedomDrafted2027WnbaDraft,
   },
 ];
 

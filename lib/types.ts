@@ -79,7 +79,9 @@ export interface MarketContent {
    * market -- there's no platform relationship to disclose either way.
    */
   affiliateStatus: {
-    kalshi: { isAffiliate: boolean; note?: string };
+    /** Omitted for a Polymarket-only market -- there's no platform relationship to disclose either way. */
+    kalshi?: { isAffiliate: boolean; note?: string };
+    /** Omitted for a Kalshi-only market -- there's no platform relationship to disclose either way. */
     polymarket?: { isAffiliate: boolean; note?: string };
   };
   /**
@@ -112,7 +114,9 @@ export interface MarketOutcome {
   label: string;
   /** The Yes/No question this outcome's odds answer, e.g. "Will LeBron sign with the Heat?" */
   question: string;
-  kalshi: { ticker: string; seriesTicker: string; url: string };
+  /** Omitted for a Polymarket-only market -- no matching Kalshi listing exists. */
+  kalshi?: { ticker: string; seriesTicker: string; url: string };
+  /** Omitted for a Kalshi-only market -- niche/novelty questions that only exist on one exchange. */
   polymarket?: { marketId: string; yesTokenId: string; url: string };
 }
 
