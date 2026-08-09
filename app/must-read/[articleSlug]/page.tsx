@@ -7,8 +7,8 @@ import {
   MUST_READ_CATEGORY_LABELS,
 } from "@/lib/mustRead";
 import { findMarket } from "@/lib/markets";
-import { formatDate } from "@/lib/format";
 import { CategoryNav } from "@/components/CategoryNav";
+import { ArticleAuthorCard } from "@/components/ArticleAuthorCard";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 30;
@@ -70,17 +70,18 @@ export default function MustReadArticlePage({
             ← PredictCentr Must Read
           </Link>
           <h1 className="title">{article.title}</h1>
-          <p className="subtitle">
-            {MUST_READ_CATEGORY_LABELS[article.category]} · By {article.author} ·{" "}
-            Published {formatDate(article.publishedAt)}
-            {article.updatedAt !== article.publishedAt &&
-              ` · Updated ${formatDate(article.updatedAt)}`}
-          </p>
+          <p className="subtitle">{MUST_READ_CATEGORY_LABELS[article.category]}</p>
         </div>
         <CategoryNav />
       </header>
 
       <main className="wrap">
+        <ArticleAuthorCard
+          author={article.author}
+          publishedAt={article.publishedAt}
+          updatedAt={article.updatedAt}
+        />
+
         {article.image && (
           <div className="must-read-hero">
             {/* eslint-disable-next-line @next/next/no-img-element */}
