@@ -1,12 +1,14 @@
 import type { NewsArticle } from "./types";
 import kawhiSuspensionOddsRaw from "@/data/news/kawhi-leonard-suspension-odds.json";
+import talaricoTexasSenatePollsRaw from "@/data/news/talarico-leads-texas-senate-polls.json";
 
 const kawhiSuspensionOdds = kawhiSuspensionOddsRaw as NewsArticle;
+const talaricoTexasSenatePolls = talaricoTexasSenatePollsRaw as NewsArticle;
 
 // Add a new article by appending an entry here (with its own content file
 // under data/news/) -- same "add an entry" pattern as lib/markets.ts and
 // lib/mustRead.ts.
-export const newsArticles: NewsArticle[] = [kawhiSuspensionOdds];
+export const newsArticles: NewsArticle[] = [kawhiSuspensionOdds, talaricoTexasSenatePolls];
 
 export function findNewsArticle(slug: string): NewsArticle | undefined {
   return newsArticles.find((a) => a.slug === slug);
