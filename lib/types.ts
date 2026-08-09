@@ -205,6 +205,7 @@ export type NewsArticleBlock =
 export interface NewsArticle {
   /** URL slug, e.g. "kawhi-leonard-suspension-odds" */
   slug: string;
+  category: "politics" | "sports" | "culture";
   headline: string;
   /** Full-size hero image for the article page. Must be a properly licensed/stock image, never a wire-service (Getty etc.) photo used without clearance. */
   image: string;

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { findMarket } from "@/lib/markets";
+import { findMarket, CATEGORY_LABELS } from "@/lib/markets";
 import { newsArticles } from "@/lib/newsArticles";
 import { formatDate } from "@/lib/format";
 import { CategoryNav } from "@/components/CategoryNav";
+import type { NewsArticle } from "@/lib/types";
 
 export const revalidate = 30;
 
@@ -12,8 +13,17 @@ export const metadata: Metadata = {
   description: "PredictCentr's own reporting on the stories moving our tracked markets.",
 };
 
-export default function NewsHubPage() {
-  const articles = [...newsArticles].reverse();
+const CATEGORY_ORDER: NewsArticle["category"][] = ["politics", "sports", "culture"];
+
+export default function NewsHubPage({
+  searchParams,
+}: {
+  searchParams: { category?: string };
+}) {
+  const activeCategory = CATEGORY_ORDER.find((c) => c === searchParams.category);
+  const articles = [...newsArticles]
+    .reverse()
+    .filter((a) => !activeCategory || a.category === activeCategory);
 
   return (
     <>
@@ -32,8 +42,34 @@ export default function NewsHubPage() {
       </header>
 
       <main className="wrap">
+        <div className="news-category-filter">
+          <Link
+            href="/news/"
+            className={`news-category-filter-pill${
+              !activeCategory ? " news-category-filter-pill-active" : ""
+            }`}
+          >
+            All
+          </Link>
+          {CATEGORY_ORDER.map((category) => (
+            <Link
+              key={category}
+              href={`/news/?category=${category}`}
+              className={`news-category-filter-pill news-category-filter-pill-${category}${
+                activeCategory === category ? " news-category-filter-pill-active" : ""
+              }`}
+            >
+              {CATEGORY_LABELS[category]}
+            </Link>
+          ))}
+        </div>
+
         {articles.length === 0 ? (
-          <div className="disclaimer">Nothing here yet - check back soon.</div>
+          <div className="disclaimer">
+            {activeCategory
+              ? `Nothing in ${CATEGORY_LABELS[activeCategory]} yet - check back soon.`
+              : "Nothing here yet - check back soon."}
+          </div>
         ) : (
           <section className="section">
             <div className="market-card-list">

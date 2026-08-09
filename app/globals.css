@@ -259,6 +259,54 @@ a {
   color: var(--dark-card-muted);
 }
 
+.news-category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.news-category-filter-pill {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--nav-muted);
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.news-category-filter-pill:hover {
+  border-color: var(--nav-fg);
+  color: var(--nav-fg);
+}
+
+.news-category-filter-pill-politics.news-category-filter-pill-active {
+  background: var(--politics);
+  border-color: var(--politics);
+  color: #fff;
+}
+
+.news-category-filter-pill-sports.news-category-filter-pill-active {
+  background: var(--sports);
+  border-color: var(--sports);
+  color: #fff;
+}
+
+.news-category-filter-pill-culture.news-category-filter-pill-active {
+  background: var(--culture);
+  border-color: var(--culture);
+  color: #fff;
+}
+
+.news-category-filter-pill-active:not(.news-category-filter-pill-politics):not(.news-category-filter-pill-sports):not(.news-category-filter-pill-culture) {
+  background: var(--nav-fg);
+  border-color: var(--nav-fg);
+  color: var(--card);
+}
+
 .header-inner {
   max-width: 760px;
   margin: 0 auto;
