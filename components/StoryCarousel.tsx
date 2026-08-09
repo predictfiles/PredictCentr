@@ -28,10 +28,12 @@ export function StoryCarousel({
   badge,
   items,
   compact = false,
+  thumbFit = "cover",
 }: {
   badge: React.ReactNode;
   items: StoryCarouselItem[];
   compact?: boolean;
+  thumbFit?: "cover" | "contain";
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -61,7 +63,7 @@ export function StoryCarousel({
 
   const storyRow = (
     <div className="trending-story-row">
-      {item.image && <NewsThumb src={item.image} />}
+      {item.image && <NewsThumb src={item.image} fit={thumbFit} />}
       <div className="trending-story-text">
         {item.href ? (
           <Link href={item.href} className="trending-story-link">
