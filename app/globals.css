@@ -1451,8 +1451,6 @@ a {
   height: 12px;
   flex: 0 0 auto;
   color: var(--card-fg);
-  position: relative;
-  top: 2px;
 }
 
 /* News article page -- hero image, byline, and inline pull quote. Reuses
