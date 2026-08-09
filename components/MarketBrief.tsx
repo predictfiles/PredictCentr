@@ -1,4 +1,5 @@
 import { formatDate } from "@/lib/format";
+import { renderInlineText } from "@/components/InlineMarkdownText";
 
 export function MarketBrief({
   text,
@@ -15,7 +16,7 @@ export function MarketBrief({
       <div className="card">
         <ul className="brief-text-list">
           {text.map((point, i) => (
-            <li key={i}>{point}</li>
+            <li key={i}>{renderInlineText(point)}</li>
           ))}
         </ul>
         <div className="brief-meta">
