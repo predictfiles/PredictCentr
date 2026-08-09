@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { newsArticles, findNewsArticle } from "@/lib/newsArticles";
 import { findMarket } from "@/lib/markets";
-import { formatDate } from "@/lib/format";
 import { CategoryNav } from "@/components/CategoryNav";
 import { NewsArticleBody } from "@/components/NewsArticleBody";
+import { ArticleAuthorCard } from "@/components/ArticleAuthorCard";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 30;
@@ -66,11 +66,6 @@ export default function NewsArticlePage({
             ← News
           </Link>
           <h1 className="title">{article.headline}</h1>
-          <p className="subtitle">
-            By {article.author} · Published {formatDate(article.publishedAt)}
-            {article.updatedAt !== article.publishedAt &&
-              ` · Updated ${formatDate(article.updatedAt)}`}
-          </p>
         </div>
         <CategoryNav />
       </header>
@@ -80,6 +75,12 @@ export default function NewsArticlePage({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={article.image} alt={article.headline} className="news-article-hero-image" />
         </div>
+
+        <ArticleAuthorCard
+          author={article.author}
+          publishedAt={article.publishedAt}
+          updatedAt={article.updatedAt}
+        />
 
         <section className="section">
           <div className="card">

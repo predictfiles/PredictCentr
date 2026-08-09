@@ -1468,6 +1468,31 @@ a {
   height: auto;
 }
 
+.article-author-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.article-author-photo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.article-author-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.article-author-date {
+  color: var(--nav-muted);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
 .news-article-paragraph {
   font-size: 16px;
   line-height: 1.6;
