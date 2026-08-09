@@ -25,7 +25,7 @@ export function CategoryNav({ wide = false }: { wide?: boolean }) {
       <div className={`category-bar-inner${wide ? " category-bar-inner-wide" : ""}`}>
         <Link href="/news/" className="category-bar-link category-bar-link-news">
           <NewsIcon className="category-bar-icon" />
-          News
+          PredictCentr News
         </Link>
         {CATEGORY_ORDER.map((category) => (
           <Link
