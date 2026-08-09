@@ -71,16 +71,16 @@ export default function NewsArticlePage({
       </header>
 
       <main className="wrap">
-        <div className="news-article-hero">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={article.image} alt={article.headline} className="news-article-hero-image" />
-        </div>
-
         <ArticleAuthorCard
           author={article.author}
           publishedAt={article.publishedAt}
           updatedAt={article.updatedAt}
         />
+
+        <div className="news-article-hero">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={article.image} alt={article.headline} className="news-article-hero-image" />
+        </div>
 
         <section className="section">
           <div className="card">
