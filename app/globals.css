@@ -1413,6 +1413,112 @@ a {
   text-decoration-color: var(--brand-blue);
 }
 
+/* PredictCentr News' "banner" treatment -- full-width image up top (height
+   capped so it can't outgrow the Hot Market card regardless of viewport
+   width), white headline underneath, whole card one link. Overrides the
+   base .trending-card's flex-row layout since this stacks vertically
+   instead. Arrows are positioned as absolute overlays on the image rather
+   than nested inside the link -- a <button> inside an <a> is invalid HTML,
+   so they're link siblings instead, matched to the image's fixed height via
+   the shared --banner-image-h custom property. */
+.trending-card-banner {
+  display: block;
+  position: relative;
+  padding: 0;
+  gap: 0;
+  align-items: stretch;
+  border-top: none;
+  overflow: hidden;
+  background: var(--dark-card-bg);
+  --banner-image-h: 240px;
+}
+
+.trending-banner-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.trending-banner-media {
+  position: relative;
+  background: #0a0a0d;
+}
+
+.trending-banner-image {
+  display: block;
+  width: 100%;
+  height: var(--banner-image-h);
+  object-fit: cover;
+}
+
+.trending-badge-overlay {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(14, 16, 22, 0.72);
+  color: var(--trending);
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+
+.trending-banner-body {
+  padding: 18px 20px 20px;
+}
+
+.trending-banner-headline {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--dark-card-fg);
+  margin-bottom: 8px;
+}
+
+.trending-banner-link:hover .trending-banner-headline {
+  text-decoration: underline;
+}
+
+.trending-banner-meta {
+  font-size: 13px;
+  color: var(--dark-card-muted);
+}
+
+.trending-market-link-banner {
+  display: block;
+  margin: 0 20px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #7f9dff;
+  text-decoration: underline;
+}
+
+.trending-arrow-overlay {
+  position: absolute;
+  top: 0;
+  height: var(--banner-image-h);
+  width: 40px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 24px;
+  z-index: 2;
+}
+
+.trending-arrow-overlay:hover {
+  color: var(--trending);
+}
+
+.trending-arrow-prev.trending-arrow-overlay {
+  left: 0;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+
+.trending-arrow-next.trending-arrow-overlay {
+  right: 0;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
 .show-more-link {
   display: inline-flex;
   align-items: center;

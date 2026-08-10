@@ -41,7 +41,7 @@ export function HomeNewsSection({ items }: { items: ResolvedNewsArticleItem[] })
         </>
       }
       items={carouselItems}
-      thumbFit="contain"
+      layout="banner"
     />
   );
 }
