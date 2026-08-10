@@ -232,3 +232,25 @@ export interface NewsArticle {
   publishedAt: string;
   updatedAt: string;
 }
+
+/**
+ * A footer-level credibility entry for the homepage's "Contributors"
+ * section -- outside experts (e.g. a gaming-industry attorney) who've
+ * given PredictCentr an interview/quote, distinct from `author` (Owain,
+ * who writes the site's own News/Must Read pieces). Kept lightweight by
+ * design -- deeper context belongs in the actual Must Read article where
+ * the relationship is explained, not repeated here.
+ */
+export interface Contributor {
+  /** Used as the React key -- doesn't need to be URL-safe since contributors don't have their own page. */
+  slug: string;
+  name: string;
+  title: string;
+  company: string;
+  companyUrl: string;
+  /** Small square headshot, e.g. "/contributors/stephen-crystal.jpg". */
+  photo: string;
+  /** One-line credential summary, e.g. "30+ years in gaming · $3B+ in M&A · 130+ industry partners". */
+  credentialLine: string;
+  bio: string;
+}

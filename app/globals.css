@@ -433,6 +433,78 @@ a {
   margin-bottom: 14px;
 }
 
+/* Footer-level credibility strip -- deliberately quieter than the rest of
+   the homepage (smaller label, no card shadow) since it's a trust signal
+   for readers who've scrolled the whole page, not a growth element
+   competing with News/Hot Market for attention. */
+.contributors-section {
+  margin-top: 8px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.contributors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contributor-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contributor-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.contributor-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.contributor-title {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.contributor-title a {
+  color: var(--brand-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contributor-title a:hover {
+  text-decoration: underline;
+}
+
+.contributor-credential {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.contributor-bio {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--fg);
+  margin: 8px 0 0;
+  max-width: 640px;
+}
+
+@media (max-width: 520px) {
+  .contributor-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* Homepage-only section headings (Breaking News, Politics, Sports,
    Culture) -- matches the top category bar's own typography (normal
    case, bold, 14px) and per-category color instead of the generic

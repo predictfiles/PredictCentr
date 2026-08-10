@@ -9,8 +9,10 @@ import { HomeNewsSection } from "@/components/HomeNewsSection";
 import { CategoryNav } from "@/components/CategoryNav";
 import { MustReadHeaderCard } from "@/components/MustReadHeaderCard";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { ContributorsSection } from "@/components/ContributorsSection";
 import trending from "@/data/trending.json";
 import { getRecentNewsArticles } from "@/lib/newsArticles";
+import { contributors } from "@/lib/contributors";
 import type { OddsResponse, TrendingItem } from "@/lib/types";
 
 const HOME_NEWS_LIMIT = 5;
@@ -160,6 +162,8 @@ export default async function Home() {
             <TrendingOnX items={resolvedTrending} />
           </div>
         </div>
+
+        <ContributorsSection contributors={contributors} />
       </main>
     </div>
   );
