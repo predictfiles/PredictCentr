@@ -1417,10 +1417,13 @@ a {
    capped so it can't outgrow the Hot Market card regardless of viewport
    width), white headline underneath, whole card one link. Overrides the
    base .trending-card's flex-row layout since this stacks vertically
-   instead. Arrows are positioned as absolute overlays on the image rather
-   than nested inside the link -- a <button> inside an <a> is invalid HTML,
-   so they're link siblings instead, matched to the image's fixed height via
-   the shared --banner-image-h custom property. */
+   instead. The badge sits in its own row on the card's solid dark
+   background (not overlaid on the image) -- overlaying it read as pink-on
+   -pink whenever the graphic itself leans pink. Arrows are positioned as
+   absolute overlays on the image rather than nested inside the link -- a
+   <button> inside an <a> is invalid HTML, so they're link siblings
+   instead, matched to the image's fixed height via the shared
+   --banner-image-h/--banner-badge-h custom properties. */
 .trending-card-banner {
   display: block;
   position: relative;
@@ -1431,6 +1434,15 @@ a {
   overflow: hidden;
   background: var(--dark-card-bg);
   --banner-image-h: 240px;
+  --banner-badge-h: 38px;
+}
+
+.trending-banner-badge {
+  display: flex;
+  align-items: center;
+  height: var(--banner-badge-h);
+  padding: 0 20px;
+  color: var(--trending);
 }
 
 .trending-banner-link {
@@ -1449,16 +1461,6 @@ a {
   width: 100%;
   height: var(--banner-image-h);
   object-fit: cover;
-}
-
-.trending-badge-overlay {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(14, 16, 22, 0.72);
-  color: var(--trending);
-  padding: 5px 10px;
-  border-radius: 999px;
 }
 
 .trending-banner-body {
@@ -1493,7 +1495,7 @@ a {
 
 .trending-arrow-overlay {
   position: absolute;
-  top: 0;
+  top: var(--banner-badge-h);
   height: var(--banner-image-h);
   width: 40px;
   display: flex;

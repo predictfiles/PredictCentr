@@ -93,7 +93,6 @@ export function StoryCarousel({
         // eslint-disable-next-line @next/next/no-img-element
         <img src={item.image} alt="" className="trending-banner-image" />
       )}
-      <span className="trending-badge trending-badge-overlay">{badge}</span>
     </div>
   );
 
@@ -106,6 +105,7 @@ export function StoryCarousel({
 
   const banner = (
     <div className={`trending-card trending-card-banner`}>
+      <span className="trending-badge trending-banner-badge">{badge}</span>
       {items.length > 1 && (
         <button
           type="button"
