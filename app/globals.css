@@ -511,6 +511,14 @@ a {
   margin-bottom: 0;
 }
 
+.must-read-inline-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 4px 0 20px;
+}
+
 /* Shared thumbnail + text row -- used in the homepage header card, the
    market-page teaser, and the Must Read hub listing, so all three read as
    the same visual language. */

@@ -9,6 +9,7 @@ import {
 import { findMarket } from "@/lib/markets";
 import { CategoryNav } from "@/components/CategoryNav";
 import { ArticleAuthorCard } from "@/components/ArticleAuthorCard";
+import { MustReadBody } from "@/components/MustReadBody";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 30;
@@ -91,11 +92,7 @@ export default function MustReadArticlePage({
 
         <section className="section">
           <div className="card">
-            {article.body.map((paragraph, i) => (
-              <p key={i} className="must-read-paragraph">
-                {paragraph}
-              </p>
-            ))}
+            <MustReadBody blocks={article.body} />
           </div>
         </section>
 

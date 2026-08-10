@@ -146,6 +146,17 @@ export interface ElectionInfo {
 }
 
 /**
+ * One paragraph, pull quote, or inline image in a MustReadArticle's body,
+ * rendered in order. A paragraph's text may contain inline `[label](url)`
+ * links and `*text*` italics -- same inline syntax as a NewsArticleBlock,
+ * via the shared InlineMarkdownText renderer.
+ */
+export type MustReadBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "quote"; text: string }
+  | { type: "image"; src: string; alt?: string };
+
+/**
  * A "PredictCentr Must Read" editorial article -- longer-form content, kept
  * separate from the market pages' odds-first job. Two initial categories:
  * state-by-state legality guides and market analysis/opinion pieces.
@@ -159,8 +170,7 @@ export interface MustReadArticle {
   teaser: string;
   /** Hero image shown at the top of the article itself. */
   image?: string;
-  /** Paragraphs -- prose, not bulleted, one array entry per <p>. */
-  body: string[];
+  body: MustReadBlock[];
   publishedAt: string;
   updatedAt: string;
   author: string;
