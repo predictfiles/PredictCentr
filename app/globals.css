@@ -449,10 +449,27 @@ a {
   gap: 20px;
 }
 
+/* Teaser card links through to /contributors/<slug>/ -- the padding/
+   negative-margin trick keeps the hover highlight from shifting the
+   surrounding layout. */
 .contributor-card {
   display: flex;
   gap: 16px;
-  align-items: flex-start;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  padding: 8px;
+  margin: -8px;
+  border-radius: var(--radius);
+  transition: background 150ms ease;
+}
+
+.contributor-card:hover {
+  background: var(--card);
+}
+
+.contributor-card:hover .contributor-name {
+  text-decoration: underline;
 }
 
 .contributor-photo {
@@ -465,7 +482,8 @@ a {
 
 .contributor-name {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
+  color: var(--fg);
 }
 
 .contributor-title {
@@ -474,28 +492,42 @@ a {
   margin-top: 2px;
 }
 
-.contributor-title a {
-  color: var(--brand-blue);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.contributor-title a:hover {
-  text-decoration: underline;
-}
-
 .contributor-credential {
   font-size: 12px;
   color: var(--muted);
   margin-top: 4px;
 }
 
-.contributor-bio {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--fg);
-  margin: 8px 0 0;
-  max-width: 640px;
+/* Outbound link to a contributor's own company site -- used inside the
+   dedicated page's subtitle, distinct from the site's internal nav links. */
+.company-link {
+  color: var(--brand-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.company-link:hover {
+  text-decoration: underline;
+}
+
+.contributor-page-credential {
+  margin-bottom: 14px;
+}
+
+.contributor-visit-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 11px 18px;
+  border-radius: 7px;
+  background: var(--brand-blue);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.contributor-visit-btn:hover {
+  opacity: 0.9;
 }
 
 @media (max-width: 520px) {

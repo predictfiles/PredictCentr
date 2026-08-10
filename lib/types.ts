@@ -234,23 +234,31 @@ export interface NewsArticle {
 }
 
 /**
- * A footer-level credibility entry for the homepage's "Contributors"
- * section -- outside experts (e.g. a gaming-industry attorney) who've
- * given PredictCentr an interview/quote, distinct from `author` (Owain,
- * who writes the site's own News/Must Read pieces). Kept lightweight by
- * design -- deeper context belongs in the actual Must Read article where
- * the relationship is explained, not repeated here.
+ * An outside expert (e.g. a gaming-industry attorney) who's given
+ * PredictCentr an interview/quote -- distinct from `author` (Owain, who
+ * writes the site's own News/Must Read pieces). Powers two surfaces: a
+ * short teaser card in the homepage's footer-level "Contributors" section
+ * (photo/name/title/credential, links through to the page below) and a
+ * dedicated page at /contributors/<slug>/ that holds the full bio and
+ * outbound link. One data shape for both, so a new contributor is just a
+ * JSON append -- no per-contributor layout work.
  */
 export interface Contributor {
-  /** Used as the React key -- doesn't need to be URL-safe since contributors don't have their own page. */
+  /** URL slug, e.g. "stephen-crystal" */
   slug: string;
   name: string;
   title: string;
   company: string;
   companyUrl: string;
-  /** Small square headshot, e.g. "/contributors/stephen-crystal.jpg". */
+  /** Small square headshot used on the homepage teaser card, e.g. "/contributors/stephen-crystal.jpg". */
   photo: string;
+  /** Wide hero image for the dedicated contributor page, e.g. "/contributors/stephen-crystal-hero.jpg". Falls back to `photo` if omitted. */
+  heroImage?: string;
   /** One-line credential summary, e.g. "30+ years in gaming · $3B+ in M&A · 130+ industry partners". */
   credentialLine: string;
   bio: string;
+  /** Must Read article slugs this contributor is featured in -- shown as a "Contributions" list on their page, resolved live via findMustReadArticle so titles can't go stale. */
+  relatedMustReadSlugs?: string[];
+  /** News article slugs this contributor is featured in, same treatment as relatedMustReadSlugs. */
+  relatedNewsSlugs?: string[];
 }
