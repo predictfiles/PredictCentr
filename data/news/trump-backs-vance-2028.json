@@ -5,10 +5,6 @@
   "image": "/news/trump-backs-vance-2028.png",
   "body": [
     {
-      "type": "quote",
-      "text": "we need to elect JD"
-    },
-    {
       "type": "paragraph",
       "text": "President Donald Trump has reportedly told Republican donors \"we need to elect JD,\" privately backing JD Vance for the 2028 US Presidential election."
     },
@@ -23,6 +19,10 @@
     {
       "type": "paragraph",
       "text": "Notably, Trump seems to have U-turned on an earlier position regarding Vance. According to reports in May, he publicly told Vance that he had his endorsement \"under no circumstance.\""
+    },
+    {
+      "type": "quote",
+      "text": "JD Vance is sitting at around 22% at the time of writing compared to Rubio's 12%"
     },
     {
       "type": "paragraph",
