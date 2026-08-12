@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { markets, CATEGORY_LABELS } from "@/lib/markets";
+import { markets, CATEGORY_LABELS, CATEGORY_INTRO } from "@/lib/markets";
 import { loadOutcomeOdds } from "@/lib/oddsLoader";
 import { BentoMarketCard } from "@/components/BentoMarketCard";
 import { MarketCard } from "@/components/MarketCard";
@@ -46,9 +46,7 @@ export async function CategoryPage({ category }: { category: MarketConfig["categ
             {CATEGORY_LABELS[category]}
           </div>
           <h1 className="title">{CATEGORY_LABELS[category]}</h1>
-          <p className="subtitle">
-            Every {CATEGORY_LABELS[category]} market tracked on PredictCentr, live odds included.
-          </p>
+          <p className="subtitle">{CATEGORY_INTRO[category]}</p>
         </div>
         <CategoryNav />
       </header>

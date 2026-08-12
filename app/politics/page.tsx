@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { CategoryPage } from "@/components/CategoryPage";
+import { CATEGORY_INTRO } from "@/lib/markets";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "Politics",
-  description: "Every Politics market tracked on PredictCentr, live odds included.",
+  description: CATEGORY_INTRO.politics,
+  alternates: { canonical: `${SITE_URL}/politics/` },
 };
 
 export default function Page() {

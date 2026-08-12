@@ -663,6 +663,20 @@ export const CATEGORY_LABELS: Record<MarketConfig["category"], string> = {
   culture: "Culture",
 };
 
+/**
+ * Single source of truth for each hub page's short intro copy -- shown on
+ * the page itself (above the market grid) and reused as that page's meta
+ * description, so the two never drift apart. Written to be genuinely
+ * distinct per category (not a templated "Every {category} market..."
+ * string), since Google flagged /news/ and /politics/ as duplicate content
+ * with too little unique text to tell them apart.
+ */
+export const CATEGORY_INTRO: Record<MarketConfig["category"], string> = {
+  politics: "Live odds and coverage on the races, elections, and policy fights shaping 2026 and 2028.",
+  sports: "Live odds and coverage on the trades, coaching moves, and storylines shaping the sports world.",
+  culture: "Live odds and coverage on the awards, entertainment, and culture stories people are betting on.",
+};
+
 export function findMarket(slug: string[]): MarketConfig | undefined {
   return markets.find(
     (m) => m.slug.length === slug.length && m.slug.every((s, i) => s === slug[i])

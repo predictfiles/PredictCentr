@@ -4,13 +4,18 @@ import { findMarket, CATEGORY_LABELS } from "@/lib/markets";
 import { newsArticles } from "@/lib/newsArticles";
 import { formatDate } from "@/lib/format";
 import { CategoryNav } from "@/components/CategoryNav";
+import { SITE_URL } from "@/lib/site";
 import type { NewsArticle } from "@/lib/types";
 
 export const revalidate = 30;
 
+const NEWS_INTRO =
+  "Breaking news on the stories moving prediction markets — verified against Kalshi and Polymarket as it happens.";
+
 export const metadata: Metadata = {
   title: "News",
-  description: "PredictCentr's own reporting on the stories moving our tracked markets.",
+  description: NEWS_INTRO,
+  alternates: { canonical: `${SITE_URL}/news/` },
 };
 
 const CATEGORY_ORDER: NewsArticle["category"][] = ["politics", "sports", "culture"];
@@ -34,9 +39,7 @@ export default function NewsHubPage({
             <img src="/logo-full.png" alt="PredictCentr" className="brand-logo" />
           </Link>
           <h1 className="title">News</h1>
-          <p className="subtitle">
-            PredictCentr's own reporting on the stories moving the markets we track.
-          </p>
+          <p className="subtitle">{NEWS_INTRO}</p>
         </div>
         <CategoryNav />
       </header>
