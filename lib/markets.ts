@@ -2,6 +2,7 @@ import type { ElectionInfo, MarketConfig, MarketContent, NewsItem } from "./type
 import jdVance2028Raw from "@/data/markets/2028-us-presidential-election-winner/jd-vance.json";
 import donaldTrump2028Raw from "@/data/markets/2028-us-presidential-election-winner/donald-trump.json";
 import kamalaHarris2028Raw from "@/data/markets/2028-us-presidential-election-winner/kamala-harris.json";
+import aoc2028Raw from "@/data/markets/2028-us-presidential-election-winner/aoc.json";
 import senateDemocrats2026Raw from "@/data/markets/2026-us-senate-control/democrats.json";
 import lebronNextTeamRaw from "@/data/markets/lebron-james-next-team.json";
 import grokOdysseyFilmRaw from "@/data/markets/grok-imagine-odyssey-film.json";
@@ -28,6 +29,7 @@ import nextJamesBondActorRaw from "@/data/markets/next-james-bond-actor.json";
 const jdVance2028 = jdVance2028Raw as MarketContent;
 const donaldTrump2028 = donaldTrump2028Raw as MarketContent;
 const kamalaHarris2028 = kamalaHarris2028Raw as MarketContent;
+const aoc2028 = aoc2028Raw as MarketContent;
 const senateDemocrats2026 = senateDemocrats2026Raw as MarketContent;
 const lebronNextTeam = lebronNextTeamRaw as MarketContent;
 const grokOdysseyFilm = grokOdysseyFilmRaw as MarketContent;
@@ -123,6 +125,30 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: kamalaHarris2028,
+  },
+  {
+    slug: ["2028-us-presidential-election-winner", "aoc"],
+    category: "politics",
+    shortDescription: "Live odds on Alexandria Ocasio-Cortez winning the 2028 presidential election.",
+    outcomes: [
+      {
+        id: "aoc",
+        label: "Alexandria Ocasio-Cortez",
+        question: "Will Alexandria Ocasio-Cortez win?",
+        kalshi: {
+          ticker: "KXPRESPERSON-28-AOCA",
+          seriesTicker: "KXPRESPERSON",
+          url: "https://kalshi.com/markets/kxpresperson/kxpresperson-28?selectedMarketTicker=KXPRESPERSON-28-AOCA",
+        },
+        polymarket: {
+          marketId: "561231",
+          yesTokenId:
+            "8113830512143065501177519557124858581375945005490796772950589720955457782465",
+          url: "https://polymarket.com/event/presidential-election-winner-2028/will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election",
+        },
+      },
+    ],
+    content: aoc2028,
   },
   {
     slug: ["2026-us-senate-control", "democrats"],
