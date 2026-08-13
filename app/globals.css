@@ -1786,3 +1786,35 @@ a {
   line-height: 1.4;
   font-style: italic;
 }
+
+/* Dated "Update" callout for after-the-fact additions to a published
+   piece -- visually distinct from a pull quote (solid fill, not just a
+   border accent) so it reads as new information, not an excerpt. */
+.news-update-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--trending);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin: 0 0 24px;
+}
+
+.news-update-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--trending);
+  margin-bottom: 6px;
+}
+
+.news-update-text {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.news-update-text a {
+  color: var(--brand-blue);
+  text-decoration: underline;
+}

@@ -202,13 +202,17 @@ export interface TrendingItem {
 }
 
 /**
- * One paragraph or pull quote in a NewsArticle's body, rendered in order.
- * A paragraph's text may contain a single Markdown-style `[label](url)`
- * link -- the only inline formatting article bodies need so far.
+ * One paragraph, pull quote, or dated update callout in a NewsArticle's
+ * body, rendered in order. Text fields may contain inline `[label](url)`
+ * links and `*text*` italics via InlineMarkdownText. `update` is for a
+ * genuine after-the-fact addition to a published piece (new developments,
+ * not a wording fix) -- rendered as a visually distinct "Update -- <date>"
+ * callout, usually inserted at the very top of `body`.
  */
 export type NewsArticleBlock =
   | { type: "paragraph"; text: string }
-  | { type: "quote"; text: string };
+  | { type: "quote"; text: string }
+  | { type: "update"; date: string; text: string };
 
 /**
  * A full PredictCentr-written news article -- distinct from a market's

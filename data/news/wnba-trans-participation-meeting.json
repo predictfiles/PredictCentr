@@ -5,6 +5,11 @@
   "image": "/news/wnba-trans-participation-meeting.png",
   "body": [
     {
+      "type": "update",
+      "date": "2026-08-13",
+      "text": "The task force met but confirmed that they did not arrive on any eligibility rules, as per [*ESPN*](https://www.espn.com/wnba/story/_/id/49594734/wnba-task-force-discusses-transgender-athletes-amid-furor). A league spokesperson said: \"There are no immediate eligibility matters affecting the WNBA and we strongly denounce the bad-faith efforts to use these topics to demean and marginalize others.\""
+    },
+    {
       "type": "paragraph",
       "text": "Two retired NBA players have taken it upon themselves to make a point about transgender participation in women's basketball by declaring themselves for the 2027 WNBA Draft."
     },
@@ -40,5 +45,5 @@
   "relatedMarketSlug": "enes-kanter-freedom-drafted-2027-wnba-draft",
   "author": "Owain Flanders",
   "publishedAt": "2026-08-09",
-  "updatedAt": "2026-08-09"
+  "updatedAt": "2026-08-13"
 }
