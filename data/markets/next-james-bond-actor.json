@@ -1,0 +1,69 @@
+{
+  "market": {
+    "title": "Next James Bond Actor",
+    "resolutionDate": "2030-01-01",
+    "resolutionNote": [
+      "Resolves Yes for whichever actor is officially cast as the next James Bond before January 1, 2030 - unauthorized productions and spin-offs don't count.",
+      "Kalshi's own wording: \"If [Actor] is cast as the next James Bond before Jan 1, 2030, then the market resolves to Yes.\"",
+      "This page is Kalshi-only - Polymarket's equivalent market has a different structure (a fixed resolution date plus a standalone \"No Bond chosen\" outcome), so the two aren't directly comparable the way our usual Kalshi-vs-Polymarket pages are."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "The race to become the next James Bond has been one of the most volatile in prediction market history, with the frontrunner changing hands several times throughout 2026.",
+      "Jack Lowden has surged into the lead after podcast host Richard Osman claimed on The Rest Is Entertainment that the Scottish actor would \"definitely\" land the role.",
+      "Callum Turner led for much of the year but has since slipped to second, following reports in June of a setback to his chances.",
+      "Aaron Taylor-Johnson has also spent time as the frontrunner, with speculation - unconfirmed - that he may already have been offered the role.",
+      "No actor has been officially cast, and neither Amazon MGM nor Eon Productions have confirmed a timeline, though filming is speculated to begin in 2027."
+    ],
+    "updatedAt": "2026-08-13",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Next James Bond: Callum Turner KNOCKED OFF Top Spot in Running for 007 Role as New Frontrunner Emerges",
+      "source": "GB News",
+      "date": "2026-08-13",
+      "url": "https://www.gbnews.com/celebrity/next-james-bond-odds-jack-lowden-callum-turner",
+      "image": "https://www.gbnews.com/media-library/image.png?id=67610963&width=1200&height=600&coordinates=0%2C5%2C0%2C195"
+    },
+    {
+      "headline": "Did a British TV Presenter Just Leak the Identity of the New James Bond?",
+      "source": "Euronews",
+      "date": "2026-08-12",
+      "url": "https://www.euronews.com/culture/2026/08/12/jack-lowden-for-james-bond-did-british-tv-presenter-and-author-richard-osman-leak-identity",
+      "image": "https://images.euronews.com/articles/stories/09/87/16/43/1200x675_cmsv2_3d0a5830-543f-5d9f-8c72-fcf9d8844d45-9871643.jpg"
+    },
+    {
+      "headline": "Next James Bond: Callum Turner Dealt Huge Blow in Hopes to Land 007 Role as Worrying News Emerges",
+      "source": "GB News",
+      "date": "2026-06-06",
+      "url": "https://www.gbnews.com/celebrity/next-james-bond-callum-turner-huge-blow-007-role-worrying-news",
+      "image": "https://www.gbnews.com/media-library/callum-turner-and-daniel-craig.jpg?id=66861648&width=1200&height=600&coordinates=0%2C0%2C0%2C112"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Any official casting announcement from Amazon MGM or Eon Productions"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Further comments from Richard Osman or other industry insiders that could move the market again"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Formal actor auditions/meetings, last reported as expected around August 2026"
+    },
+    {
+      "date": "2030-01-01",
+      "label": "Kalshi's resolution cutoff"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

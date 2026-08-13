@@ -18,6 +18,7 @@ import bigBrother28Week4EvictionRaw from "@/data/markets/big-brother-28-week-4-e
 import billBelichickOutRaw from "@/data/markets/bill-belichick-out-before-september-2026.json";
 import texasSenateElection2026Raw from "@/data/markets/texas-senate-election-2026.json";
 import enesKanterFreedomDrafted2027WnbaDraftRaw from "@/data/markets/enes-kanter-freedom-drafted-2027-wnba-draft.json";
+import nextJamesBondActorRaw from "@/data/markets/next-james-bond-actor.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -43,6 +44,7 @@ const bigBrother28Week4Eviction = bigBrother28Week4EvictionRaw as MarketContent;
 const billBelichickOut = billBelichickOutRaw as MarketContent;
 const texasSenateElection2026 = texasSenateElection2026Raw as MarketContent;
 const enesKanterFreedomDrafted2027WnbaDraft = enesKanterFreedomDrafted2027WnbaDraftRaw as MarketContent;
+const nextJamesBondActor = nextJamesBondActorRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -654,6 +656,44 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: enesKanterFreedomDrafted2027WnbaDraft,
+  },
+  {
+    slug: ["next-james-bond-actor"],
+    category: "culture",
+    shortDescription: "Live odds on who is cast as the next James Bond, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "jack-lowden",
+        label: "Jack Lowden",
+        question: "Will Jack Lowden be the next James Bond?",
+        kalshi: {
+          ticker: "KXBOND-30-JAC",
+          seriesTicker: "KXBOND",
+          url: "https://kalshi.com/markets/kxbond/kxbond-30?selectedMarketTicker=KXBOND-30-JAC",
+        },
+      },
+      {
+        id: "callum-turner",
+        label: "Callum Turner",
+        question: "Will Callum Turner be the next James Bond?",
+        kalshi: {
+          ticker: "KXBOND-30-CAL",
+          seriesTicker: "KXBOND",
+          url: "https://kalshi.com/markets/kxbond/kxbond-30?selectedMarketTicker=KXBOND-30-CAL",
+        },
+      },
+      {
+        id: "aaron-taylor-johnson",
+        label: "Aaron Taylor-Johnson",
+        question: "Will Aaron Taylor-Johnson be the next James Bond?",
+        kalshi: {
+          ticker: "KXBOND-30-ATJ",
+          seriesTicker: "KXBOND",
+          url: "https://kalshi.com/markets/kxbond/kxbond-30?selectedMarketTicker=KXBOND-30-ATJ",
+        },
+      },
+    ],
+    content: nextJamesBondActor,
   },
 ];
 
