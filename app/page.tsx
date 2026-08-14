@@ -5,6 +5,7 @@ import { BentoMarketCard } from "@/components/BentoMarketCard";
 import { MarketCard } from "@/components/MarketCard";
 import { TopNewsStories } from "@/components/TopNewsStories";
 import { TrendingOnX } from "@/components/TrendingOnX";
+import { OtherNews } from "@/components/OtherNews";
 import { HomeNewsSection } from "@/components/HomeNewsSection";
 import { CategoryNav } from "@/components/CategoryNav";
 import { MustReadHeaderCard } from "@/components/MustReadHeaderCard";
@@ -15,7 +16,8 @@ import { getRecentNewsArticles } from "@/lib/newsArticles";
 import { contributors } from "@/lib/contributors";
 import type { OddsResponse, TrendingItem } from "@/lib/types";
 
-const HOME_NEWS_LIMIT = 5;
+const HOME_NEWS_LIMIT = 3;
+const HOME_HEADLINES_LIMIT = 10;
 
 const HOME_CATEGORY_LIMIT = 4;
 
@@ -31,7 +33,6 @@ export default async function Home() {
   const hotMarket = getHotMarket();
   const liveMarkets = markets.filter((m) => !m.content.settled);
   const archivedMarkets = markets.filter((m) => m.content.settled);
-  const topNewsItems = getTopNewsItems();
 
   const resolvedTrending = (trending as TrendingItem[]).map((item) => {
     const market = item.marketSlug ? findMarket(item.marketSlug.split("/")) : undefined;
@@ -44,11 +45,15 @@ export default async function Home() {
     };
   });
 
-  const resolvedNewsArticles = getRecentNewsArticles(HOME_NEWS_LIMIT).map((article) => {
+  // Own-reporting articles, most recent first -- the top "Breaking News"
+  // card shows the first few, the sidebar's "PredictCentr Headlines" ticker
+  // shows the full pool.
+  const recentArticles = getRecentNewsArticles(HOME_HEADLINES_LIMIT).map((article) => {
     const market = findMarket(article.relatedMarketSlug.split("/"));
     return {
       slug: article.slug,
       headline: article.headline,
+      image: article.image,
       thumbnail: article.thumbnail ?? article.image,
       author: article.author,
       publishedAt: article.publishedAt,
@@ -56,6 +61,19 @@ export default async function Home() {
       marketHref: market ? `/${market.slug.join("/")}/` : undefined,
     };
   });
+  const resolvedNewsArticles = recentArticles.slice(0, HOME_NEWS_LIMIT);
+
+  // Third-party per-market coverage, newest first -- the sidebar's "Other
+  // News" carousel (what the "PredictCentr Headlines" ticker used to show
+  // before it switched to our own articles).
+  const resolvedOtherNews = getTopNewsItems().map(({ market, news }) => ({
+    headline: news.headline,
+    image: news.image,
+    source: news.source,
+    date: news.date,
+    marketTitle: market.content.market.title,
+    marketHref: `/${market.slug.join("/")}/`,
+  }));
 
   // One live odds fetch per outcome per market, keyed by market slug path
   // so both the featured card and its regular category card can reuse the
@@ -158,8 +176,9 @@ export default async function Home() {
           </div>
 
           <div className="home-sidebar">
-            <TopNewsStories items={topNewsItems} />
+            <TopNewsStories items={recentArticles} />
             <TrendingOnX items={resolvedTrending} />
+            <OtherNews items={resolvedOtherNews} />
           </div>
         </div>
 

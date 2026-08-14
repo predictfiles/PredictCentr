@@ -2,15 +2,19 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { NewsThumb } from "@/components/NewsThumb";
-import type { MarketConfig, NewsItem } from "@/lib/types";
+import { formatDate } from "@/lib/format";
 
-const VISIBLE_COUNT = 5;
+const VISIBLE_COUNT = 2;
 const SECONDS_PER_ITEM = 4.5;
 
-export interface TopNewsEntry {
-  market: MarketConfig;
-  news: NewsItem;
+export interface ResolvedHeadlineItem {
+  slug: string;
+  headline: string;
+  image: string;
+  author: string;
+  publishedAt: string;
+  marketTitle?: string;
+  marketHref?: string;
 }
 
 /**
@@ -18,9 +22,12 @@ export interface TopNewsEntry {
  * carousel. The full pool of stories scrolls upward at a constant speed
  * (CSS animation, not a JS interval) with the list duplicated end-to-end so
  * it loops seamlessly; hovering pauses it so a story doesn't scroll away
- * mid-read or mid-click.
+ * mid-read or mid-click. PredictCentr's own latest articles, each shown as
+ * a smaller version of the top "Breaking News" card's full-hero-image
+ * treatment -- VISIBLE_COUNT is lower than the old thumbnail-row ticker's
+ * since each item is now much taller.
  */
-export function TopNewsStories({ items }: { items: TopNewsEntry[] }) {
+export function TopNewsStories({ items }: { items: ResolvedHeadlineItem[] }) {
   const firstItemRef = useRef<HTMLLIElement>(null);
   const [maskHeight, setMaskHeight] = useState<number | null>(null);
 
@@ -40,7 +47,7 @@ export function TopNewsStories({ items }: { items: TopNewsEntry[] }) {
   return (
     <section className="section">
       <div className="home-category-heading home-category-heading-news">
-        Other Headlines
+        PredictCentr Headlines
       </div>
       <div className="card">
         <div
@@ -51,30 +58,35 @@ export function TopNewsStories({ items }: { items: TopNewsEntry[] }) {
             className="news-list news-ticker-track"
             style={{ animationDuration: `${durationSeconds}s` }}
           >
-            {looped.map(({ market, news }, i) => {
-              const href = `/${market.slug.join("/")}/`;
-              return (
-                <li
-                  className="news-item"
-                  key={`${market.slug.join("/")}-${i}`}
-                  ref={i === 0 ? firstItemRef : undefined}
-                >
-                  <div className="top-story-row">
-                    {news.image && <NewsThumb src={news.image} />}
-                    <div>
-                      <div className="top-story-headline">{news.headline}</div>
-                      <Link className="top-story-market-link" href={href}>
-                        Market Affected: {market.content.market.title}
-                      </Link>
+            {looped.map((item, i) => (
+              <li
+                className="news-item"
+                key={`${item.slug}-${i}`}
+                ref={i === 0 ? firstItemRef : undefined}
+              >
+                <Link href={`/news/${item.slug}/`} className="mini-banner-link">
+                  <div className="mini-banner-media">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.image} alt="" className="mini-banner-image" />
+                  </div>
+                  <div className="mini-banner-body">
+                    <div className="mini-banner-headline">{item.headline}</div>
+                    <div className="mini-banner-meta">
+                      By {item.author} · {formatDate(item.publishedAt)}
                     </div>
                   </div>
-                </li>
-              );
-            })}
+                </Link>
+                {item.marketHref && item.marketTitle && (
+                  <Link className="mini-banner-market-link" href={item.marketHref}>
+                    Market Affected: {item.marketTitle}
+                  </Link>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
         <Link className="top-news-more-link" href="/news/">
-          PredictCentr News →
+          PredictCentr Headlines →
         </Link>
       </div>
     </section>
