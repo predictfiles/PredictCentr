@@ -78,7 +78,7 @@ export function TopNewsStories({ items }: { items: ResolvedHeadlineItem[] }) {
           </ul>
         </div>
         <Link className="top-news-more-link" href="/news/">
-          PredictCentr Headlines →
+          PredictCentr News →
         </Link>
       </div>
     </section>
