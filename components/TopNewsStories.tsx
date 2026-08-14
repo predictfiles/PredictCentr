@@ -2,17 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { formatDate } from "@/lib/format";
 
 const VISIBLE_COUNT = 2;
 const SECONDS_PER_ITEM = 4.5;
 
 export interface ResolvedHeadlineItem {
   slug: string;
-  headline: string;
   image: string;
   author: string;
-  publishedAt: string;
   marketTitle?: string;
   marketHref?: string;
 }
@@ -64,23 +61,18 @@ export function TopNewsStories({ items }: { items: ResolvedHeadlineItem[] }) {
                 key={`${item.slug}-${i}`}
                 ref={i === 0 ? firstItemRef : undefined}
               >
-                <Link href={`/news/${item.slug}/`} className="mini-banner-link">
-                  <div className="mini-banner-media">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.image} alt="" className="mini-banner-image" />
-                  </div>
-                  <div className="mini-banner-body">
-                    <div className="mini-banner-headline">{item.headline}</div>
-                    <div className="mini-banner-meta">
-                      By {item.author} · {formatDate(item.publishedAt)}
-                    </div>
-                  </div>
+                <Link href={`/news/${item.slug}/`} className="mini-banner-media">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.image} alt="" className="mini-banner-image" />
                 </Link>
-                {item.marketHref && item.marketTitle && (
-                  <Link className="mini-banner-market-link" href={item.marketHref}>
-                    Market Affected: {item.marketTitle}
-                  </Link>
-                )}
+                <div className="mini-banner-body">
+                  <div className="mini-banner-meta">By {item.author}</div>
+                  {item.marketHref && item.marketTitle && (
+                    <Link className="mini-banner-market-link" href={item.marketHref}>
+                      Market Affected: {item.marketTitle}
+                    </Link>
+                  )}
+                </div>
               </li>
             ))}
           </ul>

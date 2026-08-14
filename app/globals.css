@@ -909,15 +909,10 @@ a {
 }
 
 /* PredictCentr Headlines ticker items -- a smaller version of the top
-   Breaking News card's banner treatment (full hero image, headline below)
-   instead of the old small-square-thumbnail row. */
-.mini-banner-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
+   Breaking News card's banner treatment (full hero image only, linking to
+   the article; byline and market link sit below, unlinked). */
 .mini-banner-media {
+  display: block;
   position: relative;
   background: #0a0a0d;
   border-radius: 8px;
@@ -929,25 +924,20 @@ a {
   width: 100%;
   height: 130px;
   object-fit: cover;
+  transition: opacity 0.15s ease;
+}
+
+.mini-banner-media:hover .mini-banner-image {
+  opacity: 0.85;
 }
 
 .mini-banner-body {
   padding-top: 10px;
 }
 
-.mini-banner-headline {
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.35;
-  margin-bottom: 4px;
-}
-
-.mini-banner-link:hover .mini-banner-headline {
-  text-decoration: underline;
-}
-
 .mini-banner-meta {
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--card-muted);
 }
 
