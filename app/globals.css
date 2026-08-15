@@ -259,6 +259,98 @@ a {
   color: var(--dark-card-muted);
 }
 
+/* Homepage task bar's market search -- pinned to the right of the category
+   links (falls to its own line on narrow viewports via the bar's existing
+   flex-wrap), with a floating results dropdown rather than a full page
+   navigation, since ~30 markets is small enough to filter client-side. */
+.category-bar-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.category-bar-search-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--dark-card-muted);
+  white-space: nowrap;
+}
+
+.category-bar-search-input {
+  width: 200px;
+  max-width: 100%;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--dark-card-border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--dark-card-fg);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.category-bar-search-input::placeholder {
+  color: var(--dark-card-muted);
+}
+
+.category-bar-search-input:focus {
+  outline: none;
+  border-color: var(--dark-card-fg);
+}
+
+.category-bar-search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 280px;
+  max-width: 80vw;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  background: var(--dark-card-bg);
+  border: 1px solid var(--dark-card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow-hover);
+  z-index: 20;
+}
+
+.category-bar-search-result {
+  display: block;
+  padding: 8px 10px 8px 9px;
+  border-left: 3px solid transparent;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--dark-card-fg);
+}
+
+.category-bar-search-result:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.category-bar-search-result-politics {
+  border-left-color: var(--politics);
+}
+
+.category-bar-search-result-sports {
+  border-left-color: var(--sports);
+}
+
+.category-bar-search-result-culture {
+  border-left-color: var(--culture);
+}
+
+.category-bar-search-empty {
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--dark-card-muted);
+}
+
 .news-category-filter {
   display: flex;
   flex-wrap: wrap;

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import { NewsIcon } from "@/components/NewsIcon";
-import { CATEGORY_LABELS } from "@/lib/markets";
+import { MarketSearch } from "@/components/MarketSearch";
+import { CATEGORY_LABELS, getMarketSearchIndex } from "@/lib/markets";
 import type { MarketConfig } from "@/lib/types";
 
 const CATEGORY_ORDER: MarketConfig["category"][] = ["politics", "sports", "culture"];
@@ -37,6 +38,7 @@ export function CategoryNav({ wide = false }: { wide?: boolean }) {
             {CATEGORY_LABELS[category]}
           </Link>
         ))}
+        {wide && <MarketSearch items={getMarketSearchIndex()} />}
       </div>
     </nav>
   );

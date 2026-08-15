@@ -743,6 +743,26 @@ export const CATEGORY_INTRO: Record<MarketConfig["category"], string> = {
   culture: "Live odds and coverage on the awards, entertainment, and culture stories people are betting on.",
 };
 
+export interface MarketSearchEntry {
+  slug: string;
+  title: string;
+  category: MarketConfig["category"];
+}
+
+/**
+ * Lightweight index for the homepage task bar's market search -- just the
+ * fields a client component needs to filter-as-you-type and link straight
+ * to a result, instead of shipping every market's full odds/news/brief
+ * payload to the browser.
+ */
+export function getMarketSearchIndex(): MarketSearchEntry[] {
+  return markets.map((m) => ({
+    slug: m.slug.join("/"),
+    title: m.content.market.title,
+    category: m.category,
+  }));
+}
+
 export function findMarket(slug: string[]): MarketConfig | undefined {
   return markets.find(
     (m) => m.slug.length === slug.length && m.slug.every((s, i) => s === slug[i])
