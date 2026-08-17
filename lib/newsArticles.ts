@@ -8,6 +8,7 @@ import jackLowdenBondOddsSurgeRaw from "@/data/news/jack-lowden-bond-odds-surge.
 import aocFavoredDemocraticNomineeRaw from "@/data/news/aoc-favored-democratic-nominee.json";
 import curryTradeRumorsClickbaitRaw from "@/data/news/curry-trade-rumors-clickbait.json";
 import belichickTightLippedLombardiRaw from "@/data/news/belichick-tight-lipped-lombardi.json";
+import trumpCutsSouthKoreaMilitaryDrillsRaw from "@/data/news/trump-cuts-south-korea-military-drills.json";
 
 const kawhiSuspensionOdds = kawhiSuspensionOddsRaw as NewsArticle;
 const talaricoTexasSenatePolls = talaricoTexasSenatePollsRaw as NewsArticle;
@@ -18,6 +19,7 @@ const jackLowdenBondOddsSurge = jackLowdenBondOddsSurgeRaw as NewsArticle;
 const aocFavoredDemocraticNominee = aocFavoredDemocraticNomineeRaw as NewsArticle;
 const curryTradeRumorsClickbait = curryTradeRumorsClickbaitRaw as NewsArticle;
 const belichickTightLippedLombardi = belichickTightLippedLombardiRaw as NewsArticle;
+const trumpCutsSouthKoreaMilitaryDrills = trumpCutsSouthKoreaMilitaryDrillsRaw as NewsArticle;
 
 // Add a new article by appending an entry here (with its own content file
 // under data/news/) -- same "add an entry" pattern as lib/markets.ts and
@@ -32,6 +34,7 @@ export const newsArticles: NewsArticle[] = [
   aocFavoredDemocraticNominee,
   curryTradeRumorsClickbait,
   belichickTightLippedLombardi,
+  trumpCutsSouthKoreaMilitaryDrills,
 ];
 
 export function findNewsArticle(slug: string): NewsArticle | undefined {
