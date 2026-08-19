@@ -16,7 +16,7 @@ import { getRecentNewsArticles } from "@/lib/newsArticles";
 import { contributors } from "@/lib/contributors";
 import type { OddsResponse, TrendingItem } from "@/lib/types";
 
-const HOME_NEWS_LIMIT = 3;
+const HOME_NEWS_LIMIT = 5;
 const HOME_HEADLINES_LIMIT = 10;
 
 const HOME_CATEGORY_LIMIT = 4;

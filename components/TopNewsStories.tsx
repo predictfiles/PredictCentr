@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-const VISIBLE_COUNT = 4;
+const VISIBLE_COUNT = 6;
 const SECONDS_PER_ITEM = 4.5;
 
 export interface ResolvedHeadlineItem {
