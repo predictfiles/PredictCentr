@@ -21,6 +21,7 @@ import texasSenateElection2026Raw from "@/data/markets/texas-senate-election-202
 import enesKanterFreedomDrafted2027WnbaDraftRaw from "@/data/markets/enes-kanter-freedom-drafted-2027-wnba-draft.json";
 import nextJamesBondActorRaw from "@/data/markets/next-james-bond-actor.json";
 import trumpOutBefore2027Raw from "@/data/markets/trump-out-before-2027.json";
+import gta6Released2026Raw from "@/data/markets/gta-6-released-2026.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -49,6 +50,7 @@ const texasSenateElection2026 = texasSenateElection2026Raw as MarketContent;
 const enesKanterFreedomDrafted2027WnbaDraft = enesKanterFreedomDrafted2027WnbaDraftRaw as MarketContent;
 const nextJamesBondActor = nextJamesBondActorRaw as MarketContent;
 const trumpOutBefore2027 = trumpOutBefore2027Raw as MarketContent;
+const gta6Released2026 = gta6Released2026Raw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -746,6 +748,24 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: trumpOutBefore2027,
+  },
+  {
+    slug: ["gta-6-released-2026"],
+    category: "culture",
+    shortDescription: "Live odds on whether GTA 6 releases in 2026, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "gta6-released",
+        label: "GTA 6",
+        question: "Will GTA 6 be released in 2026?",
+        kalshi: {
+          ticker: "GTA6-26DEC31",
+          seriesTicker: "GTA6",
+          url: "https://kalshi.com/markets/gta6/gta-6-release-date/gta6?marketTicker=GTA6-26DEC31",
+        },
+      },
+    ],
+    content: gta6Released2026,
   },
 ];
 

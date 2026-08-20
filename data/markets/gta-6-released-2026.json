@@ -1,0 +1,75 @@
+{
+  "market": {
+    "title": "Will GTA 6 Be Released in 2026?",
+    "resolutionDate": "2026-12-31",
+    "resolutionNote": [
+      "Kalshi's own wording: \"If GTA 6 (Grand Theft Auto VI) has been released on a major platform (PS5, Xbox Series X/S, Windows) by Dec 31, 2026, then the market resolves to Yes.\"",
+      "Rockstar's own confirmed release date, November 19, 2026, already sits comfortably inside this window - the market is really pricing the risk of a third delay pushing the game into 2027.",
+      "No direct Polymarket equivalent exists for this specific window. The closest Polymarket contract asks the inverse question - 'GTA 6 launch postponed again?', resolving by Nov 19, 2026 - rather than a same-scale 'released by' market, so it isn't tracked on this page."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "GTA 6 has already been delayed twice - originally targeted for 2025, then pushed to May 2026, and now to November 19, 2026 - so Kalshi prices \"released in 2026\" at a still-high but not certain 85-87%.",
+      "Rockstar paired the latest delay announcement in November 2025 with a rare direct apology to fans, saying the extra time would let them \"finish the game with the level of polish you have come to expect and deserve.\"",
+      "Take-Two CEO Strauss Zelnick has since repeatedly reaffirmed the date, telling investors in July 2026 he has a \"high degree of confidence\" in the November 19 release.",
+      "The remaining risk priced in by traders is a third delay - Zelnick has himself noted the studio would rather push the date again than ship early, since \"when our competitors go to market before something was ready, bad things happen.\""
+    ],
+    "updatedAt": "2026-08-20",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Take-Two CEO Gives New Official Statement on GTA 6's Release Date",
+      "source": "Game Rant",
+      "date": "2026-07-19",
+      "url": "https://gamerant.com/gta-6-release-date-reaffirmed-november-19-2026/",
+      "image": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2026/07/grand-theft-auto-6-gta-vi-jason-and-lucia-nightclub-dancing-trippy-composite.jpg?w=1600&h=900&fit=crop"
+    },
+    {
+      "headline": "GTA 6 Now Delayed Until Nov. 2026 as Take-Two CEO Says 'When Our Competitors Go to Market Before Something Was Ready, Bad Things Happen'",
+      "source": "Tom's Guide",
+      "date": "2025-11-06",
+      "url": "https://www.tomsguide.com/gaming/rockstar-announces-grand-theft-auto-iv-delayed-to-november-2026",
+      "image": "https://cdn.mos.cms.futurecdn.net/yijFWc6fRg57dqAbUqX9wh-2000-80.jpg"
+    },
+    {
+      "headline": "Grand Theft Auto 6 Delayed Again, But It'll Still Ship in 2026",
+      "source": "TechRadar",
+      "date": "2025-11-06",
+      "url": "https://www.techradar.com/gaming/grand-theft-auto-6-delayed-again-but-itll-still-ship-in-2026",
+      "image": "https://cdn.mos.cms.futurecdn.net/NHhN5TgkBCkzZVSpvRZ3am-1920-80.jpeg"
+    },
+    {
+      "headline": "'GTA 6' Release Delayed to November 2026",
+      "source": "Variety",
+      "date": "2025-11-06",
+      "url": "https://au.variety.com/2025/tv/news/gta-6-release-delayed-november-2026-29751",
+      "image": "https://images.thebrag.com/cdn-cgi/image/fit=crop,width=1200,height=628/https://images-r2-1.thebrag.com/var/uploads/2025/11/GTA-6-1.jpg"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "2026-11-12",
+      "label": "Digital pre-load begins for players who pre-ordered"
+    },
+    {
+      "date": "2026-11-19",
+      "label": "Rockstar's officially confirmed release date"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Any further statements from Take-Two on earnings calls before launch"
+    },
+    {
+      "date": "2026-12-31",
+      "label": "Kalshi's resolution cutoff - market resolves"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}
