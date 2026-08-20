@@ -1,0 +1,65 @@
+{
+  "market": {
+    "title": "Donald Trump — Out as President Before 2027?",
+    "resolutionDate": "2026-12-31",
+    "resolutionNote": [
+      "Both platforms require an actual, permanent departure from office - resignation, conviction and removal following impeachment, or a sustained Twenty-Fifth Amendment Section 4 process (both Houses of Congress upholding the Vice President and Cabinet's determination of presidential inability by a two-thirds vote). A temporary Section 3 handover, an unconfirmed Section 4 invocation, or impeachment without removal do not count on either platform.",
+      "Kalshi's own wording: \"If Donald Trump leaves office before Jan 1, 2027, then the market resolves to Yes.\"",
+      "One real gap between the platforms: Polymarket's tracked contract resolves by Dec 31, 2026, while Kalshi's resolves a day later, before Jan 1, 2027."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Despite recurring speculation, Trump remains firmly in office, and prediction markets price a departure before 2027 at just 5-6%.",
+      "The most serious formal push so far came in April, when Rep. Jamie Raskin introduced a bill, backed by 50 Democratic co-sponsors, to create a 17-member bipartisan commission to assess invoking the 25th Amendment over concerns about Trump's mental fitness. It has no realistic path through the Republican-controlled House.",
+      "The White House has repeatedly pushed back on fitness concerns, with Trump's physician describing him as being in \"excellent health\" and Trump himself claiming he has \"aced\" his cognitive exams.",
+      "Structural hurdles make removal unlikely regardless of the political noise: an impeachment conviction needs a two-thirds Senate supermajority, and a sustained 25th Amendment case requires both chambers of Congress to agree by that same threshold."
+    ],
+    "updatedAt": "2026-08-20",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "House Dems Unveil Bill to Examine Removing Trump Using 25th Amendment",
+      "source": "Fox News",
+      "date": "2026-04-14",
+      "url": "https://www.foxnews.com/politics/house-dems-unveil-bill-examine-removing-trump-using-25th-amendment",
+      "image": "https://static.foxnews.com/foxnews.com/content/uploads/2026/04/donald-trump-no-tax-on-tips-fox-news.jpeg"
+    },
+    {
+      "headline": "House Democrats File Bill to Form 25th Amendment Commission to Assess Trump's Mental Fitness",
+      "source": "Mediaite (via Yahoo)",
+      "date": "2026-04-14",
+      "url": "https://www.yahoo.com/news/articles/just-house-democrats-file-bill-165704167.html",
+      "image": "https://s.yimg.com/lo/mysterio/api/5d0298e7f57f9577850b6292c15328d356c2e91de344fc221a98aa58ab73e0e3/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmediaite_845%2F5e947f7f46cbf6a4e6214fdf7420ad93"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Any further health disclosures or physical exam results released by the White House"
+    },
+    {
+      "date": "November 2026",
+      "label": "US midterm elections - a shift in congressional control could change the political calculus around removal efforts"
+    },
+    {
+      "date": "2026-12-31",
+      "label": "Polymarket's resolution cutoff - market resolves"
+    },
+    {
+      "date": "2027-01-01",
+      "label": "Kalshi's resolution cutoff - one day later than Polymarket's"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    },
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

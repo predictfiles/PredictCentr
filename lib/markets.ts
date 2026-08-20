@@ -20,6 +20,7 @@ import billBelichickOutRaw from "@/data/markets/bill-belichick-out-before-septem
 import texasSenateElection2026Raw from "@/data/markets/texas-senate-election-2026.json";
 import enesKanterFreedomDrafted2027WnbaDraftRaw from "@/data/markets/enes-kanter-freedom-drafted-2027-wnba-draft.json";
 import nextJamesBondActorRaw from "@/data/markets/next-james-bond-actor.json";
+import trumpOutBefore2027Raw from "@/data/markets/trump-out-before-2027.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -47,6 +48,7 @@ const billBelichickOut = billBelichickOutRaw as MarketContent;
 const texasSenateElection2026 = texasSenateElection2026Raw as MarketContent;
 const enesKanterFreedomDrafted2027WnbaDraft = enesKanterFreedomDrafted2027WnbaDraftRaw as MarketContent;
 const nextJamesBondActor = nextJamesBondActorRaw as MarketContent;
+const trumpOutBefore2027 = trumpOutBefore2027Raw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -720,6 +722,30 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: nextJamesBondActor,
+  },
+  {
+    slug: ["trump-out-before-2027"],
+    category: "politics",
+    shortDescription: "Live odds on whether Donald Trump leaves office before 2027, tracked on Kalshi and Polymarket.",
+    outcomes: [
+      {
+        id: "trump-out",
+        label: "Donald Trump",
+        question: "Will Donald Trump leave office before 2027?",
+        kalshi: {
+          ticker: "KXTRUMPOUT27-27-DJT",
+          seriesTicker: "KXTRUMPOUT27",
+          url: "https://kalshi.com/markets/kxtrumpout27/trump-out-before-2027/kxtrumpout27-27",
+        },
+        polymarket: {
+          marketId: "666861",
+          yesTokenId:
+            "59252515735652674747158950210016502214756531287333895140318848923768750410355",
+          url: "https://polymarket.com/event/trump-out-as-president-before-2027",
+        },
+      },
+    ],
+    content: trumpOutBefore2027,
   },
 ];
 
