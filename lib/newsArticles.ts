@@ -13,6 +13,7 @@ import nbaBlastsEspnClippersInaccuraciesRaw from "@/data/news/nba-blasts-espn-cl
 import freedomMocksAngelReesePaulGeorgeRaw from "@/data/news/freedom-mocks-angel-reese-paul-george.json";
 import callumTurnerNoCommentBondSurgesRaw from "@/data/news/callum-turner-no-comment-bond-surges.json";
 import gta6GameplayLeaksReleaseOddsRaw from "@/data/news/gta-6-gameplay-leaks-release-odds.json";
+import polymarketArchivesFreedomWnbaMarketRaw from "@/data/news/polymarket-archives-freedom-wnba-market.json";
 
 const kawhiSuspensionOdds = kawhiSuspensionOddsRaw as NewsArticle;
 const talaricoTexasSenatePolls = talaricoTexasSenatePollsRaw as NewsArticle;
@@ -28,6 +29,7 @@ const nbaBlastsEspnClippersInaccuracies = nbaBlastsEspnClippersInaccuraciesRaw a
 const freedomMocksAngelReesePaulGeorge = freedomMocksAngelReesePaulGeorgeRaw as NewsArticle;
 const callumTurnerNoCommentBondSurges = callumTurnerNoCommentBondSurgesRaw as NewsArticle;
 const gta6GameplayLeaksReleaseOdds = gta6GameplayLeaksReleaseOddsRaw as NewsArticle;
+const polymarketArchivesFreedomWnbaMarket = polymarketArchivesFreedomWnbaMarketRaw as NewsArticle;
 
 // Add a new article by appending an entry here (with its own content file
 // under data/news/) -- same "add an entry" pattern as lib/markets.ts and
@@ -47,6 +49,7 @@ export const newsArticles: NewsArticle[] = [
   freedomMocksAngelReesePaulGeorge,
   callumTurnerNoCommentBondSurges,
   gta6GameplayLeaksReleaseOdds,
+  polymarketArchivesFreedomWnbaMarket,
 ];
 
 export function findNewsArticle(slug: string): NewsArticle | undefined {
