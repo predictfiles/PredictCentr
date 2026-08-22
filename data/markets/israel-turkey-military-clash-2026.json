@@ -1,0 +1,62 @@
+{
+  "market": {
+    "title": "Israel-Turkey Military Clash Before 2027?",
+    "resolutionDate": "2026-12-31",
+    "resolutionNote": [
+      "Polymarket's own wording: \"This market will resolve to 'Yes' if there is a military encounter between the military forces of Israel and Turkey by December 31, 2026, 11:59 PM ET.\"",
+      "A qualifying \"military encounter\" is direct force between the two countries' own militaries - missile strikes, artillery fire, an exchange of gunfire, or intentional ship ramming causing significant damage. Warning shots, strikes into uninhabited areas, or missiles that land in territorial waters or merely pass through airspace do not count.",
+      "Proxy activity doesn't count either - Israeli strikes on Syrian territory, even ones aimed at deterring a Turkish deployment, are not a direct Israel-Turkey clash unless Turkish forces are actually engaged.",
+      "No matching Kalshi market currently exists for this question, so this page is Polymarket-only."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Israel and Turkey haven't come to direct blows, but the odds of a clash before 2027 have climbed to around 19% as the two countries increasingly collide over Syria.",
+      "The immediate trigger was Israel's August 18 airstrikes on a Syrian airbase near Aleppo, which Israel said was intended to stop Turkish forces from deploying there - Turkey denies it had any military presence at the site.",
+      "Rhetoric has escalated sharply alongside the airstrikes: Netanyahu's own office called Erdoğan an \"antisemitic dictator,\" while Erdoğan has branded Israel \"war addicted.\"",
+      "Turkey's NATO membership and both countries' preference for proxy pressure over direct confrontation are the main reasons traders still price a real clash as more likely than not to be avoided."
+    ],
+    "updatedAt": "2026-08-22",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Israel strikes an air base in northwest Syria",
+      "source": "NPR",
+      "date": "2026-08-19",
+      "url": "https://www.npr.org/2026/08/19/nx-s1-5937400/israel-strikes-syria",
+      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/1200x675+0+59/resize/1400/quality/85/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F8a%2Fab%2F1fe0496b43468c2021ea41c24044%2Fap26219409087588.jpg"
+    },
+    {
+      "headline": "Israel's airstrikes, ground action in Syria escalate tensions with Turkey",
+      "source": "Washington Times",
+      "date": "2026-08-20",
+      "url": "https://www.washingtontimes.com/news/2026/aug/20/israels-airstrikes-ground-action-syria-escalate-tensions-turkey/",
+      "image": "https://twt-thumbs.washtimes.com/media/image/2026/08/19/Syria_Israel_Turkey_Tensions_47862_c0-249-6000-3749_s1200x700.jpg?a558b2a317420b0f4a3a41481b821365a4195d09"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Further Israeli strikes in Syria targeting suspected Turkish deployments"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Use of the US-brokered 24/7 Israel-Turkey deconfliction line, active since April 2025"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Fallout from Turkey's new Mecca Joint Defense Agreement with Saudi Arabia and Pakistan"
+    },
+    {
+      "date": "2026-12-31",
+      "label": "Polymarket's resolution cutoff - market resolves"
+    }
+  ],
+  "affiliateStatus": {
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

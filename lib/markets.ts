@@ -22,6 +22,7 @@ import enesKanterFreedomDrafted2027WnbaDraftRaw from "@/data/markets/enes-kanter
 import nextJamesBondActorRaw from "@/data/markets/next-james-bond-actor.json";
 import trumpOutBefore2027Raw from "@/data/markets/trump-out-before-2027.json";
 import gta6Released2026Raw from "@/data/markets/gta-6-released-2026.json";
+import israelTurkeyMilitaryClash2026Raw from "@/data/markets/israel-turkey-military-clash-2026.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -51,6 +52,7 @@ const enesKanterFreedomDrafted2027WnbaDraft = enesKanterFreedomDrafted2027WnbaDr
 const nextJamesBondActor = nextJamesBondActorRaw as MarketContent;
 const trumpOutBefore2027 = trumpOutBefore2027Raw as MarketContent;
 const gta6Released2026 = gta6Released2026Raw as MarketContent;
+const israelTurkeyMilitaryClash2026 = israelTurkeyMilitaryClash2026Raw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -766,6 +768,25 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: gta6Released2026,
+  },
+  {
+    slug: ["israel-turkey-military-clash-2026"],
+    category: "politics",
+    shortDescription: "Live odds on a direct military clash between Israel and Turkey before 2027, tracked on Polymarket.",
+    outcomes: [
+      {
+        id: "military-clash",
+        label: "Israel-Turkey",
+        question: "Will there be a military clash between Israel and Turkey before 2027?",
+        polymarket: {
+          marketId: "665484",
+          yesTokenId:
+            "87453347574739433727741310300628833850540987232802276383336752817811816312350",
+          url: "https://polymarket.com/event/israel-x-turkey-military-clash-before-2027",
+        },
+      },
+    ],
+    content: israelTurkeyMilitaryClash2026,
   },
 ];
 
