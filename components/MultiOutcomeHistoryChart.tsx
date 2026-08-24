@@ -40,12 +40,21 @@ function nearestPoint(points: HistoryPoint[], t: number): HistoryPoint | null {
   return closest;
 }
 
-function formatAxisDate(t: number, range: HistoryRange): string {
+// "all"/"1d" axis labels need the actual day, not just month+year -- a
+// young market's whole history can sit inside one month, and a
+// month+year-only label (e.g. "Aug '26") then renders identically at both
+// ends, reading like a future day-of-month instead of the current year.
+// Year is only appended when the range actually crosses a year boundary,
+// since it's dead weight otherwise.
+function formatAxisDate(t: number, range: HistoryRange, showYear: boolean): string {
   const d = new Date(t * 1000);
   if (isIntraday(range)) {
     return d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
   }
-  return d.toLocaleDateString("en-US", { month: "short", year: "2-digit" });
+  return d.toLocaleDateString(
+    "en-US",
+    showYear ? { month: "short", day: "numeric", year: "2-digit" } : { month: "short", day: "numeric" }
+  );
 }
 
 function formatTooltipDate(t: number, range: HistoryRange): string {
@@ -211,6 +220,7 @@ export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) 
     : null;
 
   const yTicks = [0, yMax / 2, yMax];
+  const showYear = new Date(minT * 1000).getFullYear() !== new Date(maxT * 1000).getFullYear();
 
   return (
     <section className="section">
@@ -265,10 +275,10 @@ export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) 
           ))}
 
           <text x={PAD.left} y={HEIGHT - 6} fontSize={11} fill="var(--card-muted)">
-            {formatAxisDate(minT, range)}
+            {formatAxisDate(minT, range, showYear)}
           </text>
           <text x={WIDTH - PAD.right} y={HEIGHT - 6} fontSize={11} fill="var(--card-muted)" textAnchor="end">
-            {formatAxisDate(maxT, range)}
+            {formatAxisDate(maxT, range, showYear)}
           </text>
 
           {paths.map(({ id, d }, i) =>
