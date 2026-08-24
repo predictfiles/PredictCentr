@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import type { HistoryPoint, HistoryRange, HistoryResponse } from "@/lib/types";
 
 const WIDTH = 700;
@@ -33,6 +33,11 @@ function nearestPoint(points: HistoryPoint[], t: number): HistoryPoint | null {
     }
   }
   return closest;
+}
+
+function latestPoint(points: HistoryPoint[]): HistoryPoint | null {
+  if (points.length === 0) return null;
+  return points.reduce((latest, p) => (p.t > latest.t ? p : latest), points[0]);
 }
 
 // "all"/"1d" axis labels need the actual day, not just month+year -- a
@@ -83,6 +88,10 @@ export function HistoryChart({
    */
   historyUrlBase?: string;
 }) {
+  // useId() includes colons (e.g. ":r0:"), which some browsers (Safari in
+  // particular) fail to resolve inside a url(#id) paint-server reference --
+  // strip them so the gradient fill can't silently go invisible.
+  const gradientId = useId().replace(/:/g, "");
   const [range, setRange] = useState<HistoryRange>("all");
   const [chartData, setChartData] = useState<HistoryResponse>(data);
   const [loading, setLoading] = useState(false);
@@ -114,37 +123,63 @@ export function HistoryChart({
   const polymarket = chartData.polymarket ?? [];
   const [hoverX, setHoverX] = useState<number | null>(null);
 
-  const { minT, maxT, yMax, kalshiPath, polymarketPath } = useMemo(() => {
-    const allPoints = [...kalshi, ...polymarket];
-    if (allPoints.length === 0) {
-      return { minT: 0, maxT: 1, yMax: 1, kalshiPath: "", polymarketPath: "" };
-    }
-    const ts = allPoints.map((p) => p.t);
-    const ps = allPoints.map((p) => p.p);
-    const minT = Math.min(...ts);
-    const maxT = Math.max(...ts);
-    const maxP = Math.max(...ps);
-    const yMax = Math.min(1, Math.max(0.1, Math.ceil((maxP * 100) / 5) * 5 / 100));
+  const { minT, maxT, yMax, kalshiPath, polymarketPath, kalshiAreaPath, polymarketAreaPath } =
+    useMemo(() => {
+      const allPoints = [...kalshi, ...polymarket];
+      if (allPoints.length === 0) {
+        return {
+          minT: 0,
+          maxT: 1,
+          yMax: 1,
+          kalshiPath: "",
+          polymarketPath: "",
+          kalshiAreaPath: "",
+          polymarketAreaPath: "",
+        };
+      }
+      const ts = allPoints.map((p) => p.t);
+      const ps = allPoints.map((p) => p.p);
+      const minT = Math.min(...ts);
+      const maxT = Math.max(...ts);
+      const maxP = Math.max(...ps);
+      const yMax = Math.min(1, Math.max(0.1, Math.ceil((maxP * 100) / 5) * 5 / 100));
 
-    const xScale = (t: number) =>
-      PAD.left + ((t - minT) / (maxT - minT || 1)) * (WIDTH - PAD.left - PAD.right);
-    const yScale = (p: number) =>
-      HEIGHT - PAD.bottom - (p / yMax) * (HEIGHT - PAD.top - PAD.bottom);
+      const xScale = (t: number) =>
+        PAD.left + ((t - minT) / (maxT - minT || 1)) * (WIDTH - PAD.left - PAD.right);
+      const yScale = (p: number) =>
+        HEIGHT - PAD.bottom - (p / yMax) * (HEIGHT - PAD.top - PAD.bottom);
+      const baselineY = yScale(0);
 
-    const toPath = (points: HistoryPoint[]) =>
-      [...points]
-        .sort((a, b) => a.t - b.t)
-        .map((p, i) => `${i === 0 ? "M" : "L"} ${xScale(p.t).toFixed(1)} ${yScale(p.p).toFixed(1)}`)
-        .join(" ");
+      const toPath = (points: HistoryPoint[]) =>
+        [...points]
+          .sort((a, b) => a.t - b.t)
+          .map((p, i) => `${i === 0 ? "M" : "L"} ${xScale(p.t).toFixed(1)} ${yScale(p.p).toFixed(1)}`)
+          .join(" ");
 
-    return {
-      minT,
-      maxT,
-      yMax,
-      kalshiPath: toPath(kalshi),
-      polymarketPath: toPath(polymarket),
-    };
-  }, [kalshi, polymarket]);
+      // Same line, closed down to the baseline -- the soft gradient wash
+      // under each line that makes the chart read as a filled trend rather
+      // than a bare wire.
+      const toAreaPath = (points: HistoryPoint[]) => {
+        const sorted = [...points].sort((a, b) => a.t - b.t);
+        if (sorted.length === 0) return "";
+        const line = sorted
+          .map((p, i) => `${i === 0 ? "M" : "L"} ${xScale(p.t).toFixed(1)} ${yScale(p.p).toFixed(1)}`)
+          .join(" ");
+        const lastX = xScale(sorted[sorted.length - 1].t).toFixed(1);
+        const firstX = xScale(sorted[0].t).toFixed(1);
+        return `${line} L ${lastX} ${baselineY.toFixed(1)} L ${firstX} ${baselineY.toFixed(1)} Z`;
+      };
+
+      return {
+        minT,
+        maxT,
+        yMax,
+        kalshiPath: toPath(kalshi),
+        polymarketPath: toPath(polymarket),
+        kalshiAreaPath: toAreaPath(kalshi),
+        polymarketAreaPath: toAreaPath(polymarket),
+      };
+    }, [kalshi, polymarket]);
 
   const rangeToggle = historyUrlBase && (
     <div className="chart-range-toggle" role="tablist" aria-label="Chart time range">
@@ -204,6 +239,15 @@ export function HistoryChart({
       ? xScale(hoverPolymarket.t)
       : null;
 
+  const latestKalshi = latestPoint(kalshi);
+  const latestPolymarket = latestPoint(polymarket);
+
+  // Readout defaults to the most recent point at rest, and swaps to the
+  // scrubbed position on hover -- never a blank strip below the chart.
+  const readoutKalshi = hoverX === null ? latestKalshi : hoverKalshi;
+  const readoutPolymarket = hoverX === null ? latestPolymarket : hoverPolymarket;
+  const readoutT = hoverT ?? Math.max(latestKalshi?.t ?? 0, latestPolymarket?.t ?? 0);
+
   const yTicks = [0, yMax / 2, yMax];
   const showYear = new Date(minT * 1000).getFullYear() !== new Date(maxT * 1000).getFullYear();
 
@@ -242,6 +286,17 @@ export function HistoryChart({
           }}
           onMouseLeave={() => setHoverX(null)}
         >
+          <defs>
+            <linearGradient id={`${gradientId}-kalshi`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="var(--kalshi)" stopOpacity="0.22" />
+              <stop offset="100%" stopColor="var(--kalshi)" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id={`${gradientId}-polymarket`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="var(--polymarket)" stopOpacity="0.22" />
+              <stop offset="100%" stopColor="var(--polymarket)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+
           {yTicks.map((tick) => (
             <g key={tick}>
               <line
@@ -271,11 +326,28 @@ export function HistoryChart({
             {formatAxisDate(maxT, range, showYear)}
           </text>
 
+          {polymarketAreaPath && <path d={polymarketAreaPath} fill={`url(#${gradientId}-polymarket)`} />}
+          {kalshiAreaPath && <path d={kalshiAreaPath} fill={`url(#${gradientId}-kalshi)`} />}
+
           {polymarketPath && (
-            <path d={polymarketPath} fill="none" stroke="var(--polymarket)" strokeWidth={2} />
+            <path
+              d={polymarketPath}
+              fill="none"
+              stroke="var(--polymarket)"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           )}
           {kalshiPath && (
-            <path d={kalshiPath} fill="none" stroke="var(--kalshi)" strokeWidth={2} />
+            <path
+              d={kalshiPath}
+              fill="none"
+              stroke="var(--kalshi)"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           )}
 
           {crosshairX !== null && (
@@ -287,25 +359,75 @@ export function HistoryChart({
               stroke="var(--card-muted)"
               strokeWidth={1}
               strokeDasharray="3 3"
+              opacity={0.6}
             />
           )}
+
+          {/* Resting end-of-line markers -- anchor the chart on "right now"
+              even when nothing is hovered. */}
+          {latestKalshi && hoverX === null && (
+            <g>
+              <circle cx={xScale(latestKalshi.t)} cy={yScale(latestKalshi.p)} r={6} fill="var(--card)" />
+              <circle cx={xScale(latestKalshi.t)} cy={yScale(latestKalshi.p)} r={3.5} fill="var(--kalshi)" />
+            </g>
+          )}
+          {latestPolymarket && hoverX === null && (
+            <g>
+              <circle
+                cx={xScale(latestPolymarket.t)}
+                cy={yScale(latestPolymarket.p)}
+                r={6}
+                fill="var(--card)"
+              />
+              <circle
+                cx={xScale(latestPolymarket.t)}
+                cy={yScale(latestPolymarket.p)}
+                r={3.5}
+                fill="var(--polymarket)"
+              />
+            </g>
+          )}
+
           {hoverKalshi && (
-            <circle cx={xScale(hoverKalshi.t)} cy={yScale(hoverKalshi.p)} r={3.5} fill="var(--kalshi)" />
+            <g>
+              <circle cx={xScale(hoverKalshi.t)} cy={yScale(hoverKalshi.p)} r={6} fill="var(--card)" />
+              <circle cx={xScale(hoverKalshi.t)} cy={yScale(hoverKalshi.p)} r={3.5} fill="var(--kalshi)" />
+            </g>
           )}
           {hoverPolymarket && (
-            <circle
-              cx={xScale(hoverPolymarket.t)}
-              cy={yScale(hoverPolymarket.p)}
-              r={3.5}
-              fill="var(--polymarket)"
-            />
+            <g>
+              <circle
+                cx={xScale(hoverPolymarket.t)}
+                cy={yScale(hoverPolymarket.p)}
+                r={6}
+                fill="var(--card)"
+              />
+              <circle
+                cx={xScale(hoverPolymarket.t)}
+                cy={yScale(hoverPolymarket.p)}
+                r={3.5}
+                fill="var(--polymarket)"
+              />
+            </g>
           )}
         </svg>
-        {(hoverKalshi || hoverPolymarket) && (
-          <div className="brief-meta">
-            {formatTooltipDate((hoverKalshi ?? hoverPolymarket)!.t, range)}
-            {hoverKalshi ? ` · Kalshi ${(hoverKalshi.p * 100).toFixed(1)}%` : ""}
-            {hoverPolymarket ? ` · Polymarket ${(hoverPolymarket.p * 100).toFixed(1)}%` : ""}
+        {(readoutKalshi || readoutPolymarket) && (
+          <div className="chart-tooltip">
+            <span className="chart-tooltip-date">{formatTooltipDate(readoutT, range)}</span>
+            {readoutKalshi && (
+              <span className="chart-tooltip-item">
+                <span className="chart-tooltip-dot" style={{ background: "var(--kalshi)" }} />
+                Kalshi
+                <span className="chart-tooltip-value">{(readoutKalshi.p * 100).toFixed(1)}%</span>
+              </span>
+            )}
+            {readoutPolymarket && (
+              <span className="chart-tooltip-item">
+                <span className="chart-tooltip-dot" style={{ background: "var(--polymarket)" }} />
+                Polymarket
+                <span className="chart-tooltip-value">{(readoutPolymarket.p * 100).toFixed(1)}%</span>
+              </span>
+            )}
           </div>
         )}
       </div>

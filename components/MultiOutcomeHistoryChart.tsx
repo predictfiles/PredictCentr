@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import type { HistoryPoint, HistoryRange } from "@/lib/types";
 
 const WIDTH = 700;
@@ -38,6 +38,11 @@ function nearestPoint(points: HistoryPoint[], t: number): HistoryPoint | null {
     }
   }
   return closest;
+}
+
+function latestPoint(points: HistoryPoint[]): HistoryPoint | null {
+  if (points.length === 0) return null;
+  return points.reduce((latest, p) => (p.t > latest.t ? p : latest), points[0]);
 }
 
 // "all"/"1d" axis labels need the actual day, not just month+year -- a
@@ -94,6 +99,10 @@ export interface ChartSeries {
  * this deliberately doesn't try to also show.
  */
 export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) {
+  // useId() includes colons (e.g. ":r0:"), which some browsers (Safari in
+  // particular) fail to resolve inside a url(#id) paint-server reference --
+  // strip them so the gradient fill can't silently go invisible.
+  const gradientId = useId().replace(/:/g, "");
   const [range, setRange] = useState<HistoryRange>("all");
   const [chartData, setChartData] = useState<Record<string, HistoryPoint[]>>(() =>
     Object.fromEntries(series.map((s) => [s.id, s.data]))
@@ -136,10 +145,16 @@ export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) 
 
   const [hoverX, setHoverX] = useState<number | null>(null);
 
-  const { minT, maxT, yMax, paths } = useMemo(() => {
+  const { minT, maxT, yMax, paths, areaPaths } = useMemo(() => {
     const allPoints = series.flatMap((s) => chartData[s.id] ?? []);
     if (allPoints.length === 0) {
-      return { minT: 0, maxT: 1, yMax: 1, paths: [] as { id: string; d: string }[] };
+      return {
+        minT: 0,
+        maxT: 1,
+        yMax: 1,
+        paths: [] as { id: string; d: string }[],
+        areaPaths: [] as { id: string; d: string }[],
+      };
     }
     const ts = allPoints.map((p) => p.t);
     const ps = allPoints.map((p) => p.p);
@@ -152,6 +167,7 @@ export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) 
       PAD.left + ((t - minT) / (maxT - minT || 1)) * (WIDTH - PAD.left - PAD.right);
     const yScale = (p: number) =>
       HEIGHT - PAD.bottom - (p / yMax) * (HEIGHT - PAD.top - PAD.bottom);
+    const baselineY = yScale(0);
 
     const paths = series.map((s) => {
       const points = [...(chartData[s.id] ?? [])].sort((a, b) => a.t - b.t);
@@ -161,7 +177,21 @@ export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) 
       return { id: s.id, d };
     });
 
-    return { minT, maxT, yMax, paths };
+    // Same line, closed down to the baseline -- the soft gradient wash
+    // under each line that makes the chart read as a filled trend rather
+    // than a bare wire.
+    const areaPaths = series.map((s) => {
+      const points = [...(chartData[s.id] ?? [])].sort((a, b) => a.t - b.t);
+      if (points.length === 0) return { id: s.id, d: "" };
+      const line = points
+        .map((p, i) => `${i === 0 ? "M" : "L"} ${xScale(p.t).toFixed(1)} ${yScale(p.p).toFixed(1)}`)
+        .join(" ");
+      const lastX = xScale(points[points.length - 1].t).toFixed(1);
+      const firstX = xScale(points[0].t).toFixed(1);
+      return { id: s.id, d: `${line} L ${lastX} ${baselineY.toFixed(1)} L ${firstX} ${baselineY.toFixed(1)} Z` };
+    });
+
+    return { minT, maxT, yMax, paths, areaPaths };
   }, [series, chartData]);
 
   const hasAnyData = series.some((s) => (chartData[s.id] ?? []).length > 0);
@@ -205,19 +235,33 @@ export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) 
       ? null
       : minT + ((hoverX - PAD.left) / (WIDTH - PAD.left - PAD.right)) * (maxT - minT);
 
-  const hoverPoints =
-    hoverT === null
-      ? []
-      : series.map((s, i) => ({
-          id: s.id,
-          label: s.label,
-          color: LINE_COLORS[i % LINE_COLORS.length],
-          point: nearestPoint(chartData[s.id] ?? [], hoverT),
-        }));
+  const seriesWithColor = series.map((s, i) => ({ ...s, color: LINE_COLORS[i % LINE_COLORS.length] }));
+
+  const hoverPoints = hoverT === null
+    ? []
+    : seriesWithColor.map((s) => ({
+        id: s.id,
+        label: s.label,
+        color: s.color,
+        point: nearestPoint(chartData[s.id] ?? [], hoverT),
+      }));
+
+  const latestPoints = seriesWithColor.map((s) => ({
+    id: s.id,
+    label: s.label,
+    color: s.color,
+    point: latestPoint(chartData[s.id] ?? []),
+  }));
 
   const crosshairX = hoverPoints.find((h) => h.point)?.point
     ? xScale(hoverPoints.find((h) => h.point)!.point!.t)
     : null;
+
+  // Readout defaults to each series' most recent point at rest, and swaps
+  // to the scrubbed position on hover -- never a blank strip below the chart.
+  const readoutPoints = hoverX === null ? latestPoints : hoverPoints;
+  const readoutT = hoverT ?? Math.max(...latestPoints.map((h) => h.point?.t ?? 0));
+  const markerPoints = hoverX === null ? latestPoints : hoverPoints;
 
   const yTicks = [0, yMax / 2, yMax];
   const showYear = new Date(minT * 1000).getFullYear() !== new Date(maxT * 1000).getFullYear();
@@ -228,12 +272,9 @@ export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) 
       <div className="card">
         {rangeToggle}
         <div className="chart-legend">
-          {series.map((s, i) => (
+          {seriesWithColor.map((s) => (
             <span className="chart-legend-item" key={s.id}>
-              <span
-                className="chart-swatch"
-                style={{ background: LINE_COLORS[i % LINE_COLORS.length] }}
-              />
+              <span className="chart-swatch" style={{ background: s.color }} />
               {s.label}
             </span>
           ))}
@@ -252,6 +293,15 @@ export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) 
           }}
           onMouseLeave={() => setHoverX(null)}
         >
+          <defs>
+            {seriesWithColor.map((s) => (
+              <linearGradient key={s.id} id={`${gradientId}-${s.id}`} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor={s.color} stopOpacity="0.2" />
+                <stop offset="100%" stopColor={s.color} stopOpacity="0" />
+              </linearGradient>
+            ))}
+          </defs>
+
           {yTicks.map((tick) => (
             <g key={tick}>
               <line
@@ -281,9 +331,21 @@ export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) 
             {formatAxisDate(maxT, range, showYear)}
           </text>
 
+          {areaPaths.map(({ id, d }) =>
+            d ? <path key={id} d={d} fill={`url(#${gradientId}-${id})`} /> : null
+          )}
+
           {paths.map(({ id, d }, i) =>
             d ? (
-              <path key={id} d={d} fill="none" stroke={LINE_COLORS[i % LINE_COLORS.length]} strokeWidth={2} />
+              <path
+                key={id}
+                d={d}
+                fill="none"
+                stroke={LINE_COLORS[i % LINE_COLORS.length]}
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             ) : null
           )}
 
@@ -296,22 +358,35 @@ export function MultiOutcomeHistoryChart({ series }: { series: ChartSeries[] }) 
               stroke="var(--card-muted)"
               strokeWidth={1}
               strokeDasharray="3 3"
+              opacity={0.6}
             />
           )}
-          {hoverPoints.map(
+
+          {/* Resting/hover end markers -- anchor the chart on "right now"
+              (or the scrubbed position), each with a surface ring so it
+              stays legible crossing another line. */}
+          {markerPoints.map(
             (h) =>
               h.point && (
-                <circle key={h.id} cx={xScale(h.point.t)} cy={yScale(h.point.p)} r={3.5} fill={h.color} />
+                <g key={h.id}>
+                  <circle cx={xScale(h.point.t)} cy={yScale(h.point.p)} r={6} fill="var(--card)" />
+                  <circle cx={xScale(h.point.t)} cy={yScale(h.point.p)} r={3.5} fill={h.color} />
+                </g>
               )
           )}
         </svg>
-        {hoverPoints.some((h) => h.point) && (
-          <div className="brief-meta">
-            {formatTooltipDate(hoverPoints.find((h) => h.point)!.point!.t, range)}
-            {hoverPoints
+        {readoutPoints.some((h) => h.point) && (
+          <div className="chart-tooltip">
+            <span className="chart-tooltip-date">{formatTooltipDate(readoutT, range)}</span>
+            {readoutPoints
               .filter((h) => h.point)
-              .map((h) => ` · ${h.label} ${(h.point!.p * 100).toFixed(1)}%`)
-              .join("")}
+              .map((h) => (
+                <span className="chart-tooltip-item" key={h.id}>
+                  <span className="chart-tooltip-dot" style={{ background: h.color }} />
+                  {h.label}
+                  <span className="chart-tooltip-value">{(h.point!.p * 100).toFixed(1)}%</span>
+                </span>
+              ))}
           </div>
         )}
       </div>

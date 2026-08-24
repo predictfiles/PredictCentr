@@ -1218,6 +1218,47 @@ a {
   text-align: center;
 }
 
+/* Price-history hover/rest readout -- shows the most recent point by
+   default (never a blank strip below the chart) and swaps to the scrubbed
+   position on hover. */
+.chart-tooltip {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.chart-tooltip-date {
+  font-weight: 700;
+  color: var(--card-fg);
+}
+
+.chart-tooltip-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--card-muted);
+}
+
+.chart-tooltip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.chart-tooltip-value {
+  font-weight: 700;
+  color: var(--card-fg);
+  font-variant-numeric: tabular-nums;
+}
+
 .watch-list {
   list-style: none;
   margin: 0;
