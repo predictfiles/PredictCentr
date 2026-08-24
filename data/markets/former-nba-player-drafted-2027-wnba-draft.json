@@ -1,0 +1,62 @@
+{
+  "market": {
+    "title": "Will Any Former NBA Player Be Drafted in the 2027 WNBA Draft?",
+    "resolutionDate": "2027-05-01",
+    "resolutionNote": [
+      "Polymarket's own wording: \"This market will resolve to 'Yes' if any former player of the National Basketball Association is drafted in the 2027 WNBA Draft.\"",
+      "If the 2027 WNBA Draft is cancelled, postponed past May 1, 2027, or the results can't be confirmed by then, this resolves 50-50 rather than No.",
+      "This is broader than a single-player bet - it pays out on ANY former NBA player being drafted, not just Enes Kanter Freedom specifically. Freedom's own draft market was archived by Polymarket without resolution in August 2026; this page tracks the wider question instead.",
+      "No matching Kalshi market currently exists for this question, so this page is Polymarket-only."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Enes Kanter Freedom and Royce White both declared themselves eligible for the 2027 WNBA Draft in August, in protest of trans participation in the league.",
+      "Since then, at least one more former NBA player has followed suit, with reports of further declarations and even threats of legal action if teams don't let them play.",
+      "Those declaring have cited \"self-declaration\" as their basis for eligibility, arguing the WNBA's own rules don't explicitly bar them.",
+      "The WNBA has not confirmed or denied any of the declarations, and traders are pricing this at just 5% - a signal the market expects the league to keep every one of them off an actual draft board."
+    ],
+    "updatedAt": "2026-08-23",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Men In The WNBA? Former NBA Players Declare For WNBA Draft, Citing 'Self Declaration'",
+      "source": "Forbes",
+      "date": "2026-08-08",
+      "url": "https://www.forbes.com/sites/dougmelville/2026/08/08/men-in-the-wnba-former-nba-stars-declare-for-2027-wnba-draft-cites-self-declaration/",
+      "image": "https://imageio.forbes.com/specials-images/imageserve/6a767026f4042708caf803e4/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds"
+    },
+    {
+      "headline": "Another ex-NBA player declares for 2027 WNBA Draft, threatens legal action if not allowed to play",
+      "source": "Yahoo Sports",
+      "date": "2026-08-08",
+      "url": "https://sports.yahoo.com/articles/another-ex-nba-player-declares-053345715.html",
+      "image": "https://s.yimg.com/lo/mysterio/api/77c6eef97b13386e29c01c2eedf20cbfeed1bd69aa3fd2ff35ded04d9b58f90e/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fhitc_articles_832%2F8a59592a9ee0f8bd3d2c242864401e45"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Any official WNBA statement clarifying draft eligibility rules"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Further former-NBA-player declarations or threatened legal action"
+    },
+    {
+      "date": "2027",
+      "label": "The 2027 WNBA Draft itself, expected in spring 2027 - market resolution"
+    },
+    {
+      "date": "2027-05-01",
+      "label": "Polymarket's resolution cutoff"
+    }
+  ],
+  "affiliateStatus": {
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

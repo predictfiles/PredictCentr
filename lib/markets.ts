@@ -23,6 +23,7 @@ import nextJamesBondActorRaw from "@/data/markets/next-james-bond-actor.json";
 import trumpOutBefore2027Raw from "@/data/markets/trump-out-before-2027.json";
 import gta6Released2026Raw from "@/data/markets/gta-6-released-2026.json";
 import israelTurkeyMilitaryClash2026Raw from "@/data/markets/israel-turkey-military-clash-2026.json";
+import formerNbaPlayerDrafted2027WnbaDraftRaw from "@/data/markets/former-nba-player-drafted-2027-wnba-draft.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -53,6 +54,7 @@ const nextJamesBondActor = nextJamesBondActorRaw as MarketContent;
 const trumpOutBefore2027 = trumpOutBefore2027Raw as MarketContent;
 const gta6Released2026 = gta6Released2026Raw as MarketContent;
 const israelTurkeyMilitaryClash2026 = israelTurkeyMilitaryClash2026Raw as MarketContent;
+const formerNbaPlayerDrafted2027WnbaDraft = formerNbaPlayerDrafted2027WnbaDraftRaw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -787,6 +789,25 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: israelTurkeyMilitaryClash2026,
+  },
+  {
+    slug: ["former-nba-player-drafted-2027-wnba-draft"],
+    category: "sports",
+    shortDescription: "Live odds on whether any former NBA player is drafted in the 2027 WNBA Draft.",
+    outcomes: [
+      {
+        id: "former-nba-player-drafted",
+        label: "Former NBA Player",
+        question: "Will any former NBA player be drafted in the 2027 WNBA Draft?",
+        polymarket: {
+          marketId: "3494706",
+          yesTokenId:
+            "20285250198019412562142707026361063517619343526577722570985033985197487748429",
+          url: "https://polymarket.com/event/will-any-former-nba-player-be-drafted-2027-wnba-draft",
+        },
+      },
+    ],
+    content: formerNbaPlayerDrafted2027WnbaDraft,
   },
 ];
 
