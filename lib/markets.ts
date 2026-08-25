@@ -24,6 +24,7 @@ import trumpOutBefore2027Raw from "@/data/markets/trump-out-before-2027.json";
 import gta6Released2026Raw from "@/data/markets/gta-6-released-2026.json";
 import israelTurkeyMilitaryClash2026Raw from "@/data/markets/israel-turkey-military-clash-2026.json";
 import formerNbaPlayerDrafted2027WnbaDraftRaw from "@/data/markets/former-nba-player-drafted-2027-wnba-draft.json";
+import canadaUsAcquisitionBefore2029Raw from "@/data/markets/canada-us-acquisition-before-2029.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -55,6 +56,7 @@ const trumpOutBefore2027 = trumpOutBefore2027Raw as MarketContent;
 const gta6Released2026 = gta6Released2026Raw as MarketContent;
 const israelTurkeyMilitaryClash2026 = israelTurkeyMilitaryClash2026Raw as MarketContent;
 const formerNbaPlayerDrafted2027WnbaDraft = formerNbaPlayerDrafted2027WnbaDraftRaw as MarketContent;
+const canadaUsAcquisitionBefore2029 = canadaUsAcquisitionBefore2029Raw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -808,6 +810,24 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: formerNbaPlayerDrafted2027WnbaDraft,
+  },
+  {
+    slug: ["canada-us-acquisition-before-2029"],
+    category: "politics",
+    shortDescription: "Live odds on whether the US acquires any part of Canada before 2029, tracked on Kalshi.",
+    outcomes: [
+      {
+        id: "us-acquires-canada",
+        label: "United States",
+        question: "Will the United States acquire any part of Canada before 2029?",
+        kalshi: {
+          ticker: "KXCANTERRITORY-29",
+          seriesTicker: "KXCANTERRITORY",
+          url: "https://kalshi.com/markets/kxcanterritory/canadian-acquisition/kxcanterritory-29",
+        },
+      },
+    ],
+    content: canadaUsAcquisitionBefore2029,
   },
 ];
 

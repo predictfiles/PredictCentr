@@ -1,0 +1,61 @@
+{
+  "market": {
+    "title": "Will the US Acquire Any Part of Canada Before 2029?",
+    "resolutionDate": "2029-01-21",
+    "resolutionNote": [
+      "Kalshi's own wording: \"If the United States acquires any part of Canada before Jan 21, 2029, then the market resolves to Yes.\"",
+      "Any part of Canada must come under formal US governance or jurisdiction - as a state, territory, or other classification - where it wasn't previously. An announcement that this will happen also counts. Simply leasing territory (e.g. a military base) does not.",
+      "No current Polymarket equivalent exists. Polymarket did run a \"Will the U.S. acquire Canadian territory in 2025?\" market, but that closed at the end of 2025 having resolved No, and hasn't been replaced with a live contract covering this longer window."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "Trump has repeatedly floated the idea of Canada becoming the 51st state since returning to office, most recently reviving it after Statistics Canada confirmed the country had slipped into a technical recession.",
+      "Canadian leaders have been unanimous in rejecting the idea - PM Mark Carney has said \"it will never happen,\" and Ontario Premier Doug Ford has said much the same.",
+      "Trump has tied the idea to trade, previously suggesting Canadians would benefit from lower taxes and US military protection if the two countries merged, and has acknowledged \"it takes two to tango.\"",
+      "Despite the rhetoric, Kalshi prices an actual US acquisition of any part of Canada before 2029 at just 6-10% - there's no legal mechanism for this without Canada's consent, which Ottawa has flatly ruled out."
+    ],
+    "updatedAt": "2026-08-24",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Trump Revisits Idea to Annex Canada and Make It the 51st State, Days After Carney Calls for New Partnership With U.S.",
+      "source": "Yahoo News (Time)",
+      "date": "2026-06-02",
+      "url": "https://www.yahoo.com/news/articles/trump-revisits-idea-to-annex-canada-and-make-it-the-51st-state-days-after-carney-calls-for-new-partnership-with-us-154339504.html",
+      "image": "https://s.yimg.com/lo/mysterio/api/6585533c1cae50cb733b6f419a0f0e3dbddd39eab3637c88a8653ba2ee2d09e0/lightyear_networkapi/resizefill_w1024_h682%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Ftime_72%2F39bcfd450891a070a4a58d2bfe16014c"
+    },
+    {
+      "headline": "'51st State': Trump revives threats after Canada slips into recession",
+      "source": "CTV News",
+      "date": "2026-06-03",
+      "url": "https://www.ctvnews.ca/politics/article/donald-trump-revives-51st-state-threats-after-canada-slips-into-technical-recession/",
+      "image": "https://www.ctvnews.ca/resizer/v2/5SR5VFX23YLBWJWSCOTAP6ULJM.jpg?smart=true&auth=d9dc99354dfd58a555d81ecd031ec849aa75e99a58c8de376821254061ed5a76&width=1200&height=630"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "Ongoing",
+      "label": "Further 51st-state posts or comments from Trump, especially tied to Canadian economic data"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Any shift in tone from PM Mark Carney or provincial leaders like Doug Ford"
+    },
+    {
+      "date": "Ongoing",
+      "label": "US-Canada trade negotiations, which Trump has repeatedly linked to the statehood idea"
+    },
+    {
+      "date": "2029-01-21",
+      "label": "Kalshi's resolution cutoff - market resolves"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}
