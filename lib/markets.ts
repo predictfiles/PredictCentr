@@ -814,12 +814,12 @@ export const markets: MarketConfig[] = [
   {
     slug: ["canada-us-acquisition-before-2029"],
     category: "politics",
-    shortDescription: "Live odds on whether the US acquires any part of Canada before 2029, tracked on Kalshi.",
+    shortDescription: "Live odds on whether the US takes control of any part of Canada before 2029, tracked on Kalshi.",
     outcomes: [
       {
         id: "us-acquires-canada",
         label: "United States",
-        question: "Will the United States acquire any part of Canada before 2029?",
+        question: "Will the United States take control of any part of Canada before 2029?",
         kalshi: {
           ticker: "KXCANTERRITORY-29",
           seriesTicker: "KXCANTERRITORY",
