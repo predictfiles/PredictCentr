@@ -53,9 +53,36 @@ export default function NewsArticlePage({
   if (!article) notFound();
 
   const relatedMarket = findMarket(article.relatedMarketSlug.split("/"));
+  const url = `${SITE_URL}/news/${article.slug}/`;
+  const firstParagraph = article.body.find((b) => b.type === "paragraph")?.text;
+
+  // schema.org NewsArticle structured data -- one of the technical
+  // prerequisites for Google News eligibility. Escaping "<" stops a
+  // "</script>" inside any field from breaking out of the JSON-LD block.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: article.headline,
+    image: [`${SITE_URL}${article.image}`],
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt,
+    author: [{ "@type": "Person", name: article.author }],
+    publisher: {
+      "@type": "Organization",
+      name: "PredictCentr",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-full.png` },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    ...(firstParagraph ? { description: firstParagraph } : {}),
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
       <header className="header">
         <div className="header-inner">
           <Link className="brand" href="/">
