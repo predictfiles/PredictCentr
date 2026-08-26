@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { markets, getHotMarket, findMarket, getTopNewsItems } from "@/lib/markets";
+import { SITE_URL } from "@/lib/site";
 import { loadOutcomeOdds } from "@/lib/oddsLoader";
 import { BentoMarketCard } from "@/components/BentoMarketCard";
 import { MarketCard } from "@/components/MarketCard";
@@ -15,6 +17,10 @@ import trending from "@/data/trending.json";
 import { getRecentNewsArticles } from "@/lib/newsArticles";
 import { contributors } from "@/lib/contributors";
 import type { OddsResponse, TrendingItem } from "@/lib/types";
+
+export const metadata: Metadata = {
+  alternates: { canonical: `${SITE_URL}/` },
+};
 
 const HOME_NEWS_LIMIT = 5;
 const HOME_HEADLINES_LIMIT = 10;
