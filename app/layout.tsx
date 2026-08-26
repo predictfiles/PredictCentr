@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
+import { SiteFooter } from "@/components/SiteFooter";
 
 const GA_MEASUREMENT_ID = "G-8MWR329K83";
 
@@ -53,6 +54,7 @@ export default function RootLayout({
           `}
         </Script>
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

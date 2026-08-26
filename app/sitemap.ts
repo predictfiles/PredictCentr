@@ -37,6 +37,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "hourly",
       priority: 0.7,
     },
+    {
+      url: `${SITE_URL}/editorial-standards/`,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_URL}/ai-disclosure/`,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
     ...hubPages,
     ...marketPages,
     ...newsPages,

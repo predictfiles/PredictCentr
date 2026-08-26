@@ -1997,3 +1997,35 @@ a {
   color: var(--brand-blue);
   text-decoration: underline;
 }
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 20px 32px;
+}
+
+.site-footer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.site-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.site-footer-links a {
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+.site-footer-links a:hover {
+  color: var(--fg);
+}
