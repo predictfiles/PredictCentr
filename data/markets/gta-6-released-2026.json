@@ -21,6 +21,20 @@
   },
   "news": [
     {
+      "headline": "GTA 6 Trailer Coming to Netflix, YouTube Aug. 27",
+      "source": "Variety",
+      "date": "2026-08-06",
+      "url": "https://variety.com/2026/gaming/news/gta-6-trailer-netflix-youtube-aug-27-1236789693/",
+      "image": "https://variety.com/wp-content/uploads/2026/08/Grand-Theft-Auto-6.jpg?w=1000&h=563&crop=1"
+    },
+    {
+      "headline": "Catastrophic GTA VI Leak Is a Full Working Build — Notorious Hacker CyberLeek Taunts Rockstar Games",
+      "source": "Tom's Hardware",
+      "date": "2026-08-20",
+      "url": "https://www.tomshardware.com/video-games/catastrophic-gta-vi-leak-is-a-full-working-build-notorious-hacker-cyberleek-taunts-rockstar-games-by-spraying-the-word-leek-onto-a-wall-in-game-with-bullets",
+      "image": "https://cdn.mos.cms.futurecdn.net/UZtFBUeKKRZ43cjULRJMNU-1600-80.jpg"
+    },
+    {
       "headline": "Take-Two CEO Gives New Official Statement on GTA 6's Release Date",
       "source": "Game Rant",
       "date": "2026-07-19",
