@@ -699,6 +699,16 @@ export const markets: MarketConfig[] = [
     shortDescription: "Live odds on who is cast as the next James Bond, tracked on Kalshi.",
     outcomes: [
       {
+        id: "jack-barton",
+        label: "Jack Barton",
+        question: "Will Jack Barton be the next James Bond?",
+        kalshi: {
+          ticker: "KXBOND-30-JACK",
+          seriesTicker: "KXBOND",
+          url: "https://kalshi.com/markets/kxbond/kxbond-30?selectedMarketTicker=KXBOND-30-JACK",
+        },
+      },
+      {
         id: "jack-lowden",
         label: "Jack Lowden",
         question: "Will Jack Lowden be the next James Bond?",
