@@ -1,13 +1,19 @@
 import type { MustReadArticle } from "./types";
 import theCaseForTheOdysseyRaw from "@/data/must-read/the-case-for-the-odyssey.json";
 import stephenCrystalSccgRaw from "@/data/must-read/stephen-crystal-sccg-prediction-markets-legal-fight.json";
+import nextpredictPierreLindhRaw from "@/data/must-read/nextpredict-pierre-lindh-kalshi-hedge.json";
 
 const theCaseForTheOdyssey = theCaseForTheOdysseyRaw as MustReadArticle;
 const stephenCrystalSccg = stephenCrystalSccgRaw as MustReadArticle;
+const nextpredictPierreLindh = nextpredictPierreLindhRaw as MustReadArticle;
 
 // Add a new article by appending an entry here (with its own content file
 // under data/must-read/) -- same "add an entry" pattern as lib/markets.ts.
-export const mustReadArticles: MustReadArticle[] = [theCaseForTheOdyssey, stephenCrystalSccg];
+export const mustReadArticles: MustReadArticle[] = [
+  theCaseForTheOdyssey,
+  stephenCrystalSccg,
+  nextpredictPierreLindh,
+];
 
 export const MUST_READ_CATEGORY_LABELS: Record<MustReadArticle["category"], string> = {
   legality: "Legality Guide",
