@@ -6,6 +6,7 @@ import {
   findMustReadArticle,
   MUST_READ_CATEGORY_LABELS,
 } from "@/lib/mustRead";
+import { formatDate } from "@/lib/format";
 import { findMarket } from "@/lib/markets";
 import { CategoryNav } from "@/components/CategoryNav";
 import { ArticleAuthorCard } from "@/components/ArticleAuthorCard";
@@ -59,6 +60,10 @@ export default function MustReadArticlePage({
     ? findMarket(article.relatedMarketSlug.split("/"))
     : undefined;
 
+  const otherMustReads = (article.relatedMustReadSlugs ?? [])
+    .map((slug) => findMustReadArticle(slug))
+    .filter((a): a is NonNullable<typeof a> => Boolean(a));
+
   return (
     <>
       <header className="header">
@@ -111,6 +116,38 @@ export default function MustReadArticlePage({
                 <div className="market-card-desc">{relatedMarket.shortDescription}</div>
                 <div className="market-card-cta">View live odds →</div>
               </Link>
+            </div>
+          </section>
+        )}
+
+        {otherMustReads.length > 0 && (
+          <section className="section">
+            <div className="section-label">Other Must Read Articles</div>
+            <div className="market-card-list">
+              {otherMustReads.map((other) => (
+                <Link
+                  key={other.slug}
+                  className="market-card"
+                  href={`/must-read/${other.slug}/`}
+                >
+                  <div className="must-read-thumb-row">
+                    {other.image && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={other.image} alt="" className="must-read-thumb" />
+                    )}
+                    <div>
+                      <div className="market-card-eyebrow">
+                        {MUST_READ_CATEGORY_LABELS[other.category]}
+                      </div>
+                      <div className="market-card-title">{other.title}</div>
+                      <div className="market-card-desc">{other.teaser}</div>
+                    </div>
+                  </div>
+                  <div className="market-card-cta">
+                    {formatDate(other.publishedAt)} · By {other.author}
+                  </div>
+                </Link>
+              ))}
             </div>
           </section>
         )}

@@ -30,6 +30,13 @@ export function MustReadBody({ blocks }: { blocks: MustReadBlock[] }) {
             />
           );
         }
+        if (block.type === "question") {
+          return (
+            <p key={i} className="must-read-question">
+              {renderInlineText(block.text)}
+            </p>
+          );
+        }
         return (
           <p key={i} className="must-read-paragraph">
             {renderInlineText(block.text)}

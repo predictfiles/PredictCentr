@@ -707,6 +707,13 @@ a {
   margin-bottom: 0;
 }
 
+.must-read-question {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
 .must-read-inline-image {
   display: block;
   width: 100%;

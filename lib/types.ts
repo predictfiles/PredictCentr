@@ -146,13 +146,16 @@ export interface ElectionInfo {
 }
 
 /**
- * One paragraph, pull quote, or inline image in a MustReadArticle's body,
- * rendered in order. A paragraph's text may contain inline `[label](url)`
- * links and `*text*` italics -- same inline syntax as a NewsArticleBlock,
- * via the shared InlineMarkdownText renderer.
+ * One paragraph, pull quote, interview question, or inline image in a
+ * MustReadArticle's body, rendered in order. Text fields may contain inline
+ * `[label](url)` links and `*text*` italics -- same inline syntax as a
+ * NewsArticleBlock, via the shared InlineMarkdownText renderer. `question`
+ * is for Q&A-format pieces -- the interviewer's question, rendered bold and
+ * slightly larger to stand out from the answer paragraphs that follow it.
  */
 export type MustReadBlock =
   | { type: "paragraph"; text: string }
+  | { type: "question"; text: string }
   | { type: "quote"; text: string }
   | { type: "image"; src: string; alt?: string };
 
@@ -182,6 +185,8 @@ export interface MustReadArticle {
   disclaimer?: string;
   /** Optional link back to the specific market this article discusses. */
   relatedMarketSlug?: string;
+  /** Other Must Read article slugs to cross-promote at the bottom of this piece, resolved live via findMustReadArticle so titles can't go stale. */
+  relatedMustReadSlugs?: string[];
 }
 
 /**
