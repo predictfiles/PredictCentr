@@ -207,17 +207,24 @@ export interface TrendingItem {
 }
 
 /**
- * One paragraph, pull quote, or dated update callout in a NewsArticle's
- * body, rendered in order. Text fields may contain inline `[label](url)`
- * links and `*text*` italics via InlineMarkdownText. `update` is for a
- * genuine after-the-fact addition to a published piece (new developments,
- * not a wording fix) -- rendered as a visually distinct "Update -- <date>"
- * callout, usually inserted at the very top of `body`.
+ * One paragraph, pull quote, dated update callout, or embedded odds chart
+ * in a NewsArticle's body, rendered in order. Text fields may contain
+ * inline `[label](url)` links and `*text*` italics via InlineMarkdownText.
+ * `update` is for a genuine after-the-fact addition to a published piece
+ * (new developments, not a wording fix) -- rendered as a visually distinct
+ * "Update -- <date>" callout, usually inserted at the very top of `body`.
+ * `chart` embeds a frozen price-history snapshot for one outcome of the
+ * article's `relatedMarketSlug` market, capped to the article's own
+ * `publishedAt` -- deliberately NOT the live/current odds, so the chart can
+ * never drift out of sync with what the article's text describes. Give it
+ * generous top/bottom spacing wherever it's placed (more than the default
+ * paragraph gap) so it doesn't crowd a neighboring pull quote.
  */
 export type NewsArticleBlock =
   | { type: "paragraph"; text: string }
   | { type: "quote"; text: string }
-  | { type: "update"; date: string; text: string };
+  | { type: "update"; date: string; text: string }
+  | { type: "chart"; outcomeId: string; caption: string };
 
 /**
  * A full PredictCentr-written news article -- distinct from a market's

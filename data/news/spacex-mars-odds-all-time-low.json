@@ -25,6 +25,11 @@
       "text": "The Kalshi price for humans to Mars dropped four points after Musk confirmed the change of plans. It's a market that has been far from stable, drifting up and down consistently since its addition to the Kalshi site in March 2024."
     },
     {
+      "type": "chart",
+      "outcomeId": "humans-to-mars",
+      "caption": "Kalshi odds: SpaceX humans on Mars before 2030"
+    },
+    {
       "type": "paragraph",
       "text": "One of the market's biggest hits came on July 29 when Musk shifted on his timelines for reaching Mars. Responding to American engineer, physician, and entrepreneur Peter Diamandis on X, Musk said he believed people will make it to Mars in \"roughly five to seven years,\" putting the landing date between 2031 and 2033."
     },

@@ -2024,6 +2024,26 @@ a {
   text-decoration: underline;
 }
 
+/* Frozen odds-chart embed -- deliberately more top/bottom margin than a
+   pull quote's own 24px (sibling margins collapse to the larger value) so
+   the chart always has clear breathing room and never crowds a
+   neighboring pull quote, wherever in the body it's placed. */
+.news-chart-embed {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 16px 12px;
+  margin: 32px 0;
+}
+
+.news-chart-caption {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--card-muted);
+  padding-top: 8px;
+}
+
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 24px 20px 32px;

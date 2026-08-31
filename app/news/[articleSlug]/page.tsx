@@ -111,7 +111,11 @@ export default function NewsArticlePage({
 
         <section className="section">
           <div className="card">
-            <NewsArticleBody blocks={article.body} />
+            <NewsArticleBody
+              blocks={article.body}
+              relatedMarketSlug={article.relatedMarketSlug}
+              publishedAt={article.publishedAt}
+            />
           </div>
         </section>
 
