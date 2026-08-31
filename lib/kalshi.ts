@@ -8,16 +8,34 @@ const KALSHI_BASE = "https://api.elections.kalshi.com/trade-api/v2";
  * validation error for anything else. So every sub-day range shares the
  * 1-minute granularity and lets start_ts/end_ts do the zooming instead.
  */
-function kalshiRangeParams(range: HistoryRange, end: number): { start: number; periodInterval: 1 | 60 | 1440 } {
+function kalshiRangeParams(range: "1h" | "1d", end: number): { start: number; periodInterval: 1 } {
   const HOUR = 3600;
   const DAY = HOUR * 24;
-  switch (range) {
-    case "1h":
-      return { start: end - HOUR, periodInterval: 1 };
-    case "1d":
-      return { start: end - DAY, periodInterval: 1 };
-    case "all":
-      return { start: end - 400 * DAY, periodInterval: 1440 };
+  return range === "1h" ? { start: end - HOUR, periodInterval: 1 } : { start: end - DAY, periodInterval: 1 };
+}
+
+/**
+ * The market's real open date, used as the "all" range's start_ts instead
+ * of a fixed lookback window -- so "all" actually means since the market
+ * opened (e.g. March 2024 for a market that's been live two years), not an
+ * arbitrary N days before whenever the page happens to be loaded. Falls
+ * back to a generous 3-year window if the lookup fails, rather than
+ * failing the whole history request over one extra call.
+ */
+async function getKalshiMarketOpenTime(ticker: string): Promise<number | null> {
+  try {
+    const res = await fetch(`${KALSHI_BASE}/markets/${ticker}`, {
+      next: { revalidate: 86400 },
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const openTime = data?.market?.open_time;
+    if (!openTime) return null;
+    const t = Math.floor(new Date(openTime).getTime() / 1000);
+    return Number.isNaN(t) ? null : t;
+  } catch {
+    return null;
   }
 }
 
@@ -53,7 +71,15 @@ export async function getKalshiMarketHistory(
   range: HistoryRange = "all"
 ): Promise<HistoryPoint[]> {
   const end = Math.floor(Date.now() / 1000);
-  const { start, periodInterval } = kalshiRangeParams(range, end);
+  let start: number;
+  let periodInterval: 1 | 60 | 1440;
+  if (range === "all") {
+    const openTime = await getKalshiMarketOpenTime(ticker);
+    start = openTime ?? end - 3 * 365 * 24 * 3600;
+    periodInterval = 1440;
+  } else {
+    ({ start, periodInterval } = kalshiRangeParams(range, end));
+  }
   const url =
     `${KALSHI_BASE}/series/${seriesTicker}/markets/${ticker}/candlesticks` +
     `?start_ts=${start}&end_ts=${end}&period_interval=${periodInterval}`;
