@@ -39,6 +39,11 @@
     {
       "type": "paragraph",
       "text": "Polymarket recently archived [its market for Freedom to be drafted for the WNBA in 2027](https://www.predictcentr.com/enes-kanter-freedom-drafted-2027-wnba-draft/), which at one point was as high as 31%. Now, the site is offering a market for any former NBA player to be drafted. The price is currently 5%."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "former-nba-player-drafted",
+      "caption": "Polymarket odds: any former NBA player drafted in the 2027 WNBA Draft"
     }
   ],
   "relatedMarketSlug": "former-nba-player-drafted-2027-wnba-draft",

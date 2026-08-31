@@ -35,6 +35,11 @@
     {
       "type": "paragraph",
       "text": "Despite this, the odds of an Israel-Turkey military clash have lowered on Polymarket. The odds of conflict before the end of the year are at 13%. They were as high as 17% on August 24. Meanwhile, the chances of a conflict between Greece and Turkey are just 4%."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "military-clash",
+      "caption": "Polymarket odds: Israel-Turkey military clash before 2027"
     }
   ],
   "relatedMarketSlug": "israel-turkey-military-clash-2026",

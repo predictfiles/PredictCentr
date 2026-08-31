@@ -31,6 +31,11 @@
     {
       "type": "paragraph",
       "text": "Of course, this does not mean the Raptors trade is certain, given that any other punishment may devalue the deal for Toronto enough for them to back out."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "toronto-raptors",
+      "caption": "Kalshi and Polymarket odds: Kawhi Leonard traded to the Toronto Raptors"
     }
   ],
   "relatedMarketSlug": "kawhi-leonard-next-team",

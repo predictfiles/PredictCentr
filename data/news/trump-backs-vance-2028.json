@@ -31,6 +31,11 @@
     {
       "type": "paragraph",
       "text": "Trump is also among the candidates for this market, sitting at a modest 2% for the election. The current President jokingly donned a Trump 2028 cap at the recent White House Correspondents' Dinner, claiming he intended to run for a \"fourth term.\" As per the 22nd Amendment, a President can not serve more than two terms."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "jd-vance",
+      "caption": "Kalshi and Polymarket odds: JD Vance wins the 2028 presidential election"
     }
   ],
   "relatedMarketSlug": "2028-us-presidential-election-winner/jd-vance",

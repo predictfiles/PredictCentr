@@ -31,6 +31,11 @@
     {
       "type": "paragraph",
       "text": "The odds for Netanyahu's arrest, which are available on both Polymarket and Kalshi, have not shifted much despite the news. Kalshi has an arrest in 2026 at around 10%, and has so since August 10. Polymarket has the comparable market price at 6%."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "arrested",
+      "caption": "Kalshi and Polymarket odds: Benjamin Netanyahu arrested"
     }
   ],
   "relatedMarketSlug": "benjamin-netanyahu-arrested",

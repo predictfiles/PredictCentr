@@ -35,6 +35,11 @@
     {
       "type": "paragraph",
       "text": "The Texas Senate election will take place on November 3, 2026."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "james-talarico",
+      "caption": "Kalshi and Polymarket odds: James Talarico wins the 2026 Texas Senate race"
     }
   ],
   "relatedMarketSlug": "texas-senate-election-2026",

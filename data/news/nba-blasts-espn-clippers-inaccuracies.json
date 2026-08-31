@@ -31,6 +31,11 @@
     {
       "type": "paragraph",
       "text": "Odds surged back up once again after a report from *HoopsHype*, which claimed [Leonard could not be suspended for circumventing the salary cap](https://www.predictcentr.com/news/kawhi-leonard-suspension-odds/), as per NBA rules."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "toronto-raptors",
+      "caption": "Kalshi and Polymarket odds: Kawhi Leonard traded to the Toronto Raptors"
     }
   ],
   "relatedMarketSlug": "kawhi-leonard-next-team",

@@ -40,6 +40,11 @@
     {
       "type": "paragraph",
       "text": "The next WNBA draft will take place in April 2027."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "enes-kanter-freedom",
+      "caption": "Polymarket odds: Enes Kanter Freedom drafted in the 2027 WNBA Draft"
     }
   ],
   "relatedMarketSlug": "enes-kanter-freedom-drafted-2027-wnba-draft",

@@ -35,6 +35,11 @@
     {
       "type": "paragraph",
       "text": "AOC is currently priced at around 10% with Kalshi to win the 2028 Presidential election overall, 13% with Polymarket. She is second favorite behind JD Vance, who leads with around 19%."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "aoc",
+      "caption": "Kalshi and Polymarket odds: Alexandria Ocasio-Cortez wins the 2028 presidential election"
     }
   ],
   "relatedMarketSlug": "2028-us-presidential-election-winner/aoc",

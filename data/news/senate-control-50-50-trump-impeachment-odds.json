@@ -35,6 +35,11 @@
     {
       "type": "paragraph",
       "text": "Notably, these odds also include the chance of Trump resigning for health reasons."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "democrats",
+      "caption": "Kalshi and Polymarket odds: Democrats win Senate control in 2026"
     }
   ],
   "relatedMarketSlug": "2026-us-senate-control/democrats",

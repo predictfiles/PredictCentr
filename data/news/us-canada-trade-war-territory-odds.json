@@ -39,6 +39,11 @@
     {
       "type": "paragraph",
       "text": "The price for the US to take control of any Canadian territory is currently 8% with Kalshi, up two points in 24 hours as the trade dispute continues."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "us-acquires-canada",
+      "caption": "Kalshi odds: US takes control of Canadian territory before 2029"
     }
   ],
   "relatedMarketSlug": "canada-us-acquisition-before-2029",

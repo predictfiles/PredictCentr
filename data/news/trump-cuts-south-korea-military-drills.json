@@ -31,6 +31,11 @@
     {
       "type": "paragraph",
       "text": "In other related news, Trump posted an image to his Truth Social of him wearing a Trump 2028 hat, suggesting that he may make another run for the presidency in the next election. As per the 22nd Amendment, Trump cannot run for another term, but some believe that he can utilize a constitutional loophole to do so."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "donald-trump",
+      "caption": "Kalshi and Polymarket odds: Donald Trump wins the 2028 presidential election"
     }
   ],
   "relatedMarketSlug": "2028-us-presidential-election-winner/donald-trump",

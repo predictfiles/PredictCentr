@@ -31,6 +31,11 @@
     {
       "type": "paragraph",
       "text": "The deal for the Lakers comes just weeks after LeBron James left the team for Philadelphia after eight seasons. His son Bronny James remains at the team, and prediction markets currently have him as 84% chance of staying. He has a 9% chance of joining his father."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "los-angeles-lakers",
+      "caption": "Kalshi odds: Bronny James stays with the Lakers"
     }
   ],
   "relatedMarketSlug": "bronny-james-next-team",

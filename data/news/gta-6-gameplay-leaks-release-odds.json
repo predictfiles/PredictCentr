@@ -35,6 +35,11 @@
     {
       "type": "paragraph",
       "text": "The markets agree. Prediction market Kalshi offers a market on a GTA 6 release before the end of the year, priced at around 87% at the time of writing. The price hit a low of 61% in November 2025 after delay announcements but has grown gradually over the course of 2026, albeit with some blips along the way."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "gta6-released",
+      "caption": "Kalshi odds: GTA 6 released in 2026"
     }
   ],
   "relatedMarketSlug": "gta-6-released-2026",

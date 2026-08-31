@@ -67,10 +67,16 @@ export function ArticleOddsChart({
   const latestPolymarket = latest(polymarket);
 
   const yTicks = [0, yMax / 2, yMax];
+  // timeZone: "UTC" is required here -- without it, toLocaleDateString uses
+  // the server's local timezone, which can roll a near-midnight UTC
+  // timestamp into the wrong calendar day (seen in this build environment,
+  // Europe/Malta, UTC+2) and desync the "as of" date from the article's
+  // own stated publish date.
   const asOfDate = new Date(cutoff * 1000).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   });
 
   return (
@@ -110,7 +116,7 @@ export function ArticleOddsChart({
         ))}
 
         <text x={PAD.left} y={HEIGHT - 6} fontSize={11} fill="var(--card-muted)">
-          {new Date(minT * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+          {new Date(minT * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" })}
         </text>
         <text x={WIDTH - PAD.right} y={HEIGHT - 6} fontSize={11} fill="var(--card-muted)" textAnchor="end">
           {asOfDate}

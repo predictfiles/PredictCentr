@@ -31,6 +31,11 @@
     {
       "type": "paragraph",
       "text": "The next WNBA draft is in April. As per Polymarket's own rules on the Freedom market, it was supposed to resolve Yes if he was drafted, otherwise it would resolve No. If the draft was postponed then it resolved No. Resolution sources could be official WNBA announcements or a consensus of credible reporting."
+    },
+    {
+      "type": "chart",
+      "outcomeId": "enes-kanter-freedom",
+      "caption": "Polymarket odds: Enes Kanter Freedom drafted in the 2027 WNBA Draft"
     }
   ],
   "relatedMarketSlug": "enes-kanter-freedom-drafted-2027-wnba-draft",
