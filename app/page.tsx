@@ -106,7 +106,20 @@ export default async function Home() {
           <div className="home-header-top">
             <h1 className="home-wordmark">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-full.png" alt="PredictCentr" className="wordmark-logo" />
+              <img src="/logo-full.png" alt="PredictCentr" className="wordmark-logo wordmark-logo-desktop" />
+              {/* Mobile-only: the full wordmark image is too wide to sit beside
+                  the Must Read card at phone widths, so swap in a compact
+                  icon + stacked-text lockup instead (CSS toggles which one
+                  renders, per breakpoint). */}
+              <span className="wordmark-mobile-lockup">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/icon.png" alt="" className="wordmark-mobile-icon" />
+                <span className="wordmark-mobile-text">
+                  Predict
+                  <br />
+                  Centr
+                </span>
+              </span>
             </h1>
             <MustReadHeaderCard />
           </div>
