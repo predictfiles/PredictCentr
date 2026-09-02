@@ -1,6 +1,6 @@
 {
   "market": {
-    "title": "JD Vance — 2028 U.S. Presidential Election Winner",
+    "title": "JD Vance - 2028 U.S. Presidential Election Winner",
     "resolutionDate": "2028-11-07",
     "resolutionNote": [
       "Resolves to whoever is inaugurated President in January 2029, based on AP/Fox/NBC race calls."
@@ -62,7 +62,7 @@
   "whatToWatch": [
     {
       "date": "2026-11-03",
-      "label": "US midterm elections — a strong or weak GOP showing will reshape 2028 field narratives"
+      "label": "US midterm elections - a strong or weak GOP showing will reshape 2028 field narratives"
     },
     {
       "date": "2027 (TBD)",
@@ -70,15 +70,15 @@
     },
     {
       "date": "2028-01 (TBD)",
-      "label": "Iowa caucuses — traditionally the first nominating contest; exact date not yet set"
+      "label": "Iowa caucuses - traditionally the first nominating contest; exact date not yet set"
     },
     {
       "date": "2028-02 (TBD)",
-      "label": "New Hampshire primary — exact date not yet set"
+      "label": "New Hampshire primary - exact date not yet set"
     },
     {
       "date": "2028 Summer (TBD)",
-      "label": "Republican National Convention — nominee formally confirmed"
+      "label": "Republican National Convention - nominee formally confirmed"
     },
     {
       "date": "2028 Fall (TBD)",
@@ -86,7 +86,7 @@
     },
     {
       "date": "2028-11-07",
-      "label": "Election Day — market resolution"
+      "label": "Election Day - market resolution"
     }
   ],
   "affiliateStatus": {

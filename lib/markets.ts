@@ -991,7 +991,7 @@ export const ELECTIONS: ElectionInfo[] = [
   },
   {
     slug: "oscar-winner-2027",
-    title: "Best Picture Winner — 99th Academy Awards",
+    title: "Best Picture Winner - 99th Academy Awards",
     resolutionDate: "2027-03-14",
     description:
       "Compare odds on which film wins Best Picture at the 99th Academy Awards (nominations announced January 21, 2027; ceremony March 14, 2027), tracked on Kalshi.",

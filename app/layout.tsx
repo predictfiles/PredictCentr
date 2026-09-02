@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 const GA_MEASUREMENT_ID = "G-8MWR329K83";
 
-const DEFAULT_TITLE = "PredictCentr — Live Prediction Market Odds";
+const DEFAULT_TITLE = "PredictCentr - Live Prediction Market Odds";
 const DEFAULT_DESCRIPTION =
   "Live prediction market odds compared across platforms, with the news that's actually moving them.";
 

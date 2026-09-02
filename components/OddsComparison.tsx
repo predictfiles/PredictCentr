@@ -35,7 +35,7 @@ function PlatformCard({
         </>
       ) : (
         <div className="odds-unavailable">
-          Live price unavailable{error ? ` — ${error}` : ""}. We won&apos;t
+          Live price unavailable{error ? ` - ${error}` : ""}. We won&apos;t
           show a number we&apos;re not confident is current.
         </div>
       )}
@@ -64,7 +64,7 @@ function BestPrice({
   if (best.diffPts === 0) {
     return (
       <div className="best-price">
-        Best available price: <strong>tied</strong> — Kalshi and Polymarket
+        Best available price: <strong>tied</strong> - Kalshi and Polymarket
         are both asking {formatPercent(best.price)}%
       </div>
     );
@@ -139,7 +139,7 @@ export function OddsComparison({
   return (
     <section className="section">
       <div className="section-label">
-        {frozen ? "Final Odds" : "Live Odds"} — {question}
+        {frozen ? "Final Odds" : "Live Odds"} - {question}
       </div>
       <div className={bothPlatforms ? "odds-grid" : "odds-grid odds-grid-single"}>
         {hasKalshi && (
@@ -164,7 +164,7 @@ export function OddsComparison({
       {bothPlatforms && <BestPrice kalshi={data.kalshi} polymarket={data.polymarket} />}
       <div className="odds-fetched">
         {frozen
-          ? "Final odds as of settlement — no longer updating"
+          ? "Final odds as of settlement - no longer updating"
           : `Last checked ${formatRelativeTime(data.fetchedAt, now)} · refreshes automatically every 30s`}
       </div>
     </section>

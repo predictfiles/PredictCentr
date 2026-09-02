@@ -59,7 +59,7 @@ export interface WatchItem {
 
 export interface MarketContent {
   market: {
-    /** Full display title, e.g. "JD Vance — 2028 U.S. Presidential Election Winner" */
+    /** Full display title, e.g. "JD Vance - 2028 U.S. Presidential Election Winner" */
     title: string;
     resolutionDate: string;
     /** Bulleted on the page -- one distinct point per entry, not a single paragraph. */
@@ -92,7 +92,7 @@ export interface MarketContent {
    */
   settled?: {
     resolvedAt: string;
-    /** Human-readable description of what actually happened, e.g. "Philadelphia 76ers — 2-year, $8M deal" */
+    /** Human-readable description of what actually happened, e.g. "Philadelphia 76ers - 2-year, $8M deal" */
     result: string;
     finalOdds: Record<string, OddsResponse>;
     finalHistory: Record<string, HistoryResponse>;

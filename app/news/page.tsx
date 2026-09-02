@@ -10,7 +10,7 @@ import type { NewsArticle } from "@/lib/types";
 export const revalidate = 30;
 
 const NEWS_INTRO =
-  "Breaking news on the stories moving prediction markets — verified against Kalshi and Polymarket as it happens.";
+  "Breaking news on the stories moving prediction markets - verified against Kalshi and Polymarket as it happens.";
 
 export const metadata: Metadata = {
   title: "News",

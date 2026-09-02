@@ -134,7 +134,7 @@ export function CardLiveLine({
 
   return (
     <div className="market-card-live">
-      <strong>{leader.label}</strong> favored — <PlatformBadge platform={leader.platform} />{" "}
+      <strong>{leader.label}</strong> favored - <PlatformBadge platform={leader.platform} />{" "}
       <strong style={{ color: platformColor(leader.platform) }}>
         {formatPercent(leader.price)}% ({platformName(leader.platform)})
       </strong>
