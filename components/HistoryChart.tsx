@@ -123,25 +123,26 @@ export function HistoryChart({
   const polymarketRaw = chartData.polymarket ?? [];
   const [hoverX, setHoverX] = useState<number | null>(null);
 
-  // When a market is listed on both platforms but one opened trading long
-  // after the other (e.g. a newly-added Kalshi contract for an event
-  // Polymarket has tracked for months), starting the x-axis at the
-  // earliest point across either platform compresses the later-starting
-  // line into a sliver at one edge -- easy to mistake for "missing"
-  // entirely. Clip the start to whichever platform began LATER instead, so
-  // both lines share the full chart width over the period they've
-  // actually both been live. Computed once here (not just inside the path
-  // useMemo below) so hover/tooltip lookups agree with what's drawn --
-  // they'd otherwise still search the untrimmed arrays and could surface a
-  // point from before the visible window.
+  // Kalshi is listed later than Polymarket on nearly every market here, so
+  // its own start is the useful anchor: clip Polymarket's history down to
+  // wherever Kalshi's history begins, always relative to Kalshi rather than
+  // whichever platform happens to be later on a given outcome. That keeps
+  // the axis predictable across outcomes and, on a brand-new listing where
+  // Polymarket has barely traded yet but Kalshi has months of history (or
+  // vice versa isn't the common case), still shows that longer history
+  // instead of crushing the chart down to the sliver where both overlap.
+  // Computed once here (not just inside the path useMemo below) so
+  // hover/tooltip lookups agree with what's drawn -- they'd otherwise still
+  // search the untrimmed array and could surface a point from before the
+  // visible window.
   const { kalshi, polymarket } = useMemo(() => {
-    const hasBoth = kalshiRaw.length > 0 && polymarketRaw.length > 0;
-    const sharedStart = hasBoth
-      ? Math.max(Math.min(...kalshiRaw.map((p) => p.t)), Math.min(...polymarketRaw.map((p) => p.t)))
-      : null;
+    if (kalshiRaw.length === 0 || polymarketRaw.length === 0) {
+      return { kalshi: kalshiRaw, polymarket: polymarketRaw };
+    }
+    const kalshiStart = Math.min(...kalshiRaw.map((p) => p.t));
     return {
-      kalshi: sharedStart !== null ? kalshiRaw.filter((p) => p.t >= sharedStart) : kalshiRaw,
-      polymarket: sharedStart !== null ? polymarketRaw.filter((p) => p.t >= sharedStart) : polymarketRaw,
+      kalshi: kalshiRaw,
+      polymarket: polymarketRaw.filter((p) => p.t >= kalshiStart),
     };
   }, [kalshiRaw, polymarketRaw]);
 
