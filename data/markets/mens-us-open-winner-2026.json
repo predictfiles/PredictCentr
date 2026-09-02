@@ -1,0 +1,81 @@
+{
+  "market": {
+    "title": "Men's US Open Winner — 2026",
+    "resolutionDate": "2026-09-13",
+    "resolutionNote": [
+      "Resolves Yes for whichever player wins the 2026 US Open Men's Singles title - only the five most-backed contenders are tracked on this page, out of 35+ players still listed on Kalshi and 49+ on Polymarket.",
+      "Kalshi's own wording (per player): \"If [Player] wins the 2026 US Open Men's Singles professional tennis tournament, then the market resolves to Yes.\" A player who withdraws or is otherwise eliminated from contention resolves No immediately, without waiting for the tournament to finish.",
+      "Both of the tournament's top seeds are already out and resolved No: Jannik Sinner withdrew before his opening match with a knee injury, and Novak Djokovic lost in the first round to Mariano Navone - the first time he's ever lost that early at the US Open.",
+      "One real gap between the platforms: Polymarket's cutoff is Sep 13, 2026, while Kalshi's runs a little later, expected around Sep 14, 2026 once the final concludes."
+    ]
+  },
+  "marketBrief": {
+    "text": [
+      "The men's draw was upended before it really began: world No. 1 Jannik Sinner withdrew with a knee injury, and Novak Djokovic - who had never lost before the third round at the US Open - was knocked out in the first round by Argentina's Mariano Navone.",
+      "That's left defending champion Carlos Alcaraz as the clear favorite, priced around 36-37% on both Kalshi and Polymarket, even though he's only just back from the wrist injury that kept him out since April.",
+      "Alexander Zverev, now the tournament's top remaining seed, sits a distant second at around 21%.",
+      "Ben Shelton and Taylor Fritz are bunched tightly for third, each in the high single digits, with Rafael Jodar rounding out the top five as the field's biggest relative outsider.",
+      "The final is scheduled for Sunday, September 13."
+    ],
+    "updatedAt": "2026-09-02",
+    "author": "Owain Flanders"
+  },
+  "news": [
+    {
+      "headline": "Novak Djokovic Loses in Opening Round of US Open for First Time, Falling in 5 Sets to Mariano Navone",
+      "source": "ABC News",
+      "date": "2026-08-31",
+      "url": "https://abcnews.com/Sports/wireStory/novak-djokovic-loses-opening-round-us-open-time-136079604",
+      "image": "https://i.abcnewsfe.com/a/6be2ce5f-c50d-4d06-84b5-cc568661539f/wirestory_8541a748a9e48346ddaea528ee7a739b_16x9.jpg?w=1600"
+    },
+    {
+      "headline": "2026 US Open Men's Odds: Alcaraz Favored to Defend Title Without Sinner",
+      "source": "Kalshi News",
+      "date": "2026-08-28",
+      "url": "https://news.kalshi.com/p/us-open-mens-odds-2026-alcaraz-favored",
+      "image": "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,width=1200,onerror=redirect/uploads/asset/file/593b9006-2b70-4826-9005-ea38164c3582/carlos-alcarez.jpg?t=1787935196"
+    },
+    {
+      "headline": "2026 US Open Draw Results, Full List of Men's Quarters Matches",
+      "source": "The Big Lead (via Yahoo)",
+      "date": "2026-08-27",
+      "url": "https://sports.yahoo.com/articles/2026-us-open-draw-results-170901992.html",
+      "image": "https://s.yimg.com/lo/mysterio/api/5466ef260369638881692c7d0b2c14b59e7fcbc454dab794a26bef37545efad1/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fthe_big_lead_articles_114%2F5349c60b05b638963bc6333031fccc4e.jpg"
+    },
+    {
+      "headline": "Top-Ranked Jannik Sinner Withdraws From US Open With Right Knee Injury: 'Sad and Disappointed'",
+      "source": "Fox News (OutKick)",
+      "date": "2026-08-21",
+      "url": "https://www.foxnews.com/outkick-sports/top-ranked-jannik-sinner-withdraws-us-open-right-knee-injury-sad-disappointed",
+      "image": "https://static.foxnews.com/foxnews.com/content/uploads/2026/08/jannik-sinner-wins-all-england-final.jpg"
+    }
+  ],
+  "whatToWatch": [
+    {
+      "date": "2026-09-11",
+      "label": "Men's semifinals"
+    },
+    {
+      "date": "2026-09-13",
+      "label": "Men's final - Polymarket's resolution cutoff"
+    },
+    {
+      "date": "Ongoing",
+      "label": "Any further injury news or withdrawals among the remaining top contenders"
+    },
+    {
+      "date": "2026-09-14",
+      "label": "Kalshi's expected resolution, shortly after the final concludes"
+    }
+  ],
+  "affiliateStatus": {
+    "kalshi": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Kalshi partner/referral link once approved, and flip isAffiliate to true."
+    },
+    "polymarket": {
+      "isAffiliate": false,
+      "note": "REPLACE with your Polymarket referral link once approved, and flip isAffiliate to true."
+    }
+  }
+}

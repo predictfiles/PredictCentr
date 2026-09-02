@@ -25,6 +25,7 @@ import gta6Released2026Raw from "@/data/markets/gta-6-released-2026.json";
 import israelTurkeyMilitaryClash2026Raw from "@/data/markets/israel-turkey-military-clash-2026.json";
 import formerNbaPlayerDrafted2027WnbaDraftRaw from "@/data/markets/former-nba-player-drafted-2027-wnba-draft.json";
 import canadaUsAcquisitionBefore2029Raw from "@/data/markets/canada-us-acquisition-before-2029.json";
+import mensUsOpenWinner2026Raw from "@/data/markets/mens-us-open-winner-2026.json";
 
 // JSON imports infer string literal fields (e.g. "platform": "kalshi") as
 // plain `string`, not the PlatformId union MarketContent actually needs --
@@ -57,6 +58,7 @@ const gta6Released2026 = gta6Released2026Raw as MarketContent;
 const israelTurkeyMilitaryClash2026 = israelTurkeyMilitaryClash2026Raw as MarketContent;
 const formerNbaPlayerDrafted2027WnbaDraft = formerNbaPlayerDrafted2027WnbaDraftRaw as MarketContent;
 const canadaUsAcquisitionBefore2029 = canadaUsAcquisitionBefore2029Raw as MarketContent;
+const mensUsOpenWinner2026 = mensUsOpenWinner2026Raw as MarketContent;
 
 // Add a new market by appending an entry here (with its own content file
 // under data/markets/) -- nothing else needs to change for it to get a
@@ -838,6 +840,94 @@ export const markets: MarketConfig[] = [
       },
     ],
     content: canadaUsAcquisitionBefore2029,
+  },
+  {
+    slug: ["mens-us-open-winner-2026"],
+    category: "sports",
+    shortDescription: "Live odds on the top five contenders to win the 2026 US Open Men's Singles title.",
+    outcomes: [
+      {
+        id: "carlos-alcaraz",
+        label: "Carlos Alcaraz",
+        question: "Will Carlos Alcaraz win the 2026 US Open Men's Singles?",
+        kalshi: {
+          ticker: "KXATP-26USO-ALC",
+          seriesTicker: "KXATP",
+          url: "https://kalshi.com/markets/kxatp/mens-tournament-winner/kxatp-26uso?selectedMarketTicker=KXATP-26USO-ALC",
+        },
+        polymarket: {
+          marketId: "1088472",
+          yesTokenId:
+            "71401904010247427754329784277924205841820460862761252985878735510347215917540",
+          url: "https://polymarket.com/event/2026-mens-us-open-winner-tennis/will-carlos-alcaraz-win-the-2026-mens-us-open",
+        },
+      },
+      {
+        id: "alexander-zverev",
+        label: "Alexander Zverev",
+        question: "Will Alexander Zverev win the 2026 US Open Men's Singles?",
+        kalshi: {
+          ticker: "KXATP-26USO-ZVE",
+          seriesTicker: "KXATP",
+          url: "https://kalshi.com/markets/kxatp/mens-tournament-winner/kxatp-26uso?selectedMarketTicker=KXATP-26USO-ZVE",
+        },
+        polymarket: {
+          marketId: "1088475",
+          yesTokenId:
+            "10458098669927883185204828453571065550874636694709643726889899346674533724103",
+          url: "https://polymarket.com/event/2026-mens-us-open-winner-tennis/will-alexander-zverev-win-the-2026-mens-us-open",
+        },
+      },
+      {
+        id: "ben-shelton",
+        label: "Ben Shelton",
+        question: "Will Ben Shelton win the 2026 US Open Men's Singles?",
+        kalshi: {
+          ticker: "KXATP-26USO-SHE",
+          seriesTicker: "KXATP",
+          url: "https://kalshi.com/markets/kxatp/mens-tournament-winner/kxatp-26uso?selectedMarketTicker=KXATP-26USO-SHE",
+        },
+        polymarket: {
+          marketId: "1088476",
+          yesTokenId:
+            "97425373542541244409279148168035803042084783523795409980290844728581925888286",
+          url: "https://polymarket.com/event/2026-mens-us-open-winner-tennis/will-ben-shelton-win-the-2026-mens-us-open",
+        },
+      },
+      {
+        id: "taylor-fritz",
+        label: "Taylor Fritz",
+        question: "Will Taylor Fritz win the 2026 US Open Men's Singles?",
+        kalshi: {
+          ticker: "KXATP-26USO-FRI",
+          seriesTicker: "KXATP",
+          url: "https://kalshi.com/markets/kxatp/mens-tournament-winner/kxatp-26uso?selectedMarketTicker=KXATP-26USO-FRI",
+        },
+        polymarket: {
+          marketId: "1088477",
+          yesTokenId:
+            "73364483172319264394905719398750594214204555040619327864407649701603224821302",
+          url: "https://polymarket.com/event/2026-mens-us-open-winner-tennis/will-taylor-fritz-win-the-2026-mens-us-open",
+        },
+      },
+      {
+        id: "rafael-jodar",
+        label: "Rafael Jodar",
+        question: "Will Rafael Jodar win the 2026 US Open Men's Singles?",
+        kalshi: {
+          ticker: "KXATP-26USO-JOD",
+          seriesTicker: "KXATP",
+          url: "https://kalshi.com/markets/kxatp/mens-tournament-winner/kxatp-26uso?selectedMarketTicker=KXATP-26USO-JOD",
+        },
+        polymarket: {
+          marketId: "1088501",
+          yesTokenId:
+            "6331511334440645904090819934074660429835794869988286346494584451094686430090",
+          url: "https://polymarket.com/event/2026-mens-us-open-winner-tennis/will-rafael-jodar-win-the-2026-mens-us-open",
+        },
+      },
+    ],
+    content: mensUsOpenWinner2026,
   },
 ];
 
