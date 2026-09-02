@@ -32,7 +32,14 @@ export function ArticleOddsChart({
   idPrefix: string;
 }) {
   const kalshi = toPoints(data.kalshi, cutoff);
-  const polymarket = toPoints(data.polymarket, cutoff);
+  const polymarketAll = toPoints(data.polymarket, cutoff);
+  // Kalshi is listed later than Polymarket on nearly every market here, so
+  // its own start is the useful anchor -- clip Polymarket down to wherever
+  // Kalshi's history begins instead of sharing an axis from the earliest
+  // point of either, which otherwise crushes Kalshi's line into a sliver at
+  // one edge on a market Polymarket has tracked for months longer. Mirrors
+  // the same fix in the live HistoryChart on market pages.
+  const polymarket = kalshi.length > 0 ? polymarketAll.filter((p) => p.t >= kalshi[0].t) : polymarketAll;
   const allPoints = [...kalshi, ...polymarket];
 
   if (allPoints.length === 0) return null;
