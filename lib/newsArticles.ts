@@ -27,6 +27,7 @@ import alcarazReturnsStraightSetsUsOpenFavoriteRaw from "@/data/news/alcaraz-ret
 import nbaInvestigationOverKawhiLeonardToronto97Raw from "@/data/news/nba-investigation-over-kawhi-leonard-toronto-97.json";
 import jdVanceFoundryManufacturing2028OddsRaw from "@/data/news/jd-vance-foundry-manufacturing-2028-odds.json";
 import freedomSuesChicagoSkyWnbaDraftOddsRaw from "@/data/news/freedom-sues-chicago-sky-wnba-draft-odds.json";
+import yashPatelVetoHatTrickBb28FavoriteRaw from "@/data/news/yash-patel-veto-hat-trick-bb28-favorite.json";
 
 const kawhiSuspensionOdds = kawhiSuspensionOddsRaw as NewsArticle;
 const talaricoTexasSenatePolls = talaricoTexasSenatePollsRaw as NewsArticle;
@@ -56,6 +57,7 @@ const alcarazReturnsStraightSetsUsOpenFavorite = alcarazReturnsStraightSetsUsOpe
 const nbaInvestigationOverKawhiLeonardToronto97 = nbaInvestigationOverKawhiLeonardToronto97Raw as NewsArticle;
 const jdVanceFoundryManufacturing2028Odds = jdVanceFoundryManufacturing2028OddsRaw as NewsArticle;
 const freedomSuesChicagoSkyWnbaDraftOdds = freedomSuesChicagoSkyWnbaDraftOddsRaw as NewsArticle;
+const yashPatelVetoHatTrickBb28Favorite = yashPatelVetoHatTrickBb28FavoriteRaw as NewsArticle;
 
 // Add a new article by appending an entry here (with its own content file
 // under data/news/) -- same "add an entry" pattern as lib/markets.ts and
@@ -89,6 +91,7 @@ export const newsArticles: NewsArticle[] = [
   nbaInvestigationOverKawhiLeonardToronto97,
   jdVanceFoundryManufacturing2028Odds,
   freedomSuesChicagoSkyWnbaDraftOdds,
+  yashPatelVetoHatTrickBb28Favorite,
 ];
 
 export function findNewsArticle(slug: string): NewsArticle | undefined {
